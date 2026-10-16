@@ -1,0 +1,23 @@
+{
+  "experimentId": "covertype-resource-fedlbw-42",
+  "manifestPath": "artifacts/partitions/covertype-dirichlet-42",
+  "totalClients": 100,
+  "selectedPerRound": 5,
+  "rounds": 20,
+  "seed": 42,
+  "selection": "resource_aware",
+  "aggregation": "fedlbw",
+  "localEpochs": 1,
+  "batchSize": 32,
+  "learningRate": 0.01,
+  "simulationEnabled": true,
+  "resourceProfile": "heterogeneous",
+  "availability": 0.9,
+  "dropout": 0.05,
+  "jitter": 0.1,
+  "exploration": 0.2,
+  "deadlineSeconds": 10.0,
+  "requiredRamMb": 600.0,
+  "priorSecondsPerSample": 0.0005,
+  "targetAccuracy": 0.65
+}

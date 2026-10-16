@@ -1,0 +1,20 @@
+name: MiniFLS checks
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - run: pip install -e 'ml-python[test]'
+      - run: pytest ml-python/tests -q
+      - run: ./gradlew test bootJar --no-daemon
+        working-directory: ferderatedsystem
+      - run: python scripts/verify_e2e.py
