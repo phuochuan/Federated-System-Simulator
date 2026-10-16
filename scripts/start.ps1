@@ -25,7 +25,12 @@ $server = Start-Process -FilePath 'java' -ArgumentList @('-Xmx512m','-jar','ferd
 Write-Output "Worker PID $($worker.Id), server PID $($server.Id). Logs: artifacts/logs"
 for ($attempt=0; $attempt -lt 60; $attempt++) {
     try {
-        Invoke-RestMethod "http://127.0.0.1:$ServerPort/health" | ConvertTo-Json
+        $health = Invoke-RestMethod "http://127.0.0.1:$ServerPort/health"
+        # The Windows venv redirector may launch a child Python process; record the listener PID.
+        $workerListener = Get-NetTCPConnection -LocalPort $WorkerPort -State Listen | Select-Object -First 1
+        $serverListener = Get-NetTCPConnection -LocalPort $ServerPort -State Listen | Select-Object -First 1
+        @{worker=$workerListener.OwningProcess;server=$serverListener.OwningProcess} | ConvertTo-Json | Set-Content artifacts/processes.json
+        $health | ConvertTo-Json
         exit 0
     } catch { Start-Sleep -Seconds 1 }
 }

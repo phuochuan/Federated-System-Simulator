@@ -67,7 +67,7 @@ cd ferderatedsystem
 .\gradlew.bat bootRun
 ```
 
-Dừng service chạy bằng script: xem PID trong `artifacts/processes.json`, dùng `Stop-Process -Id <PID>` cho từng service. Biến môi trường: `MINIFLS_WORKSPACE`, `MINIFLS_WORKER_URL`, `MINIFLS_SERVER_PORT`, `MINIFLS_DATABASE`, `MINIFLS_TORCH_THREADS`.
+Dừng service chạy bằng script: `powershell -ExecutionPolicy Bypass -File scripts/stop.ps1`. Script kiểm tra danh tính process trước khi dừng cả process con. Biến môi trường: `MINIFLS_WORKSPACE`, `MINIFLS_WORKER_URL`, `MINIFLS_SERVER_PORT`, `MINIFLS_DATABASE`, `MINIFLS_TORCH_THREADS`.
 
 ## Kết quả và kiểm chứng
 
@@ -87,4 +87,4 @@ Integration test tự khởi động service trên port riêng, chạy 100 clien
 
 CPU/RAM là **virtual simulation**. RSS đo được thuộc toàn worker. CPU scaling, `requiredRamMb` và cold-start prior cần hiệu chỉnh theo benchmark trước khi kết luận về hiệu quả tài nguyên. Virtual time phụ thuộc thời gian training đo thật; seed không bảo đảm wall time giống tuyệt đối. Không có 100 processes/containers.
 
-Chi tiết: [kiến trúc](docs/architecture.md), [API](docs/api-contract.md), [quy trình thí nghiệm và coverage](docs/experiment-protocol.md). FedProx, Oort, Lyapunov fairness, fuzzy selection và WAN emulation là phần mở rộng chưa triển khai.
+Chi tiết: [kiến trúc](docs/architecture.md), [API](docs/api-contract.md), [quy trình thí nghiệm và coverage](docs/experiment-protocol.md), [kết quả kiểm chứng](docs/validation/README.md). FedProx, Oort, Lyapunov fairness, fuzzy selection và WAN emulation là phần mở rộng chưa triển khai.
