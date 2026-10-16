@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.support.TransactionTemplate;
 import java.util.*;
 
+/** Lưu cấu hình, kết quả round và snapshot phục hồi bằng SQLite. */
 @Repository
 public class ExperimentRepository {
     private final JdbcTemplate db;
@@ -20,7 +21,7 @@ public class ExperimentRepository {
         db.execute("PRAGMA busy_timeout=5000");
         db.execute("CREATE TABLE IF NOT EXISTS experiments (id TEXT PRIMARY KEY, status TEXT NOT NULL, config TEXT NOT NULL, snapshot TEXT, error TEXT, created_at TEXT DEFAULT CURRENT_TIMESTAMP)");
         db.execute("CREATE TABLE IF NOT EXISTS rounds (experiment_id TEXT, round_id INTEGER, model_version INTEGER, outcome TEXT, metrics TEXT NOT NULL, PRIMARY KEY(experiment_id,round_id))");
-        // A terminated process never reports an in-flight experiment as still running.
+        // Run đang chạy trước khi Java dừng phải được đánh dấu gián đoạn để có thể resume.
         db.update("UPDATE experiments SET status='INTERRUPTED' WHERE status='RUNNING'");
     }
     public void create(ExperimentConfig config) {
@@ -30,6 +31,7 @@ public class ExperimentRepository {
         try{return json.writeValueAsString(value);}catch(Exception e){throw new IllegalStateException(e);}
     }
     public void commit(String id,int round,int version,String outcome,Object metrics,Object snapshot) {
+        // Ghi metrics và snapshot trong cùng transaction để không phục hồi từ round ghi dở.
         tx.executeWithoutResult(s -> {
             db.update("INSERT INTO rounds VALUES (?,?,?,?,?)",id,round,version,outcome,encode(metrics));
             db.update("UPDATE experiments SET snapshot=? WHERE id=?",encode(snapshot),id);

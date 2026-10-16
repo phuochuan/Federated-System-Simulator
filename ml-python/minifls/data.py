@@ -1,4 +1,4 @@
-"""Offline, deterministic data preparation. Test labels never enter training."""
+"""Chuẩn bị dữ liệu offline theo seed; tách biệt dữ liệu test khỏi huấn luyện."""
 import argparse
 import hashlib
 import json
@@ -11,13 +11,14 @@ from sklearn.preprocessing import StandardScaler
 
 
 def partition(y, clients, strategy, alpha, seed, minimum=1):
+    # Cùng seed và cấu hình sẽ tạo cùng danh sách chỉ số cho từng client.
     rng = np.random.default_rng(seed)
     if len(y) < clients * minimum:
         raise ValueError("Insufficient samples for minimum client size")
     valid = {"iid_equal", "iid_quantity_skew", "dirichlet_label_skew", "dirichlet_mixed_skew"}
     if strategy not in valid or alpha <= 0:
         raise ValueError("Invalid partition strategy or alpha")
-    # Fixed capacities isolate quantity skew from label skew.
+    # Cố định sức chứa từng client để kiểm soát lệch số mẫu riêng với lệch nhãn.
     quantity = strategy in {"iid_quantity_skew", "dirichlet_mixed_skew"}
     probs = rng.dirichlet(np.ones(clients) * 2) if quantity else np.ones(clients) / clients
     capacities = np.full(clients, minimum) + rng.multinomial(len(y) - clients * minimum, probs)
@@ -27,12 +28,13 @@ def partition(y, clients, strategy, alpha, seed, minimum=1):
     remaining = capacities.copy()
     classes = np.unique(y)
     preferences = rng.dirichlet(np.full(len(classes), alpha), clients)
-    # Deal shuffled samples into remaining capacities. IID uses class-independent probabilities.
+    # Gán từng mẫu đã xáo trộn vào chỗ còn trống; IID không ưu tiên nhãn cụ thể.
     for idx in rng.permutation(len(y)):
         weights = remaining.astype(float)
         if strategy.startswith("dirichlet"):
             weights *= preferences[:, int(y[idx])]
         if weights.sum() == 0:
+            # Alpha quá nhỏ có thể làm xác suất bằng 0 do giới hạn số thực.
             weights = remaining.astype(float)
         weights /= weights.sum()
         client = int(rng.choice(clients, p=weights))
@@ -42,6 +44,7 @@ def partition(y, clients, strategy, alpha, seed, minimum=1):
 
 
 def prepare(output, dataset="covertype", clients=100, seed=42, strategy="iid_equal", alpha=0.5, samples=7000):
+    # Không ghi đè manifest cũ để các thí nghiệm đã chạy vẫn có thể tái lập.
     output = Path(output)
     if output.exists():
         raise ValueError("Manifest directory already exists; choose a new output to preserve reproducibility")
@@ -60,8 +63,9 @@ def prepare(output, dataset="covertype", clients=100, seed=42, strategy="iid_equ
     indices = np.arange(len(y))
     train_proxy, test = train_test_split(indices, test_size=test_size, stratify=y, random_state=seed)
     train, proxy = train_test_split(train_proxy, test_size=proxy_size, stratify=y[train_proxy], random_state=seed + 1)
-    # Covertype's first ten features are numerical; remaining columns are binary indicators.
+    # Covertype có 10 đặc trưng số đầu tiên; các cột còn lại là chỉ báo nhị phân.
     continuous = 10 if dataset == "covertype" else 54
+    # Chỉ fit trên train; proxy/test dùng lại thống kê này để tránh rò rỉ dữ liệu.
     scaler = StandardScaler().fit(x[train, :continuous])
     x[:, :continuous] = scaler.transform(x[:, :continuous])
     parts = partition(y[train], clients, strategy, alpha, seed + 2)
@@ -83,12 +87,14 @@ def prepare(output, dataset="covertype", clients=100, seed=42, strategy="iid_equ
 
 
 class Dataset:
+    """Nạp dữ liệu dùng chung và kiểm tra tính toàn vẹn của split/partition."""
     def __init__(self, directory):
         self.directory = Path(directory)
         self.manifest = json.loads((self.directory / "manifest.json").read_text(encoding="utf-8"))
         for name, digest in self.manifest["hashes"].items():
             if hashlib.sha256((self.directory / name).read_bytes()).hexdigest() != digest:
                 raise ValueError(f"Dataset checksum mismatch: {name}")
+        # Memory map cho phép truy cập một dataset chung thay vì sao chép cho 100 client.
         self.x = np.load(self.directory / "features.npy", mmap_mode="r")
         self.y = np.load(self.directory / "labels.npy", mmap_mode="r")
         with np.load(self.directory / "splits.npz") as z:

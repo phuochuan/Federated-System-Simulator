@@ -1,4 +1,4 @@
-"""Submit/poll experiments and export their evidence from the Java coordinator."""
+"""Gửi thí nghiệm, theo dõi Java coordinator và xuất dữ liệu kiểm chứng."""
 import argparse
 import json
 from pathlib import Path
@@ -17,6 +17,7 @@ def run(config, base="http://127.0.0.1:8080", output="artifacts/results", resume
     experiment = config["experimentId"]
     request(base, f"/experiments/{experiment}/resume" if resume else "/experiments", {} if resume else config)
     last = None
+    # Java chạy bất đồng bộ; CLI đọc snapshot đã lưu để hiển thị tiến độ.
     while True:
         state = json.loads(request(base, f"/experiments/{experiment}"))
         progress = (state["snapshot"] or {}).get("round", 0)
@@ -26,6 +27,7 @@ def run(config, base="http://127.0.0.1:8080", output="artifacts/results", resume
         if state["status"] != "RUNNING":
             break
         time.sleep(.5)
+    # Xuất cả run lỗi để giữ được trạng thái và kết quả của các round đã commit.
     directory = Path(output) / experiment
     directory.mkdir(parents=True, exist_ok=True)
     (directory / "experiment.json").write_text(json.dumps(state,indent=2),encoding="utf-8")

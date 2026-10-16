@@ -2,11 +2,12 @@ import argparse
 import csv
 from pathlib import Path
 import matplotlib
-matplotlib.use("Agg")
+matplotlib.use("Agg")  # Xuất PNG trên máy hoặc CI không có giao diện đồ họa.
 import matplotlib.pyplot as plt
 
 
 def plot(paths, output):
+    # Tách trục round và virtual time để tránh nhầm tốc độ hội tụ với thời gian chạy thật.
     fig, axes = plt.subplots(1,3,figsize=(14,4))
     for path in paths:
         with open(path,encoding="utf-8") as stream:

@@ -7,6 +7,7 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
+/** API nhận thí nghiệm, đọc tiến độ và xuất metrics từ trạng thái đã lưu. */
 @RestController
 public class ExperimentController {
     private final RoundCoordinator coordinator;
@@ -19,6 +20,7 @@ public class ExperimentController {
     @GetMapping("/health") public Object health() {return Map.of("status","ok","worker",worker.get("/health"));}
     @PostMapping("/experiments") @ResponseStatus(HttpStatus.ACCEPTED)
     public Object start(@Valid @RequestBody ExperimentConfig config) {
+        // Trả 202 sau khi nhận tác vụ; quá trình huấn luyện tiếp tục trên executor riêng.
         coordinator.start(config);return Map.of("experimentId",config.experimentId(),"status","RUNNING");
     }
     @GetMapping("/experiments") public Object list() {return repository.list();}
@@ -32,6 +34,7 @@ public class ExperimentController {
     @PostMapping("/experiments/{id}/resume") @ResponseStatus(HttpStatus.ACCEPTED)
     public Object resume(@PathVariable String id) {coordinator.resume(id);return Map.of("status","RUNNING");}
     @GetMapping(value="/experiments/{id}/metrics.csv",produces="text/csv") public String csv(@PathVariable String id) {
+        // CSV là bản rút gọn; endpoint rounds giữ đầy đủ metrics từng client và sự kiện mô phỏng.
         var out=new StringBuilder("round,model_version,outcome,accuracy,loss,macro_f1,accepted,selected,virtual_seconds,cumulative_virtual_seconds,wall_seconds,coverage,gini\n");
         for(var r:repository.rounds(id)) out.append(String.join(",",r.path("roundId").asText(),r.path("modelVersion").asText(),r.path("outcome").asText(),
                 r.path("evaluation").path("accuracy").asText(),r.path("evaluation").path("loss").asText(),r.path("evaluation").path("macroF1").asText(),

@@ -54,7 +54,7 @@ def test_virtual_parallel_deadline_oom_dropout():
     jobs = [dict(clientId=i, actualTrainingMs=t, cpu=1, ramMb=1024, requiredRamMb=600)
             for i,t in enumerate([2000,5000])]
     result = simulate_round(jobs,42)
-    assert result["virtualRoundSeconds"] == 5  # parallel maximum, not sum
+    assert result["virtualRoundSeconds"] == 5  # Lấy thời gian lớn nhất khi chạy song song, không lấy tổng.
     result = simulate_round(jobs,42,deadline=3)
     assert [r["status"] for r in result["results"]] == ["COMPLETED","TIMEOUT"]
     jobs[0]["ramMb"] = 512
@@ -69,7 +69,7 @@ def test_api_round_and_no_cross_client_state(client):
     request = dict(**context, roundId=1, clientId=0, baseModelVersion=0, globalModelPath=initial["checkpointPath"])
     first = client.post("/train",json=request)
     assert first.status_code == 200, first.text
-    # Training another client cannot contaminate a repeated job from the same base.
+    # Train client khác không được làm thay đổi kết quả khi lặp lại job từ cùng checkpoint gốc.
     other = client.post("/train",json={**request,"clientId":1}).json()
     again = client.post("/train",json={**request,"operationId":"repeat"}).json()
     state = load_checkpoint(api.path(first.json()["updatePath"]))["state"]

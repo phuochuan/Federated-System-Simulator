@@ -9,17 +9,20 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/** Điều phối round đồng bộ; Java quyết định update nào được chấp nhận và model nào được commit. */
 @Service
 public class RoundCoordinator {
     private final PythonMLClient worker;
     private final ExperimentRepository repository;
     private final ObjectMapper json;
+    // Chỉ chạy một thí nghiệm tại một thời điểm để không tranh chấp worker ML duy nhất.
     private final ExecutorService executor=Executors.newSingleThreadExecutor();
     private final AtomicBoolean busy=new AtomicBoolean(false);
 
     public RoundCoordinator(PythonMLClient worker,ExperimentRepository repository,ObjectMapper json) {
         this.worker=worker;this.repository=repository;this.json=json;
     }
+    /** Trạng thái của round đã commit gần nhất, dùng để tiếp tục sau gián đoạn. */
     public static class Snapshot {
         public int round;
         public int modelVersion;
@@ -45,6 +48,7 @@ public class RoundCoordinator {
             var row=repository.find(id);
             if(!Set.of("FAILED","INTERRUPTED").contains(row.get("status"))) throw new IllegalArgumentException("Only failed/interrupted experiments can resume");
             var config=json.readValue((String)row.get("config"),ExperimentConfig.class);
+            // Khôi phục từ SQLite thay vì dùng state trong bộ nhớ của tác vụ đã lỗi.
             Snapshot snapshot=row.get("snapshot")==null ? null : json.readValue((String)row.get("snapshot"),Snapshot.class);
             repository.status(id,"RUNNING",null);
             executor.submit(() -> run(config,snapshot));
@@ -79,7 +83,7 @@ public class RoundCoordinator {
     private void run(ExperimentConfig c,Snapshot s) {
         try {
             if(s==null) s=initialize(c);
-            // Loading validates file hashes again after process restart.
+            // Khi worker nạp lại dataset sau restart, hash của các file được kiểm tra lại.
             var current=worker.get("/datasets/manifest?manifestPath="+URLEncoder.encode(c.manifestPath(),StandardCharsets.UTF_8));
             if(!current.equals(s.manifest)) throw new IllegalArgumentException("Dataset manifest changed since experiment started");
             for(int round=s.round+1;round<=c.rounds();round++) executeRound(c,s,round);
@@ -90,8 +94,10 @@ public class RoundCoordinator {
     }
     private void executeRound(ExperimentConfig c,Snapshot s,int round) {
         long started=System.nanoTime();
+        // Mỗi lần thử có ID riêng để artifact chưa commit không đè lên kết quả khi retry.
         var operation=UUID.randomUUID().toString();
         var eligible=new ArrayList<ClientProfile>();
+        // Availability là thông tin quan sát trước khi chọn; kết quả dropout/timeout đến sau.
         for(var p:s.clients) {
             var availability=new Random(c.seed()+1000003L*round+7919L*p.clientId);
             if(!c.simulationEnabled() || availability.nextDouble()<c.availability()) {
@@ -104,6 +110,7 @@ public class RoundCoordinator {
         var updates=new HashMap<Integer,JsonNode>();
         var participants=new ArrayList<Map<String,Object>>();
         var jobs=new ArrayList<Map<String,Object>>();
+        // Giữ nguyên checkpoint/version trong suốt vòng lặp: mọi client bắt đầu từ cùng model.
         for(var p:selected) {
             decisions.add(Map.of("clientId",p.clientId,"predictedSeconds",p.estimate(c),"estimateSource",p.estimatedSeconds==null?"prior":"history"));
             p.selectionCount++;p.lastSelectedRound=round;p.lastStatus="SELECTED";
@@ -122,6 +129,7 @@ public class RoundCoordinator {
         simulation.put("jobs",jobs);simulation.put("seed",c.seed()+round);
         simulation.put("deadline",c.simulationEnabled()?c.deadlineSeconds():null);
         simulation.put("enabled",c.simulationEnabled());simulation.put("dropout",c.dropout());simulation.put("jitter",c.jitter());
+        // Training thật chạy tuần tự, nhưng SimPy xếp các thiết bị ảo chạy song song.
         var simulated=worker.post("/simulation/round",simulation);
         var accepted=new ArrayList<JsonNode>();
         var acceptedIds=new HashSet<Integer>();
@@ -133,6 +141,7 @@ public class RoundCoordinator {
             p.lastStatus=result.path("status").asText();
             p.estimatedSeconds=update.path("actualTrainingMs").asDouble()/1000/p.cpu;
             p.recentTrainingLoss=update.path("trainingLoss").asDouble();
+            // Train xong trên laptop chưa đủ: update còn phải hoàn thành hợp lệ trong mô phỏng.
             boolean accept=p.lastStatus.equals("COMPLETED") && (c.deadlineSeconds()==null || !c.simulationEnabled() || result.path("completionSeconds").asDouble()<=c.deadlineSeconds());
             if(accept) {accepted.add(update);p.completionCount++;p.lastCompletedRound=round;}
             var participant=new LinkedHashMap<String,Object>();
@@ -144,12 +153,14 @@ public class RoundCoordinator {
         accepted.sort(Comparator.comparingInt(u -> u.path("clientId").asInt()));
         var losses=new ArrayList<Double>();
         double proxyMs=0;
+        // FedLBW dùng proxy riêng; held-out test không tham gia tính trọng số.
         if(c.aggregation().equals("fedlbw")) for(var u:accepted) {
             var evaluation=evaluate(c,u.path("updatePath").asText(),"proxy");
             losses.add(evaluation.path("loss").asDouble());proxyMs+=evaluation.path("evaluationMs").asDouble();
         }
         var weights=List.<Double>of();
         double aggregationMs=0;
+        // Không có update hợp lệ thì bỏ qua aggregation và giữ nguyên model version.
         String outcome="SKIPPED";
         if(!accepted.isEmpty()) {
             Policies.AggregationStrategy policy=c.aggregation().equals("fedavg")?new Policies.FedAvg():new Policies.FedLBW();
@@ -164,6 +175,7 @@ public class RoundCoordinator {
             s.modelVersion++;s.checkpointPath=aggregated.path("checkpointPath").asText();outcome="COMMITTED";
         }
         var evaluation=evaluate(c,s.checkpointPath,"test");
+        // Virtual time không bao gồm thời gian test phục vụ quan sát; wall time được ghi riêng.
         double virtual=simulated.path("virtualRoundSeconds").asDouble()+aggregationMs/1000+proxyMs/1000;
         s.cumulativeVirtualSeconds+=virtual;
         if(s.timeToTargetSeconds==null && evaluation.path("accuracy").asDouble()>=c.targetAccuracy()) s.timeToTargetSeconds=s.cumulativeVirtualSeconds;
@@ -177,9 +189,11 @@ public class RoundCoordinator {
         metrics.put("evaluation",evaluation);metrics.put("virtualRoundSeconds",virtual);metrics.put("cumulativeVirtualSeconds",s.cumulativeVirtualSeconds);
         metrics.put("wallClockSeconds",(System.nanoTime()-started)/1e9);metrics.put("fairness",fairness(s.clients,round));
         s.round=round;
+        // Chỉ sau transaction này, snapshot mới trở thành điểm phục hồi chính thức.
         repository.commit(c.experimentId(),round,s.modelVersion,outcome,metrics,s);
     }
     public static void validateUpdate(JsonNode u,String experiment,int round,int version,ClientProfile p) {
+        // Loại update cũ, sai client/thí nghiệm hoặc metrics không hữu hạn trước aggregation.
         if(!u.path("experimentId").asText().equals(experiment) || u.path("roundId").asInt(-1)!=round ||
                 u.path("baseModelVersion").asInt(-1)!=version || u.path("clientId").asInt(-1)!=p.clientId ||
                 u.path("numSamples").asInt()!=p.numSamples || !u.path("status").asText().equals("TRAINING_COMPLETED") ||
@@ -189,6 +203,7 @@ public class RoundCoordinator {
             throw new IllegalArgumentException("Invalid, stale or foreign client update");
     }
     public static Map<String,Object> fairness(List<ClientProfile> clients,int round) {
+        // Đo theo số lần hoàn thành và chuẩn hóa theo cơ hội có mặt của từng client.
         var counts=clients.stream().mapToDouble(p -> p.completionCount).sorted().toArray();
         var opportunityAdjusted=clients.stream().filter(p -> p.opportunityCount>0)
                 .mapToDouble(p -> p.completionCount/(double)p.opportunityCount).sorted().toArray();

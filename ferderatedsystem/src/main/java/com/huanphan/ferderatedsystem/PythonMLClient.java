@@ -7,8 +7,10 @@ import java.net.URI;
 import java.net.http.*;
 import java.time.Duration;
 
+/** Gửi metadata và đường dẫn artifact qua HTTP; tensor được lưu ở workspace dùng chung. */
 @Component
 public class PythonMLClient {
+    // Dùng HTTP/1.1 để tránh yêu cầu nâng cấp h2c không được uvicorn hỗ trợ.
     private final HttpClient client=HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1).connectTimeout(Duration.ofSeconds(10)).build();
     private final ObjectMapper json;
     private final String baseUrl;

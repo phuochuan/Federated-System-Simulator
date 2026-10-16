@@ -1,14 +1,14 @@
 # MiniFLS — Resource-Aware Federated Learning Simulator
 
-Research testbed dùng **Java Spring Boot + Python/PyTorch + SimPy**, chạy CPU với **100 logical clients**, chọn **5 clients/round** và chỉ **một local training job** tại một thời điểm. Dữ liệu chính: **UCI Covertype**; MLP **54 → 128 → 64 → 7**.
+A research testbed built with **Java Spring Boot + Python/PyTorch + SimPy**, using CPU training with **100 logical clients**, **5 selected clients per round**, and **one active local training job** at a time. The primary dataset is **UCI Covertype**, with an **MLP 54 → 128 → 64 → 7**.
 
-Đã triển khai pipeline thực: chuẩn bị dữ liệu → Java chọn client → PyTorch local training từ cùng checkpoint → SimPy quyết định kết quả mô phỏng → Java lọc update và tính weights → Python aggregate/evaluate → SQLite commit. Có FedAvg, FedLBW, Random/Resource-aware Selection, exploration, metrics, CSV/JSON, plots và resume sau gián đoạn.
+The pipeline prepares data, selects clients in Java, trains each client from the same global checkpoint in PyTorch, simulates outcomes with SimPy, filters updates and computes weights in Java, aggregates and evaluates in Python, and commits results to SQLite. It includes FedAvg, FedLBW, Random and Resource-aware Selection, exploration, metrics, CSV/JSON exports, plots, and recovery after interruption.
 
-Thiết kế dựa trên [kế hoạch Notion](https://app.notion.com/p/3fbb6ecc362380b29145ed0a5324deac). Kết quả smoke test không chứng minh một thuật toán tốt hơn thuật toán khác.
+The implementation follows the [Notion plan](https://app.notion.com/p/3fbb6ecc362380b29145ed0a5324deac). Smoke-test results do not establish that one algorithm outperforms another.
 
-## Cài đặt trên Windows
+## Installation on Windows
 
-Yêu cầu **JDK 17+** (đã kiểm chứng trên 17; hỗ trợ 21), **Python 3.11–3.13**, mạng cho lần tải dependencies và Covertype đầu tiên. Chạy PowerShell tại repo root:
+Requirements: **JDK 17+** (validated on 17; supports 21), **Python 3.11–3.13**, and network access for the initial dependency and Covertype downloads. Run PowerShell from the repository root:
 
 ```powershell
 python -m venv .venv
@@ -17,49 +17,49 @@ python -m venv .venv
 .\.venv\Scripts\python -m pip install -e 'ml-python[test]'
 ```
 
-`ml-python/requirements-validated.txt` ghi phiên bản môi trường Windows đã kiểm chứng. Để tái tạo, cài bằng `pip install -r ml-python/requirements-validated.txt --extra-index-url https://download.pytorch.org/whl/cpu`, rồi `pip install --no-deps -e ml-python`. Trên Linux thay đường dẫn Python bằng `.venv/bin/python`.
+`ml-python/requirements-validated.txt` records the validated Windows environment. To reproduce it, run `pip install -r ml-python/requirements-validated.txt --extra-index-url https://download.pytorch.org/whl/cpu`, followed by `pip install --no-deps -e ml-python`. On Linux, use `.venv/bin/python` instead of the Windows Python path.
 
-## Chuẩn bị dữ liệu
+## Data preparation
 
 ```powershell
-# Dataset thật: split 435759 / 29051 / 116202.
+# Real dataset: train/proxy/test split of 435759 / 29051 / 116202.
 .\.venv\Scripts\python -m minifls.data --dataset covertype --output artifacts/partitions/covertype-iid-42
 
-# Non-IID, cùng seed; không ghi đè manifest cũ.
+# Non-IID data with the same seed; existing manifests cannot be overwritten.
 .\.venv\Scripts\python -m minifls.data --dataset covertype --strategy dirichlet_label_skew --alpha 0.5 --output artifacts/partitions/covertype-dirichlet-42
 
-# Synthetic chỉ dùng kiểm thử nhanh.
+# Synthetic data is intended for quick tests only.
 .\.venv\Scripts\python -m minifls.data --dataset synthetic --output artifacts/partitions/synthetic-iid-42
 ```
 
-Chỉ scale 10 numerical features của Covertype bằng statistics từ train. Labels chuyển 1–7 → 0–6. Proxy/test không nằm trong client partitions. Các mode khác: `iid_quantity_skew`, `dirichlet_mixed_skew`. Manifest lưu seed, indices, hashes, scaler và class histograms.
+Only the first ten numerical Covertype features are scaled, using statistics fitted on training data. Labels are mapped from 1–7 to 0–6. Proxy and test rows are excluded from client partitions. Other partition modes are `iid_quantity_skew` and `dirichlet_mixed_skew`. Each manifest stores seeds, indices, hashes, scaler statistics, and class histograms.
 
-## Khởi động và chạy
+## Starting services and running experiments
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/start.ps1
 .\.venv\Scripts\python -m minifls.experiment configurations/fedavg.json
 ```
 
-Script build Java và chạy hai service ẩn, ghi PID vào `artifacts/processes.json`, logs vào `artifacts/logs/`. Java ở `http://127.0.0.1:8080`, Python ở `http://127.0.0.1:8000`; OpenAPI của Python ở `/docs`.
+The script builds Java and starts both services in hidden processes. It writes PIDs to `artifacts/processes.json` and logs to `artifacts/logs/`. Java listens at `http://127.0.0.1:8080`, Python at `http://127.0.0.1:8000`, and the Python OpenAPI UI is available at `/docs`.
 
-| Config | Dataset | Selection / aggregation | Simulation |
+| Configuration | Dataset | Selection / aggregation | Simulation |
 | --- | --- | --- | --- |
-| `configurations/fedavg.json` | Covertype IID | Random / FedAvg, 20 rounds | Tắt |
+| `configurations/fedavg.json` | Covertype IID | Random / FedAvg, 20 rounds | Disabled |
 | `configurations/resource-aware-fedlbw.json` | Covertype Dirichlet | Resource-aware / FedLBW | CPU/RAM, availability, dropout, deadline |
 | `configurations/smoke.json` | Synthetic | Random / FedAvg, 20 rounds | Heterogeneous |
 
-Mỗi run mới cần `experimentId` mới. Tiếp tục run `FAILED`/`INTERRUPTED` bằng đúng config với `--resume`:
+Each new run requires a unique `experimentId`. To continue a `FAILED` or `INTERRUPTED` run, use its original configuration with `--resume`:
 
 ```powershell
 .\.venv\Scripts\python -m minifls.experiment configurations/fedavg.json --resume
 Invoke-RestMethod http://127.0.0.1:8080/experiments
 ```
 
-Chạy thủ công: tạo `artifacts` trước và dùng hai terminal:
+To start services manually, create the `artifacts` directory first and use two terminals:
 
 ```powershell
-# Terminal 1, tại repo root; luôn --workers 1.
+# Terminal 1, from the repository root; always use --workers 1.
 .\.venv\Scripts\python -m uvicorn minifls.api:app --host 127.0.0.1 --port 8000 --workers 1
 
 # Terminal 2
@@ -67,11 +67,11 @@ cd ferderatedsystem
 .\gradlew.bat bootRun
 ```
 
-Dừng service chạy bằng script: `powershell -ExecutionPolicy Bypass -File scripts/stop.ps1`. Script kiểm tra danh tính process trước khi dừng cả process con. Biến môi trường: `MINIFLS_WORKSPACE`, `MINIFLS_WORKER_URL`, `MINIFLS_SERVER_PORT`, `MINIFLS_DATABASE`, `MINIFLS_TORCH_THREADS`.
+To stop services started by the script, run `powershell -ExecutionPolicy Bypass -File scripts/stop.ps1`. The stop script checks process identities before terminating services and their child processes. Environment settings: `MINIFLS_WORKSPACE`, `MINIFLS_WORKER_URL`, `MINIFLS_SERVER_PORT`, `MINIFLS_DATABASE`, and `MINIFLS_TORCH_THREADS`.
 
-## Kết quả và kiểm chứng
+## Results and validation
 
-SQLite: `artifacts/minifls.db`. CLI xuất `artifacts/results/<experimentId>/experiment.json`, `rounds.json`, `metrics.csv`. Snapshot chứa config, manifest, Git commit, checkpoint và client histories. Round JSON chứa selection decisions, statuses, model versions, weights, proxy losses, test metrics và hai loại thời gian.
+The SQLite database is stored at `artifacts/minifls.db`. The CLI exports `experiment.json`, `rounds.json`, and `metrics.csv` under `artifacts/results/<experimentId>/`. Snapshots include the manifest, Git commit, checkpoint, and client histories; the experiment record also stores the configuration. Round JSON includes selection decisions, statuses, model versions, weights, proxy losses, test metrics, physical wall time, and virtual time.
 
 ```powershell
 .\.venv\Scripts\python -m minifls.plot artifacts/results/covertype-fedavg-42/metrics.csv
@@ -83,8 +83,8 @@ Pop-Location
 .\.venv\Scripts\python scripts/verify_e2e.py
 ```
 
-Integration test tự khởi động service trên port riêng, chạy 100 clients/20 rounds, kiểm tra OOM/dropout/timeout exclusion, FedLBW và worker crash/resume. CI chạy cùng bộ kiểm tra trên Linux.
+The integration test starts services on separate ports, runs 100 clients for 20 rounds, checks exclusion of OOM/dropout/timeout updates, exercises FedLBW, and verifies crash recovery. CI runs the same checks on Linux.
 
-CPU/RAM là **virtual simulation**. RSS đo được thuộc toàn worker. CPU scaling, `requiredRamMb` và cold-start prior cần hiệu chỉnh theo benchmark trước khi kết luận về hiệu quả tài nguyên. Virtual time phụ thuộc thời gian training đo thật; seed không bảo đảm wall time giống tuyệt đối. Không có 100 processes/containers.
+CPU and RAM constraints are **virtual simulation**. Measured RSS belongs to the entire worker process. CPU scaling, `requiredRamMb`, and cold-start priors require benchmark calibration before drawing conclusions about resource efficiency. Virtual time depends on measured training duration; a fixed seed does not guarantee identical wall times. Logical clients do not require 100 processes or containers.
 
-Chi tiết: [kiến trúc](docs/architecture.md), [API](docs/api-contract.md), [quy trình thí nghiệm và coverage](docs/experiment-protocol.md), [kết quả kiểm chứng](docs/validation/README.md). FedProx, Oort, Lyapunov fairness, fuzzy selection và WAN emulation là phần mở rộng chưa triển khai.
+Further details: [architecture](docs/architecture.md), [API](docs/api-contract.md), [experiment protocol and requirement coverage](docs/experiment-protocol.md), and [validation results](docs/validation/README.md). FedProx, Oort, Lyapunov fairness, fuzzy selection, and WAN emulation remain unimplemented research extensions.

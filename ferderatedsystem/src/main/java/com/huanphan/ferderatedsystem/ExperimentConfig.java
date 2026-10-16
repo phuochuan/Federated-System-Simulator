@@ -2,6 +2,7 @@ package com.huanphan.ferderatedsystem;
 
 import jakarta.validation.constraints.*;
 
+/** Cấu hình bất biến của thí nghiệm; Bean Validation kiểm tra giới hạn từng trường. */
 public record ExperimentConfig(
         @NotBlank @Pattern(regexp="[A-Za-z0-9_-]{1,60}") String experimentId,
         @NotBlank String manifestPath,
@@ -25,6 +26,7 @@ public record ExperimentConfig(
         @Positive double priorSecondsPerSample,
         @DecimalMin("0") @DecimalMax("1") double targetAccuracy) {
     public void check() {
+        // Kiểm tra thêm quan hệ giữa các trường và tính hữu hạn của các số thực.
         if (selectedPerRound > totalClients) throw new IllegalArgumentException("K cannot exceed totalClients");
         double[] values={learningRate, availability, dropout, jitter, exploration, requiredRamMb, priorSecondsPerSample, targetAccuracy};
         for(double v:values) if(!Double.isFinite(v)) throw new IllegalArgumentException("Config must be finite");

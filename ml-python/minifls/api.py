@@ -1,4 +1,4 @@
-"""Local HTTP control plane. Run exactly one uvicorn worker."""
+"""API HTTP cục bộ cho ML; phải chạy đúng một uvicorn worker."""
 from contextlib import contextmanager
 import os
 from pathlib import Path
@@ -28,6 +28,7 @@ datasets = {}
 
 
 class Strict(BaseModel):
+    # Từ chối trường thừa và NaN/Inf để phát hiện sớm cấu hình sai từ Java.
     model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
 
 
@@ -83,6 +84,7 @@ class Simulation(Strict):
 
 
 def path(value):
+    # Resolve cả đường dẫn tương đối và symlink trước khi kiểm tra phạm vi workspace.
     resolved = (ROOT / value).resolve()
     if not resolved.is_relative_to(ROOT):
         raise ValueError("Artifact path must stay within workspace")
@@ -92,7 +94,7 @@ def path(value):
 def dataset(value):
     resolved = path(value)
     if resolved not in datasets:
-        datasets.clear()  # Keep only the active dataset mapped in a long-lived worker.
+        datasets.clear()  # Chỉ giữ dataset đang dùng trong worker chạy lâu dài.
         datasets[resolved] = Dataset(resolved)
     return datasets[resolved]
 
@@ -107,6 +109,7 @@ def relative(value):
 
 @contextmanager
 def exclusive():
+    # Khóa chung cho các thao tác ML; trả 409 ngay nếu worker đang bận.
     if not lock.acquire(blocking=False):
         raise HTTPException(409, "Worker busy; only one active ML operation allowed")
     try:
@@ -148,7 +151,7 @@ def initialize(req: Experiment):
 
 
 def loader(data, indices, batch_size, shuffle=False, seed=0):
-    # Only the current client's partition is materialized. No dataset replication per client.
+    # Chỉ đưa partition đang xử lý vào tensor, không nhân bản toàn dataset cho mỗi client.
     tensors = TensorDataset(torch.from_numpy(np.array(data.x[indices])), torch.from_numpy(np.array(data.y[indices])))
     return DataLoader(tensors, batch_size=batch_size, shuffle=shuffle, num_workers=0,
                       generator=torch.Generator().manual_seed(seed))
@@ -166,8 +169,10 @@ def train(req: Train):
             raise ValueError("Base checkpoint experiment/version mismatch")
         torch.manual_seed(req.seed)
         network = model()
+        # Mỗi client bắt đầu từ checkpoint được Java cố định cho round hiện tại.
         network.load_state_dict(checkpoint["state"])
         network.train()
+        # Tạo optimizer mới để state huấn luyện không truyền từ client trước sang client sau.
         optimizer = torch.optim.SGD(network.parameters(), lr=req.training.learningRate)
         batches = loader(data, data.partitions[req.clientId], req.training.batchSize, True, req.seed)
         total_loss, count = 0.0, 0
@@ -185,6 +190,7 @@ def train(req: Train):
         metadata = dict(experimentId=req.experimentId, roundId=req.roundId, clientId=req.clientId,
                         baseModelVersion=req.baseModelVersion, numSamples=len(data.partitions[req.clientId]))
         save_checkpoint(target, network.state_dict(), **metadata)
+        # RSS thuộc toàn process worker, không đại diện RAM của một thiết bị ảo.
         memory = psutil.Process().memory_info()
         return dict(**metadata, modelSchemaHash=checkpoint["modelSchemaHash"], updatePath=relative(target),
                     trainingLoss=total_loss / count, actualTrainingMs=(time.perf_counter() - started) * 1000,
@@ -203,6 +209,7 @@ def evaluate(req: Evaluate):
         network.load_state_dict(checkpoint["state"])
         network.eval()
         predicted, actual, loss = [], [], 0.0
+        # Đánh giá không cập nhật trọng số; proxy và test có mục đích riêng do Java chọn.
         with torch.no_grad():
             for x, y in loader(data, data.splits[req.split], 1024):
                 logits = network(x)
@@ -219,6 +226,7 @@ def evaluate(req: Evaluate):
 @app.post("/models/aggregate")
 def aggregate(req: Aggregate):
     with exclusive():
+        # Kiểm tra lại artifact dù Java đã lọc metadata của các update được chấp nhận.
         checkpoints = [load_checkpoint(path(p)) for p in req.updates]
         ids = [c["clientId"] for c in checkpoints]
         if len(set(ids)) != len(ids):

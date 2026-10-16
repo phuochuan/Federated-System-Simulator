@@ -1,4 +1,4 @@
-"""Real Java <-> Python HTTP integration, including virtual rejection and restart."""
+"""Kiểm thử HTTP Java ↔ Python, gồm loại update mô phỏng và phục hồi sau restart."""
 import json
 import os
 from pathlib import Path
@@ -66,7 +66,7 @@ def verify():
             for p in r["participants"]:
                 assert p["accepted"]==(p["status"]=="COMPLETED")
                 assert p["training"]["baseModelVersion"]==r["modelVersion"]-(r["outcome"]=="COMMITTED")
-        # Every update is trained physically, but none may enter aggregation after dropout.
+        # Mọi update đều đã train thật, nhưng dropout phải khiến chúng bị loại khỏi aggregation.
         dropped={**config,"experimentId":f"dropout-{token}","rounds":2,"dropout":1.0}
         dropped_state,dropped_rounds=run(dropped,base,str(folder))
         assert dropped_state["snapshot"]["modelVersion"]==0
@@ -78,7 +78,7 @@ def verify():
         _,lbw_rounds=run(lbw,base,str(folder))
         assert all(len(r["proxyLosses"])==len(r["weights"])==5 for r in lbw_rounds)
         assert all(abs(sum(r["weights"])-1)<1e-8 for r in lbw_rounds)
-        # Interrupt worker after a committed round, then retry from the persisted checkpoint.
+        # Ngắt worker sau một round đã commit rồi tiếp tục từ checkpoint đã lưu.
         retry={**config,"experimentId":f"resume-{token}","rounds":20,"simulationEnabled":False}
         request(base,"/experiments",retry)
         deadline=time.monotonic()+60
@@ -99,7 +99,7 @@ def verify():
         else:
             raise RuntimeError("Experiment did not fail after worker interruption")
         worker=start_worker()
-        # Restart Java too: resume must rely on SQLite, not the previous coordinator object.
+        # Restart cả Java để bảo đảm resume dựa vào SQLite, không dựa vào object cũ trong bộ nhớ.
         server.terminate();server.wait(timeout=15)
         server=subprocess.Popen(["java","-Xmx384m","-jar",str(jar)],cwd=ROOT,env=env,stdout=log,stderr=log,**flags)
         wait_health(base,server)

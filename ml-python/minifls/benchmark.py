@@ -1,4 +1,4 @@
-"""Centralized diagnostic, not a compute-matched federated baseline."""
+"""Kiểm tra học tập trung; không bảo đảm cùng ngân sách tính toán với FL."""
 import argparse
 import json
 import time
@@ -15,6 +15,7 @@ def benchmark(manifest, epochs, seed, learning_rate, batch_size, name):
     torch.manual_seed(seed)
     network = model()
     optimizer = torch.optim.SGD(network.parameters(),lr=learning_rate)
+    # Dùng cùng training pool của FL; held-out test chỉ dùng ở bước đánh giá cuối.
     batches = api.loader(data, data.splits["train"], batch_size, True, seed)
     started = time.perf_counter()
     for epoch in range(epochs):

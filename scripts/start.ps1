@@ -26,7 +26,7 @@ Write-Output "Worker PID $($worker.Id), server PID $($server.Id). Logs: artifact
 for ($attempt=0; $attempt -lt 60; $attempt++) {
     try {
         $health = Invoke-RestMethod "http://127.0.0.1:$ServerPort/health"
-        # The Windows venv redirector may launch a child Python process; record the listener PID.
+        # Venv trên Windows có thể tạo process Python con; lưu PID thực sự đang lắng nghe cổng.
         $workerListener = Get-NetTCPConnection -LocalPort $WorkerPort -State Listen | Select-Object -First 1
         $serverListener = Get-NetTCPConnection -LocalPort $ServerPort -State Listen | Select-Object -First 1
         @{worker=$workerListener.OwningProcess;server=$serverListener.OwningProcess} | ConvertTo-Json | Set-Content artifacts/processes.json
