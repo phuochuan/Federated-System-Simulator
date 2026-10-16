@@ -1,0 +1,13 @@
+.idea/
+.vscode/
+*.iml
+*.zip
+.env
+.env.*
+!.env.example
+**/.gradle/
+**/build/
+**/__pycache__/
+**/.venv/
+artifacts/
+data/
