@@ -2,7 +2,7 @@
 
 A research testbed built with **Java Spring Boot + Python/PyTorch + SimPy**, using CPU training with **100 logical clients**, **5 selected clients per round**, and **one active local training job** at a time. The primary dataset is **UCI Covertype**, with an **MLP 54 → 128 → 64 → 7**.
 
-The pipeline prepares data, selects clients in Java, trains each client from the same global checkpoint in PyTorch, simulates outcomes with SimPy, filters updates and computes weights in Java, aggregates and evaluates in Python, and commits results to SQLite. It includes FedAvg, FedLBW, Random and Resource-aware Selection, exploration, metrics, CSV/JSON exports, plots, and recovery after interruption.
+The pipeline prepares data, selects clients in Java, trains each client from the same global checkpoint in PyTorch, simulates outcomes with SimPy, filters updates in Java, computes weights in method-specific Python packages, validates weights in Java, aggregates and evaluates in Python, and commits results to SQLite. It includes FedAvg, FedLBW, Random and Resource-aware Selection, exploration, metrics, CSV/JSON exports, plots, and recovery after interruption.
 
 The implementation follows the [Notion plan](https://app.notion.com/p/3fbb6ecc362380b29145ed0a5324deac). Smoke-test results do not establish that one algorithm outperforms another.
 
@@ -35,6 +35,10 @@ python -m venv .venv
 Only the first ten numerical Covertype features are scaled, using statistics fitted on training data. Labels are mapped from 1–7 to 0–6. Proxy and test rows are excluded from client partitions. Other partition modes are `iid_quantity_skew` and `dirichlet_mixed_skew`. Each manifest stores seeds, indices, hashes, scaler statistics, and class histograms.
 
 ## Starting services and running experiments
+
+To select a paper-specific Python package from the Java application class or IDE, see
+[method packages and environment configuration](docs/method-packages.md) and [.env.example](.env.example).
+`MINIFLS_METHOD=none` keeps startup in API-only mode; `fedavg` or `fedlbw` submits one experiment on startup.
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/start.ps1

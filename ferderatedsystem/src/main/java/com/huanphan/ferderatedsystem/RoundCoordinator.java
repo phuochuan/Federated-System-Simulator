@@ -163,8 +163,7 @@ public class RoundCoordinator {
         // Không có update hợp lệ thì bỏ qua aggregation và giữ nguyên model version.
         String outcome="SKIPPED";
         if(!accepted.isEmpty()) {
-            Policies.AggregationStrategy policy=c.aggregation().equals("fedavg")?new Policies.FedAvg():new Policies.FedLBW();
-            weights=policy.weights(accepted.stream().map(u -> u.path("numSamples").asInt()).toList(),losses);
+            weights=worker.aggregationWeights(c.aggregation(),accepted.stream().map(u -> u.path("numSamples").asInt()).toList(),losses);
             var request=context(c,operation);
             request.put("roundId",round);request.put("baseModelVersion",s.modelVersion);
             request.put("updates",accepted.stream().map(u -> u.path("updatePath").asText()).toList());request.put("weights",weights);

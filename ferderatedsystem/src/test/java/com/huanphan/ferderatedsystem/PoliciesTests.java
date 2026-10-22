@@ -6,17 +6,6 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PoliciesTests {
-    @Test void fedAvgUsesSamples() {
-        assertEquals(List.of(.25,.75),new Policies.FedAvg().weights(List.of(1,3),List.of()));
-        assertThrows(IllegalArgumentException.class,() -> new Policies.FedAvg().weights(List.of(),List.of()));
-        assertThrows(IllegalArgumentException.class,() -> new Policies.FedAvg().weights(List.of(0,3),List.of()));
-    }
-    @Test void fedLBWUsesInverseProxyLossWithStableZeroPolicy() {
-        var policy=new Policies.FedLBW();
-        assertEquals(List.of(2.0/3,1.0/3),policy.weights(List.of(100,1),List.of(1.0,2.0)));
-        assertEquals(List.of(.5,.5),policy.weights(List.of(1,1),List.of(0.0,0.0)));
-        assertThrows(IllegalArgumentException.class,() -> policy.weights(List.of(1),List.of(Double.NaN)));
-    }
     @Test void staleOrForeignUpdatesRejected() throws Exception {
         var mapper=new ObjectMapper();
         var update=mapper.readTree("""

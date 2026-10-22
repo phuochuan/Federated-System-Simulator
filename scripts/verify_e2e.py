@@ -2,6 +2,7 @@
 import json
 import os
 from pathlib import Path
+from urllib.error import HTTPError
 import socket
 import subprocess
 import sys
@@ -41,7 +42,8 @@ def verify():
     worker_port,server_port=free_port(),free_port()
     worker_base,base=f"http://127.0.0.1:{worker_port}",f"http://127.0.0.1:{server_port}"
     env={**os.environ,"MINIFLS_WORKSPACE":str(ROOT),"MINIFLS_WORKER_URL":worker_base,
-         "MINIFLS_SERVER_PORT":str(server_port),"MINIFLS_DATABASE":str(folder / "experiments.db")}
+         "MINIFLS_SERVER_PORT":str(server_port),"MINIFLS_DATABASE":str(folder / "experiments.db"),
+         "MINIFLS_METHOD":"none"}
     flags={"creationflags":subprocess.CREATE_NO_WINDOW} if os.name=="nt" else {}
     log=(folder / "services.log").open("w",encoding="utf-8")
     def start_worker():
@@ -106,7 +108,33 @@ def verify():
         recovered,recovered_rounds=run(retry,base,str(folder),resume=True)
         assert [r["roundId"] for r in recovered_rounds]==list(range(1,21))
         assert recovered["snapshot"]["modelVersion"]==20
-        print(f"PASS: 20-round HTTP pipeline, dropout/OOM/timeout exclusion, FedLBW, persisted resume. Evidence: {folder}")
+        # Gọi từ ApplicationRunner bằng môi trường, không POST /experiments qua CLI.
+        server.terminate();server.wait(timeout=15)
+        launch_id=f"application-{token}"
+        launch_env={**env,"MINIFLS_METHOD":"fedlbw","MINIFLS_CONFIG":"configurations/smoke.json",
+                    "MINIFLS_EXPERIMENT_ID":launch_id,"MINIFLS_MANIFEST":config["manifestPath"],
+                    "MINIFLS_SELECTION":"random","MINIFLS_ROUNDS":"2","MINIFLS_SEED":"42"}
+        server=subprocess.Popen(["java","-Xmx384m","-jar",str(jar)],cwd=ROOT,env=launch_env,stdout=log,stderr=log,**flags)
+        wait_health(base,server)
+        deadline=time.monotonic()+60
+        while time.monotonic()<deadline:
+            try:
+                launched=json.loads(request(base,f"/experiments/{launch_id}"))
+            except HTTPError as exc:
+                # HTTP can listen just before ApplicationRunner submits the run.
+                if exc.code!=404:
+                    raise
+                time.sleep(.1)
+                continue
+            if launched["status"]!="RUNNING":
+                break
+            time.sleep(.1)
+        else:
+            raise RuntimeError("Application-launched experiment did not finish")
+        assert launched["status"]=="COMPLETED",launched.get("error")
+        assert launched["config"]["aggregation"]=="fedlbw"
+        assert len(json.loads(request(base,f"/experiments/{launch_id}/rounds")))==2
+        print(f"PASS: 20-round HTTP pipeline, dropout/OOM/timeout exclusion, FedLBW, persisted resume, Application launch. Evidence: {folder}")
     finally:
         for p in [server,worker]:
             if p is not None and p.poll() is None:

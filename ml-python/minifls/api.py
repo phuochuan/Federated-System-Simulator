@@ -18,6 +18,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from .data import Dataset
 from .model import load_checkpoint, model, save_checkpoint, weighted_average
 from .simulation import simulate_round
+from .methods import METHODS, catalog, get_method
 
 torch.set_num_threads(int(os.environ.get("MINIFLS_TORCH_THREADS", "1")))
 torch.use_deterministic_algorithms(True)
@@ -64,6 +65,11 @@ class Aggregate(Experiment):
     baseModelVersion: int = Field(ge=0)
     updates: list[str] = Field(min_length=1)
     weights: list[float] = Field(min_length=1)
+
+
+class MethodWeights(Strict):
+    samples: list[int] = Field(min_length=1)
+    losses: list[float] = Field(default_factory=list)
 
 
 class Job(Strict):
@@ -131,6 +137,20 @@ async def missing_file(request, exc):
 @app.get("/health")
 def health():
     return dict(status="ok", maxActiveTraining=1, busy=lock.locked(), torchThreads=torch.get_num_threads())
+
+
+@app.get("/methods")
+def methods():
+    return {"methods": list(METHODS), "catalog": catalog()}
+
+
+@app.post("/methods/{method}/weights")
+def method_weights(method: str, req: MethodWeights):
+    try:
+        implementation = get_method(method)
+    except NotImplementedError as exc:
+        raise HTTPException(501, str(exc)) from exc
+    return {"method": method, "weights": implementation.weights(req.samples, req.losses)}
 
 
 @app.get("/datasets/manifest")

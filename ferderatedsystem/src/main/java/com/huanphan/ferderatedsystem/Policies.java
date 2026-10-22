@@ -2,7 +2,7 @@ package com.huanphan.ferderatedsystem;
 
 import java.util.*;
 
-/** Các chiến lược lựa chọn client và tính trọng số aggregation có thể thay thế. */
+/** Các chiến lược lựa chọn client; thuật toán aggregation ở Python minifls.methods. */
 public final class Policies {
     private Policies() {}
 
@@ -33,26 +33,6 @@ public final class Policies {
                     / ((p.completionCount+1.0)/(p.selectionCount+1.0))).thenComparingInt(p -> p.clientId));
             chosen.addAll(feasible.subList(0,k-explore));
             return chosen;
-        }
-    }
-    public interface AggregationStrategy { List<Double> weights(List<Integer> samples, List<Double> losses); }
-    public static class FedAvg implements AggregationStrategy {
-        // Chỉ chuẩn hóa số mẫu của các update đã được coordinator chấp nhận.
-        public List<Double> weights(List<Integer> samples,List<Double> losses) {
-            if(samples.isEmpty() || samples.stream().anyMatch(n -> n<=0)) throw new IllegalArgumentException("Positive sample counts required");
-            double sum=samples.stream().mapToDouble(Integer::doubleValue).sum();
-            return samples.stream().map(n -> n/sum).toList();
-        }
-    }
-    public static class FedLBW implements AggregationStrategy {
-        public List<Double> weights(List<Integer> samples,List<Double> losses) {
-            if(losses.isEmpty() || losses.size()!=samples.size() || losses.stream().anyMatch(l -> !Double.isFinite(l) || l<0))
-                throw new IllegalArgumentException("Finite nonnegative proxy losses required");
-            // Chặn loss ở 1e-12 và đổi thang đo để tránh chia cho 0 hoặc tràn số khi lấy nghịch đảo.
-            double minimum=losses.stream().mapToDouble(l -> Math.max(l,1e-12)).min().orElseThrow();
-            var inverse=losses.stream().map(l -> minimum/Math.max(l,1e-12)).toList();
-            double sum=inverse.stream().mapToDouble(Double::doubleValue).sum();
-            return inverse.stream().map(w -> w/sum).toList();
         }
     }
 }

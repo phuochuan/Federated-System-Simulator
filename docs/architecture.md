@@ -2,7 +2,7 @@
 
 Source requirements: [Federated System implementation plan, 16 October 2026](https://app.notion.com/p/3fbb6ecc362380b29145ed0a5324deac).
 
-Java is the authority for experiment state, eligibility, client selection, acceptance, aggregation weights, checkpoint versions and round commits. One executor runs one experiment at a time. SQLite stores the configuration, dataset manifest (including checksums and partition histograms), initial evaluation, client histories, and latest committed snapshot. Round metrics and snapshots commit together in a database transaction.
+Java is the authority for experiment state, eligibility, client selection, acceptance, aggregation-weight validation, checkpoint versions and round commits. Method-specific Python packages compute the scalar weights requested by Java. One executor runs one experiment at a time. SQLite stores the configuration, dataset manifest (including checksums and partition histograms), initial evaluation, client histories, and latest committed snapshot. Round metrics and snapshots commit together in a database transaction.
 
 The source Git commit and dirty-working-tree flag are recorded at initialization. Runs during development must be identified as such; a commit ID alone does not identify uncommitted source changes.
 
@@ -17,7 +17,7 @@ Java sends JSON metadata and workspace-relative artifact paths over localhost HT
 3. Train each selected client sequentially from the frozen base.
 4. SimPy runs independent virtual-device events. CPU capacity scales measured training duration; configured jitter, RAM feasibility, dropout and deadline determine outcomes.
 5. Accept only completed, in-deadline updates matching experiment, round, base version, client and partition sample count.
-6. Java computes FedAvg sample weights or FedLBW inverse proxy-loss weights. Python validates every accepted checkpoint again and averages tensors.
+6. Java calls the FedAvg or FedLBW Python package for scalar weights and validates the response. Python validates every accepted checkpoint again and averages tensors.
 7. Evaluate on held-out test, persist round evidence and snapshot atomically, then advance.
 
 No accepted update produces `SKIPPED`, leaves the model version unchanged, and advances the round counter. Worker/transport/validation failures produce `FAILED`; resume replays the uncommitted round from the last snapshot. On Java restart, formerly `RUNNING` experiments become `INTERRUPTED`. Configurations and committed rounds cannot be edited through the API.
