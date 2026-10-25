@@ -2,12 +2,15 @@
 import argparse
 import hashlib
 import json
+import logging
 from pathlib import Path
 
 import numpy as np
 from sklearn.datasets import fetch_covtype, make_classification
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+
+log = logging.getLogger(__name__)
 
 
 def partition(y, clients, strategy, alpha, seed, minimum=1):
@@ -44,6 +47,8 @@ def partition(y, clients, strategy, alpha, seed, minimum=1):
 
 
 def prepare(output, dataset="covertype", clients=100, seed=42, strategy="iid_equal", alpha=0.5, samples=7000):
+    log.info("data.prepare_started dataset=%s output=%s clients=%s strategy=%s alpha=%s seed=%s",
+             dataset, output, clients, strategy, alpha, seed)
     # Không ghi đè manifest cũ để các thí nghiệm đã chạy vẫn có thể tái lập.
     output = Path(output)
     if output.exists():
@@ -69,6 +74,8 @@ def prepare(output, dataset="covertype", clients=100, seed=42, strategy="iid_equ
     scaler = StandardScaler().fit(x[train, :continuous])
     x[:, :continuous] = scaler.transform(x[:, :continuous])
     parts = partition(y[train], clients, strategy, alpha, seed + 2)
+    log.info("data.partitioned train=%s proxy=%s test=%s minClientSamples=%s maxClientSamples=%s scaledColumns=%s",
+             len(train), len(proxy), len(test), min(map(len, parts)), max(map(len, parts)), continuous)
     output.mkdir(parents=True)
     np.save(output / "features.npy", x)
     np.save(output / "labels.npy", y)
@@ -83,6 +90,7 @@ def prepare(output, dataset="covertype", clients=100, seed=42, strategy="iid_equ
                     clients=[dict(clientId=i, numSamples=len(p), labelHistogram=np.bincount(y[train[p]], minlength=7).tolist())
                              for i, p in enumerate(parts)])
     (output / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    log.info("data.prepare_completed manifest=%s", output / "manifest.json")
     return manifest
 
 
@@ -92,6 +100,7 @@ class Dataset:
         self.directory = Path(directory)
         self.manifest = json.loads((self.directory / "manifest.json").read_text(encoding="utf-8"))
         for name, digest in self.manifest["hashes"].items():
+            log.debug("data.verify_checksum file=%s", self.directory / name)
             if hashlib.sha256((self.directory / name).read_bytes()).hexdigest() != digest:
                 raise ValueError(f"Dataset checksum mismatch: {name}")
         # Memory map cho phép truy cập một dataset chung thay vì sao chép cho 100 client.
@@ -109,6 +118,7 @@ class Dataset:
             raise ValueError("Partitions do not cover training rows exactly once")
         if len(self.partitions) != self.manifest["totalClients"] or any(len(p) == 0 for p in self.partitions.values()):
             raise ValueError("Invalid client population or empty partition")
+        log.debug("data.verified dataset=%s rows=%s clients=%s", self.manifest["dataset"], len(self.y), len(self.partitions))
 
 
 if __name__ == "__main__":

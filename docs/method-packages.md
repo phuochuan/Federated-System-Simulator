@@ -71,6 +71,17 @@ Fuzzy/FMCDM ngoài kế hoạch. FedA2L/FedIPSA là ghi chú liên quan, chưa �
 | `MINIFLS_SERVER_PORT` | `8080` | Cổng Java |
 | `MINIFLS_DATABASE` | `../artifacts/minifls.db` | Nên dùng đường dẫn tuyệt đối khi chạy IDE |
 | `MINIFLS_TORCH_THREADS` | `1` | Số thread CPU ở Python |
+| `MINIFLS_MODEL_ARCHITECTURE` | `mlp_54_256_128_7` | Đặt ở môi trường Python; chọn model cho experiment mới |
+
+Model mới mặc định là `54 → 256 → 128 → 7` (47.879 tham số), dùng ReLU và logits như baseline.
+Muốn so sánh với bản cũ, đặt `$env:MINIFLS_MODEL_ARCHITECTURE = 'mlp_54_128_64_7'`
+trước khi khởi động Python. Khi gọi `runFedAvg()`/`runFedLBW()` ở Java, worker sẽ dùng mặc định này
+cho checkpoint ban đầu. Cần tạo experiment mới để đổi kiến trúc; resume luôn giữ kiến trúc trong checkpoint.
+Không cần tạo lại dataset. Các số liệu validation đã lưu trong repo thuộc model nhỏ, chưa chứng minh
+model lớn cải thiện accuracy/Macro-F1. `requiredRamMb` vẫn là giả định mô phỏng, không tự hiệu chỉnh theo model.
+
+Benchmark tập trung có cùng lựa chọn, ví dụ:
+`python -m minifls.benchmark artifacts/partitions/covertype-iid-42 --architecture mlp_54_256_128_7 --name centralized-large-42`.
 
 Thứ tự áp dụng: đọc JSON → chọn aggregation theo hàm/method → áp dụng biến override → validate → submit.
 ID trong JSON được thay bằng `MINIFLS_EXPERIMENT_ID` hoặc UUID mới để tránh trùng ID qua các lần test.

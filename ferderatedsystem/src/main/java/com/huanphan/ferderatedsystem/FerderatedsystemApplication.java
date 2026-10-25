@@ -16,9 +16,9 @@ public class FerderatedsystemApplication {
 	ApplicationRunner paperExperiment(PaperExperiments experiments) {
 		return args -> {
 			// Chọn bằng MINIFLS_METHOD=fedavg hoặc fedlbw.
-//			experiments.runConfigured();
+			experiments.runConfigured();
 			// Để test trực tiếp trong IDE, thay dòng trên bằng MỘT hàm:
-			// experiments.runFedAvg();
+//			 experiments.runFedAvg();
 			 experiments.runFedLBW();
 			// experiments.runFedProx(); // khung mở rộng, chưa có thuật toán
 		};

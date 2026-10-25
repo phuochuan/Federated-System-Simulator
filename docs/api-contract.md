@@ -11,10 +11,18 @@ Both services bind to localhost. Java defaults to 8080, Python to 8000. Python's
 | GET | `/experiments` | Stored experiment status list |
 | GET | `/experiments/{id}` | Config, snapshot, status, failure detail |
 | GET | `/experiments/{id}/rounds` | Full round, client, simulation, policy and model metrics |
+| GET | `/experiments/{id}/result` | Single final round object, including evaluation; round 20 for a 20-round run |
 | GET | `/experiments/{id}/metrics.csv` | Compact CSV export |
 | POST | `/experiments/{id}/resume` | Resume FAILED/INTERRUPTED from the latest committed snapshot |
 
 Only one experiment is admitted at once; a second returns 409. IDs are unique; use a new ID for a new experiment. Unknown experiments return 404. Invalid configurations return 400. Failed runs retain their config, previous committed model and error detail. Resume does not change the configuration.
+
+`GET /experiments/{id}/result` reads the configured final round from SQLite and
+returns the same round object as `/rounds`, without the other rounds. It requires
+`COMPLETED`; running, failed or interrupted experiments return 409 so a partial
+round history cannot be mistaken for the final result. A missing experiment returns
+404; a completed record without its final round returns 409. This endpoint does
+not rerun training or evaluation and works with previously completed experiments.
 
 See `configurations/*.json` for complete request bodies. `manifestPath` is a directory relative to the shared workspace, not the JSON file. To start a new dataset/seed comparison generate a matching manifest and use another experiment ID. All numerical configuration fields are explicit; unknown fields are rejected.
 
@@ -31,6 +39,13 @@ See `configurations/*.json` for complete request bodies. `manifestPath` is a dir
 | POST | `/models/evaluate` | Train/proxy/test evaluation |
 | POST | `/models/aggregate` | Validated weighted tensor averaging |
 | POST | `/simulation/round` | SimPy parallel virtual-device events |
+
+`POST /models/initialize` optionally accepts `architecture` (`mlp_54_256_128_7` or
+`mlp_54_128_64_7`). An explicit request overrides `MINIFLS_MODEL_ARCHITECTURE` in
+the Python worker; the default is the larger MLP. Initialization, training,
+evaluation and aggregation responses include the actual `architecture`.
+Existing Java requests need no changes. Later operations and resumed experiments
+use checkpoint metadata and reject mixed architectures during aggregation.
 
 For example, `POST /methods/fedlbw/weights` accepts
 `{"samples":[100,200],"losses":[1.0,2.0]}` and returns

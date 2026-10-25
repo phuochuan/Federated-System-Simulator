@@ -1,11 +1,17 @@
 """Mô phỏng thiết bị ảo độc lập; không sleep hoặc giới hạn tài nguyên hệ điều hành."""
 import math
 import random
+import logging
+from collections import Counter
 
 import simpy
 
+log = logging.getLogger(__name__)
+
 
 def simulate_round(jobs, seed, deadline=None, enabled=True, dropout=0.0, jitter=0.0):
+    log.info("simulation.config jobs=%s seed=%s enabled=%s deadline=%s dropout=%s jitter=%s",
+             len(jobs), seed, enabled, deadline, dropout, jitter)
     if deadline is not None and (not math.isfinite(deadline) or deadline <= 0):
         raise ValueError("Deadline must be finite and positive")
     env = simpy.Environment()
@@ -34,9 +40,13 @@ def simulate_round(jobs, seed, deadline=None, enabled=True, dropout=0.0, jitter=
         durations.append(completion)
         results.append(dict(clientId=job["clientId"], status=status, virtualTrainingSeconds=duration,
                             completionSeconds=completion))
+        log.log(logging.INFO if status == "COMPLETED" else logging.WARNING,
+                "simulation.device client=%s status=%s virtualSeconds=%.6f completionSeconds=%.6f cpu=%s ramMb=%s requiredRamMb=%s",
+                job["clientId"], status, duration, completion, job["cpu"], job["ramMb"], job["requiredRamMb"])
 
     for job in jobs:
         env.process(device(job))
     env.run()
+    log.info("simulation.summary statuses=%s virtualRoundSeconds=%.6f", dict(Counter(r["status"] for r in results)), max(durations, default=0.0))
     # Thiết bị ảo chạy song song nên round lấy thời gian lớn nhất, không cộng từng client.
     return dict(results=sorted(results, key=lambda r: r["clientId"]), virtualRoundSeconds=max(durations, default=0.0))

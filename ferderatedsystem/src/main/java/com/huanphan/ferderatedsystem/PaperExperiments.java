@@ -29,7 +29,7 @@ public class PaperExperiments {
     /** Không tự chạy training nếu MINIFLS_METHOD=none (mặc định). */
     public void runConfigured() throws Exception {
         String method=env.getProperty("minifls.launch.method","none");
-        if(method.equals("none")) return;
+        if(method.equals("none")) {log.info("launch.disabled mode=api-only");return;}
         switch(method) {
             case "fedavg" -> runFedAvg();
             case "fedlbw" -> runFedLBW();
@@ -56,6 +56,7 @@ public class PaperExperiments {
     public void runScaffold() throws Exception {run("scaffold");}
 
     private void run(String method) throws Exception {
+        log.info("launch.requested method={}",method);
         // Kiểm tra trước khi tạo record hoặc chạy bất kỳ training job nào.
         var capabilities=worker.get("/methods");
         boolean supported=false;
@@ -71,6 +72,7 @@ public class PaperExperiments {
         Path root=workspace();
         String configured=env.getProperty("minifls.launch.config","");
         Path source=root.resolve(configured.isBlank()?"configurations/fedavg.json":configured).normalize();
+        log.info("launch.config_loading method={} source={}",method,source);
         var document=json.readTree(Files.readString(source));
         if(!(document instanceof ObjectNode node)) throw new IllegalArgumentException("Experiment config must be a JSON object");
         node.put("aggregation",method);
@@ -86,6 +88,8 @@ public class PaperExperiments {
         var violations=validator.validate(config);
         if(!violations.isEmpty()) throw new IllegalArgumentException("Invalid launch config: "+violations);
         config.check();
+        log.info("launch.config_ready experiment={} manifest={} rounds={} seed={} selection={} aggregation={}",
+                config.experimentId(),config.manifestPath(),config.rounds(),config.seed(),config.selection(),config.aggregation());
         return config;
     }
 

@@ -1,6 +1,6 @@
 # MiniFLS — Resource-Aware Federated Learning Simulator
 
-A research testbed built with **Java Spring Boot + Python/PyTorch + SimPy**, using CPU training with **100 logical clients**, **5 selected clients per round**, and **one active local training job** at a time. The primary dataset is **UCI Covertype**, with an **MLP 54 → 128 → 64 → 7**.
+A research testbed built with **Java Spring Boot + Python/PyTorch + SimPy**, using CPU training with **100 logical clients**, **5 selected clients per round**, and **one active local training job** at a time. The primary dataset is **UCI Covertype**, with an **MLP 54 → 256 → 128 → 7** (47,879 parameters) by default. The original 54 → 128 → 64 → 7 baseline and its checkpoints remain supported.
 
 The pipeline prepares data, selects clients in Java, trains each client from the same global checkpoint in PyTorch, simulates outcomes with SimPy, filters updates in Java, computes weights in method-specific Python packages, validates weights in Java, aggregates and evaluates in Python, and commits results to SQLite. It includes FedAvg, FedLBW, Random and Resource-aware Selection, exploration, metrics, CSV/JSON exports, plots, and recovery after interruption.
 
@@ -74,6 +74,10 @@ cd ferderatedsystem
 To stop services started by the script, run `powershell -ExecutionPolicy Bypass -File scripts/stop.ps1`. The stop script checks process identities before terminating services and their child processes. Environment settings: `MINIFLS_WORKSPACE`, `MINIFLS_WORKER_URL`, `MINIFLS_SERVER_PORT`, `MINIFLS_DATABASE`, and `MINIFLS_TORCH_THREADS`.
 
 ## Results and validation
+
+Java and Python now log experiment/round/client progress, per-epoch training loss,
+aggregation, server evaluation metrics and failures. Set `MINIFLS_LOG_LEVEL=DEBUG`
+in both processes for detailed diagnostics; see [logging guide](docs/logging.md).
 
 The SQLite database is stored at `artifacts/minifls.db`. The CLI exports `experiment.json`, `rounds.json`, and `metrics.csv` under `artifacts/results/<experimentId>/`. Snapshots include the manifest, Git commit, checkpoint, and client histories; the experiment record also stores the configuration. Round JSON includes selection decisions, statuses, model versions, weights, proxy losses, test metrics, physical wall time, and virtual time.
 

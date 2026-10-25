@@ -6,13 +6,14 @@ from fastapi.testclient import TestClient
 
 from minifls import api
 from minifls.data import Dataset, partition, prepare
-from minifls.model import model, weighted_average, load_checkpoint
+from minifls.model import ARCHITECTURE, ARCHITECTURES, model, weighted_average, load_checkpoint, schema_hash
 from minifls.simulation import simulate_round
 
 
 @pytest.fixture
 def client(tmp_path, monkeypatch):
     monkeypatch.setattr(api, "ROOT", tmp_path)
+    monkeypatch.delenv("MINIFLS_MODEL_ARCHITECTURE", raising=False)
     api.datasets.clear()
     prepare(tmp_path / "dataset", dataset="synthetic", clients=10, samples=1400)
     return TestClient(api.app)
@@ -35,7 +36,7 @@ def test_splits_and_train_only_scaler(client):
     assert set(np.concatenate(list(data.partitions.values()))) == train
     assert np.max(abs(data.x[data.splits["train"]].mean(0))) < 1e-5
     assert data.y.min() == 0 and data.y.max() == 6
-    assert sum(p.numel() for p in model().parameters()) == 15751
+    assert sum(p.numel() for p in model().parameters()) == 47879
 
 
 def test_aggregation_hand_calculation_and_rejections():
@@ -63,12 +64,15 @@ def test_virtual_parallel_deadline_oom_dropout():
     assert result == simulate_round(jobs,42,dropout=1)
 
 
-def test_api_round_and_no_cross_client_state(client):
+@pytest.mark.parametrize("architecture", list(ARCHITECTURES))
+def test_api_round_and_no_cross_client_state(client, architecture):
     context = dict(experimentId="test", manifestPath="dataset", seed=42)
-    initial = client.post("/models/initialize",json=context).json()
+    initial = client.post("/models/initialize",json={**context,"architecture":architecture}).json()
+    assert initial["architecture"] == architecture
     request = dict(**context, roundId=1, clientId=0, baseModelVersion=0, globalModelPath=initial["checkpointPath"])
     first = client.post("/train",json=request)
     assert first.status_code == 200, first.text
+    assert first.json()["architecture"] == architecture
     # Train client khác không được làm thay đổi kết quả khi lặp lại job từ cùng checkpoint gốc.
     other = client.post("/train",json={**request,"clientId":1}).json()
     again = client.post("/train",json={**request,"operationId":"repeat"}).json()
@@ -80,8 +84,11 @@ def test_api_round_and_no_cross_client_state(client):
     result = client.post("/models/aggregate",json=aggregate)
     assert result.status_code == 200, result.text
     assert result.json()["modelVersion"] == 1
+    assert result.json()["architecture"] == architecture
+    assert load_checkpoint(api.path(result.json()["checkpointPath"]))["architecture"] == architecture
     evaluation = client.post("/models/evaluate",json=dict(checkpointPath=result.json()["checkpointPath"],manifestPath="dataset"))
     assert evaluation.status_code == 200
+    assert evaluation.json()["architecture"] == architecture
     assert len(evaluation.json()["perClassRecall"]) == 7
     assert client.post("/models/aggregate",json={**aggregate,"roundId":2}).status_code == 400
     assert client.post("/models/aggregate",json={**aggregate,"updates":[first.json()["updatePath"]]*2}).status_code == 400
@@ -103,3 +110,55 @@ def test_checksum_detects_mutated_data(client):
     path.write_bytes(path.read_bytes() + b"corruption")
     with pytest.raises(ValueError,match="checksum"):
         Dataset(api.ROOT / "dataset")
+
+
+def test_architecture_default_environment_override_and_validation(client, monkeypatch):
+    context = dict(experimentId="architecture", manifestPath="dataset", seed=42)
+    default = client.post("/models/initialize", json=context)
+    assert default.status_code == 200
+    assert default.json()["architecture"] == ARCHITECTURE
+    state = load_checkpoint(api.path(default.json()["checkpointPath"]))["state"]
+    assert state["0.weight"].shape == (256, 54)
+    assert state["2.weight"].shape == (128, 256)
+    assert state["4.weight"].shape == (7, 128)
+    monkeypatch.setenv("MINIFLS_MODEL_ARCHITECTURE", "mlp_54_128_64_7")
+    small = client.post("/models/initialize", json={**context,"operationId":"small"})
+    assert small.status_code == 200
+    assert small.json()["architecture"] == "mlp_54_128_64_7"
+    # Explicit request takes precedence over the worker's default.
+    explicit = client.post("/models/initialize", json={**context,"operationId":"large","architecture":ARCHITECTURE})
+    assert explicit.json()["architecture"] == ARCHITECTURE
+    monkeypatch.setenv("MINIFLS_MODEL_ARCHITECTURE", "typo")
+    assert client.post("/models/initialize", json=context).status_code == 422
+    assert client.post("/models/initialize", json={**context,"architecture":"typo"}).status_code == 422
+
+
+def test_mixed_architectures_cannot_aggregate(client):
+    context = dict(experimentId="mixed", manifestPath="dataset", seed=42)
+    updates = []
+    for client_id, architecture in enumerate(ARCHITECTURES):
+        initial = client.post("/models/initialize", json={**context,"architecture":architecture,"operationId":architecture}).json()
+        update = client.post("/train", json={**context,"roundId":1,"clientId":client_id,"baseModelVersion":0,
+                                             "globalModelPath":initial["checkpointPath"]})
+        assert update.status_code == 200, update.text
+        updates.append(update.json()["updatePath"])
+    result = client.post("/models/aggregate", json={**context,"roundId":1,"baseModelVersion":0,
+                                                   "updates":updates,"weights":[.5,.5]})
+    assert result.status_code == 400
+    assert "different architectures" in result.json()["detail"]
+
+
+def test_legacy_checkpoint_format_is_supported_and_architecture_is_checked(tmp_path):
+    state = model("mlp_54_128_64_7").state_dict()
+    legacy = dict(state=state, architecture="mlp_54_128_64_7", modelSchemaHash=schema_hash(state),
+                  experimentId="old-run", modelVersion=1)
+    checkpoint = tmp_path / "legacy.pt"
+    torch.save(legacy, checkpoint)
+    assert load_checkpoint(checkpoint)["architecture"] == "mlp_54_128_64_7"
+    # Matching schema hash alone must not allow a falsely labelled architecture.
+    torch.save({**legacy,"architecture":ARCHITECTURE}, checkpoint)
+    with pytest.raises(ValueError, match="Invalid tensor"):
+        load_checkpoint(checkpoint)
+    torch.save({**legacy,"architecture":"unknown"}, checkpoint)
+    with pytest.raises(ValueError, match="Architecture mismatch"):
+        load_checkpoint(checkpoint)

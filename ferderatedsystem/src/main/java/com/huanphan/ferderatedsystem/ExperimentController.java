@@ -5,11 +5,14 @@ import jakarta.validation.Valid;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.*;
 
 /** API nhận thí nghiệm, đọc tiến độ và xuất metrics từ trạng thái đã lưu. */
 @RestController
 public class ExperimentController {
+    private static final Logger log=LoggerFactory.getLogger(ExperimentController.class);
     private final RoundCoordinator coordinator;
     private final ExperimentRepository repository;
     private final PythonMLClient worker;
@@ -31,6 +34,7 @@ public class ExperimentController {
         return response;
     }
     @GetMapping("/experiments/{id}/rounds") public Object rounds(@PathVariable String id) {return repository.rounds(id);}
+    @GetMapping("/experiments/{id}/result") public Object result(@PathVariable String id) {return repository.result(id);}
     @PostMapping("/experiments/{id}/resume") @ResponseStatus(HttpStatus.ACCEPTED)
     public Object resume(@PathVariable String id) {coordinator.resume(id);return Map.of("status","RUNNING");}
     @GetMapping(value="/experiments/{id}/metrics.csv",produces="text/csv") public String csv(@PathVariable String id) {
@@ -43,9 +47,12 @@ public class ExperimentController {
         return out.toString();
     }
     @ExceptionHandler(NoSuchElementException.class) @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Object missing(Exception e) {return Map.of("error",e.getMessage());}
+    public Object missing(Exception e) {log.warn("api.not_found error={}",e.getMessage());return Map.of("error",e.getMessage());}
     @ExceptionHandler({IllegalStateException.class,DuplicateKeyException.class}) @ResponseStatus(HttpStatus.CONFLICT)
-    public Object conflict(Exception e) {return Map.of("error",e instanceof DuplicateKeyException?"Experiment ID already exists":e.getMessage());}
+    public Object conflict(Exception e) {
+        String message=e instanceof DuplicateKeyException?"Experiment ID already exists":e.getMessage();
+        log.warn("api.conflict error={}",message);return Map.of("error",message);
+    }
     @ExceptionHandler(IllegalArgumentException.class) @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Object invalid(Exception e) {return Map.of("error",e.getMessage());}
+    public Object invalid(Exception e) {log.warn("api.invalid error={}",e.getMessage());return Map.of("error",e.getMessage());}
 }

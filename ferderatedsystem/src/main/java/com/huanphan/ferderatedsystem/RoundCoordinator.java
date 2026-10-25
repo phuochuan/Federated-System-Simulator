@@ -2,6 +2,9 @@ package com.huanphan.ferderatedsystem;
 
 import com.fasterxml.jackson.databind.*;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import jakarta.annotation.PreDestroy;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -12,6 +15,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /** Điều phối round đồng bộ; Java quyết định update nào được chấp nhận và model nào được commit. */
 @Service
 public class RoundCoordinator {
+    private static final Logger log=LoggerFactory.getLogger(RoundCoordinator.class);
     private final PythonMLClient worker;
     private final ExperimentRepository repository;
     private final ObjectMapper json;
@@ -40,6 +44,8 @@ public class RoundCoordinator {
         if(!busy.compareAndSet(false,true)) throw new IllegalStateException("Another experiment is running");
         try {repository.create(c);}
         catch(RuntimeException e) {busy.set(false);throw e;}
+        log.info("experiment.admitted experiment={} rounds={} clients={} selectedPerRound={} selection={} aggregation={} seed={} simulation={}",
+                c.experimentId(),c.rounds(),c.totalClients(),c.selectedPerRound(),c.selection(),c.aggregation(),c.seed(),c.simulationEnabled());
         executor.submit(() -> run(c,null));
     }
     public void resume(String id) {
@@ -51,6 +57,8 @@ public class RoundCoordinator {
             // Khôi phục từ SQLite thay vì dùng state trong bộ nhớ của tác vụ đã lỗi.
             Snapshot snapshot=row.get("snapshot")==null ? null : json.readValue((String)row.get("snapshot"),Snapshot.class);
             repository.status(id,"RUNNING",null);
+            log.info("experiment.resume experiment={} committedRound={} modelVersion={} checkpoint={}",
+                    id,snapshot==null?0:snapshot.round,snapshot==null?0:snapshot.modelVersion,snapshot==null?"none":snapshot.checkpointPath);
             executor.submit(() -> run(config,snapshot));
         } catch(Exception e) {busy.set(false);throw new IllegalArgumentException(e.getMessage(),e);}
     }
@@ -60,15 +68,24 @@ public class RoundCoordinator {
         map.put("seed",c.seed());map.put("operationId",operation);return map;
     }
     private JsonNode evaluate(ExperimentConfig c,String checkpoint,String split) {
-        return worker.post("/models/evaluate",Map.of("manifestPath",c.manifestPath(),"checkpointPath",checkpoint,"split",split));
+        log.info("evaluation.started experiment={} split={} checkpoint={}",c.experimentId(),split,checkpoint);
+        var result=worker.post("/models/evaluate",Map.of("manifestPath",c.manifestPath(),"checkpointPath",checkpoint,"split",split));
+        log.info("evaluation.completed experiment={} split={} architecture={} loss={} accuracy={} macroF1={} worstClassRecall={} evaluationMs={}",
+                c.experimentId(),split,result.path("architecture").asText(),result.path("loss").asDouble(),result.path("accuracy").asDouble(),
+                result.path("macroF1").asDouble(),result.path("worstClassRecall").asDouble(),result.path("evaluationMs").asDouble());
+        log.debug("evaluation.classes experiment={} split={} precision={} recall={} confusionMatrix={}",c.experimentId(),split,
+                result.path("perClassPrecision"),result.path("perClassRecall"),result.path("confusionMatrix"));
+        return result;
     }
     private Snapshot initialize(ExperimentConfig c) {
+        log.info("experiment.initializing experiment={} manifest={}",c.experimentId(),c.manifestPath());
         var manifest=worker.get("/datasets/manifest?manifestPath="+URLEncoder.encode(c.manifestPath(),StandardCharsets.UTF_8));
         if(manifest.path("totalClients").asInt()!=c.totalClients()) throw new IllegalArgumentException("Manifest totalClients mismatch");
         Snapshot s=new Snapshot();s.manifest=manifest;
         for(var entry:manifest.path("clients")) s.clients.add(new ClientProfile(entry.path("clientId").asInt(),entry.path("numSamples").asInt(),c.totalClients(),c.resourceProfile()));
         var initialized=worker.post("/models/initialize",context(c,UUID.randomUUID().toString()));
         s.checkpointPath=initialized.path("checkpointPath").asText();
+        log.info("model.initialized experiment={} architecture={} checkpoint={}",c.experimentId(),initialized.path("architecture").asText(),s.checkpointPath);
         s.initialEvaluation=evaluate(c,s.checkpointPath,"test");
         if(s.initialEvaluation.path("accuracy").asDouble()>=c.targetAccuracy()) s.timeToTargetSeconds=0.0;
         try {
@@ -78,24 +95,39 @@ public class RoundCoordinator {
             s.gitDirty=status.getInputStream().readAllBytes().length>0;
         }catch(Exception e) {s.gitCommit="unknown";}
         repository.snapshot(c.experimentId(),s);
+        log.info("experiment.initialized experiment={} clients={} gitCommit={} gitDirty={}",c.experimentId(),s.clients.size(),s.gitCommit,s.gitDirty);
         return s;
     }
     private void run(ExperimentConfig c,Snapshot s) {
+        int lastCommittedRound=s==null?0:s.round;
+        MDC.put("experimentId",c.experimentId());
+        MDC.put("roundId",Integer.toString(lastCommittedRound));
         try {
             if(s==null) s=initialize(c);
             // Khi worker nạp lại dataset sau restart, hash của các file được kiểm tra lại.
             var current=worker.get("/datasets/manifest?manifestPath="+URLEncoder.encode(c.manifestPath(),StandardCharsets.UTF_8));
             if(!current.equals(s.manifest)) throw new IllegalArgumentException("Dataset manifest changed since experiment started");
-            for(int round=s.round+1;round<=c.rounds();round++) executeRound(c,s,round);
+            for(int round=s.round+1;round<=c.rounds();round++) {
+                executeRound(c,s,round);
+                lastCommittedRound=round;
+            }
             repository.status(c.experimentId(),"COMPLETED",null);
+            log.info("experiment.completed experiment={} rounds={} modelVersion={} virtualSeconds={} timeToTargetSeconds={} checkpoint={} resultUrl=/experiments/{}/result",
+                    c.experimentId(),s.round,s.modelVersion,s.cumulativeVirtualSeconds,s.timeToTargetSeconds,s.checkpointPath,c.experimentId());
         } catch(Exception e) {
+            log.error("experiment.failed experiment={} lastCommittedRound={} error={}",c.experimentId(),lastCommittedRound,e.getMessage(),e);
             repository.status(c.experimentId(),"FAILED",e.getMessage());
-        } finally {busy.set(false);}
+        } finally {
+            MDC.remove("experimentId");MDC.remove("roundId");MDC.remove("operationId");
+            busy.set(false);
+        }
     }
     private void executeRound(ExperimentConfig c,Snapshot s,int round) {
         long started=System.nanoTime();
         // Mỗi lần thử có ID riêng để artifact chưa commit không đè lên kết quả khi retry.
         var operation=UUID.randomUUID().toString();
+        MDC.put("roundId",Integer.toString(round));MDC.put("operationId",operation);
+        log.info("round.started experiment={} round={}/{} modelVersion={} operation={}",c.experimentId(),round,c.rounds(),s.modelVersion,operation);
         var eligible=new ArrayList<ClientProfile>();
         // Availability là thông tin quan sát trước khi chọn; kết quả dropout/timeout đến sau.
         for(var p:s.clients) {
@@ -106,6 +138,9 @@ public class RoundCoordinator {
         }
         Policies.ClientSelector selector=c.selection().equals("random") ? new Policies.RandomSelector() : new Policies.ResourceAwareSelector();
         var selected=selector.select(eligible,c,new Random(c.seed()+104729L*round));
+        log.info("selection.completed experiment={} round={} eligible={}/{} selected={} policy={}",
+                c.experimentId(),round,eligible.size(),s.clients.size(),selected.stream().map(p -> p.clientId).toList(),c.selection());
+        if(selected.isEmpty()) log.warn("selection.empty experiment={} round={} eligible={} policy={}",c.experimentId(),round,eligible.size(),c.selection());
         var decisions=new ArrayList<Map<String,Object>>();
         var updates=new HashMap<Integer,JsonNode>();
         var participants=new ArrayList<Map<String,Object>>();
@@ -119,8 +154,12 @@ public class RoundCoordinator {
             request.put("roundId",round);request.put("clientId",p.clientId);
             request.put("baseModelVersion",s.modelVersion);request.put("globalModelPath",s.checkpointPath);
             request.put("training",Map.of("epochs",c.localEpochs(),"batchSize",c.batchSize(),"learningRate",c.learningRate()));
+            log.info("training.dispatched experiment={} round={} client={} samples={} tier={} predictedSeconds={} epochs={} batchSize={} learningRate={} operation={}",
+                    c.experimentId(),round,p.clientId,p.numSamples,p.tier,p.estimate(c),c.localEpochs(),c.batchSize(),c.learningRate(),operation);
             var update=worker.post("/train",request);
             validateUpdate(update,c.experimentId(),round,s.modelVersion,p);
+            log.info("training.completed experiment={} round={} client={} loss={} trainingMs={} workerRssMb={} update={}",c.experimentId(),round,p.clientId,
+                    update.path("trainingLoss").asDouble(),update.path("actualTrainingMs").asDouble(),update.path("workerRssMb").asDouble(),update.path("updatePath").asText());
             updates.put(p.clientId,update);
             jobs.add(Map.of("clientId",p.clientId,"actualTrainingMs",update.path("actualTrainingMs").asDouble(),
                     "cpu",p.cpu,"ramMb",p.ramMb,"requiredRamMb",c.requiredRamMb()));
@@ -131,6 +170,8 @@ public class RoundCoordinator {
         simulation.put("enabled",c.simulationEnabled());simulation.put("dropout",c.dropout());simulation.put("jitter",c.jitter());
         // Training thật chạy tuần tự, nhưng SimPy xếp các thiết bị ảo chạy song song.
         var simulated=worker.post("/simulation/round",simulation);
+        log.info("simulation.completed experiment={} round={} enabled={} jobs={} deadlineSeconds={} virtualRoundSeconds={}",
+                c.experimentId(),round,c.simulationEnabled(),jobs.size(),c.deadlineSeconds(),simulated.path("virtualRoundSeconds").asDouble());
         var accepted=new ArrayList<JsonNode>();
         var acceptedIds=new HashSet<Integer>();
         for(var result:simulated.path("results")) {
@@ -144,6 +185,10 @@ public class RoundCoordinator {
             // Train xong trên laptop chưa đủ: update còn phải hoàn thành hợp lệ trong mô phỏng.
             boolean accept=p.lastStatus.equals("COMPLETED") && (c.deadlineSeconds()==null || !c.simulationEnabled() || result.path("completionSeconds").asDouble()<=c.deadlineSeconds());
             if(accept) {accepted.add(update);p.completionCount++;p.lastCompletedRound=round;}
+            if(accept) log.info("update.accepted experiment={} round={} client={} status={} completionSeconds={}",
+                    c.experimentId(),round,id,p.lastStatus,result.path("completionSeconds").asDouble());
+            else log.warn("update.rejected experiment={} round={} client={} status={} completionSeconds={} deadlineSeconds={}",
+                    c.experimentId(),round,id,p.lastStatus,result.path("completionSeconds").asDouble(),c.deadlineSeconds());
             var participant=new LinkedHashMap<String,Object>();
             participant.put("clientId",id);participant.put("accepted",accept);participant.put("status",p.lastStatus);
             participant.put("training",update);participant.put("simulation",result);participant.put("tier",p.tier);
@@ -163,7 +208,9 @@ public class RoundCoordinator {
         // Không có update hợp lệ thì bỏ qua aggregation và giữ nguyên model version.
         String outcome="SKIPPED";
         if(!accepted.isEmpty()) {
+            log.info("aggregation.started experiment={} round={} method={} acceptedClients={}",c.experimentId(),round,c.aggregation(),accepted.stream().map(u -> u.path("clientId").asInt()).toList());
             weights=worker.aggregationWeights(c.aggregation(),accepted.stream().map(u -> u.path("numSamples").asInt()).toList(),losses);
+            log.info("aggregation.weights experiment={} round={} weights={} proxyLosses={}",c.experimentId(),round,weights,losses);
             var request=context(c,operation);
             request.put("roundId",round);request.put("baseModelVersion",s.modelVersion);
             request.put("updates",accepted.stream().map(u -> u.path("updatePath").asText()).toList());request.put("weights",weights);
@@ -172,7 +219,8 @@ public class RoundCoordinator {
             aggregationMs=(System.nanoTime()-aggregationStarted)/1e6;
             if(aggregated.path("modelVersion").asInt()!=s.modelVersion+1) throw new IllegalStateException("Invalid new model version");
             s.modelVersion++;s.checkpointPath=aggregated.path("checkpointPath").asText();outcome="COMMITTED";
-        }
+            log.info("aggregation.completed experiment={} round={} modelVersion={} aggregationMs={} checkpoint={}",c.experimentId(),round,s.modelVersion,aggregationMs,s.checkpointPath);
+        } else log.warn("aggregation.skipped experiment={} round={} reason=no_accepted_updates modelVersion={}",c.experimentId(),round,s.modelVersion);
         var evaluation=evaluate(c,s.checkpointPath,"test");
         // Virtual time không bao gồm thời gian test phục vụ quan sát; wall time được ghi riêng.
         double virtual=simulated.path("virtualRoundSeconds").asDouble()+aggregationMs/1000+proxyMs/1000;
@@ -186,10 +234,15 @@ public class RoundCoordinator {
         metrics.put("participants",participants);metrics.put("weights",weights);metrics.put("proxyLosses",losses);
         metrics.put("proxyEvaluationMs",proxyMs);metrics.put("aggregationMs",aggregationMs);
         metrics.put("evaluation",evaluation);metrics.put("virtualRoundSeconds",virtual);metrics.put("cumulativeVirtualSeconds",s.cumulativeVirtualSeconds);
-        metrics.put("wallClockSeconds",(System.nanoTime()-started)/1e9);metrics.put("fairness",fairness(s.clients,round));
+        var fairnessMetrics=fairness(s.clients,round);
+        metrics.put("wallClockSeconds",(System.nanoTime()-started)/1e9);metrics.put("fairness",fairnessMetrics);
         s.round=round;
         // Chỉ sau transaction này, snapshot mới trở thành điểm phục hồi chính thức.
         repository.commit(c.experimentId(),round,s.modelVersion,outcome,metrics,s);
+        log.info("round.committed experiment={} round={}/{} outcome={} accepted={}/{} modelVersion={} accuracy={} macroF1={} loss={} virtualSeconds={} wallSeconds={} coverage={}",
+                c.experimentId(),round,c.rounds(),outcome,accepted.size(),selected.size(),s.modelVersion,evaluation.path("accuracy").asDouble(),
+                evaluation.path("macroF1").asDouble(),evaluation.path("loss").asDouble(),virtual,metrics.get("wallClockSeconds"),
+                fairnessMetrics.get("coverage"));
     }
     public static void validateUpdate(JsonNode u,String experiment,int round,int version,ClientProfile p) {
         // Loại update cũ, sai client/thí nghiệm hoặc metrics không hữu hạn trước aggregation.
