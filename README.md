@@ -36,6 +36,10 @@ Only the first ten numerical Covertype features are scaled, using statistics fit
 
 ## Starting services and running experiments
 
+For eight matrix row functions, paired and factorial comparisons, and automatic
+TXT reports, see [controlled matrix workflow](docs/controlled-matrix.md).
+Set `MINIFLS_METHOD=matrix` to run all three comparisons sequentially.
+
 To select a paper-specific Python package from the Java application class or IDE, see
 [method packages and environment configuration](docs/method-packages.md) and [.env.example](.env.example).
 `MINIFLS_METHOD=none` keeps startup in API-only mode; `fedavg` or `fedlbw` submits one experiment on startup.

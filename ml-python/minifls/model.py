@@ -27,6 +27,17 @@ def schema_hash(state):
     return hashlib.sha256(json.dumps(schema).encode()).hexdigest()
 
 
+def state_hash(state):
+    digest = hashlib.sha256(schema_hash(state).encode())
+    for tensor in state.values():
+        digest.update(tensor.detach().cpu().contiguous().numpy().tobytes())
+    return digest.hexdigest()
+
+
+def payload_bytes(state):
+    return sum(t.numel() * t.element_size() for t in state.values())
+
+
 def validate_state(state, architecture=ARCHITECTURE):
     # Chặn tensor sai cấu trúc hoặc chứa NaN/Inf trước khi lưu và aggregation.
     reference = model(architecture).state_dict()
@@ -46,7 +57,7 @@ def save_checkpoint(path, state, architecture=ARCHITECTURE, **metadata):
     # Ghi file tạm rồi đổi tên nguyên tử để tránh checkpoint bị ghi dở khi gián đoạn.
     temporary = path.with_suffix(f".{uuid.uuid4().hex}.tmp")
     try:
-        torch.save(dict(state=state, architecture=architecture, modelSchemaHash=schema_hash(state), **metadata), temporary)
+        torch.save(dict(state=state, architecture=architecture, modelSchemaHash=schema_hash(state), modelStateHash=state_hash(state), **metadata), temporary)
         os.replace(temporary, path)
         log.debug("checkpoint.saved architecture=%s path=%s modelVersion=%s", architecture, path, metadata.get("modelVersion", metadata.get("baseModelVersion")))
     finally:
@@ -61,6 +72,8 @@ def load_checkpoint(path):
     validate_state(checkpoint["state"], checkpoint["architecture"])
     if checkpoint["modelSchemaHash"] != schema_hash(checkpoint["state"]):
         raise ValueError("Schema mismatch")
+    if "modelStateHash" in checkpoint and checkpoint["modelStateHash"] != state_hash(checkpoint["state"]):
+        raise ValueError("Model state hash mismatch")
     log.debug("checkpoint.loaded architecture=%s path=%s modelVersion=%s", checkpoint["architecture"], path,
               checkpoint.get("modelVersion", checkpoint.get("baseModelVersion")))
     return checkpoint

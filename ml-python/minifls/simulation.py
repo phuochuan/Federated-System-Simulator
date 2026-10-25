@@ -22,15 +22,20 @@ def simulate_round(jobs, seed, deadline=None, enabled=True, dropout=0.0, jitter=
         # Mỗi client có luồng ngẫu nhiên riêng, tránh phụ thuộc thứ tự chọn client.
         rng = random.Random(seed * 100003 + job["clientId"])
         duration = job["actualTrainingMs"] / 1000
+        multiplier = job.get("jitterMultiplier")
+        dropout_event = job.get("dropoutEvent")
         if enabled:
-            duration = duration / job["cpu"] * rng.uniform(1 - jitter, 1 + jitter)
+            multiplier = rng.uniform(1 - jitter, 1 + jitter) if multiplier is None else multiplier
+            if not math.isfinite(multiplier) or not 0 < multiplier < 2:
+                raise ValueError("Invalid jitter multiplier")
+            duration = duration / job["cpu"] * multiplier
         if not math.isfinite(duration) or duration < 0:
             raise ValueError("Invalid duration")
         status = "COMPLETED"
         # OOM ở đây là kết quả mô phỏng theo ngân sách RAM, không phải lỗi PyTorch thật.
         if enabled and job["requiredRamMb"] > job["ramMb"]:
             status, duration = "SIMULATED_OOM", 0.0
-        elif enabled and rng.random() < dropout:
+        elif enabled and (rng.random() < dropout if dropout_event is None else dropout_event):
             status = "DROPPED"
         completion = duration
         # Deadline cắt thời gian chờ; update đến muộn không được Java đưa vào aggregation.
@@ -39,7 +44,7 @@ def simulate_round(jobs, seed, deadline=None, enabled=True, dropout=0.0, jitter=
         yield env.timeout(completion)
         durations.append(completion)
         results.append(dict(clientId=job["clientId"], status=status, virtualTrainingSeconds=duration,
-                            completionSeconds=completion))
+                            completionSeconds=completion, dropoutEvent=dropout_event, jitterMultiplier=multiplier))
         log.log(logging.INFO if status == "COMPLETED" else logging.WARNING,
                 "simulation.device client=%s status=%s virtualSeconds=%.6f completionSeconds=%.6f cpu=%s ramMb=%s requiredRamMb=%s",
                 job["clientId"], status, duration, completion, job["cpu"], job["ramMb"], job["requiredRamMb"])

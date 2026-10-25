@@ -26,6 +26,15 @@ No accepted update produces `SKIPPED`, leaves the model version unchanged, and a
 
 Physical training is sequential. Virtual client devices are parallel: the round uses the maximum completion/cutoff time, plus measured aggregation and proxy-evaluation overhead. Wall time is recorded separately. Test evaluation is an observer operation and is excluded from virtual federated time.
 
+Matrix runs use persisted full-population availability/dropout/jitter traces with
+independent hash-based channels and explicit per-job replay. Traces are indexed by
+round/client, and are checked on resume. The server records actual initialization
+tensor fingerprints to verify paired global initial models. Per-round overhead
+separates proxy worker compute, proxy wall time, scalar weight calculation and
+tensor aggregation RPC wall time; virtual time adds only the wall overhead once.
+Network communication cost is not modeled; dense model payload byte counts are
+reported separately from physical network traffic.
+
 CPU scaling is an initial proportional model, not a calibrated physical-device claim. `requiredRamMb` is an explicit scenario estimate, not the worker RSS. The worker reports current/peak process RSS separately. LOW/MEDIUM/HIGH CPU factors are 0.5/1/2; RAM is 512/1024/2048 MB; counts are 40/40/20 at 100 clients. Profiles are assigned independently of partition labels. Use measured benchmark results to choose realistic time and RAM assumptions before drawing resource-efficiency conclusions.
 
 Random selection uses seeded uniform sampling. Resource-aware selection filters estimated RAM/deadline feasibility, explores a configured fraction, and ranks remaining clients by expected completion time adjusted by historical completion reliability. Cold clients use a configured per-sample prior. This is a documented heuristic, not Oort or a theoretical fairness guarantee.

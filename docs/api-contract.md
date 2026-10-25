@@ -26,6 +26,17 @@ not rerun training or evaluation and works with previously completed experiments
 
 See `configurations/*.json` for complete request bodies. `manifestPath` is a directory relative to the shared workspace, not the JSON file. To start a new dataset/seed comparison generate a matching manifest and use another experiment ID. All numerical configuration fields are explicit; unknown fields are rejected.
 
+Experiment configs optionally accept `architecture` (`mlp_54_128_64_7` or
+`mlp_54_256_128_7`). Java passes it explicitly at initialization when present;
+omitting it preserves the Python worker default. Existing checkpoint metadata
+continues to determine architecture on resume. The matrix launcher uses this field
+to compare small and large MLPs without restarting Python.
+
+Optional `scenarioTracePath` references a generated matrix trace within the shared
+workspace. Java validates all events and persists its SHA-256 hash; resume rejects
+a changed trace. Each round includes the full population trace, conditional fairness,
+logical payload byte counts, and proxy/weight/aggregation overhead measurements.
+
 ## Python worker
 
 | Method | Path | Purpose |

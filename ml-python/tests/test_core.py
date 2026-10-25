@@ -6,7 +6,7 @@ from fastapi.testclient import TestClient
 
 from minifls import api
 from minifls.data import Dataset, partition, prepare
-from minifls.model import ARCHITECTURE, ARCHITECTURES, model, weighted_average, load_checkpoint, schema_hash
+from minifls.model import ARCHITECTURE, ARCHITECTURES, model, weighted_average, load_checkpoint, schema_hash, state_hash
 from minifls.simulation import simulate_round
 
 
@@ -162,3 +162,32 @@ def test_legacy_checkpoint_format_is_supported_and_architecture_is_checked(tmp_p
     torch.save({**legacy,"architecture":"unknown"}, checkpoint)
     with pytest.raises(ValueError, match="Architecture mismatch"):
         load_checkpoint(checkpoint)
+
+
+def test_initialization_fingerprint_measures_actual_tensor_values(client):
+    context = dict(experimentId="fingerprint", manifestPath="dataset", seed=42)
+    first = client.post("/models/initialize", json=context).json()
+    second = client.post("/models/initialize", json={**context,"operationId":"repeat"}).json()
+    changed = client.post("/models/initialize", json={**context,"seed":43,"operationId":"changed"}).json()
+    assert first["modelStateHash"] == second["modelStateHash"] != changed["modelStateHash"]
+    assert first["initializationMethod"] == "pytorch-default-linear-v1"
+    assert first["modelPayloadBytes"] == 47879 * 4
+    checkpoint = load_checkpoint(api.path(first["checkpointPath"]))
+    checkpoint["state"]["0.weight"][0,0] += 1
+    torch.save(checkpoint, api.path(first["checkpointPath"]))
+    with pytest.raises(ValueError, match="state hash"):
+        load_checkpoint(api.path(first["checkpointPath"]))
+
+
+def test_explicit_dropout_jitter_trace_replays_across_order_and_oom():
+    jobs = [dict(clientId=0, actualTrainingMs=1000, cpu=1, ramMb=512, requiredRamMb=600,
+                 dropoutEvent=False, jitterMultiplier=1.1),
+            dict(clientId=1, actualTrainingMs=2000, cpu=1, ramMb=1024, requiredRamMb=600,
+                 dropoutEvent=True, jitterMultiplier=.9),
+            dict(clientId=2, actualTrainingMs=4000, cpu=1, ramMb=1024, requiredRamMb=600,
+                 dropoutEvent=False, jitterMultiplier=1.5)]
+    first = simulate_round(jobs,42,deadline=3,dropout=0,jitter=.1)
+    second = simulate_round(list(reversed(jobs)),99,deadline=3,dropout=1,jitter=.1)
+    assert first == second
+    assert [r["status"] for r in first["results"]] == ["SIMULATED_OOM","DROPPED","TIMEOUT"]
+    assert first["results"][1]["virtualTrainingSeconds"] == 1.8

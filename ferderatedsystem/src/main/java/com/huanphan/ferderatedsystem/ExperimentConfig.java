@@ -24,7 +24,9 @@ public record ExperimentConfig(
         @Positive Double deadlineSeconds,
         @Positive double requiredRamMb,
         @Positive double priorSecondsPerSample,
-        @DecimalMin("0") @DecimalMax("1") double targetAccuracy) {
+        @DecimalMin("0") @DecimalMax("1") double targetAccuracy,
+        @Pattern(regexp="mlp_54_128_64_7|mlp_54_256_128_7") String architecture,
+        String scenarioTracePath) {
     public void check() {
         // Kiểm tra thêm quan hệ giữa các trường và tính hữu hạn của các số thực.
         if (selectedPerRound > totalClients) throw new IllegalArgumentException("K cannot exceed totalClients");

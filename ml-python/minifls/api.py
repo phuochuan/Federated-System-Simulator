@@ -18,7 +18,7 @@ from torch import nn
 from torch.utils.data import DataLoader, TensorDataset
 
 from .data import Dataset
-from .model import ARCHITECTURE, load_checkpoint, model, save_checkpoint, weighted_average
+from .model import ARCHITECTURE, load_checkpoint, model, save_checkpoint, weighted_average, state_hash, payload_bytes
 from .simulation import simulate_round
 from .methods import METHODS, catalog, get_method
 from .logging_config import logged_operation, log_context, set_log_context
@@ -110,6 +110,8 @@ class Job(Strict):
     cpu: float = Field(gt=0)
     ramMb: float = Field(gt=0)
     requiredRamMb: float = Field(gt=0)
+    dropoutEvent: bool | None = None
+    jitterMultiplier: float | None = Field(default=None, gt=0, lt=2)
 
 
 class Simulation(Strict):
@@ -212,7 +214,9 @@ def initialize(req: Initialize):
         save_checkpoint(target, state, architecture=req.architecture, experimentId=req.experimentId, modelVersion=0)
         log.info("model.initialized architecture=%s parameters=%s seed=%s checkpoint=%s", req.architecture,
                  sum(t.numel() for t in state.values()), req.seed, relative(target))
-        return dict(checkpointPath=relative(target), modelVersion=0, architecture=req.architecture)
+        return dict(checkpointPath=relative(target), modelVersion=0, architecture=req.architecture,
+                    modelStateHash=state_hash(state), modelPayloadBytes=payload_bytes(state),
+                    initializationMethod="pytorch-default-linear-v1", initializationSeed=req.seed)
 
 
 def loader(data, indices, batch_size, shuffle=False, seed=0):
@@ -273,7 +277,7 @@ def train(req: Train):
         training_ms = (time.perf_counter() - started) * 1000
         log.info("train.saved loss=%.6f trainingMs=%.2f workerRssMb=%.2f update=%s", total_loss / count,
                  training_ms, memory.rss / 2**20, relative(target))
-        return dict(**metadata, architecture=checkpoint["architecture"], modelSchemaHash=checkpoint["modelSchemaHash"], updatePath=relative(target),
+        return dict(**metadata, architecture=checkpoint["architecture"], modelPayloadBytes=payload_bytes(network.state_dict()), modelSchemaHash=checkpoint["modelSchemaHash"], updatePath=relative(target),
                     trainingLoss=total_loss / count, actualTrainingMs=training_ms,
                     workerRssMb=memory.rss / 2**20,
                     workerPeakRssMb=getattr(memory, "peak_wset", memory.rss) / 2**20,

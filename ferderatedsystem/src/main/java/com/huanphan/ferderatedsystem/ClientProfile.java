@@ -11,6 +11,7 @@ public class ClientProfile {
     public int selectionCount;
     public int completionCount;
     public int opportunityCount;
+    public int feasibleOpportunityCount;
     public int lastSelectedRound;
     public int lastCompletedRound;
     public Double estimatedSeconds;
