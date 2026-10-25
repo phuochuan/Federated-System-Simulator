@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-/** Eight matrix rows; A/B paired experiments and C factorial 2x2, three TXT reports. */
+/** Nine rows: A/B pairs, C factorial 2x2 plus feasible-random selection baseline. */
 @Component
 public class ControlledExperiments {
     private static final Logger log=LoggerFactory.getLogger(ControlledExperiments.class);
@@ -42,7 +42,11 @@ public class ControlledExperiments {
         A1(SMALL,"fedavg","random",true), A2(LARGE,"fedavg","random",true),
         B1(LARGE,"fedavg","random",false), B2(LARGE,"fedlbw","random",false),
         C1(LARGE,"fedavg","random",false), C2(LARGE,"fedavg","resource_aware",false),
-        C3(LARGE,"fedlbw","random",false), C4(LARGE,"fedlbw","resource_aware",false);
+        C3(LARGE,"fedlbw","random",false), C4(LARGE,"fedlbw","resource_aware",false),
+        C5(LARGE,"fedavg","feasible_random",false), C6(LARGE,"fedavg","resource_aware",false),
+        F1(LARGE,"fedavg","feasible_random",false),F2(LARGE,"fedavg","resource_aware",false),
+        F3(LARGE,"fedavg","fuzzy_topsis",false),F4(LARGE,"fedavg","fuzzy_topsis_fair",false),
+        F5(LARGE,"fedavg","adaptive_fuzzy_topsis_fair",false);
         final String architecture,aggregation,selection;
         final boolean iid;
         Row(String architecture,String aggregation,String selection,boolean iid) {
@@ -50,10 +54,10 @@ public class ControlledExperiments {
         }
     }
     public record RunResult(Row row,ExperimentConfig config,JsonNode experiment,JsonNode result,List<JsonNode> rounds) {}
-    private record Settings(Path root,Path source,String iid,String nonIid,List<Long> seeds,List<Double> targets,ObjectNode base,ObjectNode heterogeneous,Path output) {}
+    private record Settings(Path root,Path source,String iid,String nonIid,List<Long> seeds,List<Double> targets,ObjectNode base,ObjectNode heterogeneous,JsonNode fuzzy,Path output) {}
     @FunctionalInterface private interface Runner {RunResult run(long seed) throws Exception;}
 
-    // Eight row functions; C includes both aggregation and selection factors.
+    // Nine row functions; C5 isolates resource-aware ranking from feasibility filtering.
     public RunResult runA1(long seed) throws Exception {return run(Row.A1,seed);}
     public RunResult runA2(long seed) throws Exception {return run(Row.A2,seed);}
     public RunResult runB1(long seed) throws Exception {return run(Row.B1,seed);}
@@ -62,6 +66,40 @@ public class ControlledExperiments {
     public RunResult runC2(long seed) throws Exception {return run(Row.C2,seed);}
     public RunResult runC3(long seed) throws Exception {return run(Row.C3,seed);}
     public RunResult runC4(long seed) throws Exception {return run(Row.C4,seed);}
+    public RunResult runC5(long seed) throws Exception {return run(Row.C5,seed);}
+    public RunResult runC6(long seed) throws Exception {return run(Row.C6,seed);}
+    /** Retains the working-tree application entry point requested by the user. */
+    public Path compareClientSelectionC5C6() throws Exception {return compare("C5-C6-feasible-selection","Feasible Random vs Resource-aware","selection",this::runC5,this::runC6);}
+    public RunResult runF1(long seed) throws Exception {return run(Row.F1,seed);}
+    public RunResult runF2(long seed) throws Exception {return run(Row.F2,seed);}
+    public RunResult runF3(long seed) throws Exception {return run(Row.F3,seed);}
+    public RunResult runF4(long seed) throws Exception {return run(Row.F4,seed);}
+    public RunResult runF5(long seed) throws Exception {return run(Row.F5,seed);}
+
+    public Path compareFuzzyClientSelection() throws Exception {
+        Settings s=loadSettings();Map<Row,List<RunResult>> runs=new LinkedHashMap<>();
+        for(var row:List.of(Row.F1,Row.F2,Row.F3,Row.F4,Row.F5)) runs.put(row,new ArrayList<>());
+        Exception failure=null;
+        try {
+            for(long seed:s.seeds()) {
+                for(var row:runs.keySet()) runs.get(row).add(run(row,seed));
+                int index=runs.get(Row.F1).size()-1;
+                for(var row:runs.keySet()) if(row!=Row.F1) validatePair(runs.get(Row.F1).get(index),runs.get(row).get(index),"selection");
+            }
+        } catch(Exception e) {failure=e;}
+        var out=new StringBuilder("F: FUZZY TOPSIS / FAIRNESS CREDIT / ADAPTIVE FEEDBACK\nStatus: "+(failure==null?"COMPLETED":"INCOMPLETE")+"\n");
+        out.append("Protocol: fixed partition and initial model per seed, FedAvg aggregation. No claim of superiority or Lyapunov guarantee.\n");
+        for(var pair:List.of(new Row[]{Row.F1,Row.F2},new Row[]{Row.F1,Row.F3},new Row[]{Row.F3,Row.F4},
+                new Row[]{Row.F4,Row.F5},new Row[]{Row.F1,Row.F5},new Row[]{Row.F2,Row.F5})) {
+            out.append("\n=== ").append(pair[0]).append(" VS ").append(pair[1]).append(" ===\n");
+            out.append(ComparisonReport.render(pair[0]+" vs "+pair[1]+": performance / selection fairness / completion fairness", "selection",
+                    s.source().toString(),s.seeds(),s.targets(),runs.get(pair[0]),runs.get(pair[1]),failure));
+        }
+        Path report=s.output().resolve("F-fuzzy-client-selection.txt");write(report,out.toString());
+        log.info("matrix.report_saved comparison=F-fuzzy complete={} path={}",failure==null,report);
+        if(failure!=null) throw new IllegalStateException("Fuzzy comparison failed; see "+report,failure);
+        return report;
+    }
 
     public Path compareModelSizes() throws Exception {
         return compare("A-model-size","MLP lớn có cải thiện kết quả so với MLP nhỏ?", "architecture", this::runA1,this::runA2);
@@ -71,18 +109,20 @@ public class ControlledExperiments {
     }
     public Path compareClientSelection() throws Exception {
         Settings s=loadSettings();
-        List<RunResult> c1=new ArrayList<>(),c2=new ArrayList<>(),c3=new ArrayList<>(),c4=new ArrayList<>();
+        List<RunResult> c1=new ArrayList<>(),c2=new ArrayList<>(),c3=new ArrayList<>(),c4=new ArrayList<>(),c5=new ArrayList<>();
         Exception failure=null;
         try {
             for(long seed:s.seeds()) {
                 var a=runC1(seed);c1.add(a);var b=runC2(seed);c2.add(b);
                 var c=runC3(seed);c3.add(c);var d=runC4(seed);c4.add(d);
+                var feasibleRandom=runC5(seed);c5.add(feasibleRandom);
                 validatePair(a,b,"selection");validatePair(c,d,"selection");
                 validatePair(a,c,"aggregation");validatePair(b,d,"aggregation");
+                validatePair(feasibleRandom,b,"selection");
             }
         } catch(Exception e) {failure=e;}
         Path report=s.output().resolve("C-client-selection.txt");
-        write(report,FactorialReport.render(s.source().toString(),s.seeds(),s.targets(),c1,c2,c3,c4,failure));
+        write(report,FactorialReport.render(s.source().toString(),s.seeds(),s.targets(),c1,c2,c3,c4,c5,failure));
         log.info("matrix.report_saved comparison=C-factorial complete={} path={}",failure==null,report);
         if(failure!=null) throw new IllegalStateException("Factorial comparison failed; see "+report,failure);
         return report;
@@ -91,7 +131,11 @@ public class ControlledExperiments {
     ExperimentConfig configFor(Row row,long seed) throws Exception {
         Settings s=loadSettings();
         var node=s.base().deepCopy();
-        if(row.name().startsWith("C")) node.setAll(s.heterogeneous());
+        if(row.name().startsWith("C")||row.name().startsWith("F")) node.setAll(s.heterogeneous());
+        if(row.name().startsWith("F")) {
+            if(!s.fuzzy().isObject()) throw new IllegalArgumentException("Use configurations/fuzzy-matrix.json for group F");
+            node.set("fuzzySelection",s.fuzzy().deepCopy());
+        }
         node.put("experimentId","matrix-"+batch+"-"+row+"-s"+seed);
         node.put("manifestPath",row.iid?s.iid():s.nonIid());
         node.put("seed",seed);node.put("architecture",row.architecture);
@@ -157,7 +201,9 @@ public class ControlledExperiments {
         String workspace=env.getProperty("minifls.launch.workspace","");
         Path root=workspace.isBlank()?Path.of("").toAbsolutePath().normalize():Path.of(workspace).toAbsolutePath().normalize();
         if(workspace.isBlank() && !Files.isDirectory(root.resolve("configurations")) && root.getParent()!=null) root=root.getParent();
-        Path source=root.resolve(env.getProperty("minifls.matrix.config","configurations/controlled-matrix.json")).normalize();
+        boolean fuzzyMode="fuzzy_matrix".equals(env.getProperty("minifls.launch.method","none"));
+        Path source=root.resolve(fuzzyMode?env.getProperty("minifls.fuzzy.matrix.config","configurations/fuzzy-matrix.json"):
+                env.getProperty("minifls.matrix.config","configurations/controlled-matrix.json")).normalize();
         JsonNode document=json.readTree(Files.readString(source));
         if(!(document.path("baseConfig") instanceof ObjectNode base) || !document.path("seeds").isArray())
             throw new IllegalArgumentException("Matrix requires baseConfig and seeds array");
@@ -185,7 +231,7 @@ public class ControlledExperiments {
         var required=Set.of("resourceProfile","availability","dropout","deadlineSeconds","requiredRamMb","jitter");
         var fields=new HashSet<String>();heterogeneous.fieldNames().forEachRemaining(fields::add);
         if(!fields.equals(required)) throw new IllegalArgumentException("heterogeneousScenario must define exactly "+required);
-        settings=new Settings(root,source,iid,nonIid,List.copyOf(seeds),List.copyOf(targets),base,heterogeneous,output);
+        settings=new Settings(root,source,iid,nonIid,List.copyOf(seeds),List.copyOf(targets),base,heterogeneous,document.path("fuzzySelection"),output);
         log.info("matrix.configured batch={} source={} seeds={} output={}",batch,source,seeds,output);
         return settings;
     }
@@ -193,7 +239,7 @@ public class ControlledExperiments {
     private void preflight() throws Exception {
         if(ready) return;
         Settings s=loadSettings();
-        for(var row:Row.values()) for(long seed:s.seeds()) configFor(row,seed);
+        for(var row:Row.values()) if(!row.name().startsWith("F")) for(long seed:s.seeds()) configFor(row,seed);
         var iid=worker.get("/datasets/manifest?manifestPath="+URLEncoder.encode(s.iid(),StandardCharsets.UTF_8));
         var nonIid=worker.get("/datasets/manifest?manifestPath="+URLEncoder.encode(s.nonIid(),StandardCharsets.UTF_8));
         if(!"iid_equal".equals(iid.path("strategy").asText()) || !"dirichlet_label_skew".equals(nonIid.path("strategy").asText()))

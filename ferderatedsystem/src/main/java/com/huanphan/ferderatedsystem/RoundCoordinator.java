@@ -14,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
+import com.huanphan.ferderatedsystem.selection.fuzzy.*;
 
 /** Điều phối round đồng bộ; Java quyết định update nào được chấp nhận và model nào được commit. */
 @Service
@@ -47,6 +48,9 @@ public class RoundCoordinator {
         public long initializationSeed;
         public long modelPayloadBytes;
         public String scenarioTraceHash;
+        public SelectionHistory selectionHistory;
+        public FairnessCreditState fuzzySelectionState;
+        public double cumulativeVirtualSecondsWithSelector;
     }
     public void start(ExperimentConfig c) {submit(c);}
 
@@ -81,6 +85,7 @@ public class RoundCoordinator {
             var row=repository.find(id);
             if(!Set.of("FAILED","INTERRUPTED").contains(row.get("status"))) throw new IllegalArgumentException("Only failed/interrupted experiments can resume");
             var config=json.readValue((String)row.get("config"),ExperimentConfig.class);
+            config.check();
             // Khôi phục từ SQLite thay vì dùng state trong bộ nhớ của tác vụ đã lỗi.
             Snapshot snapshot=row.get("snapshot")==null ? null : json.readValue((String)row.get("snapshot"),Snapshot.class);
             repository.status(id,"RUNNING",null);
@@ -119,6 +124,8 @@ public class RoundCoordinator {
         s.initializationSeed=initialized.path("initializationSeed").asLong(c.seed());
         s.modelPayloadBytes=initialized.path("modelPayloadBytes").asLong();
         s.scenarioTraceHash=trace==null?null:trace.hash();
+        s.selectionHistory=new SelectionHistory();
+        if(FuzzySelectionConfig.isFuzzy(c.selection())) s.fuzzySelectionState=FairnessCreditState.initial(c.selection(),c.fuzzySelection());
         log.info("model.initialized experiment={} architecture={} checkpoint={}",c.experimentId(),initialized.path("architecture").asText(),s.checkpointPath);
         s.initialEvaluation=evaluate(c,s.checkpointPath,"test");
         if(s.initialEvaluation.path("accuracy").asDouble()>=c.targetAccuracy()) s.timeToTargetSeconds=0.0;
@@ -145,6 +152,12 @@ public class RoundCoordinator {
                 if(s!=null && !trace.hash().equals(s.scenarioTraceHash)) throw new IllegalArgumentException("Scenario trace changed since initialization");
             }
             if(s==null) s=initialize(c,trace);
+            if(s.selectionHistory==null) {s.selectionHistory=new SelectionHistory();s.selectionHistory.startRound=s.round+1;}
+            if(FuzzySelectionConfig.isFuzzy(c.selection())) {
+                if(s.fuzzySelectionState==null) throw new IllegalStateException("Missing fuzzy selection state; cannot silently reset credits on resume");
+                s.fuzzySelectionState.check(c.selection(),s.round,c.fuzzySelection());
+            }
+            if(s.round>0 && s.cumulativeVirtualSecondsWithSelector==0) s.cumulativeVirtualSecondsWithSelector=s.cumulativeVirtualSeconds;
             // Khi worker nạp lại dataset sau restart, hash của các file được kiểm tra lại.
             var current=worker.get("/datasets/manifest?manifestPath="+URLEncoder.encode(c.manifestPath(),StandardCharsets.UTF_8));
             if(!current.equals(s.manifest)) throw new IllegalArgumentException("Dataset manifest changed since experiment started");
@@ -170,20 +183,38 @@ public class RoundCoordinator {
         MDC.put("roundId",Integer.toString(round));MDC.put("operationId",operation);
         log.info("round.started experiment={} round={}/{} modelVersion={} operation={}",c.experimentId(),round,c.rounds(),s.modelVersion,operation);
         var eligible=new ArrayList<ClientProfile>();
-        var feasibleIds=new ArrayList<Integer>();
         // Availability là thông tin quan sát trước khi chọn; kết quả dropout/timeout đến sau.
         for(var p:s.clients) {
             var availability=new Random(c.seed()+1000003L*round+7919L*p.clientId);
             boolean available=trace==null?availability.nextDouble()<c.availability():trace.event(round,p.clientId).path("available").asBoolean();
             if(!c.simulationEnabled() || available) {
                 eligible.add(p);p.opportunityCount++;p.lastStatus="AVAILABLE";
-                if(p.ramMb>=c.requiredRamMb() && (c.deadlineSeconds()==null || p.estimate(c)<=c.deadlineSeconds())) {
-                    feasibleIds.add(p.clientId);p.feasibleOpportunityCount++;
-                }
             } else p.lastStatus="UNAVAILABLE";
         }
-        Policies.ClientSelector selector=c.selection().equals("random") ? new Policies.RandomSelector() : new Policies.ResourceAwareSelector();
-        var selected=selector.select(eligible,c,new Random(c.seed()+104729L*round));
+        long selectorStarted=System.nanoTime();
+        log.info("selection.started experiment={} round={} method={}",c.experimentId(),round,c.selection());
+        var feasible=Policies.feasibleClients(eligible,c);
+        var feasibleIds=feasible.stream().map(p->p.clientId).toList();
+        feasible.forEach(p->p.feasibleOpportunityCount++);
+        log.info("selection.feasible_filtered experiment={} round={} available={} feasible={}",c.experimentId(),round,eligible.size(),feasible.size());
+        List<ClientProfile> selected;
+        Map<String,Object> selectorMetrics=new LinkedHashMap<>();
+        if(FuzzySelectionConfig.isFuzzy(c.selection())) {
+            selectorMetrics.put("selectorInput",json.valueToTree(Map.of("eligibleClients",eligible,"history",s.selectionHistory,"state",s.fuzzySelectionState)));
+            var decision=new FuzzyClientSelector().select(eligible,c,round,s.selectionHistory,s.fuzzySelectionState);
+            selected=decision.selected();selectorMetrics.putAll(decision.metrics());
+            log.info("fuzzy_topsis.ranked experiment={} round={} candidates={} selected={} lambda={}",c.experimentId(),round,feasible.size(),selected.size(),s.fuzzySelectionState.currentLambda);
+            log.debug("fuzzy_topsis.details experiment={} round={} metrics={}",c.experimentId(),round,selectorMetrics);
+        } else {
+            Policies.ClientSelector selector=switch(c.selection()) {
+                case "random" -> new Policies.RandomSelector();
+                case "feasible_random" -> new Policies.FeasibleRandomSelector();
+                case "resource_aware" -> new Policies.ResourceAwareSelector();
+                default -> throw new IllegalArgumentException("Unknown selection: "+c.selection());
+            };
+            selected=selector.select(eligible,c,new Random(c.seed()+104729L*round));
+        }
+        double selectorMs=(System.nanoTime()-selectorStarted)/1e6;
         log.info("selection.completed experiment={} round={} eligible={}/{} selected={} policy={}",
                 c.experimentId(),round,eligible.size(),s.clients.size(),selected.stream().map(p -> p.clientId).toList(),c.selection());
         if(selected.isEmpty()) log.warn("selection.empty experiment={} round={} eligible={} policy={}",c.experimentId(),round,eligible.size(),c.selection());
@@ -280,13 +311,33 @@ public class RoundCoordinator {
             log.info("aggregation.completed experiment={} round={} modelVersion={} aggregationMs={} checkpoint={}",c.experimentId(),round,s.modelVersion,aggregationMs,s.checkpointPath);
         } else log.warn("aggregation.skipped experiment={} round={} reason=no_accepted_updates modelVersion={}",c.experimentId(),round,s.modelVersion);
         var evaluation=evaluate(c,s.checkpointPath,"test");
+        long fairnessStarted=System.nanoTime();
+        var selectedIds=new HashSet<Integer>(selected.stream().map(p->p.clientId).toList());
+        var completedIds=new HashSet<Integer>(accepted.stream().map(u->u.path("clientId").asInt()).toList());
+        s.selectionHistory.observe(feasibleIds,selectedIds,completedIds,c.selectedPerRound());
+        if(FuzzySelectionConfig.isFuzzy(c.selection())) {
+            new CreditFairnessScheduler().afterRound(s.fuzzySelectionState,c.fuzzySelection(),s.selectionHistory,feasibleIds,selectedIds,c.selectedPerRound(),round);
+            selectorMetrics.put("nextFairnessLambda",s.fuzzySelectionState.currentLambda);
+            selectorMetrics.put("fairnessCreditsAfterRound",Map.copyOf(s.fuzzySelectionState.deficits));
+            selectorMetrics.put("smoothedFeasibleSelectionGini",s.fuzzySelectionState.smoothedFeasibleGini);
+            log.info("fairness.credit_updated experiment={} round={} nextLambda={} smoothedFeasibleGini={}",c.experimentId(),round,s.fuzzySelectionState.currentLambda,s.fuzzySelectionState.smoothedFeasibleGini);
+        }
+        double fairnessMs=(System.nanoTime()-fairnessStarted)/1e6;
         // Virtual time không bao gồm thời gian test phục vụ quan sát; wall time được ghi riêng.
         double serverOverheadMs=proxyWallMs+weightMs+aggregationMs;
         double virtual=simulated.path("virtualRoundSeconds").asDouble()+serverOverheadMs/1000;
         s.cumulativeVirtualSeconds+=virtual;
+        double virtualWithSelector=virtual+(selectorMs+fairnessMs)/1000;
+        s.cumulativeVirtualSecondsWithSelector+=virtualWithSelector;
         if(s.timeToTargetSeconds==null && evaluation.path("accuracy").asDouble()>=c.targetAccuracy()) s.timeToTargetSeconds=s.cumulativeVirtualSeconds;
         var metrics=new LinkedHashMap<String,Object>();
         metrics.put("roundId",round);metrics.put("modelVersion",s.modelVersion);metrics.put("outcome",outcome);
+        metrics.put("selectionMethod",c.selection());metrics.put("feasibleCandidateCount",feasible.size());metrics.put("selectorComputationMs",selectorMs);
+        metrics.put("selectedClientIds",selected.stream().map(p->p.clientId).toList());
+        metrics.put("fuzzyTopsisScores",Map.of());metrics.put("fairnessCredits",Map.of());metrics.put("finalSelectionScores",Map.of());
+        metrics.put("currentFairnessLambda",0.0);metrics.putAll(selectorMetrics);
+        metrics.put("fairnessUpdateMs",fairnessMs);metrics.put("virtualRoundSecondsWithSelector",virtualWithSelector);
+        metrics.put("cumulativeVirtualSecondsWithSelector",s.cumulativeVirtualSecondsWithSelector);
         metrics.put("population",s.clients.size());metrics.put("eligibleIds",eligible.stream().map(p -> p.clientId).toList());
         metrics.put("estimatedFeasibleIds",feasibleIds);
         if(trace!=null) {metrics.put("scenarioTraceHash",trace.hash());metrics.put("scenarioTrace",trace.round(round));}
@@ -300,6 +351,11 @@ public class RoundCoordinator {
         metrics.put("logicalUpdateBytesAccepted",accepted.stream().mapToLong(u->u.path("modelPayloadBytes").asLong()).sum());
         metrics.put("evaluation",evaluation);metrics.put("virtualRoundSeconds",virtual);metrics.put("cumulativeVirtualSeconds",s.cumulativeVirtualSeconds);
         var fairnessMetrics=resourceFairness(s.clients,round,c.requiredRamMb());
+        fairnessMetrics.putAll(s.selectionHistory.metrics());
+        fairnessMetrics.put("selectionGini",SelectionHistory.gini(s.clients.stream().mapToDouble(p->p.selectionCount).toArray()));
+        fairnessMetrics.put("completionGini",fairnessMetrics.get("participationGini"));
+        var ramFeasible=s.clients.stream().filter(p->p.ramMb>=c.requiredRamMb()).toList();
+        fairnessMetrics.put("ramFeasibleCompletionGini",ramFeasible.isEmpty()?null:SelectionHistory.gini(ramFeasible.stream().mapToDouble(p->p.completionCount).toArray()));
         metrics.put("wallClockSeconds",(System.nanoTime()-started)/1e9);metrics.put("fairness",fairnessMetrics);
         s.round=round;
         // Chỉ sau transaction này, snapshot mới trở thành điểm phục hồi chính thức.

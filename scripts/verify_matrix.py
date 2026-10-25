@@ -1,4 +1,5 @@
-"""Real matrix smoke: eight rows, shared traces/initial weights, factorial report."""
+"""Real matrix smoke including the feasible-random baseline and shared traces."""
+import argparse
 import json
 import os
 from pathlib import Path
@@ -27,7 +28,7 @@ def get(base, route):
         return json.load(response)
 
 
-def verify():
+def verify(client_selection_only=False):
     folder = ROOT / "artifacts" / "matrix-smoke" / uuid.uuid4().hex[:10]
     folder.mkdir(parents=True)
     iid, non_iid = folder / "iid", folder / "non-iid"
@@ -36,6 +37,8 @@ def verify():
     config = json.loads((ROOT / "configurations/controlled-matrix.json").read_text(encoding="utf-8"))
     config.update(iidManifestPath=iid.relative_to(ROOT).as_posix(), nonIidManifestPath=non_iid.relative_to(ROOT).as_posix(), seeds=[42, 43])
     config["baseConfig"].update(rounds=1)
+    expected_experiments = 10 if client_selection_only else 18
+    report_names = ("C-client-selection.txt",) if client_selection_only else ("A-model-size.txt","B-aggregation.txt","C-client-selection.txt")
     matrix_file = folder / "matrix.json"
     matrix_file.write_text(json.dumps(config, indent=2), encoding="utf-8")
     worker_port, server_port = free_port(), free_port()
@@ -71,10 +74,10 @@ def verify():
                     raise RuntimeError("Java exited; inspect smoke logs")
                 try:
                     experiments = get(base, "/experiments")
-                    if len(experiments) == 16 and all(e["status"] == "COMPLETED" for e in experiments):
+                    if len(experiments) == expected_experiments and all(e["status"] == "COMPLETED" for e in experiments):
                         batch = experiments[0]["id"][len("matrix-"):].rsplit("-", 2)[0]
                         output = ROOT / "artifacts/comparisons" / batch
-                        reports = [output / f for f in ("A-model-size.txt", "B-aggregation.txt", "C-client-selection.txt")]
+                        reports = [output / f for f in report_names]
                         if all(p.exists() for p in reports):
                             break
                 except (URLError, TimeoutError):
@@ -106,16 +109,25 @@ def verify():
                 assert rounds[0]["serverAggregationOverheadMs"] >= rounds[0]["aggregationMs"]
                 assert rounds[0]["communicationCost"] == "NOT_MODELED"
             for seed in (42,43):
-                for pair in (("B1","B2"),("C1","C2"),("C1","C3"),("C1","C4")):
+                pairs = [("C1","C2"),("C1","C3"),("C1","C4"),("C5","C2")]
+                if not client_selection_only:
+                    pairs.append(("B1","B2"))
+                for pair in pairs:
                     a,b = [states[(row,seed)]["snapshot"] for row in pair]
                     assert a["initialModelStateHash"] == b["initialModelStateHash"]
                     assert a["scenarioTraceHash"] == b["scenarioTraceHash"]
                     assert round_evidence[(pair[0],seed)][0]["scenarioTrace"] == round_evidence[(pair[1],seed)][0]["scenarioTrace"]
-                for row in ("C1","C2","C3","C4"):
+                for row in ("C1","C2","C3","C4","C5"):
                     assert states[(row,seed)]["config"]["resourceProfile"] == "heterogeneous"
                     assert round_evidence[(row,seed)][0]["fairness"]["ramFeasiblePopulation"] == 60
-            assert "INTERACTION = (C4-C3) - (C2-C1)" in reports[2].read_text(encoding="utf-8")
-            summary = dict(status="PASS", experiments=16, seeds=[42,43], pairedInitialWeights="verified", sharedTraces="verified",
+                c5_round = round_evidence[("C5",seed)][0]
+                assert states[("C5",seed)]["config"]["selection"] == "feasible_random"
+                assert set(c5_round["selectedIds"]) <= set(c5_round["estimatedFeasibleIds"])
+                assert not any(p["status"] == "SIMULATED_OOM" for p in c5_round["participants"])
+            c_report = reports[-1].read_text(encoding="utf-8")
+            assert "INTERACTION = (C4-C3) - (C2-C1)" in c_report
+            assert "FEASIBLE RANDOM VS RESOURCE-AWARE UNDER FEDAVG" in c_report
+            summary = dict(status="PASS", experiments=expected_experiments, seeds=[42,43], pairedInitialWeights="verified", sharedTraces="verified",
                            reports=[str(p) for p in reports], evidence=str(folder))
             (folder / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
             print(json.dumps(summary), flush=True)
@@ -127,4 +139,6 @@ def verify():
 
 
 if __name__ == "__main__":
-    verify()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--client-selection-only", action="store_true", help="Use when ApplicationRunner only calls compareClientSelection")
+    verify(parser.parse_args().client_selection_only)

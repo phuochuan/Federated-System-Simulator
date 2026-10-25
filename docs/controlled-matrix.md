@@ -1,15 +1,24 @@
 # Chạy controlled experiment matrix bằng các hàm Java
 
-Trong `FerderatedsystemApplication.paperExperiment()`, chế độ `MINIFLS_METHOD=matrix` gọi tuần tự:
+Controlled Experiment Matrix có các nhóm A/B/C hiện có và nhóm **F — Fuzzy Multi-Criteria Decision Making (FMCDM)** bổ sung cho client selection. Hai chế độ khởi chạy tách biệt:
+
+| Chế độ | File cấu hình | Hàm trong application class |
+| --- | --- | --- |
+| `MINIFLS_METHOD=matrix` | `configurations/controlled-matrix.json` | Các lời gọi A/B/C được bật thủ công |
+| `MINIFLS_METHOD=fuzzy_matrix` | `configurations/fuzzy-matrix.json` | `matrix.compareFuzzyClientSelection()` đã được bật |
+
+Trong working tree hiện tại, các lời gọi ở nhánh `matrix` đều đang được comment, nên riêng giá trị `MINIFLS_METHOD=matrix` chưa chạy experiment nào. Để chạy đầy đủ A/B/C, bỏ comment ba dòng sau trong `FerderatedsystemApplication.paperExperiment()`:
 
 ```java
 matrix.compareModelSizes();       // A1 và A2
 matrix.compareAggregations();     // B1 và B2
-matrix.compareClientSelection();  // C1/C2/C3/C4: factorial 2x2
+matrix.compareClientSelection();  // C1–C4 factorial + C5 feasible-random baseline
 ```
 
 Các hàm nằm trong `ControlledExperiments`. A/B gọi hai hàm tương ứng cho từng seed;
-C gọi bốn hàm của thiết kế 2x2. Mỗi experiment phải hoàn thành trước khi chạy tiếp.
+C gọi bốn hàm của thiết kế 2x2 và `runC5(seed)` để thêm cặp Feasible Random ↔ Resource-aware.
+Mỗi experiment phải hoàn thành trước khi chạy tiếp. Có thể comment A/B trong application
+class để chỉ chạy nhóm C.
 Không cần restart Python khi đổi MLP; Java truyền kiến trúc rõ ràng lúc initialize.
 
 | Hàm chạy | Kiến trúc | Aggregation | Selection | Partition |
@@ -22,6 +31,10 @@ Không cần restart Python khi đổi MLP; Java truyền kiến trúc rõ ràng
 | `runC2(seed)` | MLP lớn | FedAvg | Resource-aware | Non-IID |
 | `runC3(seed)` | MLP lớn | FedLBW | Random | Non-IID |
 | `runC4(seed)` | MLP lớn | FedLBW | Resource-aware | Non-IID |
+| `runC5(seed)` | MLP lớn | FedAvg | Feasible Random | Non-IID |
+| `runC6(seed)` | MLP lớn | FedAvg | Resource-aware | Non-IID |
+
+`compareClientSelection()` chạy C1–C5 và tái sử dụng C2 để so sánh với C5. Hàm riêng `compareClientSelectionC5C6()` chạy cặp C5/C6, trong đó C6 có cùng policy/cấu hình với C2 nhưng experiment ID riêng. Chỉ bật hàm riêng này nếu muốn chạy cặp Feasible Random ↔ Resource-aware độc lập; nó không thuộc số lượng 9 dòng A/B/C nêu dưới đây.
 
 Tất cả các dòng bật simulator. Nhóm C dùng Non-IID alpha=0.5 và cùng scenario heterogeneous;
 A/B dùng scenario CPU-only trong `baseConfig` để tách ảnh hưởng architecture/aggregation.
@@ -44,7 +57,8 @@ MINIFLS_DATABASE=D:/research/federated-system/artifacts/minifls.db
 4. Run application. Chỉ gọi nhánh matrix; không gọi thêm `runFedAvg()`/`runFedLBW()`
    bên ngoài nhánh này. Theo dõi `matrix.run_started`, `round.committed`, `matrix.report_saved`.
 
-Mặc định là **8 dòng × 5 seeds (42–46) = 40 experiment**, mỗi experiment 100 round.
+Chạy toàn bộ là **9 dòng × 5 seeds (42–46) = 45 experiment**; chỉ nhóm C là 25 experiment.
+Số round lấy từ `baseConfig.rounds` trong file JSON hoặc `MINIFLS_MATRIX_ROUNDS` nếu có.
 Các seed này thay đổi model initialization, local training và selection/simulation RNG.
 Data split và hai partition vẫn cố định theo manifest seed 42. Kết luận chỉ áp dụng
 cho các partition đó, không tự suy rộng thành kết quả trên nhiều partition độc lập.
@@ -61,7 +75,7 @@ cơ hội hoàn thành; thời gian CPU mô phỏng vẫn khác nhau theo tier v
 `requiredRamMb` là giả định mô phỏng, chưa phải RAM thiết bị được đo/calibrate.
 Có thể sửa scenario trong `baseConfig`, nhưng giữ nó giống nhau trong từng cặp.
 
-Riêng C1–C4 cùng lấy `heterogeneousScenario`: resourceProfile=heterogeneous,
+Riêng C1–C6 cùng lấy `heterogeneousScenario`: resourceProfile=heterogeneous,
 availability=0.9, dropout=0.05, deadline=10 giây, requiredRamMb=600, jitter=0.1.
 LOW/MEDIUM/HIGH có CPU 0.5/1/2 và RAM 512/1024/2048 MB. LOW không đủ RAM trong
 scenario này; báo cáo luôn hiển thị denominator của coverage có điều kiện.
@@ -95,6 +109,8 @@ artifacts/comparisons/<batch-id>/
   A-model-size.txt
   B-aggregation.txt
   C-client-selection.txt
+  C5-C6-feasible-selection.txt       # nếu gọi riêng compareClientSelectionC5C6()
+  F-fuzzy-client-selection.txt       # nếu chạy fuzzy_matrix
   traces/<group>-s<seed>.json
   runs/<experiment-id>/
     experiment.json
@@ -114,6 +130,7 @@ Virtual time cộng proxy wall + weight calculation + aggregation, không cộng
 
 Các ngưỡng trong `accuracyTargets` mặc định là 65%, 68%, 69%, 70%. Báo cáo ghi lần
 đầu đạt ngưỡng theo round, virtual time và round wall time; chưa đạt là `NOT_REACHED`.
+`sustainedFromRound` báo round bắt đầu duy trì ngưỡng đến hết run; đạt một lần rồi mất ngưỡng không được gọi là duy trì. Thời gian có/không có selector overhead được phân biệt trong report.
 Mean time chỉ tính trong các run đã đạt và luôn kèm `reached/n`, không điền 0 cho
 run bị censored. 0 chỉ hợp lệ nếu model ban đầu đã đạt ngưỡng.
 
@@ -131,6 +148,16 @@ TXT nhóm C có bốn đối chiếu: C2−C1, C4−C3, C3−C1, C4−C2; thêm 
 `(C4−C3)−(C2−C1)` cho từng seed và bảng mean ± SD. Đây là mô tả tương tác,
 không phải kiểm định ý nghĩa thống kê hoặc bằng chứng hybrid luôn tốt hơn.
 
+Nhóm C có thêm **C2−C5: Resource-aware so với Feasible Random dưới FedAvg**.
+C5 dùng chung scenario, full-population traces, partition, initial weights và training
+settings với C2. C2 được tái sử dụng, không chạy lại lần hai cho cặp mới.
+`feasible_random` lấy ngẫu nhiên đều không lặp tối đa K client từ tập đang available,
+đủ RAM và đáp ứng ước lượng deadline trước round. Nó dùng đúng predicate
+`Policies.isFeasible` như Resource-aware, nhưng không ranking theo tốc độ/reliability,
+không ưu tiên training loss và không đọc dropout/jitter tương lai.
+Hai policy có thể có candidate sets khác nhau ở các round sau do lịch sử timing khác
+nhau; báo cáo `estimatedFeasibleIds` giữ lại evidence cho từng round.
+
 Phần nhận xét chỉ mô tả chênh lệch quan sát được, không tuyên bố ý nghĩa thống kê
 hoặc chọn một phương pháp thắng trên mọi tiêu chí. Dùng validation để tune;
 không chọn hyperparameter/best checkpoint dựa trên test metrics của báo cáo.
@@ -141,5 +168,42 @@ không tạo kết luận thắng/thua; matrix dừng trước cặp tiếp theo
 không tự gộp các seed từ batch lỗi. Không cần train lại để xem TXT đã ghi.
 
 Các experiment vẫn truy cập được qua `/experiments/{id}`, `/rounds`, `/result` và
-`/metrics.csv`. Chạy `python scripts/verify_matrix.py` sau khi build JAR để kiểm tra
-toàn bộ workflow trên dữ liệu synthetic, cổng/database riêng và một round mỗi run.
+`/metrics.csv`. Sau khi build JAR, `python scripts/verify_matrix.py` kiểm tra workflow A/B/C trên dữ liệu synthetic, cổng/database riêng và một round mỗi run, **với điều kiện đã bật ba lời gọi A/B/C** trong application class. `--client-selection-only` yêu cầu chỉ bật `compareClientSelection()` (C1–C5); tùy chọn này không kiểm tra cặp riêng C5/C6. Với source đang comment toàn bộ nhánh `matrix`, hãy bật lời gọi phù hợp trước khi dùng script này.
+
+## Nhóm F — FMCDM client selection
+
+Nhóm F bổ sung thí nghiệm đối chứng cho selection tại **Federated Server**, trước khi dispatch local training. Cả năm dòng giữ aggregation **FedAvg**; không có aggregation method tên `fuzzy_topsis` và không có package FMCDM trong registry aggregation của Python.
+
+| Run / hàm | Selection | Mục đích |
+| --- | --- | --- |
+| F1 / `runF1(seed)` | `feasible_random` | Baseline ngẫu nhiên sau feasibility filter |
+| F2 / `runF2(seed)` | `resource_aware` | Baseline ranking tài nguyên |
+| F3 / `runF3(seed)` | `fuzzy_topsis` | Fuzzy TOPSIS thuần |
+| F4 / `runF4(seed)` | `fuzzy_topsis_fair` | Fuzzy TOPSIS + Fairness Credit cố định |
+| F5 / `runF5(seed)` | `adaptive_fuzzy_topsis_fair` | Điều chỉnh fairness coefficient sau round đã hoàn tất |
+
+`compareFuzzyClientSelection()` chạy mỗi dòng một lần cho mỗi seed, rồi xuất sáu cặp: **F1–F2, F1–F3, F3–F4, F4–F5, F1–F5, F2–F5**. Ba methods mới dùng chung engine Java tại `selection/fuzzy` và cùng feasibility predicate với F1/F2. Quy trình là availability → RAM/deadline feasibility → fuzzy ranking → fairness scheduling (nếu có) → local training. Credit và lambda được commit trong SQLite snapshot; resume không reset chúng.
+
+Protocol trong `configurations/fuzzy-matrix.json`: **25 experiments = 5 dòng × 5 seeds `[42,43,44,45,46]`**, mỗi experiment **70 rounds**, 100 clients, K=5, MLP 54→256→128→7, Non-IID alpha=.5, local epoch=1, batch=32, learning rate=.01. Mọi dòng dùng cùng manifest cố định và heterogeneous scenario availability=.9, dropout=.05, deadline=10s, RAM requirement=600MB, jitter=.1. Cùng seed phải khớp actual initial weights và full-population traces; lịch sử timing vẫn có thể khiến feasible candidate pools khác nhau ở round sau.
+
+Sau khi chuẩn bị hai manifests và khởi động Python worker như hướng dẫn trên, chạy từ repository root:
+
+```powershell
+$env:MINIFLS_METHOD = 'fuzzy_matrix'
+$env:MINIFLS_WORKSPACE = (Get-Location).Path
+$env:MINIFLS_FUZZY_MATRIX_CONFIG = 'configurations/fuzzy-matrix.json'
+# Bỏ override cũ để dùng đúng 70 rounds từ protocol.
+Remove-Item Env:MINIFLS_MATRIX_ROUNDS -ErrorAction SilentlyContinue
+Set-Location ferderatedsystem
+.\gradlew.bat bootRun --no-daemon
+```
+
+Chế độ này không cần bỏ comment A/B/C. Muốn smoke trên các manifest đã chuẩn bị, đặt `MINIFLS_MATRIX_ROUNDS=2` hoặc `3`; nó vẫn dùng danh sách seeds của JSON. Muốn kiểm tra tự động trên synthetic với 2 seeds × 3 rounds, chạy từ repo root sau khi build JAR:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/verify_fuzzy.py
+```
+
+Kết quả nhóm F nằm tại `artifacts/comparisons/<batch-id>/F-fuzzy-client-selection.txt`, cùng evidence trong `runs/` và shared traces trong `traces/`. Report gồm mean ± sample SD, paired differences theo seed, final accuracy/Macro-F1/per-class recall, time-to-target và sustained target, selection/completion fairness, conditional coverage/Gini, accepted ratio và selector overhead. Có `virtualSeconds` không gồm selector và `virtualSecondsWithSelector` cộng selector/bookkeeping; candidate-pool divergence được ghi riêng. Run lỗi tạo `INCOMPLETE` cùng lý do.
+
+`configurations/fuzzy-matrix.json` là cấu hình **batch**. Không POST nguyên file này vào `/experiments`; một run API cần lấy `baseConfig`, ghép top-level `fuzzySelection`, đặt `selection` và ID riêng. Xem [API contract](api-contract.md) và [công thức, defaults, limitations và resume](fuzzy-mcdm-client-selection.md). [Validation FMCDM](validation/fuzzy-mcdm-2026-10-25.md) chỉ kiểm chứng implementation bằng synthetic; chưa phải kết quả nghiên cứu Covertype 70 rounds và không được trộn hai protocol.

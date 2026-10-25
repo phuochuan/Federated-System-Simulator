@@ -32,6 +32,7 @@ class ControlledExperimentsTests {
         var config=(ObjectNode)json.readTree(Files.readString(Path.of("../configurations/controlled-matrix.json")));
         config.put("iidManifestPath","iid");config.put("nonIidManifestPath","non-iid");
         config.set("seeds",json.valueToTree(List.of(42,43,44)));
+        config.set("fuzzySelection",json.readTree(Files.readString(Path.of("../configurations/fuzzy-matrix.json"))).get("fuzzySelection"));
         ((ObjectNode)config.path("baseConfig")).put("rounds",2);
         Files.writeString(root.resolve("matrix.json"),json.writeValueAsString(config));
         var env=new MockEnvironment().withProperty("minifls.launch.workspace",root.toString())
@@ -93,7 +94,8 @@ class ControlledExperimentsTests {
                 new Object[]{ControlledExperiments.Row.C1,ControlledExperiments.Row.C2,"selection"},
                 new Object[]{ControlledExperiments.Row.C3,ControlledExperiments.Row.C4,"selection"},
                 new Object[]{ControlledExperiments.Row.C1,ControlledExperiments.Row.C3,"aggregation"},
-                new Object[]{ControlledExperiments.Row.C2,ControlledExperiments.Row.C4,"aggregation"})) {
+                new Object[]{ControlledExperiments.Row.C2,ControlledExperiments.Row.C4,"aggregation"},
+                new Object[]{ControlledExperiments.Row.C5,ControlledExperiments.Row.C2,"selection"})) {
             var a=matrix.configFor((ControlledExperiments.Row)pair[0],42);
             var b=matrix.configFor((ControlledExperiments.Row)pair[1],42);
             assertTrue(a.simulationEnabled());assertTrue(b.simulationEnabled());
@@ -104,16 +106,19 @@ class ControlledExperimentsTests {
         }
         assertEquals("iid",matrix.configFor(ControlledExperiments.Row.A1,42).manifestPath());
         assertEquals("non-iid",matrix.configFor(ControlledExperiments.Row.B1,42).manifestPath());
-        for(var row:List.of(ControlledExperiments.Row.C1,ControlledExperiments.Row.C2,ControlledExperiments.Row.C3,ControlledExperiments.Row.C4))
+        for(var row:List.of(ControlledExperiments.Row.C1,ControlledExperiments.Row.C2,ControlledExperiments.Row.C3,ControlledExperiments.Row.C4,ControlledExperiments.Row.C5))
             assertEquals("heterogeneous",matrix.configFor(row,42).resourceProfile());
+        assertEquals("feasible_random",matrix.configFor(ControlledExperiments.Row.C5,42).selection());
     }
 
     @Test void threeComparisonsRunAllRowsAndExportPairedStatistics() throws Exception {
         var reports=List.of(matrix.compareModelSizes(),matrix.compareAggregations(),matrix.compareClientSelection());
         var configs=ArgumentCaptor.forClass(ExperimentConfig.class);
-        verify(coordinator,times(24)).startAndAwait(configs.capture());
+        verify(coordinator,times(27)).startAndAwait(configs.capture());
         verify(coordinator,never()).start(any());
-        assertEquals(24,configs.getAllValues().stream().map(ExperimentConfig::experimentId).distinct().count());
+        assertEquals(27,configs.getAllValues().stream().map(ExperimentConfig::experimentId).distinct().count());
+        assertEquals(3,configs.getAllValues().stream().filter(c->c.experimentId().contains("-C2-")).count());
+        assertEquals(3,configs.getAllValues().stream().filter(c->c.selection().equals("feasible_random")).count());
         assertTrue(configs.getAllValues().get(0).experimentId().contains("-A1-s42"));
         assertTrue(configs.getAllValues().get(1).experimentId().contains("-A2-s42"));
         for(Path report:reports) {
@@ -124,8 +129,10 @@ class ControlledExperimentsTests {
             assertTrue(content.contains("seed=44"));
             assertTrue(content.contains("MEAN RECALL PER CLASS"));
         }
+        assertTrue(Files.readString(reports.get(2)).contains("FEASIBLE RANDOM VS RESOURCE-AWARE UNDER FEDAVG"));
+        assertTrue(Files.readString(reports.get(2)).contains("Question: Does resource-aware ranking"));
         try(var files=Files.walk(reports.get(0).getParent().resolve("runs"))) {
-            assertEquals(24,files.filter(p->p.getFileName().toString().equals("result.json")).count());
+            assertEquals(27,files.filter(p->p.getFileName().toString().equals("result.json")).count());
         }
     }
 
@@ -173,8 +180,25 @@ class ControlledExperimentsTests {
         ((ObjectNode)run.rounds().get(1).path("evaluation")).put("accuracy",.69);
         var reached=ComparisonReport.targetTime(run,.68);
         assertEquals(2,reached.round());assertEquals(6,reached.wall());assertEquals(4,reached.virtual());
+        assertEquals(-1,ComparisonReport.sustainedFromRound(run,.70));
+        assertEquals(2,ComparisonReport.sustainedFromRound(run,.68));
         ((ObjectNode)run.experiment().path("snapshot").path("initialEvaluation")).put("accuracy",.72);
         assertEquals(0,ComparisonReport.targetTime(run,.70).virtual());
+    }
+
+    @Test void fuzzyMatrixPreservesEveryControlledFactorAndExportsSixPairs() throws Exception {
+        var first=(ObjectNode)json.valueToTree(matrix.configFor(ControlledExperiments.Row.F1,42));
+        first.remove(List.of("experimentId","selection"));
+        for(var row:List.of(ControlledExperiments.Row.F2,ControlledExperiments.Row.F3,ControlledExperiments.Row.F4,ControlledExperiments.Row.F5)) {
+            var next=(ObjectNode)json.valueToTree(matrix.configFor(row,42));
+            next.remove(List.of("experimentId","selection"));assertEquals(first,next);
+        }
+        var report=Files.readString(matrix.compareFuzzyClientSelection());
+        verify(coordinator,times(15)).startAndAwait(any());
+        for(String pair:List.of("F1 VS F2","F1 VS F3","F3 VS F4","F4 VS F5","F1 VS F5","F2 VS F5"))
+            assertTrue(report.contains(pair));
+        assertTrue(report.contains("Status: COMPLETED"));
+        assertTrue(report.contains("selectorSeconds"));
     }
 
     @Test void interactionUsesDifferenceInDifferences() throws Exception {

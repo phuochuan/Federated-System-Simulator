@@ -9,6 +9,13 @@ public final class Policies {
     public interface ClientSelector {
         List<ClientProfile> select(List<ClientProfile> eligible, ExperimentConfig config, Random rng);
     }
+    /** Same observable RAM/deadline predicate for feasible-random and resource-aware. */
+    public static boolean isFeasible(ClientProfile client,ExperimentConfig c) {
+        return client.ramMb>=c.requiredRamMb() && (c.deadlineSeconds()==null || client.estimate(c)<=c.deadlineSeconds());
+    }
+    public static List<ClientProfile> feasibleClients(List<ClientProfile> eligible,ExperimentConfig c) {
+        return new ArrayList<>(eligible.stream().filter(p->isFeasible(p,c)).toList());
+    }
     public static class RandomSelector implements ClientSelector {
         public List<ClientProfile> select(List<ClientProfile> eligible, ExperimentConfig c, Random rng) {
             // Xáo trộn có seed rồi lấy K phần tử để chọn đều, không lặp trong cùng round.
@@ -20,8 +27,7 @@ public final class Policies {
     public static class ResourceAwareSelector implements ClientSelector {
         public List<ClientProfile> select(List<ClientProfile> eligible, ExperimentConfig c, Random rng) {
             // Chỉ dùng profile và lịch sử đã biết trước round, không đọc kết quả tương lai.
-            var feasible=new ArrayList<>(eligible.stream().filter(p -> p.ramMb >= c.requiredRamMb())
-                    .filter(p -> c.deadlineSeconds()==null || p.estimate(c)<=c.deadlineSeconds()).toList());
+            var feasible=feasibleClients(eligible,c);
             int k=Math.min(c.selectedPerRound(),feasible.size());
             // Dành một phần lượt chọn cho exploration để client chưa được thử có cơ hội tham gia.
             int explore=Math.min(k,(int)Math.ceil(k*c.exploration()));
@@ -33,6 +39,12 @@ public final class Policies {
                     / ((p.completionCount+1.0)/(p.selectionCount+1.0))).thenComparingInt(p -> p.clientId));
             chosen.addAll(feasible.subList(0,k-explore));
             return chosen;
+        }
+    }
+    public static class FeasibleRandomSelector implements ClientSelector {
+        public List<ClientProfile> select(List<ClientProfile> eligible,ExperimentConfig c,Random rng) {
+            // Uniform sampling without replacement; no completion-time ranking or future traces.
+            return new RandomSelector().select(feasibleClients(eligible,c),c,rng);
         }
     }
 }

@@ -16,7 +16,7 @@
     "manifestPath": "artifacts/partitions/covertype-iid-42",
     "totalClients": 100,
     "selectedPerRound": 5,
-    "rounds": 100,
+    "rounds": 70,
     "seed": 42,
     "selection": "random",
     "aggregation": "fedavg",

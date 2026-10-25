@@ -12,6 +12,18 @@ The centralized benchmark is a diagnostic reference on the same training pool, n
 
 SQLite stores JSON round evidence and snapshots rather than many normalized analytics tables. Export routes produce CSV and full JSON, and `minifls.plot` produces a standalone PNG. The experiment snapshot records the source Git commit; also retain the dependency lock and manifest hashes. Keep artifacts out of Git.
 
+## Controlled FMCDM protocol (group F)
+
+The [controlled matrix](controlled-matrix.md) preserves the A/B/C comparisons and adds a separate F protocol in `configurations/fuzzy-matrix.json`. F1=`feasible_random`, F2=`resource_aware`, F3=`fuzzy_topsis`, F4=`fuzzy_topsis_fair`, F5=`adaptive_fuzzy_topsis_fair`. All use FedAvg; this study changes client selection, not aggregation.
+
+Use 100 clients, K=5, 70 rounds, seeds `[42,43,44,45,46]`, large 54–256–128–7 MLP, one local epoch, batch32, LR=.01 and a fixed Non-IID alpha=.5 partition at data seed42. Heterogeneous scenario: availability=.9, dropout=.05, deadline=10s, RAM requirement=600MB, jitter=.1. Verify actual initialized tensor hashes and the full availability/dropout/jitter traces across methods per seed. Physical duration histories remain observed quantities; document policy-dependent candidate pools rather than assuming they are identical.
+
+Run `MINIFLS_METHOD=fuzzy_matrix` to execute 25 experiments and export the six contrasts F1–F2, F1–F3, F3–F4, F4–F5, F1–F5 and F2–F5 in `artifacts/comparisons/<batch-id>/F-fuzzy-client-selection.txt`. Report final accuracy/Macro-F1, per-class recall, mean ± sample SD and paired differences by seed, first-crossing and sustained targets, virtual clocks with/without selector overhead, wall time, accepted ratio and conditional selection/completion fairness. Unreached targets remain censored, never imputed as zero.
+
+Default fuzzy criteria use pre-round estimated training time, Bayesian-smoothed completion reliability and previous local training loss as a heuristic utility proxy. No test/proxy evaluation is used to construct these scores. Fairness credit accrues only for feasible opportunities and is spent on selection; completion fairness is measured separately. Adaptive lambda uses completed-round feasible-opportunity Gini with smoothing and bounds; it is not Lyapunov optimization. Weights, uncertainty and feedback parameters are explicit in the protocol and [mathematical documentation](fuzzy-mcdm-client-selection.md).
+
+`scripts/verify_fuzzy.py` uses synthetic data, 2 seeds and 3 rounds per matrix experiment, plus a separate live restart/resume check. [Recorded validation](validation/fuzzy-mcdm-2026-10-25.md) confirms implementation, not superiority or convergence. Keep these smoke outputs separate from the 70-round Covertype study. A 100-round or multiple-partition study requires a separate protocol/configuration identity. Do not tune parameters or select best checkpoints with reported test metrics.
+
 ## Requirement coverage
 
 | Work package | Implemented capability | Verification |
@@ -24,6 +36,7 @@ SQLite stores JSON round evidence and snapshots rather than many normalized anal
 | WP06 | SQLite snapshots, resume, class metrics, fairness, JSON/CSV/plots | crash/resume integration; export checks |
 | WP07 | inverse proxy-loss FedLBW, stable zero-loss policy, overhead | numeric and real HTTP tests |
 | WP08 | resource heuristic, history, exploration, audit decisions | selection tests; resource-aware HTTP run |
-| WP09 | deferred research extensions | FedProx/Oort/Lyapunov/fuzzy are not implemented |
+| WP09 | deferred research extensions | FedProx/Oort/Lyapunov optimization remain unimplemented |
+| FMCDM | shared Fuzzy TOPSIS engine, fixed/adaptive fairness credit, F1–F5 comparisons, persisted state and metrics | numerical/unit tests, SQLite resume equivalence and real Python/Java smoke; see [validation](validation/fuzzy-mcdm-2026-10-25.md) |
 
 Physical resource calibration, larger multi-seed comparisons and hypothesis conclusions remain experimental work. No WAN/network-throughput or physical OOM claims are made by this simulator.

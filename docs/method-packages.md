@@ -1,7 +1,7 @@
 # Packages theo phương pháp và cách gọi từ Java
 
 Nguồn danh sách: [Federated System Simulator, §8, §9 và §16](https://app.notion.com/p/3fbb6ecc362380b29145ed0a5324deac).
-Thay đổi này tổ chức code và điểm gọi để tự test. Các thuật toán nghiên cứu mở rộng chưa được triển khai.
+Tài liệu phân biệt registry phương pháp Python và client selectors Java. Các package có nhãn `planned` dưới đây chưa có thuật toán; FMCDM/Fuzzy TOPSIS đã được triển khai riêng ở Java và có nhóm F trong Controlled Experiment Matrix.
 
 ```text
 ml-python/minifls/
@@ -48,25 +48,30 @@ theo yêu cầu tổ chức thuật toán theo package; các file JSON cấu hì
 Gọi phương pháp chưa triển khai sẽ dừng trước khi tạo experiment. HTTP weights trả 501;
 tên không tồn tại trả 400. Không có fallback sang thuật toán khác.
 Resource-aware hiện là heuristic chọn client ở Java, không phải một bản triển khai Oort.
-Fuzzy/FMCDM ngoài kế hoạch. FedA2L/FedIPSA là ghi chú liên quan, chưa được ghép vào pipeline centralized này.
+FMCDM (Fuzzy Multi-Criteria Decision Making) được triển khai trong Java `selection/fuzzy`, gọi tại `RoundCoordinator` trước local training. Các tên `fuzzy_topsis`, `fuzzy_topsis_fair`, `adaptive_fuzzy_topsis_fair` là giá trị **selection**, không phải tên Python package hoặc aggregation. Chúng không xuất hiện trong `GET /methods` và không được gọi qua `/methods/{method}/weights`.
+
+Nhóm F dùng `ControlledExperiments.compareFuzzyClientSelection()` với F1 Feasible Random, F2 Resource-aware, F3 Fuzzy TOPSIS thuần, F4 thêm Fairness Credit và F5 adaptive credit. Aggregation giữ FedAvg cho cả năm dòng. Xem [controlled matrix](controlled-matrix.md#nhóm-f--fmcdm-client-selection) và [công thức/cấu hình FMCDM](fuzzy-mcdm-client-selection.md). FedA2L/FedIPSA vẫn là ghi chú liên quan, chưa được ghép vào pipeline centralized này.
 
 ## Chạy trong IDE từ application class
 
 1. Chuẩn bị dataset theo README và khởi động Python worker trước, với đúng một uvicorn worker.
 2. Mở Run Configuration của `FerderatedsystemApplication` và đặt các biến môi trường bên dưới.
-3. Run/Debug application. Bean `paperExperiment` gọi `experiments.runConfigured()` khi Spring sẵn sàng.
+3. Run/Debug application. Với single-run mode, bean `paperExperiment` gọi `experiments.runConfigured()` khi Spring sẵn sàng. `fuzzy_matrix` gọi `matrix.compareFuzzyClientSelection()`; `matrix` chỉ chạy các lời gọi A/B/C bạn bật (hiện các lời gọi này đang comment).
 4. Đọc log để lấy ID; xem trạng thái ở `/experiments/{id}` và kết quả ở `/experiments/{id}/rounds`.
 
 | Biến môi trường | Mặc định | Ý nghĩa |
 | --- | --- | --- |
-| `MINIFLS_METHOD` | `none` | `fedavg`/`fedlbw` để tự chạy; `none` chỉ mở API |
+| `MINIFLS_METHOD` | `none` | `fedavg`/`fedlbw`: một run; `fuzzy_matrix`: nhóm F; `matrix`: các lời gọi A/B/C được bật; `none`: chỉ mở API |
 | `MINIFLS_WORKSPACE` | Tìm thư mục repo hiện tại hoặc thư mục cha | Root dùng chung cho Java và Python |
 | `MINIFLS_CONFIG` | `configurations/fedavg.json` | File JSON, tính từ workspace; chấp nhận đường dẫn tuyệt đối |
 | `MINIFLS_EXPERIMENT_ID` | `<method>-<UUID>` | ID duy nhất cho lần chạy mới |
 | `MINIFLS_MANIFEST` | Giữ giá trị JSON | Thư mục dataset đã chuẩn bị, tương đối với workspace |
-| `MINIFLS_SELECTION` | Giữ giá trị JSON | `random` hoặc `resource_aware` |
+| `MINIFLS_SELECTION` | Giữ giá trị JSON | Single-run: `random`, `feasible_random`, `resource_aware`, `fuzzy_topsis`, `fuzzy_topsis_fair`, `adaptive_fuzzy_topsis_fair`; fuzzy cần `fuzzySelection` trong JSON |
 | `MINIFLS_ROUNDS` | Giữ giá trị JSON | Số round |
 | `MINIFLS_SEED` | Giữ giá trị JSON | Seed của experiment |
+| `MINIFLS_MATRIX_CONFIG` | `configurations/controlled-matrix.json` | Batch A/B/C khi `MINIFLS_METHOD=matrix` |
+| `MINIFLS_FUZZY_MATRIX_CONFIG` | `configurations/fuzzy-matrix.json` | Batch F1–F5 khi `MINIFLS_METHOD=fuzzy_matrix` |
+| `MINIFLS_MATRIX_ROUNDS` | `baseConfig.rounds` | Override round cho cả hai batch mode; để trống cho protocol 70 rounds |
 | `MINIFLS_WORKER_URL` | `http://127.0.0.1:8000` | Địa chỉ Python |
 | `MINIFLS_SERVER_PORT` | `8080` | Cổng Java |
 | `MINIFLS_DATABASE` | `../artifacts/minifls.db` | Nên dùng đường dẫn tuyệt đối khi chạy IDE |
@@ -86,6 +91,7 @@ Benchmark tập trung có cùng lựa chọn, ví dụ:
 Thứ tự áp dụng: đọc JSON → chọn aggregation theo hàm/method → áp dụng biến override → validate → submit.
 ID trong JSON được thay bằng `MINIFLS_EXPERIMENT_ID` hoặc UUID mới để tránh trùng ID qua các lần test.
 `MINIFLS_SEED` không tạo lại dataset: split/partition vẫn lấy từ manifest đã chuẩn bị.
+Các override single-run (`MINIFLS_CONFIG`, `MINIFLS_SELECTION`, `MINIFLS_ROUNDS`, `MINIFLS_SEED`, manifest/ID) không áp dụng cho hai batch mode. File matrix có cấu trúc riêng; không dùng nguyên `fuzzy-matrix.json` làm `MINIFLS_CONFIG` hay body `POST /experiments`. Xem [ví dụ tạo body API đầy đủ](api-contract.md).
 Để resume một run cũ, đặt `MINIFLS_METHOD=none` rồi dùng endpoint resume/CLI hiện có.
 
 Ví dụ PowerShell từ thư mục gốc repo, sau khi đã chuẩn bị dataset synthetic:

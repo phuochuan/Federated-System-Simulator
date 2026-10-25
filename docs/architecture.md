@@ -13,12 +13,12 @@ Java sends JSON metadata and workspace-relative artifact paths over localhost HT
 ## Round contract
 
 1. Freeze the current checkpoint/version and observe availability.
-2. Select up to K clients without replacement, using only profiles and prior history.
+2. Select up to K clients without replacement, using only profiles and prior history. Feasibility-based selectors first share the available/RAM/estimated-deadline filter. Fuzzy methods then construct a fuzzy matrix, rank by TOPSIS and optionally apply fairness scheduling.
 3. Train each selected client sequentially from the frozen base.
 4. SimPy runs independent virtual-device events. CPU capacity scales measured training duration; configured jitter, RAM feasibility, dropout and deadline determine outcomes.
 5. Accept only completed, in-deadline updates matching experiment, round, base version, client and partition sample count.
 6. Java calls the FedAvg or FedLBW Python package for scalar weights and validates the response. Python validates every accepted checkpoint again and averages tensors.
-7. Evaluate on held-out test, persist round evidence and snapshot atomically, then advance.
+7. Evaluate on held-out test for reporting. Update valid-opportunity diagnostics and, for fuzzy fairness methods, credit and adaptive feedback using opportunity/selection history only. Persist round evidence and snapshot atomically, then advance. Test metrics never enter the selector or fairness controller.
 
 No accepted update produces `SKIPPED`, leaves the model version unchanged, and advances the round counter. Worker/transport/validation failures produce `FAILED`; resume replays the uncommitted round from the last snapshot. On Java restart, formerly `RUNNING` experiments become `INTERRUPTED`. Configurations and committed rounds cannot be edited through the API.
 
@@ -35,8 +35,16 @@ tensor aggregation RPC wall time; virtual time adds only the wall overhead once.
 Network communication cost is not modeled; dense model payload byte counts are
 reported separately from physical network traffic.
 
+`selectorComputationMs` measures shared feasibility diagnostics and the selection decision consistently across policies; `fairnessUpdateMs` measures post-round opportunity accounting and scheduler updates. Existing virtual clocks exclude these costs. The additional `virtualRoundSecondsWithSelector` and `cumulativeVirtualSecondsWithSelector` include both, so reports can compare timing with and without selection overhead. Full audit input construction is included in fuzzy decision overhead.
+
 CPU scaling is an initial proportional model, not a calibrated physical-device claim. `requiredRamMb` is an explicit scenario estimate, not the worker RSS. The worker reports current/peak process RSS separately. LOW/MEDIUM/HIGH CPU factors are 0.5/1/2; RAM is 512/1024/2048 MB; counts are 40/40/20 at 100 clients. Profiles are assigned independently of partition labels. Use measured benchmark results to choose realistic time and RAM assumptions before drawing resource-efficiency conclusions.
 
 Random selection uses seeded uniform sampling. Resource-aware selection filters estimated RAM/deadline feasibility, explores a configured fraction, and ranks remaining clients by expected completion time adjusted by historical completion reliability. Cold clients use a configured per-sample prior. This is a documented heuristic, not Oort or a theoretical fairness guarantee.
+
+Feasible Random samples uniformly from the shared feasible pool without ranking. The FMCDM extension resides in Java `selection/fuzzy`: all three fuzzy methods share `ClientCriteriaExtractor`, `CriterionNormalizer` and `FuzzyTopsisEngine` with triangular fuzzy numbers. `FairnessScheduler` separates ranking from fixed/adaptive credit scheduling. Default criteria are estimated time, smoothed completion reliability and preceding local training-loss utility; fairness/staleness criteria are explicit ablations.
+
+`Snapshot.selectionHistory` stores valid opportunities, entitlement, selections, completions and feasible staleness. `Snapshot.fuzzySelectionState` stores method/version, last committed round, credit balances, current lambda and smoothed feasible Gini. Decisions use the previous committed state; adaptive feedback applies from the next round. These objects are serialized through the existing SQLite transaction, with no static scheduler state or ScenarioTrace schema changes. Baseline snapshots have no fuzzy credit state. Recorded `selectorInput` permits replay with the same observed histories; fresh-run physical timing noise can still alter later candidate pools and ranking.
+
+`ControlledExperiments.compareFuzzyClientSelection()` is the F group of the [controlled matrix](controlled-matrix.md), launched by `MINIFLS_METHOD=fuzzy_matrix`. It compares F1 Feasible Random, F2 Resource-aware, F3 pure Fuzzy TOPSIS, F4 fixed credit and F5 adaptive credit under identical FedAvg/model/partition/scenario settings. A/B/C entry points remain separate. See [mathematics and lifecycle](fuzzy-mcdm-client-selection.md) for assumptions and limits.
 
 FedLBW uses the separate server proxy split. This implementation clamps nonnegative proxy loss to 1e-12 before inverse-loss normalization and rejects nonfinite/negative loss. Covertype evaluation is an extension benchmark, not a reproduction of the paper's dataset experiments.

@@ -9,7 +9,11 @@ final class ComparisonReport {
     static final List<String> METRICS=List.of("accuracy","macroF1","loss","worstClassRecall","virtualSeconds",
             "wallSeconds","coverage","ramFeasibleCoverage","estimatedFeasibleCoverage","ramFeasiblePopulation","estimatedFeasiblePopulation",
             "participationGini","acceptedUpdates","selectedClients","acceptedSelectedRatio","proxySeconds","proxyWallSeconds",
-            "weightSeconds","aggregationSeconds","serverOverheadSeconds","logicalModelBytesDispatched","logicalUpdateBytesAccepted");
+            "weightSeconds","aggregationSeconds","serverOverheadSeconds","logicalModelBytesDispatched","logicalUpdateBytesAccepted",
+            "selectorSeconds","fairnessUpdateSeconds","virtualSecondsWithSelector","feasibleSelectionCoverage","feasibleCompletionCoverage",
+            "selectionGini","completionGini","ramFeasibleCompletionGini","feasibleOpportunityAdjustedGini",
+            "feasibleCompletionOpportunityAdjustedGini",
+            "maxFeasibleSelectionStaleness","meanFeasibleSelectionStaleness");
     private ComparisonReport() {}
 
     static String render(String question,String changedField,String source,List<Long> seeds,List<Double> targets,
@@ -28,6 +32,9 @@ final class ComparisonReport {
                 .append("\nCommunication cost = NOT_MODELED. Logical payload counts measure dense tensor bytes, not WAN traffic/latency.")
                 .append("\nRAM-feasible coverage uses a static common RAM denominator; estimated-feasible coverage also uses availability/deadline estimates and can be policy-dependent.")
                 .append("\nShared traces are indexed by round/client, not by absolute virtual time. Job durations/deadline outcomes may differ.\n");
+        out.append("Selector overhead: shared feasibility diagnostics + policy decision, measured consistently for every policy. Fairness bookkeeping is measured separately.\n")
+                .append("virtualSeconds excludes selector/bookkeeping; virtualSecondsWithSelector includes both. N/A means unavailable legacy metric or empty denominator.\n")
+                .append("Selection/completion Gini are population metrics; RAM/feasible-opportunity metrics exclude permanently impossible clients. Candidate sets may diverge with policy-specific timing histories.\n");
         if(failure!=null) out.append("\nERROR: ").append(failure).append("\nNo final comparison conclusion is produced for an incomplete pair.\n");
         appendRuns(out,"LEFT",left,targets);appendRuns(out,"RIGHT",right,targets);
         if(!complete) return out.toString();
@@ -42,6 +49,16 @@ final class ComparisonReport {
             }
             out.append(String.format(Locale.ROOT,"%-23s %-27s %-27s %-27s%n",metric,stats(first),stats(second),stats(deltas)));
         }
+        out.append("\nPAIRED DIFFERENCES BY SEED (all metrics, right minus left)\n");
+        for(int i=0;i<seeds.size();i++) {
+            out.append("seed=").append(seeds.get(i));
+            for(String metric:METRICS) out.append(" ").append(metric).append("=").append(format(value(right.get(i),metric)-value(left.get(i),metric)));
+            int changedPools=0;
+            for(int round=0;round<Math.min(left.get(i).rounds().size(),right.get(i).rounds().size());round++)
+                if(!left.get(i).rounds().get(round).path("estimatedFeasibleIds").equals(right.get(i).rounds().get(round).path("estimatedFeasibleIds"))) changedPools++;
+            out.append("\n  roundsWithDifferentEstimatedCandidateSets=").append(changedPools)
+                    .append(" (same exogenous trace; observed training-time histories can change deadline feasibility)\n");
+        }
         out.append("\nPAIRED QUALITY DIFFERENCES (percentage points)\n");
         for(int i=0;i<seeds.size();i++) out.append(String.format(Locale.ROOT,
                 "seed=%d  deltaAccuracy=%+.4f pp  deltaMacroF1=%+.4f pp  deltaVirtualSeconds=%+.4f%n",seeds.get(i),
@@ -54,6 +71,10 @@ final class ComparisonReport {
             double av=left.stream().mapToDouble(r->recall(r,index)).average().orElseThrow();
             double bv=right.stream().mapToDouble(r->recall(r,index)).average().orElseThrow();
             out.append(String.format(Locale.ROOT,"class=%d %s=%.6f %s=%.6f delta=%+.4f pp%n",label,a,av,b,bv,100*(bv-av)));
+            List<Double> ar=new ArrayList<>(),br=new ArrayList<>(),dr=new ArrayList<>();
+            for(int i=0;i<seeds.size();i++) {ar.add(recall(left.get(i),index));br.add(recall(right.get(i),index));dr.add(br.get(i)-ar.get(i));}
+            out.append("  sample statistics: ").append(a).append("=").append(stats(ar)).append(" ").append(b).append("=").append(stats(br))
+                    .append(" pairedDelta=").append(stats(dr)).append(" pairedBySeed=").append(dr).append("\n");
         }
         appendTargets(out,targets,left,right);
         double deltaF1=right.stream().mapToDouble(r->value(r,"macroF1")).average().orElseThrow()
@@ -87,10 +108,18 @@ final class ComparisonReport {
                     .append("\n  initialModelStateHash=").append(snapshot.path("initialModelStateHash").asText())
                     .append("\n  initializationMethod=").append(snapshot.path("initializationMethod").asText())
                     .append(" initializationSeed=").append(snapshot.path("initializationSeed").asText());
+            if(c.fuzzySelection()!=null) out.append("\n  fuzzyWeights=").append(c.fuzzySelection().weights)
+                    .append(" uncertaintyMode=").append(c.fuzzySelection().uncertaintyMode)
+                    .append(" fairnessMode=").append(c.fuzzySelection().fairness.mode)
+                    .append(" initialLambda=").append(c.fuzzySelection().fairness.initialLambda);
+            if(run.result().has("currentFairnessLambda")) out.append("\n  finalRoundAppliedLambda=").append(run.result().get("currentFairnessLambda"))
+                    .append(" nextLambda=").append(run.result().path("nextFairnessLambda"));
             for(double threshold:targets) {
                 var timing=targetTime(run,threshold);
                 out.append("\n  threshold=").append(threshold).append(" timeToTarget=")
-                        .append(timing.reached()?String.format(Locale.ROOT,"round=%d virtualSeconds=%.6f wallSeconds=%.6f",timing.round(),timing.virtual(),timing.wall()):"NOT_REACHED");
+                        .append(timing.reached()?String.format(Locale.ROOT,"firstCrossingRound=%d virtualSeconds=%.6f wallSeconds=%.6f",timing.round(),timing.virtual(),timing.wall()):"NOT_REACHED")
+                        .append(" sustainedFromRound=").append(sustainedFromRound(run,threshold)<0?"NOT_SUSTAINED":sustainedFromRound(run,threshold));
+                if(timing.reached()) out.append(" virtualWithSelector=").append(timing.round()==0?"0":format(optionalNumber(run.rounds().get(timing.round()-1).path("cumulativeVirtualSecondsWithSelector"))));
             }
             JsonNode target=snapshot.path("timeToTargetSeconds");
             out.append("\n  targetAccuracy=").append(c.targetAccuracy()).append(" timeToTargetSeconds=")
@@ -132,6 +161,11 @@ final class ComparisonReport {
             case "acceptedUpdates" -> run.rounds().stream().mapToInt(r->r.path("acceptedIds").size()).sum();
             case "selectedClients" -> run.rounds().stream().mapToInt(r->r.path("selectedIds").size()).sum();
             case "acceptedSelectedRatio" -> value(run,"selectedClients")==0?Double.NaN:value(run,"acceptedUpdates")/value(run,"selectedClients");
+            case "selectorSeconds" -> optionalSum(run,"selectorComputationMs")/1000;
+            case "fairnessUpdateSeconds" -> optionalSum(run,"fairnessUpdateMs")/1000;
+            case "virtualSecondsWithSelector" -> optionalNumber(result.path("cumulativeVirtualSecondsWithSelector"));
+            case "feasibleSelectionCoverage","feasibleCompletionCoverage","selectionGini","completionGini","ramFeasibleCompletionGini",
+                    "feasibleOpportunityAdjustedGini","feasibleCompletionOpportunityAdjustedGini","maxFeasibleSelectionStaleness","meanFeasibleSelectionStaleness" -> optionalNumber(result.path("fairness").path(metric));
             default -> throw new IllegalArgumentException("Unknown comparison metric: "+metric);
         };
     }
@@ -150,6 +184,8 @@ final class ComparisonReport {
     }
     private static String format(double value) {return Double.isFinite(value)?String.format(Locale.ROOT,"%.6f",value):"N/A";}
     private static double sum(RunResult run,String field) {return run.rounds().stream().mapToDouble(r->number(r.path(field))).sum();}
+    private static double optionalNumber(JsonNode node) {return node.isMissingNode()||node.isNull()?Double.NaN:number(node);}
+    private static double optionalSum(RunResult run,String field) {return run.rounds().stream().mapToDouble(r->optionalNumber(r.path(field))).sum();}
     record TargetTime(boolean reached,double virtual,double wall,int round) {}
     static TargetTime targetTime(RunResult run,double threshold) {
         var initial=run.experiment().path("snapshot").path("initialEvaluation").path("accuracy");
@@ -162,6 +198,13 @@ final class ComparisonReport {
         }
         return new TargetTime(false,Double.NaN,Double.NaN,-1);
     }
+    static int sustainedFromRound(RunResult run,double threshold) {
+        int lastBelow=-1;
+        for(int i=0;i<run.rounds().size();i++) if(number(run.rounds().get(i).path("evaluation").path("accuracy"))<threshold) lastBelow=i;
+        if(lastBelow==run.rounds().size()-1) return -1;
+        if(lastBelow<0 && run.experiment().path("snapshot").path("initialEvaluation").path("accuracy").asDouble(-1)>=threshold) return 0;
+        return run.rounds().get(lastBelow+1).path("roundId").asInt();
+    }
     private static void appendTargets(StringBuilder out,List<Double> targets,List<RunResult> left,List<RunResult> right) {
         out.append("\nTIME TO TARGET (censored runs stay NOT_REACHED, never 0)\n");
         for(double threshold:targets) {
@@ -170,6 +213,7 @@ final class ComparisonReport {
                 long reached=times.stream().filter(TargetTime::reached).count();
                 out.append(String.format(Locale.ROOT,"threshold=%.2f row=%s reached=%d/%d conditionalVirtual=%s conditionalWall=%s%n",threshold,
                         side.get(0).row(),reached,side.size(),stats(times.stream().map(TargetTime::virtual).toList()),stats(times.stream().map(TargetTime::wall).toList())));
+                out.append("  sustainedThroughFinalRound=").append(side.stream().filter(r->sustainedFromRound(r,threshold)>=0).count()).append("/").append(side.size()).append("\n");
             }
         }
         out.append("Conditional means include ONLY reached runs; use reached counts together with these times.\n");

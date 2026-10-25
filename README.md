@@ -2,7 +2,7 @@
 
 A research testbed built with **Java Spring Boot + Python/PyTorch + SimPy**, using CPU training with **100 logical clients**, **5 selected clients per round**, and **one active local training job** at a time. The primary dataset is **UCI Covertype**, with an **MLP 54 → 256 → 128 → 7** (47,879 parameters) by default. The original 54 → 128 → 64 → 7 baseline and its checkpoints remain supported.
 
-The pipeline prepares data, selects clients in Java, trains each client from the same global checkpoint in PyTorch, simulates outcomes with SimPy, filters updates in Java, computes weights in method-specific Python packages, validates weights in Java, aggregates and evaluates in Python, and commits results to SQLite. It includes FedAvg, FedLBW, Random and Resource-aware Selection, exploration, metrics, CSV/JSON exports, plots, and recovery after interruption.
+The pipeline prepares data, selects clients in Java, trains each client from the same global checkpoint in PyTorch, simulates outcomes with SimPy, filters updates in Java, computes weights in method-specific Python packages, validates weights in Java, aggregates and evaluates in Python, and commits results to SQLite. Aggregation supports FedAvg and FedLBW. Selection supports Random, Feasible Random, Resource-aware, Fuzzy TOPSIS, Fuzzy TOPSIS with Fairness Credit, and Adaptive Fuzzy TOPSIS with Fairness Credit. Metrics, CSV/JSON exports, plots, and recovery after interruption are included.
 
 The implementation follows the [Notion plan](https://app.notion.com/p/3fbb6ecc362380b29145ed0a5324deac). Smoke-test results do not establish that one algorithm outperforms another.
 
@@ -36,9 +36,9 @@ Only the first ten numerical Covertype features are scaled, using statistics fit
 
 ## Starting services and running experiments
 
-For eight matrix row functions, paired and factorial comparisons, and automatic
-TXT reports, see [controlled matrix workflow](docs/controlled-matrix.md).
-Set `MINIFLS_METHOD=matrix` to run all three comparisons sequentially.
+The [controlled matrix workflow](docs/controlled-matrix.md) contains the existing A/B/C comparisons and the separate **F group for Fuzzy Multi-Criteria Decision Making (FMCDM)**. `MINIFLS_METHOD=fuzzy_matrix` calls `compareFuzzyClientSelection()` and runs F1–F5, producing six paired comparisons in one TXT report. It uses `configurations/fuzzy-matrix.json`: five seeds, 70 rounds, 100 clients, K=5, Non-IID alpha=.5 and FedAvg throughout.
+
+`MINIFLS_METHOD=matrix` uses `configurations/controlled-matrix.json` and the A/B/C calls enabled in `FerderatedsystemApplication.paperExperiment()`. Those calls are currently commented out; uncomment the desired calls before running this mode. The F entry point is already enabled and independent of that choice.
 
 To select a paper-specific Python package from the Java application class or IDE, see
 [method packages and environment configuration](docs/method-packages.md) and [.env.example](.env.example).
@@ -56,6 +56,9 @@ The script builds Java and starts both services in hidden processes. It writes P
 | `configurations/fedavg.json` | Covertype IID | Random / FedAvg, 20 rounds | Disabled |
 | `configurations/resource-aware-fedlbw.json` | Covertype Dirichlet | Resource-aware / FedLBW | CPU/RAM, availability, dropout, deadline |
 | `configurations/smoke.json` | Synthetic | Random / FedAvg, 20 rounds | Heterogeneous |
+| `configurations/fuzzy-matrix.json` | Covertype Non-IID | F1–F5 client selection / FedAvg, 70 rounds × 5 seeds | Shared heterogeneous traces |
+
+The fuzzy matrix file is a batch protocol, not a single-experiment API body. See the [F1–F5 launch and result instructions](docs/controlled-matrix.md#nhóm-f--fmcdm-client-selection) and [mathematical specification](docs/fuzzy-mcdm-client-selection.md).
 
 Each new run requires a unique `experimentId`. To continue a `FAILED` or `INTERRUPTED` run, use its original configuration with `--resume`:
 
@@ -99,4 +102,6 @@ The integration test starts services on separate ports, runs 100 clients for 20 
 
 CPU and RAM constraints are **virtual simulation**. Measured RSS belongs to the entire worker process. CPU scaling, `requiredRamMb`, and cold-start priors require benchmark calibration before drawing conclusions about resource efficiency. Virtual time depends on measured training duration; a fixed seed does not guarantee identical wall times. Logical clients do not require 100 processes or containers.
 
-Further details: [architecture](docs/architecture.md), [API](docs/api-contract.md), [experiment protocol and requirement coverage](docs/experiment-protocol.md), and [validation results](docs/validation/README.md). FedProx, Oort, Lyapunov fairness, fuzzy selection, and WAN emulation remain unimplemented research extensions.
+Fuzzy TOPSIS, fairness credit and adaptive fairness selectors are available through `MINIFLS_METHOD=fuzzy_matrix`; see [formulas, parameters, F1–F5 protocol and smoke validation](docs/fuzzy-mcdm-client-selection.md). FedProx, Oort, Lyapunov optimization and WAN emulation remain research extensions.
+
+Further details: [architecture](docs/architecture.md), [API](docs/api-contract.md), [experiment protocol and requirement coverage](docs/experiment-protocol.md), and [validation results](docs/validation/README.md).

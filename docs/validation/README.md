@@ -1,5 +1,7 @@
 # Validation evidence — 17 October 2026
 
+This page preserves the historical 17 October baseline evidence. For the implemented Fuzzy TOPSIS/fairness-credit selectors and F1–F5 smoke/restart checks, see [FMCDM validation — 25 October 2026](fuzzy-mcdm-2026-10-25.md). The datasets, architectures and protocols differ; do not pool these results or interpret the historical test counts below as current suite totals.
+
 Implementation revision: `e32a18218a395d37934a57a8c5dd5a61f4f07124`. Both federated runs recorded that revision and a clean working tree at initialization. The centralized diagnostic ran during development before that commit; its training implementation is included in the same revision. Subsequent changes add this report and improve Windows service start/stop scripts.
 
 Environment: Windows, Intel Core i5-1135G7, JDK 17.0.11, Python 3.13.0, CPU PyTorch 2.14.1, one torch thread. Exact Python dependencies: [validated environment](../../ml-python/requirements-validated.txt).

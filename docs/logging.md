@@ -9,6 +9,9 @@ Java ghi các sự kiện:
 
 - `experiment.admitted`, `experiment.initializing`, `experiment.resume`, `experiment.completed`.
 - `round.started`, `selection.completed`: số client đủ điều kiện và danh sách được chọn.
+- `selection.started`, `selection.feasible_filtered`: method, available/feasible counts trước ranking.
+- `fuzzy_topsis.ranked`: summary số candidates/selected và lambda đang áp dụng cho F3–F5.
+- `fairness.credit_updated`: lambda cho round kế tiếp và smoothed feasible Gini; F3 không có credit bonus.
 - `training.dispatched`, `training.completed`: client, số mẫu, loss, thời gian và RAM worker.
 - `update.accepted`, `update.rejected`: trạng thái mô phỏng, thời gian hoàn tất và deadline.
 - `aggregation.weights`, `aggregation.completed`, `aggregation.skipped`.
@@ -40,6 +43,7 @@ Context được xóa sau mỗi request/job để các client hoặc experiment 
 
 `DEBUG` bổ sung HTTP route/status/thời gian, checkpoint load/save, tiến độ mỗi 50 batch,
 precision/recall từng lớp và confusion matrix. Tensor weights và dữ liệu từng mẫu không được dump.
+`fuzzy_topsis.details` ở DEBUG ghi audit input/scores chi tiết; INFO chỉ ghi summary. Không cần bật DEBUG để lấy số liệu nghiên cứu: `/experiments/{id}/rounds` và SQLite đã lưu `fuzzyTopsisScores`, credit trước/sau round, `finalSelectionScores`, lambda đang áp dụng/lambda kế tiếp và `selectorComputationMs`/`fairnessUpdateMs`. `/result` chỉ trả round cuối, CSV rút gọn không có toàn bộ các trường mới. Report nhóm F nằm ở `artifacts/comparisons/<batch-id>/F-fuzzy-client-selection.txt`; xem [FMCDM workflow](controlled-matrix.md#nhóm-f--fmcdm-client-selection).
 INFO có thể tạo nhiều dòng khi chạy nhiều round/client; dùng `WARN` khi chỉ cần xem lỗi/cảnh báo.
 
 Khi chạy bằng `scripts/start.ps1`:
