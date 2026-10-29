@@ -1,0 +1,237 @@
+CONTROLLED EXPERIMENT COMPARISON
+Question: FedLBW khác FedAvg thế nào trên cùng dữ liệu Non-IID?
+Status: COMPLETED
+Changed factor: aggregation
+Matrix config: D:\research\federated-system\artifacts\matrix-smoke\02eb827151\matrix.json
+Training/selection seeds: [42, 43]
+Dataset partitions are fixed across these seeds; dataset seed is stored in each manifest.
+Ratios use scale 0..1. Differences below are RIGHT minus LEFT.
+SD is sample standard deviation across seeds (n-1), not a confidence interval.
+Wall seconds = sum of round wall times, including test evaluation, excluding initialization.
+Virtual seconds include proxy wall time + weight calculation + aggregation, exclude observer test evaluation.
+Communication cost = NOT_MODELED. Logical payload counts measure dense tensor bytes, not WAN traffic/latency.
+RAM-feasible coverage uses a static common RAM denominator; estimated-feasible coverage also uses availability/deadline estimates and can be policy-dependent.
+Shared traces are indexed by round/client, not by absolute virtual time. Job durations/deadline outcomes may differ.
+
+LEFT RUNS
+
+row=B1 seed=42 experimentId=matrix-20261025-162100-993abb7f-B1-s42
+architecture=mlp_54_256_128_7 manifest=artifacts/matrix-smoke/02eb827151/non-iid aggregation=fedavg selection=random
+  dataset=synthetic dataSeed=42 partition=dirichlet_label_skew alpha=0.5
+round=1 outcome=COMMITTED
+  accuracy=0.142857
+  macroF1=0.106635
+  loss=1.949535
+  worstClassRecall=0.010000
+  virtualSeconds=0.129893
+  wallSeconds=0.252018
+  coverage=0.050000
+  ramFeasibleCoverage=0.050000
+  estimatedFeasibleCoverage=0.050000
+  ramFeasiblePopulation=100.000000
+  estimatedFeasiblePopulation=100.000000
+  participationGini=0.950000
+  acceptedUpdates=5.000000
+  selectedClients=5.000000
+  acceptedSelectedRatio=1.000000
+  proxySeconds=0.000000
+  proxyWallSeconds=0.000000
+  weightSeconds=0.003459
+  aggregationSeconds=0.096914
+  serverOverheadSeconds=0.100373
+  logicalModelBytesDispatched=957580.000000
+  logicalUpdateBytesAccepted=957580.000000
+  scenarioTraceHash=197e6bc3cb47596b45e310a332c457182008c1735f03eae17c7af0afcf08cd66
+  initialModelStateHash=3f38902a94d28364366de96c65eb242213752c4c9cc6246a9b84731aeba993f5
+  initializationMethod=pytorch-default-linear-v1 initializationSeed=42
+  threshold=0.65 timeToTarget=NOT_REACHED
+  threshold=0.68 timeToTarget=NOT_REACHED
+  threshold=0.69 timeToTarget=NOT_REACHED
+  threshold=0.7 timeToTarget=NOT_REACHED
+  targetAccuracy=0.7 timeToTargetSeconds=NOT_REACHED
+  perClassRecall=[0.045,0.01,0.445,0.325,0.08,0.04,0.055]
+  perClassPrecision=[0.16363636363636364,0.15384615384615385,0.14471544715447154,0.12922465208747516,0.16326530612244897,0.20512820512820512,0.14285714285714285]
+  confusionMatrix=[[9,1,98,58,17,3,14],[13,2,88,71,12,6,8],[3,0,89,90,3,6,9],[9,2,86,65,19,8,11],[12,2,83,67,16,1,19],[5,2,89,80,11,8,5],[4,4,82,72,20,7,11]]
+  checkpoint=artifacts/models/matrix-20261025-162100-993abb7f-B1-s42/global_0001_e91120ae-c843-40c7-bb72-196c325b8c75.pt
+  gitCommit=UNKNOWN gitDirty=UNKNOWN
+
+row=B1 seed=43 experimentId=matrix-20261025-162100-993abb7f-B1-s43
+architecture=mlp_54_256_128_7 manifest=artifacts/matrix-smoke/02eb827151/non-iid aggregation=fedavg selection=random
+  dataset=synthetic dataSeed=42 partition=dirichlet_label_skew alpha=0.5
+round=1 outcome=COMMITTED
+  accuracy=0.152857
+  macroF1=0.107893
+  loss=1.946685
+  worstClassRecall=0.000000
+  virtualSeconds=0.152026
+  wallSeconds=0.277639
+  coverage=0.050000
+  ramFeasibleCoverage=0.050000
+  estimatedFeasibleCoverage=0.050000
+  ramFeasiblePopulation=100.000000
+  estimatedFeasiblePopulation=100.000000
+  participationGini=0.950000
+  acceptedUpdates=5.000000
+  selectedClients=5.000000
+  acceptedSelectedRatio=1.000000
+  proxySeconds=0.000000
+  proxyWallSeconds=0.000000
+  weightSeconds=0.003628
+  aggregationSeconds=0.113183
+  serverOverheadSeconds=0.116811
+  logicalModelBytesDispatched=957580.000000
+  logicalUpdateBytesAccepted=957580.000000
+  scenarioTraceHash=f77ca50be7580f1747c9175286534a5555730941a2dcc1287699a0f1bf8fb0e9
+  initialModelStateHash=353f297716e97f7655c38cc458918e9b7a3a52ac4a3fb7a14250ceaba73c6a37
+  initializationMethod=pytorch-default-linear-v1 initializationSeed=43
+  threshold=0.65 timeToTarget=NOT_REACHED
+  threshold=0.68 timeToTarget=NOT_REACHED
+  threshold=0.69 timeToTarget=NOT_REACHED
+  threshold=0.7 timeToTarget=NOT_REACHED
+  targetAccuracy=0.7 timeToTargetSeconds=NOT_REACHED
+  perClassRecall=[0.35,0.49,0.14,0.015,0.03,0.045,0.0]
+  perClassPrecision=[0.155902004454343,0.1346153846153846,0.24778761061946902,0.2727272727272727,0.11764705882352941,0.1956521739130435,0.0]
+  confusionMatrix=[[70,113,6,2,7,1,1],[58,98,23,2,4,15,0],[59,97,28,0,9,7,0],[54,108,18,3,10,6,1],[69,106,14,1,6,4,0],[70,100,14,0,7,9,0],[69,106,10,3,8,4,0]]
+  checkpoint=artifacts/models/matrix-20261025-162100-993abb7f-B1-s43/global_0001_f3c6f499-abad-4c77-a1e8-fec2dc4f4968.pt
+  gitCommit=UNKNOWN gitDirty=UNKNOWN
+
+Shared setup for LEFT: rounds=1 clients=100 K=5 localEpochs=1 batchSize=32 learningRate=0.01 simulationEnabled=true resourceProfile=cpu availability=1.0 dropout=0.0 jitter=0.0 deadlineSeconds=null requiredRamMb=600.0 exploration=0.2 priorSecondsPerSample=5.0E-4
+
+RIGHT RUNS
+
+row=B2 seed=42 experimentId=matrix-20261025-162100-993abb7f-B2-s42
+architecture=mlp_54_256_128_7 manifest=artifacts/matrix-smoke/02eb827151/non-iid aggregation=fedlbw selection=random
+  dataset=synthetic dataSeed=42 partition=dirichlet_label_skew alpha=0.5
+round=1 outcome=COMMITTED
+  accuracy=0.141429
+  macroF1=0.105924
+  loss=1.949483
+  worstClassRecall=0.010000
+  virtualSeconds=0.223683
+  wallSeconds=0.357978
+  coverage=0.050000
+  ramFeasibleCoverage=0.050000
+  estimatedFeasibleCoverage=0.050000
+  ramFeasiblePopulation=100.000000
+  estimatedFeasiblePopulation=100.000000
+  participationGini=0.950000
+  acceptedUpdates=5.000000
+  selectedClients=5.000000
+  acceptedSelectedRatio=1.000000
+  proxySeconds=0.128848
+  proxyWallSeconds=0.153935
+  weightSeconds=0.003593
+  aggregationSeconds=0.030428
+  serverOverheadSeconds=0.187956
+  logicalModelBytesDispatched=957580.000000
+  logicalUpdateBytesAccepted=957580.000000
+  scenarioTraceHash=197e6bc3cb47596b45e310a332c457182008c1735f03eae17c7af0afcf08cd66
+  initialModelStateHash=3f38902a94d28364366de96c65eb242213752c4c9cc6246a9b84731aeba993f5
+  initializationMethod=pytorch-default-linear-v1 initializationSeed=42
+  threshold=0.65 timeToTarget=NOT_REACHED
+  threshold=0.68 timeToTarget=NOT_REACHED
+  threshold=0.69 timeToTarget=NOT_REACHED
+  threshold=0.7 timeToTarget=NOT_REACHED
+  targetAccuracy=0.7 timeToTargetSeconds=NOT_REACHED
+  perClassRecall=[0.045,0.01,0.43,0.33,0.08,0.04,0.055]
+  perClassPrecision=[0.15789473684210525,0.15384615384615385,0.14309484193011648,0.12915851272015655,0.1553398058252427,0.20512820512820512,0.14473684210526316]
+  confusionMatrix=[[9,1,95,59,19,3,14],[14,2,86,72,12,6,8],[3,0,86,91,5,6,9],[9,2,86,66,19,8,10],[13,2,82,67,16,1,19],[5,2,87,82,11,8,5],[4,4,79,74,21,7,11]]
+  checkpoint=artifacts/models/matrix-20261025-162100-993abb7f-B2-s42/global_0001_dafece9b-ebe2-40f8-ae43-f4591b464df4.pt
+  gitCommit=UNKNOWN gitDirty=UNKNOWN
+
+row=B2 seed=43 experimentId=matrix-20261025-162100-993abb7f-B2-s43
+architecture=mlp_54_256_128_7 manifest=artifacts/matrix-smoke/02eb827151/non-iid aggregation=fedlbw selection=random
+  dataset=synthetic dataSeed=42 partition=dirichlet_label_skew alpha=0.5
+round=1 outcome=COMMITTED
+  accuracy=0.152857
+  macroF1=0.107835
+  loss=1.946667
+  worstClassRecall=0.000000
+  virtualSeconds=0.219276
+  wallSeconds=0.345441
+  coverage=0.050000
+  ramFeasibleCoverage=0.050000
+  estimatedFeasibleCoverage=0.050000
+  ramFeasiblePopulation=100.000000
+  estimatedFeasiblePopulation=100.000000
+  participationGini=0.950000
+  acceptedUpdates=5.000000
+  selectedClients=5.000000
+  acceptedSelectedRatio=1.000000
+  proxySeconds=0.130260
+  proxyWallSeconds=0.152899
+  weightSeconds=0.002961
+  aggregationSeconds=0.031082
+  serverOverheadSeconds=0.186941
+  logicalModelBytesDispatched=957580.000000
+  logicalUpdateBytesAccepted=957580.000000
+  scenarioTraceHash=f77ca50be7580f1747c9175286534a5555730941a2dcc1287699a0f1bf8fb0e9
+  initialModelStateHash=353f297716e97f7655c38cc458918e9b7a3a52ac4a3fb7a14250ceaba73c6a37
+  initializationMethod=pytorch-default-linear-v1 initializationSeed=43
+  threshold=0.65 timeToTarget=NOT_REACHED
+  threshold=0.68 timeToTarget=NOT_REACHED
+  threshold=0.69 timeToTarget=NOT_REACHED
+  threshold=0.7 timeToTarget=NOT_REACHED
+  targetAccuracy=0.7 timeToTargetSeconds=NOT_REACHED
+  perClassRecall=[0.35,0.49,0.14,0.015,0.03,0.045,0.0]
+  perClassPrecision=[0.155902004454343,0.1349862258953168,0.24561403508771928,0.2727272727272727,0.11764705882352941,0.19148936170212766,0.0]
+  confusionMatrix=[[70,113,6,2,7,1,1],[58,98,23,2,4,15,0],[59,97,28,0,9,7,0],[54,107,18,3,10,7,1],[69,105,15,1,6,4,0],[70,100,14,0,7,9,0],[69,106,10,3,8,4,0]]
+  checkpoint=artifacts/models/matrix-20261025-162100-993abb7f-B2-s43/global_0001_eef07670-76fd-4a96-9ef2-e368dfda83c3.pt
+  gitCommit=UNKNOWN gitDirty=UNKNOWN
+
+Shared setup for RIGHT: rounds=1 clients=100 K=5 localEpochs=1 batchSize=32 learningRate=0.01 simulationEnabled=true resourceProfile=cpu availability=1.0 dropout=0.0 jitter=0.0 deadlineSeconds=null requiredRamMb=600.0 exploration=0.2 priorSecondsPerSample=5.0E-4
+
+SUMMARY (mean +/- sample SD across 2 seeds)
+Metric                  B1                          B2                          B2 - B1 (paired)           
+accuracy                0.147857 +/- 0.007071       0.147143 +/- 0.008081       -0.000714 +/- 0.001010     
+macroF1                 0.107264 +/- 0.000890       0.106879 +/- 0.001351       -0.000385 +/- 0.000461     
+loss                    1.948110 +/- 0.002015       1.948075 +/- 0.001991       -0.000035 +/- 0.000024     
+worstClassRecall        0.005000 +/- 0.007071       0.005000 +/- 0.007071       0.000000 +/- 0.000000      
+virtualSeconds          0.140959 +/- 0.015650       0.221479 +/- 0.003116       0.080520 +/- 0.018767      
+wallSeconds             0.264828 +/- 0.018117       0.351710 +/- 0.008865       0.086881 +/- 0.026982      
+coverage                0.050000 +/- 0.000000       0.050000 +/- 0.000000       0.000000 +/- 0.000000      
+ramFeasibleCoverage     0.050000 +/- 0.000000       0.050000 +/- 0.000000       0.000000 +/- 0.000000      
+estimatedFeasibleCoverage 0.050000 +/- 0.000000       0.050000 +/- 0.000000       0.000000 +/- 0.000000      
+ramFeasiblePopulation   100.000000 +/- 0.000000     100.000000 +/- 0.000000     0.000000 +/- 0.000000      
+estimatedFeasiblePopulation 100.000000 +/- 0.000000     100.000000 +/- 0.000000     0.000000 +/- 0.000000      
+participationGini       0.950000 +/- 0.000000       0.950000 +/- 0.000000       0.000000 +/- 0.000000      
+acceptedUpdates         5.000000 +/- 0.000000       5.000000 +/- 0.000000       0.000000 +/- 0.000000      
+selectedClients         5.000000 +/- 0.000000       5.000000 +/- 0.000000       0.000000 +/- 0.000000      
+acceptedSelectedRatio   1.000000 +/- 0.000000       1.000000 +/- 0.000000       0.000000 +/- 0.000000      
+proxySeconds            0.000000 +/- 0.000000       0.129554 +/- 0.000999       0.129554 +/- 0.000999      
+proxyWallSeconds        0.000000 +/- 0.000000       0.153417 +/- 0.000732       0.153417 +/- 0.000732      
+weightSeconds           0.003544 +/- 0.000120       0.003277 +/- 0.000447       -0.000267 +/- 0.000567     
+aggregationSeconds      0.105049 +/- 0.011504       0.030755 +/- 0.000462       -0.074294 +/- 0.011041     
+serverOverheadSeconds   0.108592 +/- 0.011624       0.187448 +/- 0.000718       0.078856 +/- 0.012341      
+logicalModelBytesDispatched 957580.000000 +/- 0.000000  957580.000000 +/- 0.000000  0.000000 +/- 0.000000      
+logicalUpdateBytesAccepted 957580.000000 +/- 0.000000  957580.000000 +/- 0.000000  0.000000 +/- 0.000000      
+
+PAIRED QUALITY DIFFERENCES (percentage points)
+seed=42  deltaAccuracy=-0.1429 pp  deltaMacroF1=-0.0711 pp  deltaVirtualSeconds=+0.0938
+seed=43  deltaAccuracy=+0.0000 pp  deltaMacroF1=-0.0059 pp  deltaVirtualSeconds=+0.0672
+
+MEAN RECALL PER CLASS (labels 0..6)
+class=0 B1=0.197500 B2=0.197500 delta=+0.0000 pp
+class=1 B1=0.250000 B2=0.250000 delta=+0.0000 pp
+class=2 B1=0.292500 B2=0.285000 delta=-0.7500 pp
+class=3 B1=0.170000 B2=0.172500 delta=+0.2500 pp
+class=4 B1=0.055000 B2=0.055000 delta=+0.0000 pp
+class=5 B1=0.042500 B2=0.042500 delta=+0.0000 pp
+class=6 B1=0.027500 B2=0.027500 delta=+0.0000 pp
+
+TIME TO TARGET (censored runs stay NOT_REACHED, never 0)
+threshold=0.65 row=B1 reached=0/2 conditionalVirtual=N/A conditionalWall=N/A
+threshold=0.65 row=B2 reached=0/2 conditionalVirtual=N/A conditionalWall=N/A
+threshold=0.68 row=B1 reached=0/2 conditionalVirtual=N/A conditionalWall=N/A
+threshold=0.68 row=B2 reached=0/2 conditionalVirtual=N/A conditionalWall=N/A
+threshold=0.69 row=B1 reached=0/2 conditionalVirtual=N/A conditionalWall=N/A
+threshold=0.69 row=B2 reached=0/2 conditionalVirtual=N/A conditionalWall=N/A
+threshold=0.70 row=B1 reached=0/2 conditionalVirtual=N/A conditionalWall=N/A
+threshold=0.70 row=B2 reached=0/2 conditionalVirtual=N/A conditionalWall=N/A
+Conditional means include ONLY reached runs; use reached counts together with these times.
+
+OBSERVED COMPARISON
+B2 has lower mean Macro-F1 than B1 by 0.0385 percentage points.
+Compare virtual time, class recall and coverage as separate trade-offs; no single overall winner is inferred.
+This is an exploratory comparison on the listed seeds and fixed partitions, not a statistical significance claim.
+Test metrics are for reporting; do not choose hyperparameters or the best checkpoint using these test results.

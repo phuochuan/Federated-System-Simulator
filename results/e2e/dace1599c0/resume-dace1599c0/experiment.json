@@ -1,0 +1,3066 @@
+{
+  "id": "resume-dace1599c0",
+  "status": "COMPLETED",
+  "config": {
+    "experimentId": "resume-dace1599c0",
+    "manifestPath": "artifacts/e2e/dace1599c0/dataset",
+    "totalClients": 100,
+    "selectedPerRound": 5,
+    "rounds": 20,
+    "seed": 42,
+    "selection": "random",
+    "aggregation": "fedavg",
+    "localEpochs": 1,
+    "batchSize": 32,
+    "learningRate": 0.01,
+    "simulationEnabled": false,
+    "resourceProfile": "heterogeneous",
+    "availability": 1.0,
+    "dropout": 0.05,
+    "jitter": 0.1,
+    "exploration": 0.2,
+    "deadlineSeconds": null,
+    "requiredRamMb": 600.0,
+    "priorSecondsPerSample": 0.0005,
+    "targetAccuracy": 0.3
+  },
+  "snapshot": {
+    "round": 20,
+    "modelVersion": 20,
+    "checkpointPath": "artifacts/models/resume-dace1599c0/global_0020_399fb396-8eb7-4b21-9980-ac0e1d386e4d.pt",
+    "cumulativeVirtualSeconds": 3.435340500002294,
+    "timeToTargetSeconds": null,
+    "clients": [
+      {
+        "clientId": 0,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 1,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 2,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 3,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 4,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 5,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 11,
+        "lastCompletedRound": 11,
+        "estimatedSeconds": 0.04022160000022268,
+        "recentTrainingLoss": 1.9472080559100744,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 6,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 7,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 8,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 9,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 10,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 9,
+        "lastCompletedRound": 9,
+        "estimatedSeconds": 0.025214799999957904,
+        "recentTrainingLoss": 1.9379818147083498,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 11,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 12,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 13,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 16,
+        "lastCompletedRound": 16,
+        "estimatedSeconds": 0.02291979999790783,
+        "recentTrainingLoss": 1.944594313513558,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 14,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 3,
+        "completionCount": 3,
+        "opportunityCount": 20,
+        "lastSelectedRound": 17,
+        "lastCompletedRound": 17,
+        "estimatedSeconds": 0.025355000001582084,
+        "recentTrainingLoss": 1.9513518023041059,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 15,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 1,
+        "lastCompletedRound": 1,
+        "estimatedSeconds": 0.039092400002118666,
+        "recentTrainingLoss": 1.9429830087805695,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 16,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 17,
+        "lastCompletedRound": 17,
+        "estimatedSeconds": 0.026121400002011796,
+        "recentTrainingLoss": 1.9666590240766417,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 17,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 18,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 13,
+        "lastCompletedRound": 13,
+        "estimatedSeconds": 0.024474200003169244,
+        "recentTrainingLoss": 1.927659754483205,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 19,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 16,
+        "lastCompletedRound": 16,
+        "estimatedSeconds": 0.02273060000152327,
+        "recentTrainingLoss": 1.9579710218141664,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 20,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 21,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 22,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 18,
+        "lastCompletedRound": 18,
+        "estimatedSeconds": 0.03769019999890588,
+        "recentTrainingLoss": 1.9466375157518208,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 23,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 10,
+        "lastCompletedRound": 10,
+        "estimatedSeconds": 0.04069080000044778,
+        "recentTrainingLoss": 1.9590407542462618,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 24,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 25,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 16,
+        "lastCompletedRound": 16,
+        "estimatedSeconds": 0.030837000002065906,
+        "recentTrainingLoss": 1.9536772044199817,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 26,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 16,
+        "lastCompletedRound": 16,
+        "estimatedSeconds": 0.02283539999916684,
+        "recentTrainingLoss": 1.9728391507886491,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 27,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 28,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 20,
+        "lastCompletedRound": 20,
+        "estimatedSeconds": 0.31689140000162297,
+        "recentTrainingLoss": 1.9829178036383863,
+        "lastStatus": "COMPLETED"
+      },
+      {
+        "clientId": 29,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 3,
+        "completionCount": 3,
+        "opportunityCount": 20,
+        "lastSelectedRound": 13,
+        "lastCompletedRound": 13,
+        "estimatedSeconds": 0.023617200000444427,
+        "recentTrainingLoss": 1.955759808702289,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 30,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 12,
+        "lastCompletedRound": 12,
+        "estimatedSeconds": 0.0671729999994568,
+        "recentTrainingLoss": 1.9680843510717716,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 31,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 19,
+        "lastCompletedRound": 19,
+        "estimatedSeconds": 0.024163999998563668,
+        "recentTrainingLoss": 1.9727540623466924,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 32,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 33,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 14,
+        "lastCompletedRound": 14,
+        "estimatedSeconds": 0.03059200000279816,
+        "recentTrainingLoss": 1.9415190129909876,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 34,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 1,
+        "lastCompletedRound": 1,
+        "estimatedSeconds": 0.03126179999890155,
+        "recentTrainingLoss": 1.9497558800679333,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 35,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 16,
+        "lastCompletedRound": 16,
+        "estimatedSeconds": 0.03260219999719993,
+        "recentTrainingLoss": 1.9534849558236465,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 36,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 17,
+        "lastCompletedRound": 17,
+        "estimatedSeconds": 0.026303399998141686,
+        "recentTrainingLoss": 1.959190011024475,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 37,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 19,
+        "lastCompletedRound": 19,
+        "estimatedSeconds": 0.041101200000412064,
+        "recentTrainingLoss": 1.9503092383438687,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 38,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 2,
+        "lastCompletedRound": 2,
+        "estimatedSeconds": 0.04333079999923939,
+        "recentTrainingLoss": 1.9593752217742633,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 39,
+        "numSamples": 53,
+        "tier": "LOW",
+        "cpu": 0.5,
+        "ramMb": 512.0,
+        "selectionCount": 3,
+        "completionCount": 3,
+        "opportunityCount": 20,
+        "lastSelectedRound": 9,
+        "lastCompletedRound": 9,
+        "estimatedSeconds": 0.03457179999895743,
+        "recentTrainingLoss": 1.951461007010262,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 40,
+        "numSamples": 53,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 41,
+        "numSamples": 53,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 3,
+        "completionCount": 3,
+        "opportunityCount": 20,
+        "lastSelectedRound": 12,
+        "lastCompletedRound": 12,
+        "estimatedSeconds": 0.016870499999640742,
+        "recentTrainingLoss": 1.9382384003333326,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 42,
+        "numSamples": 53,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 43,
+        "numSamples": 53,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 4,
+        "completionCount": 4,
+        "opportunityCount": 20,
+        "lastSelectedRound": 15,
+        "lastCompletedRound": 15,
+        "estimatedSeconds": 0.017339199999696575,
+        "recentTrainingLoss": 1.944896545050279,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 44,
+        "numSamples": 53,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 12,
+        "lastCompletedRound": 12,
+        "estimatedSeconds": 0.011650299999018898,
+        "recentTrainingLoss": 1.9517710771200791,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 45,
+        "numSamples": 53,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 46,
+        "numSamples": 53,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 18,
+        "lastCompletedRound": 18,
+        "estimatedSeconds": 0.014852500000415603,
+        "recentTrainingLoss": 1.941064087849743,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 47,
+        "numSamples": 53,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 5,
+        "lastCompletedRound": 5,
+        "estimatedSeconds": 0.0174855999994179,
+        "recentTrainingLoss": 1.9613470288942445,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 48,
+        "numSamples": 53,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 12,
+        "lastCompletedRound": 12,
+        "estimatedSeconds": 0.025568499999280903,
+        "recentTrainingLoss": 1.9440681844387415,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 49,
+        "numSamples": 53,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 20,
+        "lastCompletedRound": 20,
+        "estimatedSeconds": 0.029347300000154064,
+        "recentTrainingLoss": 1.9555970475358784,
+        "lastStatus": "COMPLETED"
+      },
+      {
+        "clientId": 50,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 51,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 52,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 5,
+        "lastCompletedRound": 5,
+        "estimatedSeconds": 0.011530699999639182,
+        "recentTrainingLoss": 1.9266141928159273,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 53,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 15,
+        "lastCompletedRound": 15,
+        "estimatedSeconds": 0.015295299999706913,
+        "recentTrainingLoss": 1.9722606952373798,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 54,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 3,
+        "completionCount": 3,
+        "opportunityCount": 20,
+        "lastSelectedRound": 18,
+        "lastCompletedRound": 18,
+        "estimatedSeconds": 0.015436900001077447,
+        "recentTrainingLoss": 1.9528118922160222,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 55,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 56,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 19,
+        "lastCompletedRound": 19,
+        "estimatedSeconds": 0.014093099998717662,
+        "recentTrainingLoss": 1.9610308683835542,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 57,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 20,
+        "lastCompletedRound": 20,
+        "estimatedSeconds": 0.052946699999665725,
+        "recentTrainingLoss": 1.9581488921092107,
+        "lastStatus": "COMPLETED"
+      },
+      {
+        "clientId": 58,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 59,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 3,
+        "completionCount": 3,
+        "opportunityCount": 20,
+        "lastSelectedRound": 14,
+        "lastCompletedRound": 14,
+        "estimatedSeconds": 0.01267560000087542,
+        "recentTrainingLoss": 1.9719792787845318,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 60,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 3,
+        "completionCount": 3,
+        "opportunityCount": 20,
+        "lastSelectedRound": 20,
+        "lastCompletedRound": 20,
+        "estimatedSeconds": 0.026671400000850554,
+        "recentTrainingLoss": 1.9657394519219031,
+        "lastStatus": "COMPLETED"
+      },
+      {
+        "clientId": 61,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 62,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 63,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 18,
+        "lastCompletedRound": 18,
+        "estimatedSeconds": 0.014931600000636536,
+        "recentTrainingLoss": 1.9278547763824463,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 64,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 8,
+        "lastCompletedRound": 8,
+        "estimatedSeconds": 0.01584549999824958,
+        "recentTrainingLoss": 1.9397594745342548,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 65,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 66,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 6,
+        "lastCompletedRound": 6,
+        "estimatedSeconds": 0.012495100001615356,
+        "recentTrainingLoss": 1.9643620619407067,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 67,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 14,
+        "lastCompletedRound": 14,
+        "estimatedSeconds": 0.012127999998483574,
+        "recentTrainingLoss": 1.9414137235054603,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 68,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 69,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 4,
+        "lastCompletedRound": 4,
+        "estimatedSeconds": 0.018558300000222516,
+        "recentTrainingLoss": 1.9418378151380098,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 70,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 71,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 72,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 6,
+        "lastCompletedRound": 6,
+        "estimatedSeconds": 0.014721000001372886,
+        "recentTrainingLoss": 1.950616689828726,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 73,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 10,
+        "lastCompletedRound": 10,
+        "estimatedSeconds": 0.013512199999240693,
+        "recentTrainingLoss": 1.9606117652012751,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 74,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 75,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 3,
+        "completionCount": 3,
+        "opportunityCount": 20,
+        "lastSelectedRound": 15,
+        "lastCompletedRound": 15,
+        "estimatedSeconds": 0.017726000000038766,
+        "recentTrainingLoss": 1.966873994240394,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 76,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 77,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 3,
+        "completionCount": 3,
+        "opportunityCount": 20,
+        "lastSelectedRound": 19,
+        "lastCompletedRound": 19,
+        "estimatedSeconds": 0.012827500000639702,
+        "recentTrainingLoss": 1.9484397631425123,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 78,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 79,
+        "numSamples": 52,
+        "tier": "MEDIUM",
+        "cpu": 1.0,
+        "ramMb": 1024.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 8,
+        "lastCompletedRound": 8,
+        "estimatedSeconds": 0.012252599999555969,
+        "recentTrainingLoss": 1.937289027067331,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 80,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 13,
+        "lastCompletedRound": 13,
+        "estimatedSeconds": 0.008755249999921944,
+        "recentTrainingLoss": 1.9532701877447276,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 81,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 82,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 83,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 84,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 17,
+        "lastCompletedRound": 17,
+        "estimatedSeconds": 0.009142550000433403,
+        "recentTrainingLoss": 1.9477358689674964,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 85,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 86,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 5,
+        "lastCompletedRound": 5,
+        "estimatedSeconds": 0.006658199999947101,
+        "recentTrainingLoss": 1.9446274867424598,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 87,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 2,
+        "completionCount": 2,
+        "opportunityCount": 20,
+        "lastSelectedRound": 18,
+        "lastCompletedRound": 18,
+        "estimatedSeconds": 0.005630300000120769,
+        "recentTrainingLoss": 1.9631415788943951,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 88,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 89,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 90,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 3,
+        "completionCount": 3,
+        "opportunityCount": 20,
+        "lastSelectedRound": 19,
+        "lastCompletedRound": 19,
+        "estimatedSeconds": 0.009082200000193552,
+        "recentTrainingLoss": 1.9674938733761127,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 91,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 92,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 11,
+        "lastCompletedRound": 11,
+        "estimatedSeconds": 0.011169499999596155,
+        "recentTrainingLoss": 1.950182089438805,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 93,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 94,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 15,
+        "lastCompletedRound": 15,
+        "estimatedSeconds": 0.007869200000641285,
+        "recentTrainingLoss": 1.9375957984190721,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 95,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 15,
+        "lastCompletedRound": 15,
+        "estimatedSeconds": 0.010497500000383297,
+        "recentTrainingLoss": 1.972020726937514,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 96,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 20,
+        "lastCompletedRound": 20,
+        "estimatedSeconds": 0.018975500000124157,
+        "recentTrainingLoss": 1.9556927222471971,
+        "lastStatus": "COMPLETED"
+      },
+      {
+        "clientId": 97,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 98,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 1,
+        "completionCount": 1,
+        "opportunityCount": 20,
+        "lastSelectedRound": 12,
+        "lastCompletedRound": 12,
+        "estimatedSeconds": 0.006817450000198733,
+        "recentTrainingLoss": 1.9771316785078783,
+        "lastStatus": "AVAILABLE"
+      },
+      {
+        "clientId": 99,
+        "numSamples": 52,
+        "tier": "HIGH",
+        "cpu": 2.0,
+        "ramMb": 2048.0,
+        "selectionCount": 0,
+        "completionCount": 0,
+        "opportunityCount": 20,
+        "lastSelectedRound": 0,
+        "lastCompletedRound": 0,
+        "estimatedSeconds": null,
+        "recentTrainingLoss": null,
+        "lastStatus": "AVAILABLE"
+      }
+    ],
+    "initialEvaluation": {
+      "loss": 1.9533111136300223,
+      "accuracy": 0.13285714285714287,
+      "macroF1": 0.06638949089191201,
+      "perClassPrecision": [
+        0.1163141993957704,
+        0.09090909090909091,
+        0.2,
+        0.14756446991404013,
+        0.0,
+        0.5,
+        0.0
+      ],
+      "perClassRecall": [
+        0.385,
+        0.01,
+        0.01,
+        0.515,
+        0.0,
+        0.01,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          77,
+          5,
+          1,
+          117,
+          0,
+          0,
+          0
+        ],
+        [
+          91,
+          2,
+          0,
+          106,
+          1,
+          0,
+          0
+        ],
+        [
+          111,
+          6,
+          2,
+          80,
+          1,
+          0,
+          0
+        ],
+        [
+          88,
+          2,
+          3,
+          103,
+          0,
+          2,
+          2
+        ],
+        [
+          97,
+          3,
+          3,
+          97,
+          0,
+          0,
+          0
+        ],
+        [
+          101,
+          4,
+          0,
+          93,
+          0,
+          2,
+          0
+        ],
+        [
+          97,
+          0,
+          1,
+          102,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 42.20019999957003
+    },
+    "manifest": {
+      "dataset": "synthetic",
+      "seed": 42,
+      "strategy": "iid_equal",
+      "alpha": 0.5,
+      "totalClients": 100,
+      "counts": {
+        "train": 5250,
+        "proxy": 350,
+        "test": 1400
+      },
+      "hashes": {
+        "features.npy": "035cb3e31ec4b84246b29f285c2b2ed8b7a99a38f891ef511a037de4eedd63b9",
+        "labels.npy": "d017374c43dee214088a5d2caaa025ac231aca48a08f4d99e10023eb190c6ade",
+        "splits.npz": "ae539c239daffba25dcec08ec1c59f4674591504f3bd5a3317da670762c969a7",
+        "partitions.npz": "1277b8dd141d991b8a64fa72f85c6ed4c88918fe0176e541273468f27c54f192"
+      },
+      "scaler": {
+        "columns": 54,
+        "mean": [
+          -0.23299208624292875,
+          -0.5611064783150047,
+          -0.021365118024305307,
+          -0.0005082323677627192,
+          0.4531910222663677,
+          0.007883501635551165,
+          0.000911093359103515,
+          0.1460363253006889,
+          -0.02466494389988241,
+          -0.02993471529482243,
+          0.002904200282712866,
+          -0.004690511864385501,
+          -0.18141910911348116,
+          -0.0020637711379663196,
+          -0.02508728751312897,
+          0.1670086036398539,
+          0.3488516292048873,
+          -0.024265496921379096,
+          -0.00530200582382713,
+          0.0025497135561024713,
+          0.00989630646790569,
+          -0.005723986897290507,
+          -0.33365609962551945,
+          -0.14900617267188085,
+          0.0010525369107656714,
+          0.006110645581458119,
+          0.4026958882762327,
+          -0.0068351748593073955,
+          -0.2926157974368072,
+          0.3761245316638212,
+          -0.03157053437637591,
+          0.011993758435560657,
+          0.16369782830413343,
+          -0.0037973874797019,
+          0.014491354021476582,
+          -0.31024217562324236,
+          0.008517072461027834,
+          -0.40758093589669026,
+          0.005355735875017542,
+          -0.013362804184814671,
+          0.005767788921028287,
+          0.0016847843514378404,
+          0.012783056422609315,
+          0.0005680288203736945,
+          -0.00435982341357504,
+          -0.01273444911006594,
+          0.003464999731053554,
+          -0.023439435128787798,
+          0.29232014890103825,
+          0.030080782503028224,
+          0.00948740808839821,
+          0.023931270229250436,
+          -0.038435124658382155,
+          -0.5761152042716498
+        ],
+        "scale": [
+          2.794848150662825,
+          2.749541638080402,
+          1.0140949735194995,
+          1.0017208358567595,
+          2.75033506050111,
+          1.000584222651452,
+          0.9923665158356938,
+          2.757601710714051,
+          1.0060929297092907,
+          2.8379182949085724,
+          1.0020266838163432,
+          1.0075435286113077,
+          2.6926850623536747,
+          0.9937271072792178,
+          2.800463537683835,
+          2.7537114343427844,
+          2.7973561547710464,
+          0.9971891611902801,
+          0.9778988507585119,
+          0.9996182650344123,
+          0.9912548226433258,
+          1.0094498000350236,
+          2.7957434945925206,
+          2.8006053327675953,
+          1.0156954191132612,
+          0.9780703556073015,
+          2.7728925329965097,
+          2.7271061185455703,
+          2.728062500888388,
+          2.7233692470780415,
+          1.0108864954474086,
+          0.9800290273792762,
+          2.6902144234527157,
+          1.0127709615204084,
+          0.9852423534115494,
+          2.650037726828649,
+          0.9991287658189044,
+          2.649875503807988,
+          0.9883408644887485,
+          1.000346971796319,
+          0.9957463194505989,
+          0.9892400543456725,
+          0.9972232253694272,
+          1.0030057248969253,
+          0.9821037669953837,
+          1.0148074207682158,
+          1.005789713312744,
+          1.0157302403402937,
+          2.7608113997084374,
+          1.0181441222421932,
+          0.9955743139600284,
+          0.9825942871866115,
+          1.0145800974433496,
+          2.751855362419935
+        ]
+      },
+      "labelMapping": "0..6",
+      "clients": [
+        {
+          "clientId": 0,
+          "numSamples": 53,
+          "labelHistogram": [
+            8,
+            9,
+            4,
+            14,
+            1,
+            11,
+            6
+          ]
+        },
+        {
+          "clientId": 1,
+          "numSamples": 53,
+          "labelHistogram": [
+            8,
+            6,
+            9,
+            7,
+            7,
+            7,
+            9
+          ]
+        },
+        {
+          "clientId": 2,
+          "numSamples": 53,
+          "labelHistogram": [
+            10,
+            7,
+            10,
+            6,
+            11,
+            6,
+            3
+          ]
+        },
+        {
+          "clientId": 3,
+          "numSamples": 53,
+          "labelHistogram": [
+            12,
+            4,
+            9,
+            8,
+            12,
+            3,
+            5
+          ]
+        },
+        {
+          "clientId": 4,
+          "numSamples": 53,
+          "labelHistogram": [
+            4,
+            7,
+            9,
+            11,
+            7,
+            5,
+            10
+          ]
+        },
+        {
+          "clientId": 5,
+          "numSamples": 53,
+          "labelHistogram": [
+            10,
+            5,
+            10,
+            9,
+            7,
+            4,
+            8
+          ]
+        },
+        {
+          "clientId": 6,
+          "numSamples": 53,
+          "labelHistogram": [
+            13,
+            7,
+            3,
+            7,
+            9,
+            7,
+            7
+          ]
+        },
+        {
+          "clientId": 7,
+          "numSamples": 53,
+          "labelHistogram": [
+            9,
+            9,
+            5,
+            12,
+            7,
+            3,
+            8
+          ]
+        },
+        {
+          "clientId": 8,
+          "numSamples": 53,
+          "labelHistogram": [
+            7,
+            4,
+            8,
+            6,
+            10,
+            9,
+            9
+          ]
+        },
+        {
+          "clientId": 9,
+          "numSamples": 53,
+          "labelHistogram": [
+            6,
+            6,
+            8,
+            10,
+            5,
+            11,
+            7
+          ]
+        },
+        {
+          "clientId": 10,
+          "numSamples": 53,
+          "labelHistogram": [
+            9,
+            9,
+            5,
+            11,
+            6,
+            9,
+            4
+          ]
+        },
+        {
+          "clientId": 11,
+          "numSamples": 53,
+          "labelHistogram": [
+            5,
+            10,
+            14,
+            3,
+            4,
+            4,
+            13
+          ]
+        },
+        {
+          "clientId": 12,
+          "numSamples": 53,
+          "labelHistogram": [
+            4,
+            8,
+            10,
+            9,
+            8,
+            6,
+            8
+          ]
+        },
+        {
+          "clientId": 13,
+          "numSamples": 53,
+          "labelHistogram": [
+            8,
+            12,
+            11,
+            6,
+            5,
+            6,
+            5
+          ]
+        },
+        {
+          "clientId": 14,
+          "numSamples": 53,
+          "labelHistogram": [
+            8,
+            7,
+            7,
+            7,
+            8,
+            8,
+            8
+          ]
+        },
+        {
+          "clientId": 15,
+          "numSamples": 53,
+          "labelHistogram": [
+            9,
+            5,
+            3,
+            10,
+            10,
+            9,
+            7
+          ]
+        },
+        {
+          "clientId": 16,
+          "numSamples": 53,
+          "labelHistogram": [
+            10,
+            9,
+            11,
+            2,
+            2,
+            9,
+            10
+          ]
+        },
+        {
+          "clientId": 17,
+          "numSamples": 53,
+          "labelHistogram": [
+            10,
+            10,
+            9,
+            6,
+            7,
+            6,
+            5
+          ]
+        },
+        {
+          "clientId": 18,
+          "numSamples": 53,
+          "labelHistogram": [
+            8,
+            14,
+            6,
+            6,
+            4,
+            8,
+            7
+          ]
+        },
+        {
+          "clientId": 19,
+          "numSamples": 53,
+          "labelHistogram": [
+            5,
+            5,
+            8,
+            9,
+            12,
+            9,
+            5
+          ]
+        },
+        {
+          "clientId": 20,
+          "numSamples": 53,
+          "labelHistogram": [
+            9,
+            8,
+            8,
+            11,
+            6,
+            5,
+            6
+          ]
+        },
+        {
+          "clientId": 21,
+          "numSamples": 53,
+          "labelHistogram": [
+            14,
+            7,
+            4,
+            7,
+            9,
+            7,
+            5
+          ]
+        },
+        {
+          "clientId": 22,
+          "numSamples": 53,
+          "labelHistogram": [
+            8,
+            10,
+            8,
+            8,
+            5,
+            4,
+            10
+          ]
+        },
+        {
+          "clientId": 23,
+          "numSamples": 53,
+          "labelHistogram": [
+            6,
+            5,
+            10,
+            10,
+            7,
+            12,
+            3
+          ]
+        },
+        {
+          "clientId": 24,
+          "numSamples": 53,
+          "labelHistogram": [
+            7,
+            7,
+            8,
+            8,
+            9,
+            8,
+            6
+          ]
+        },
+        {
+          "clientId": 25,
+          "numSamples": 53,
+          "labelHistogram": [
+            8,
+            8,
+            7,
+            6,
+            14,
+            4,
+            6
+          ]
+        },
+        {
+          "clientId": 26,
+          "numSamples": 53,
+          "labelHistogram": [
+            1,
+            12,
+            10,
+            6,
+            3,
+            9,
+            12
+          ]
+        },
+        {
+          "clientId": 27,
+          "numSamples": 53,
+          "labelHistogram": [
+            8,
+            5,
+            3,
+            6,
+            13,
+            10,
+            8
+          ]
+        },
+        {
+          "clientId": 28,
+          "numSamples": 53,
+          "labelHistogram": [
+            2,
+            8,
+            9,
+            5,
+            9,
+            12,
+            8
+          ]
+        },
+        {
+          "clientId": 29,
+          "numSamples": 53,
+          "labelHistogram": [
+            2,
+            7,
+            4,
+            12,
+            8,
+            11,
+            9
+          ]
+        },
+        {
+          "clientId": 30,
+          "numSamples": 53,
+          "labelHistogram": [
+            3,
+            9,
+            4,
+            7,
+            8,
+            8,
+            14
+          ]
+        },
+        {
+          "clientId": 31,
+          "numSamples": 53,
+          "labelHistogram": [
+            3,
+            5,
+            6,
+            8,
+            14,
+            7,
+            10
+          ]
+        },
+        {
+          "clientId": 32,
+          "numSamples": 53,
+          "labelHistogram": [
+            5,
+            8,
+            9,
+            9,
+            7,
+            4,
+            11
+          ]
+        },
+        {
+          "clientId": 33,
+          "numSamples": 53,
+          "labelHistogram": [
+            6,
+            11,
+            9,
+            9,
+            4,
+            8,
+            6
+          ]
+        },
+        {
+          "clientId": 34,
+          "numSamples": 53,
+          "labelHistogram": [
+            6,
+            6,
+            10,
+            10,
+            5,
+            9,
+            7
+          ]
+        },
+        {
+          "clientId": 35,
+          "numSamples": 53,
+          "labelHistogram": [
+            5,
+            5,
+            6,
+            10,
+            12,
+            6,
+            9
+          ]
+        },
+        {
+          "clientId": 36,
+          "numSamples": 53,
+          "labelHistogram": [
+            8,
+            8,
+            6,
+            9,
+            4,
+            10,
+            8
+          ]
+        },
+        {
+          "clientId": 37,
+          "numSamples": 53,
+          "labelHistogram": [
+            9,
+            4,
+            8,
+            8,
+            6,
+            8,
+            10
+          ]
+        },
+        {
+          "clientId": 38,
+          "numSamples": 53,
+          "labelHistogram": [
+            6,
+            10,
+            12,
+            4,
+            7,
+            8,
+            6
+          ]
+        },
+        {
+          "clientId": 39,
+          "numSamples": 53,
+          "labelHistogram": [
+            7,
+            10,
+            4,
+            6,
+            5,
+            7,
+            14
+          ]
+        },
+        {
+          "clientId": 40,
+          "numSamples": 53,
+          "labelHistogram": [
+            8,
+            6,
+            9,
+            7,
+            5,
+            12,
+            6
+          ]
+        },
+        {
+          "clientId": 41,
+          "numSamples": 53,
+          "labelHistogram": [
+            9,
+            9,
+            7,
+            11,
+            7,
+            4,
+            6
+          ]
+        },
+        {
+          "clientId": 42,
+          "numSamples": 53,
+          "labelHistogram": [
+            8,
+            7,
+            9,
+            6,
+            8,
+            8,
+            7
+          ]
+        },
+        {
+          "clientId": 43,
+          "numSamples": 53,
+          "labelHistogram": [
+            9,
+            7,
+            7,
+            8,
+            6,
+            12,
+            4
+          ]
+        },
+        {
+          "clientId": 44,
+          "numSamples": 53,
+          "labelHistogram": [
+            9,
+            5,
+            11,
+            9,
+            5,
+            9,
+            5
+          ]
+        },
+        {
+          "clientId": 45,
+          "numSamples": 53,
+          "labelHistogram": [
+            6,
+            5,
+            9,
+            5,
+            8,
+            12,
+            8
+          ]
+        },
+        {
+          "clientId": 46,
+          "numSamples": 53,
+          "labelHistogram": [
+            8,
+            11,
+            3,
+            7,
+            11,
+            7,
+            6
+          ]
+        },
+        {
+          "clientId": 47,
+          "numSamples": 53,
+          "labelHistogram": [
+            10,
+            5,
+            8,
+            5,
+            8,
+            10,
+            7
+          ]
+        },
+        {
+          "clientId": 48,
+          "numSamples": 53,
+          "labelHistogram": [
+            9,
+            7,
+            9,
+            5,
+            7,
+            8,
+            8
+          ]
+        },
+        {
+          "clientId": 49,
+          "numSamples": 53,
+          "labelHistogram": [
+            4,
+            8,
+            8,
+            9,
+            6,
+            6,
+            12
+          ]
+        },
+        {
+          "clientId": 50,
+          "numSamples": 52,
+          "labelHistogram": [
+            10,
+            7,
+            10,
+            8,
+            4,
+            9,
+            4
+          ]
+        },
+        {
+          "clientId": 51,
+          "numSamples": 52,
+          "labelHistogram": [
+            12,
+            9,
+            5,
+            5,
+            10,
+            6,
+            5
+          ]
+        },
+        {
+          "clientId": 52,
+          "numSamples": 52,
+          "labelHistogram": [
+            11,
+            5,
+            6,
+            10,
+            9,
+            4,
+            7
+          ]
+        },
+        {
+          "clientId": 53,
+          "numSamples": 52,
+          "labelHistogram": [
+            7,
+            11,
+            4,
+            4,
+            5,
+            12,
+            9
+          ]
+        },
+        {
+          "clientId": 54,
+          "numSamples": 52,
+          "labelHistogram": [
+            3,
+            7,
+            10,
+            6,
+            8,
+            8,
+            10
+          ]
+        },
+        {
+          "clientId": 55,
+          "numSamples": 52,
+          "labelHistogram": [
+            8,
+            7,
+            9,
+            6,
+            6,
+            10,
+            6
+          ]
+        },
+        {
+          "clientId": 56,
+          "numSamples": 52,
+          "labelHistogram": [
+            8,
+            8,
+            7,
+            7,
+            9,
+            8,
+            5
+          ]
+        },
+        {
+          "clientId": 57,
+          "numSamples": 52,
+          "labelHistogram": [
+            8,
+            4,
+            14,
+            6,
+            7,
+            5,
+            8
+          ]
+        },
+        {
+          "clientId": 58,
+          "numSamples": 52,
+          "labelHistogram": [
+            8,
+            3,
+            4,
+            6,
+            17,
+            9,
+            5
+          ]
+        },
+        {
+          "clientId": 59,
+          "numSamples": 52,
+          "labelHistogram": [
+            5,
+            6,
+            8,
+            7,
+            5,
+            10,
+            11
+          ]
+        },
+        {
+          "clientId": 60,
+          "numSamples": 52,
+          "labelHistogram": [
+            8,
+            7,
+            11,
+            6,
+            4,
+            8,
+            8
+          ]
+        },
+        {
+          "clientId": 61,
+          "numSamples": 52,
+          "labelHistogram": [
+            11,
+            8,
+            6,
+            7,
+            5,
+            5,
+            10
+          ]
+        },
+        {
+          "clientId": 62,
+          "numSamples": 52,
+          "labelHistogram": [
+            9,
+            6,
+            7,
+            10,
+            5,
+            5,
+            10
+          ]
+        },
+        {
+          "clientId": 63,
+          "numSamples": 52,
+          "labelHistogram": [
+            11,
+            8,
+            9,
+            8,
+            8,
+            4,
+            4
+          ]
+        },
+        {
+          "clientId": 64,
+          "numSamples": 52,
+          "labelHistogram": [
+            10,
+            7,
+            5,
+            8,
+            10,
+            8,
+            4
+          ]
+        },
+        {
+          "clientId": 65,
+          "numSamples": 52,
+          "labelHistogram": [
+            3,
+            8,
+            8,
+            6,
+            11,
+            8,
+            8
+          ]
+        },
+        {
+          "clientId": 66,
+          "numSamples": 52,
+          "labelHistogram": [
+            10,
+            6,
+            6,
+            7,
+            9,
+            8,
+            6
+          ]
+        },
+        {
+          "clientId": 67,
+          "numSamples": 52,
+          "labelHistogram": [
+            8,
+            7,
+            9,
+            12,
+            5,
+            5,
+            6
+          ]
+        },
+        {
+          "clientId": 68,
+          "numSamples": 52,
+          "labelHistogram": [
+            7,
+            9,
+            10,
+            5,
+            8,
+            9,
+            4
+          ]
+        },
+        {
+          "clientId": 69,
+          "numSamples": 52,
+          "labelHistogram": [
+            9,
+            11,
+            11,
+            4,
+            2,
+            10,
+            5
+          ]
+        },
+        {
+          "clientId": 70,
+          "numSamples": 52,
+          "labelHistogram": [
+            4,
+            8,
+            9,
+            9,
+            8,
+            4,
+            10
+          ]
+        },
+        {
+          "clientId": 71,
+          "numSamples": 52,
+          "labelHistogram": [
+            7,
+            8,
+            7,
+            7,
+            6,
+            9,
+            8
+          ]
+        },
+        {
+          "clientId": 72,
+          "numSamples": 52,
+          "labelHistogram": [
+            11,
+            8,
+            9,
+            6,
+            6,
+            4,
+            8
+          ]
+        },
+        {
+          "clientId": 73,
+          "numSamples": 52,
+          "labelHistogram": [
+            2,
+            10,
+            11,
+            7,
+            9,
+            8,
+            5
+          ]
+        },
+        {
+          "clientId": 74,
+          "numSamples": 52,
+          "labelHistogram": [
+            9,
+            11,
+            3,
+            3,
+            8,
+            9,
+            9
+          ]
+        },
+        {
+          "clientId": 75,
+          "numSamples": 52,
+          "labelHistogram": [
+            9,
+            9,
+            7,
+            3,
+            8,
+            5,
+            11
+          ]
+        },
+        {
+          "clientId": 76,
+          "numSamples": 52,
+          "labelHistogram": [
+            3,
+            7,
+            9,
+            13,
+            8,
+            5,
+            7
+          ]
+        },
+        {
+          "clientId": 77,
+          "numSamples": 52,
+          "labelHistogram": [
+            9,
+            10,
+            6,
+            7,
+            10,
+            4,
+            6
+          ]
+        },
+        {
+          "clientId": 78,
+          "numSamples": 52,
+          "labelHistogram": [
+            9,
+            5,
+            6,
+            6,
+            6,
+            8,
+            12
+          ]
+        },
+        {
+          "clientId": 79,
+          "numSamples": 52,
+          "labelHistogram": [
+            11,
+            3,
+            7,
+            9,
+            8,
+            8,
+            6
+          ]
+        },
+        {
+          "clientId": 80,
+          "numSamples": 52,
+          "labelHistogram": [
+            7,
+            7,
+            5,
+            8,
+            11,
+            6,
+            8
+          ]
+        },
+        {
+          "clientId": 81,
+          "numSamples": 52,
+          "labelHistogram": [
+            7,
+            6,
+            10,
+            11,
+            6,
+            6,
+            6
+          ]
+        },
+        {
+          "clientId": 82,
+          "numSamples": 52,
+          "labelHistogram": [
+            4,
+            7,
+            6,
+            9,
+            9,
+            11,
+            6
+          ]
+        },
+        {
+          "clientId": 83,
+          "numSamples": 52,
+          "labelHistogram": [
+            14,
+            9,
+            4,
+            5,
+            5,
+            7,
+            8
+          ]
+        },
+        {
+          "clientId": 84,
+          "numSamples": 52,
+          "labelHistogram": [
+            6,
+            4,
+            7,
+            9,
+            10,
+            9,
+            7
+          ]
+        },
+        {
+          "clientId": 85,
+          "numSamples": 52,
+          "labelHistogram": [
+            6,
+            8,
+            5,
+            10,
+            8,
+            7,
+            8
+          ]
+        },
+        {
+          "clientId": 86,
+          "numSamples": 52,
+          "labelHistogram": [
+            11,
+            9,
+            7,
+            7,
+            7,
+            5,
+            6
+          ]
+        },
+        {
+          "clientId": 87,
+          "numSamples": 52,
+          "labelHistogram": [
+            7,
+            5,
+            8,
+            6,
+            6,
+            14,
+            6
+          ]
+        },
+        {
+          "clientId": 88,
+          "numSamples": 52,
+          "labelHistogram": [
+            6,
+            7,
+            11,
+            6,
+            7,
+            5,
+            10
+          ]
+        },
+        {
+          "clientId": 89,
+          "numSamples": 52,
+          "labelHistogram": [
+            7,
+            9,
+            7,
+            6,
+            7,
+            5,
+            11
+          ]
+        },
+        {
+          "clientId": 90,
+          "numSamples": 52,
+          "labelHistogram": [
+            8,
+            6,
+            10,
+            6,
+            6,
+            5,
+            11
+          ]
+        },
+        {
+          "clientId": 91,
+          "numSamples": 52,
+          "labelHistogram": [
+            9,
+            4,
+            4,
+            10,
+            11,
+            7,
+            7
+          ]
+        },
+        {
+          "clientId": 92,
+          "numSamples": 52,
+          "labelHistogram": [
+            6,
+            12,
+            2,
+            6,
+            10,
+            11,
+            5
+          ]
+        },
+        {
+          "clientId": 93,
+          "numSamples": 52,
+          "labelHistogram": [
+            10,
+            8,
+            9,
+            8,
+            2,
+            10,
+            5
+          ]
+        },
+        {
+          "clientId": 94,
+          "numSamples": 52,
+          "labelHistogram": [
+            6,
+            10,
+            7,
+            9,
+            9,
+            4,
+            7
+          ]
+        },
+        {
+          "clientId": 95,
+          "numSamples": 52,
+          "labelHistogram": [
+            5,
+            8,
+            10,
+            6,
+            9,
+            7,
+            7
+          ]
+        },
+        {
+          "clientId": 96,
+          "numSamples": 52,
+          "labelHistogram": [
+            6,
+            8,
+            7,
+            6,
+            11,
+            9,
+            5
+          ]
+        },
+        {
+          "clientId": 97,
+          "numSamples": 52,
+          "labelHistogram": [
+            5,
+            7,
+            5,
+            8,
+            10,
+            7,
+            10
+          ]
+        },
+        {
+          "clientId": 98,
+          "numSamples": 52,
+          "labelHistogram": [
+            6,
+            7,
+            9,
+            7,
+            2,
+            8,
+            13
+          ]
+        },
+        {
+          "clientId": 99,
+          "numSamples": 52,
+          "labelHistogram": [
+            8,
+            9,
+            2,
+            10,
+            12,
+            7,
+            4
+          ]
+        }
+      ]
+    },
+    "gitCommit": "",
+    "gitDirty": false
+  },
+  "error": null,
+  "created_at": "2026-10-22 16:56:59"
+}

@@ -1,0 +1,140 @@
+CONTROLLED EXPERIMENT COMPARISON
+Question: Resource-aware khác Random về chất lượng, thời gian và coverage thế nào?
+Status: COMPLETED
+Changed factor: selection
+Matrix config: D:\research\federated-system\artifacts\matrix-smoke\787c44c29a\matrix.json
+Training/selection seeds: [42, 43]
+Dataset partitions are fixed across these seeds; dataset seed is stored in each manifest.
+Ratios use scale 0..1. Differences below are RIGHT minus LEFT.
+SD is sample standard deviation across seeds (n-1), not a confidence interval.
+Wall seconds = sum of round wall times, including test evaluation, excluding initialization.
+Virtual seconds include aggregation/proxy overhead, exclude observer test evaluation.
+
+LEFT RUNS
+
+row=C1 seed=42 experimentId=matrix-20261025-160500-0ef1a197-C1-s42
+architecture=mlp_54_256_128_7 manifest=artifacts/matrix-smoke/787c44c29a/non-iid aggregation=fedavg selection=random
+  dataset=synthetic dataSeed=42 partition=dirichlet_label_skew alpha=0.5
+round=1 outcome=COMMITTED
+  accuracy=0.142857
+  macroF1=0.106635
+  loss=1.949535
+  worstClassRecall=0.010000
+  virtualSeconds=0.118290
+  wallSeconds=0.214156
+  coverage=0.050000
+  participationGini=0.950000
+  acceptedUpdates=5.000000
+  selectedClients=5.000000
+  proxySeconds=0.000000
+  targetAccuracy=0.65 timeToTargetSeconds=NOT_REACHED
+  perClassRecall=[0.045,0.01,0.445,0.325,0.08,0.04,0.055]
+  perClassPrecision=[0.16363636363636364,0.15384615384615385,0.14471544715447154,0.12922465208747516,0.16326530612244897,0.20512820512820512,0.14285714285714285]
+  confusionMatrix=[[9,1,98,58,17,3,14],[13,2,88,71,12,6,8],[3,0,89,90,3,6,9],[9,2,86,65,19,8,11],[12,2,83,67,16,1,19],[5,2,89,80,11,8,5],[4,4,82,72,20,7,11]]
+  checkpoint=artifacts/models/matrix-20261025-160500-0ef1a197-C1-s42/global_0001_765be940-dd55-418e-9d60-150d2b8b223d.pt
+  gitCommit= gitDirty=false
+
+row=C1 seed=43 experimentId=matrix-20261025-160500-0ef1a197-C1-s43
+architecture=mlp_54_256_128_7 manifest=artifacts/matrix-smoke/787c44c29a/non-iid aggregation=fedavg selection=random
+  dataset=synthetic dataSeed=42 partition=dirichlet_label_skew alpha=0.5
+round=1 outcome=COMMITTED
+  accuracy=0.152857
+  macroF1=0.107893
+  loss=1.946685
+  worstClassRecall=0.000000
+  virtualSeconds=0.106106
+  wallSeconds=0.213339
+  coverage=0.050000
+  participationGini=0.950000
+  acceptedUpdates=5.000000
+  selectedClients=5.000000
+  proxySeconds=0.000000
+  targetAccuracy=0.65 timeToTargetSeconds=NOT_REACHED
+  perClassRecall=[0.35,0.49,0.14,0.015,0.03,0.045,0.0]
+  perClassPrecision=[0.155902004454343,0.1346153846153846,0.24778761061946902,0.2727272727272727,0.11764705882352941,0.1956521739130435,0.0]
+  confusionMatrix=[[70,113,6,2,7,1,1],[58,98,23,2,4,15,0],[59,97,28,0,9,7,0],[54,108,18,3,10,6,1],[69,106,14,1,6,4,0],[70,100,14,0,7,9,0],[69,106,10,3,8,4,0]]
+  checkpoint=artifacts/models/matrix-20261025-160500-0ef1a197-C1-s43/global_0001_3c18f312-cbcb-4d15-879f-7699f062b789.pt
+  gitCommit= gitDirty=false
+
+Shared setup for LEFT: rounds=1 clients=100 K=5 localEpochs=1 batchSize=32 learningRate=0.01 simulationEnabled=true resourceProfile=cpu availability=1.0 dropout=0.0 jitter=0.0 deadlineSeconds=null requiredRamMb=600.0 exploration=0.2 priorSecondsPerSample=5.0E-4
+
+RIGHT RUNS
+
+row=C2 seed=42 experimentId=matrix-20261025-160500-0ef1a197-C2-s42
+architecture=mlp_54_256_128_7 manifest=artifacts/matrix-smoke/787c44c29a/non-iid aggregation=fedavg selection=resource_aware
+  dataset=synthetic dataSeed=42 partition=dirichlet_label_skew alpha=0.5
+round=1 outcome=COMMITTED
+  accuracy=0.139286
+  macroF1=0.111596
+  loss=1.949676
+  worstClassRecall=0.005000
+  virtualSeconds=0.093736
+  wallSeconds=0.196509
+  coverage=0.050000
+  participationGini=0.950000
+  acceptedUpdates=5.000000
+  selectedClients=5.000000
+  proxySeconds=0.000000
+  targetAccuracy=0.65 timeToTargetSeconds=NOT_REACHED
+  perClassRecall=[0.07,0.005,0.425,0.23,0.125,0.035,0.085]
+  perClassPrecision=[0.17073170731707318,0.1,0.14214046822742474,0.11557788944723618,0.14367816091954022,0.2,0.1650485436893204]
+  confusionMatrix=[[14,1,95,43,28,2,17],[14,1,85,63,18,6,13],[7,0,85,76,14,7,11],[14,2,82,46,37,6,13],[17,2,79,55,25,1,21],[10,0,92,62,18,7,11],[6,4,80,53,34,6,17]]
+  checkpoint=artifacts/models/matrix-20261025-160500-0ef1a197-C2-s42/global_0001_5416fd0f-b2b4-406c-b3f2-e60e5bf1ff0e.pt
+  gitCommit= gitDirty=false
+
+row=C2 seed=43 experimentId=matrix-20261025-160500-0ef1a197-C2-s43
+architecture=mlp_54_256_128_7 manifest=artifacts/matrix-smoke/787c44c29a/non-iid aggregation=fedavg selection=resource_aware
+  dataset=synthetic dataSeed=42 partition=dirichlet_label_skew alpha=0.5
+round=1 outcome=COMMITTED
+  accuracy=0.152857
+  macroF1=0.108401
+  loss=1.946498
+  worstClassRecall=0.000000
+  virtualSeconds=0.167252
+  wallSeconds=0.301938
+  coverage=0.050000
+  participationGini=0.950000
+  acceptedUpdates=5.000000
+  selectedClients=5.000000
+  proxySeconds=0.000000
+  targetAccuracy=0.65 timeToTargetSeconds=NOT_REACHED
+  perClassRecall=[0.445,0.375,0.17,0.015,0.03,0.035,0.0]
+  perClassPrecision=[0.15586690017513136,0.13227513227513227,0.24285714285714285,0.23076923076923078,0.08333333333333333,0.21212121212121213,0.0]
+  confusionMatrix=[[89,87,8,3,9,2,2],[81,75,24,2,7,11,0],[74,73,34,1,12,6,0],[73,82,24,3,15,2,1],[88,87,16,1,6,2,0],[85,75,21,0,11,7,1],[81,88,13,3,12,3,0]]
+  checkpoint=artifacts/models/matrix-20261025-160500-0ef1a197-C2-s43/global_0001_3bc02c93-9473-467b-94f1-bba87d9e29b2.pt
+  gitCommit= gitDirty=false
+
+Shared setup for RIGHT: rounds=1 clients=100 K=5 localEpochs=1 batchSize=32 learningRate=0.01 simulationEnabled=true resourceProfile=cpu availability=1.0 dropout=0.0 jitter=0.0 deadlineSeconds=null requiredRamMb=600.0 exploration=0.2 priorSecondsPerSample=5.0E-4
+
+SUMMARY (mean +/- sample SD across 2 seeds)
+Metric                  C1                          C2                          C2 - C1 (paired)           
+accuracy                0.147857 +/- 0.007071       0.146071 +/- 0.009596       -0.001786 +/- 0.002525     
+macroF1                 0.107264 +/- 0.000890       0.109998 +/- 0.002259       0.002734 +/- 0.003148      
+loss                    1.948110 +/- 0.002015       1.948087 +/- 0.002247       -0.000023 +/- 0.000232     
+worstClassRecall        0.005000 +/- 0.007071       0.002500 +/- 0.003536       -0.002500 +/- 0.003536     
+virtualSeconds          0.112198 +/- 0.008616       0.130494 +/- 0.051984       0.018296 +/- 0.060600      
+wallSeconds             0.213748 +/- 0.000578       0.249224 +/- 0.074550       0.035476 +/- 0.075128      
+coverage                0.050000 +/- 0.000000       0.050000 +/- 0.000000       0.000000 +/- 0.000000      
+participationGini       0.950000 +/- 0.000000       0.950000 +/- 0.000000       0.000000 +/- 0.000000      
+acceptedUpdates         5.000000 +/- 0.000000       5.000000 +/- 0.000000       0.000000 +/- 0.000000      
+selectedClients         5.000000 +/- 0.000000       5.000000 +/- 0.000000       0.000000 +/- 0.000000      
+proxySeconds            0.000000 +/- 0.000000       0.000000 +/- 0.000000       0.000000 +/- 0.000000      
+
+PAIRED QUALITY DIFFERENCES (percentage points)
+seed=42  deltaAccuracy=-0.3571 pp  deltaMacroF1=+0.4961 pp  deltaVirtualSeconds=-0.0246
+seed=43  deltaAccuracy=+0.0000 pp  deltaMacroF1=+0.0508 pp  deltaVirtualSeconds=+0.0611
+
+MEAN RECALL PER CLASS (labels 0..6)
+class=0 C1=0.197500 C2=0.257500 delta=+6.0000 pp
+class=1 C1=0.250000 C2=0.190000 delta=-6.0000 pp
+class=2 C1=0.292500 C2=0.297500 delta=+0.5000 pp
+class=3 C1=0.170000 C2=0.122500 delta=-4.7500 pp
+class=4 C1=0.055000 C2=0.077500 delta=+2.2500 pp
+class=5 C1=0.042500 C2=0.035000 delta=-0.7500 pp
+class=6 C1=0.027500 C2=0.042500 delta=+1.5000 pp
+
+OBSERVED COMPARISON
+C2 has higher mean Macro-F1 than C1 by 0.2734 percentage points.
+Compare virtual time, class recall and coverage as separate trade-offs; no single overall winner is inferred.
+This is an exploratory comparison on the listed seeds and fixed partitions, not a statistical significance claim.
+Test metrics are for reporting; do not choose hyperparameters or the best checkpoint using these test results.

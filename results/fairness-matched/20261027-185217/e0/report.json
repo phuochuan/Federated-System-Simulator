@@ -1,0 +1,235 @@
+{
+  "status": "PASS",
+  "pairs": [
+    {
+      "left": "e0-20261027-185217-det-L3-r1",
+      "right": "e0-20261027-185217-det-L3-r2",
+      "differences": {
+        "selectedIdsEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "acceptedIdsEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "estimatedFeasibleIdsEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "criteriaObservationsEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "fuzzyTopsisScoresEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "fairnessCreditsEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "currentFairnessLambdaEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "selectedSetEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "acceptedSetEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        }
+      },
+      "changedSlots": 0,
+      "selectedSlots": 15,
+      "maxEstimatedTimeDeltaSeconds": 0.0,
+      "mode": "deterministic",
+      "policy": "L3",
+      "firstProjectionDifference": null,
+      "exactReplay": true,
+      "conditionalTraining": {
+        "equalInputJobsChecked": 15,
+        "differentOutputJobs": [],
+        "passed": true
+      },
+      "firstGlobalModelDifference": null
+    },
+    {
+      "left": "e0-20261027-185217-det-L5-r1",
+      "right": "e0-20261027-185217-det-L5-r2",
+      "differences": {
+        "selectedIdsEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "acceptedIdsEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "estimatedFeasibleIdsEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "criteriaObservationsEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "fuzzyTopsisScoresEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "fairnessCreditsEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "currentFairnessLambdaEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "selectedSetEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "acceptedSetEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        }
+      },
+      "changedSlots": 0,
+      "selectedSlots": 15,
+      "maxEstimatedTimeDeltaSeconds": 0.0,
+      "mode": "deterministic",
+      "policy": "L5",
+      "firstProjectionDifference": null,
+      "exactReplay": true,
+      "conditionalTraining": {
+        "equalInputJobsChecked": 15,
+        "differentOutputJobs": [],
+        "passed": true
+      },
+      "firstGlobalModelDifference": null
+    },
+    {
+      "left": "e0-20261027-185217-mea-L3-r1",
+      "right": "e0-20261027-185217-mea-L3-r2",
+      "differences": {
+        "selectedIdsEqual": {
+          "roundCount": 1,
+          "firstRound": 3
+        },
+        "acceptedIdsEqual": {
+          "roundCount": 1,
+          "firstRound": 3
+        },
+        "estimatedFeasibleIdsEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "criteriaObservationsEqual": {
+          "roundCount": 2,
+          "firstRound": 2
+        },
+        "fuzzyTopsisScoresEqual": {
+          "roundCount": 2,
+          "firstRound": 2
+        },
+        "fairnessCreditsEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "currentFairnessLambdaEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "selectedSetEqual": {
+          "roundCount": 1,
+          "firstRound": 3
+        },
+        "acceptedSetEqual": {
+          "roundCount": 1,
+          "firstRound": 3
+        }
+      },
+      "changedSlots": 1,
+      "selectedSlots": 15,
+      "maxEstimatedTimeDeltaSeconds": 0.0017021000001022912,
+      "mode": "measured",
+      "policy": "L3",
+      "firstProjectionDifference": 1,
+      "exactReplay": false,
+      "conditionalTraining": {
+        "equalInputJobsChecked": 14,
+        "differentOutputJobs": [],
+        "passed": true
+      },
+      "firstGlobalModelDifference": 3
+    },
+    {
+      "left": "e0-20261027-185217-mea-L5-r1",
+      "right": "e0-20261027-185217-mea-L5-r2",
+      "differences": {
+        "selectedIdsEqual": {
+          "roundCount": 1,
+          "firstRound": 3
+        },
+        "acceptedIdsEqual": {
+          "roundCount": 1,
+          "firstRound": 3
+        },
+        "estimatedFeasibleIdsEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "criteriaObservationsEqual": {
+          "roundCount": 2,
+          "firstRound": 2
+        },
+        "fuzzyTopsisScoresEqual": {
+          "roundCount": 2,
+          "firstRound": 2
+        },
+        "fairnessCreditsEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "currentFairnessLambdaEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "selectedSetEqual": {
+          "roundCount": 1,
+          "firstRound": 3
+        },
+        "acceptedSetEqual": {
+          "roundCount": 1,
+          "firstRound": 3
+        }
+      },
+      "changedSlots": 1,
+      "selectedSlots": 15,
+      "maxEstimatedTimeDeltaSeconds": 0.0008164999999280553,
+      "mode": "measured",
+      "policy": "L5",
+      "firstProjectionDifference": 1,
+      "exactReplay": false,
+      "conditionalTraining": {
+        "equalInputJobsChecked": 14,
+        "differentOutputJobs": [],
+        "passed": true
+      },
+      "firstGlobalModelDifference": 3
+    }
+  ],
+  "exemptFromExactEquality": [
+    "actualTrainingMs",
+    "workerRssMb",
+    "selectorComputationMs",
+    "fairnessUpdateMs",
+    "wallClockSeconds",
+    "evaluationMs",
+    "virtualSecondsIncludingMeasuredServerOverhead"
+  ],
+  "meaning": "Exact replay gate is for deterministic decisions, local/global tensor hashes, learning metrics and pure simulated training time. Measured overhead remains observational."
+}

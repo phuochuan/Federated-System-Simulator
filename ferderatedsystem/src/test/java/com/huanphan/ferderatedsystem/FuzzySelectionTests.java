@@ -173,4 +173,18 @@ class FuzzySelectionTests {
         pool.get(0).recentTrainingLoss=Double.POSITIVE_INFINITY;
         assertThrows(IllegalArgumentException.class,()->new FuzzyClientSelector().select(pool,c,1,history,state));
     }
+
+    @Test void replacementCountUsesRawTopsisOnSameHistoryAndCountsEachSlotOnce() throws Exception {
+        var c=config("fuzzy_topsis_fair");var state=FairnessCreditState.initial(c.selection(),c.fuzzySelection());
+        state.deficits.put(2,2.);
+        var d=new FuzzyClientSelector().select(clients(3),c,1,new SelectionHistory(),state);
+        assertEquals(List.of(0,1),d.metrics().get("topsisTopKClientIds"));
+        assertEquals(List.of(2,0),d.selected().stream().map(p->p.clientId).toList());
+        assertEquals(1L,d.metrics().get("slotsChangedVsTopsis"));assertEquals(.5,d.metrics().get("slotsChangedVsTopsisRatio"));
+        c.fuzzySelection().fairness.initialLambda=0;state.currentLambda=0;
+        var zero=new FuzzyClientSelector().select(clients(3),c,1,new SelectionHistory(),state);
+        assertEquals(List.of(0,1),zero.selected().stream().map(p->p.clientId).toList());assertEquals(0L,zero.metrics().get("slotsChangedVsTopsis"));
+        var empty=new FuzzyClientSelector().select(List.of(),c,1,new SelectionHistory(),state);
+        assertEquals(0L,empty.metrics().get("slotsChangedVsTopsis"));assertNull(empty.metrics().get("slotsChangedVsTopsisRatio"));
+    }
 }

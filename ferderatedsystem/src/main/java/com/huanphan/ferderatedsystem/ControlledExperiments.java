@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-/** Nine rows: A/B pairs, C factorial 2x2 plus feasible-random selection baseline. */
+/** Controlled A/B/C comparisons, fuzzy selection F group and lambda-policy L ablation. */
 @Component
 public class ControlledExperiments {
     private static final Logger log=LoggerFactory.getLogger(ControlledExperiments.class);
@@ -46,7 +46,16 @@ public class ControlledExperiments {
         C5(LARGE,"fedavg","feasible_random",false), C6(LARGE,"fedavg","resource_aware",false),
         F1(LARGE,"fedavg","feasible_random",false),F2(LARGE,"fedavg","resource_aware",false),
         F3(LARGE,"fedavg","fuzzy_topsis",false),F4(LARGE,"fedavg","fuzzy_topsis_fair",false),
-        F5(LARGE,"fedavg","adaptive_fuzzy_topsis_fair",false);
+        F5(LARGE,"fedavg","adaptive_fuzzy_topsis_fair",false),
+        L0(LARGE,"fedavg","fuzzy_topsis",false),L1(LARGE,"fedavg","fuzzy_topsis_fair",false),
+        L2(LARGE,"fedavg","fuzzy_topsis_fair",false),L3(LARGE,"fedavg","fuzzy_topsis_fair",false),
+        L4(LARGE,"fedavg","fuzzy_topsis_fair",false),L5(LARGE,"fedavg","adaptive_fuzzy_topsis_fair",false),
+        M1(LARGE,"fedavg","fuzzy_topsis_fair",false),M2(LARGE,"fedavg","fuzzy_topsis_fair",false),
+        M3(LARGE,"fedavg","fuzzy_topsis_fair",false),M4(LARGE,"fedavg","fuzzy_topsis_fair",false),
+        M5(LARGE,"fedavg","fuzzy_topsis_fair",false),M6(LARGE,"fedavg","fuzzy_topsis_fair",false),
+        M7(LARGE,"fedavg","adaptive_fuzzy_topsis_fair",false),
+        P1(LARGE,"fedavg","fuzzy_topsis_fair",false),P2(LARGE,"fedavg","fuzzy_topsis_fair",false),
+        P3(LARGE,"fedavg","fuzzy_topsis_fair",false),P4(LARGE,"fedavg","adaptive_fuzzy_topsis_fair",false);
         final String architecture,aggregation,selection;
         final boolean iid;
         Row(String architecture,String aggregation,String selection,boolean iid) {
@@ -54,7 +63,8 @@ public class ControlledExperiments {
         }
     }
     public record RunResult(Row row,ExperimentConfig config,JsonNode experiment,JsonNode result,List<JsonNode> rounds) {}
-    private record Settings(Path root,Path source,String iid,String nonIid,List<Long> seeds,List<Double> targets,ObjectNode base,ObjectNode heterogeneous,JsonNode fuzzy,Path output) {}
+    private record Settings(Path root,Path source,String iid,String nonIid,List<Long> seeds,List<Double> targets,ObjectNode base,ObjectNode heterogeneous,JsonNode fuzzy,JsonNode lambda,Path output) {}
+    static final List<Row> LAMBDA_ROWS=List.of(Row.L0,Row.L1,Row.L2,Row.L3,Row.L4,Row.L5);
     @FunctionalInterface private interface Runner {RunResult run(long seed) throws Exception;}
 
     // Nine row functions; C5 isolates resource-aware ranking from feasibility filtering.
@@ -75,6 +85,53 @@ public class ControlledExperiments {
     public RunResult runF3(long seed) throws Exception {return run(Row.F3,seed);}
     public RunResult runF4(long seed) throws Exception {return run(Row.F4,seed);}
     public RunResult runF5(long seed) throws Exception {return run(Row.F5,seed);}
+    public RunResult runL0(long seed) throws Exception {return run(Row.L0,seed);}
+    public RunResult runL1(long seed) throws Exception {return run(Row.L1,seed);}
+    public RunResult runL2(long seed) throws Exception {return run(Row.L2,seed);}
+    public RunResult runL3(long seed) throws Exception {return run(Row.L3,seed);}
+    public RunResult runL4(long seed) throws Exception {return run(Row.L4,seed);}
+    public RunResult runL5(long seed) throws Exception {return run(Row.L5,seed);}
+
+    public Path runReproducibilityAudit() throws Exception {return research().audit();}
+    public Path runFairnessMatchedValidation() throws Exception {return research().validation();}
+    public Path runFairnessMatchedEvaluation() throws Exception {return research().evaluation();}
+    public Path runHeldoutParetoEvaluation() throws Exception {return research().pareto(false);}
+    public Path preflightHeldoutParetoEvaluation() throws Exception {return research().pareto(true);}
+    /** Run all three prepared stages in one process, sharing the configured database and runtime. */
+    public Path runParetoWorkflow() throws Exception {
+        log.info("pareto.workflow stage=1/3 action=preflight");
+        preflightHeldoutParetoEvaluation();
+        // A missing E0 is expected here: the next stage creates the audit evidence.
+        log.info("pareto.workflow stage=2/3 action=reproducibility_audit");
+        runReproducibilityAudit();
+        // Evaluation rechecks audit readiness and stops before training if E0 did not pass.
+        log.info("pareto.workflow stage=3/3 action=heldout_pareto");
+        return runHeldoutParetoEvaluation();
+    }
+    private ResearchExperiments research() {return new ResearchExperiments(this,worker,json,env,validator);}
+
+    public Path compareFixedLambdaAblation() throws Exception {
+        Settings s=loadSettings();Map<Row,List<RunResult>> runs=new LinkedHashMap<>();
+        LAMBDA_ROWS.forEach(row->runs.put(row,new ArrayList<>()));
+        Exception failure=null;
+        try {
+            // Validate the complete protocol before spending compute on its first run.
+            for(var row:LAMBDA_ROWS) for(long seed:s.seeds()) configFor(row,seed);
+            for(long seed:s.seeds()) {
+                for(var row:LAMBDA_ROWS) {
+                    var completed=run(row,seed);runs.get(row).add(completed);
+                    int index=runs.get(row).size()-1;
+                    if(row!=Row.L0) validatePair(runs.get(Row.L0).get(index),completed,"lambdaPolicy");
+                }
+            }
+        } catch(Exception e) {failure=e;}
+        Path report=s.output().resolve("L-fixed-lambda-ablation.txt");
+        int window=s.lambda().path("stabilityWindow").asInt(10);
+        write(report,LambdaAblationReport.render(s.source().toString(),s.seeds(),s.targets(),window,runs,failure));
+        log.info("matrix.report_saved comparison=L-lambda complete={} path={}",failure==null,report);
+        if(failure!=null) throw new IllegalStateException("Lambda ablation failed; see "+report,failure);
+        return report;
+    }
 
     public Path compareFuzzyClientSelection() throws Exception {
         Settings s=loadSettings();Map<Row,List<RunResult>> runs=new LinkedHashMap<>();
@@ -131,10 +188,15 @@ public class ControlledExperiments {
     ExperimentConfig configFor(Row row,long seed) throws Exception {
         Settings s=loadSettings();
         var node=s.base().deepCopy();
-        if(row.name().startsWith("C")||row.name().startsWith("F")) node.setAll(s.heterogeneous());
-        if(row.name().startsWith("F")) {
-            if(!s.fuzzy().isObject()) throw new IllegalArgumentException("Use configurations/fuzzy-matrix.json for group F");
+        boolean lambdaRow=row.name().startsWith("L");
+        if(row.name().startsWith("C")||row.name().startsWith("F")||lambdaRow) node.setAll(s.heterogeneous());
+        if(row.name().startsWith("F")||lambdaRow) {
+            if(!s.fuzzy().isObject()) throw new IllegalArgumentException("F/L protocols require fuzzySelection settings");
             node.set("fuzzySelection",s.fuzzy().deepCopy());
+        }
+        if(lambdaRow) {
+            checkLambdaProtocol(s);
+            if(row!=Row.L5) ((ObjectNode)node.path("fuzzySelection").path("fairness")).put("lambda",s.lambda().path("fixedLambdas").get(row.ordinal()-Row.L0.ordinal()).asDouble());
         }
         node.put("experimentId","matrix-"+batch+"-"+row+"-s"+seed);
         node.put("manifestPath",row.iid?s.iid():s.nonIid());
@@ -159,23 +221,66 @@ public class ControlledExperiments {
         var config=configFor(row,seed);
         log.info("matrix.run_started batch={} row={} seed={} experiment={} architecture={} selection={} aggregation={}",
                 batch,row,seed,config.experimentId(),config.architecture(),config.selection(),config.aggregation());
-        coordinator.startAndAwait(config);
+        return runPrepared(row,config,loadSettings().output().resolve("runs").resolve(config.experimentId()));
+    }
+
+    /** Shared execution/export path; research identities permit safe completed-run reuse. */
+    RunResult runPrepared(Row row,ExperimentConfig config,Path folder) throws Exception {
+        config.check();
+        if(!validator.validate(config).isEmpty()) throw new IllegalArgumentException("Invalid experiment config");
+        Map<String,Object> prior=null;
+        try {prior=repository.find(config.experimentId());} catch(NoSuchElementException ignored) {}
+        if(prior==null) coordinator.startAndAwait(config);
+        else {
+            var stored=(ObjectNode)json.readTree((String)prior.get("config"));var requested=(ObjectNode)json.readTree(json.writeValueAsString(config));
+            var storedProvenance=stored.path("provenance");
+            stored=stored.deepCopy();requested=requested.deepCopy();stored.remove("provenance");requested.remove("provenance");
+            if(!config.hasProvenance() || !stored.equals(requested)||
+                    !storedProvenance.path("runtimeIdentity").equals(config.provenance().path("runtimeIdentity"))||
+                    !storedProvenance.path("configHash").equals(config.provenance().path("configHash")))
+                throw new IllegalStateException("Run identity/config/build provenance mismatch: "+config.experimentId());
+            if(!"COMPLETED".equals(prior.get("status")))
+                throw new IllegalStateException("Existing run is "+prior.get("status")+"; resume via API, then rerun the batch: "+config.experimentId());
+            // Preserve the original Git/launch metadata when reusing a completed identity.
+            config=json.readValue((String)prior.get("config"),ExperimentConfig.class);
+        }
         var state=repository.find(config.experimentId());
         var experiment=json.valueToTree(state);
         ((ObjectNode)experiment).set("config",json.readTree((String)state.get("config")));
         ((ObjectNode)experiment).set("snapshot",json.readTree((String)state.get("snapshot")));
+        if(config.hasProvenance()) {
+            if(!config.provenance().equals(experiment.path("snapshot").path("executionProvenance")))
+                throw new IllegalStateException("Persisted snapshot/config execution provenance differs");
+            ResearchProvenance.verify(config.provenance(),worker,json);
+            var current=worker.get("/datasets/manifest?manifestPath="+URLEncoder.encode(config.manifestPath(),StandardCharsets.UTF_8)+"&verify=true");
+            if(!experiment.path("snapshot").path("manifest").equals(current)) throw new IllegalStateException("Partition changed during/reusing run");
+        }
         var result=repository.result(config.experimentId());
         var rounds=repository.rounds(config.experimentId());
         if(rounds.size()!=config.rounds() || result.path("roundId").asInt()!=config.rounds())
             throw new IllegalStateException("Incomplete round evidence for "+config.experimentId());
         if(!config.architecture().equals(result.path("evaluation").path("architecture").asText()))
             throw new IllegalStateException("Worker returned an unexpected architecture for "+config.experimentId());
-        Path folder=loadSettings().output().resolve("runs").resolve(config.experimentId());
-        write(folder.resolve("experiment.json"),json.writerWithDefaultPrettyPrinter().writeValueAsString(experiment));
-        write(folder.resolve("rounds.json"),json.writerWithDefaultPrettyPrinter().writeValueAsString(rounds));
-        write(folder.resolve("result.json"),json.writerWithDefaultPrettyPrinter().writeValueAsString(result));
-        log.info("matrix.run_completed row={} seed={} evidence={}",row,seed,folder);
-        return new RunResult(row,config,experiment,result,List.copyOf(rounds));
+        for(var entry:Map.of("experiment.json",experiment,"result.json",result).entrySet()) {
+            Path file=folder.resolve(entry.getKey());
+            if(Files.exists(file)) {
+                try(var in=Files.newInputStream(file)) {
+                    if(!ResearchProvenance.hash(json.readTree(in)).equals(ResearchProvenance.hash(entry.getValue()))) throw new IllegalStateException("Export changed: "+file);
+                }
+            } else ResearchProvenance.saveJson(file,entry.getValue(),json);
+        }
+        Path roundFile=folder.resolve("rounds.json");
+        if(Files.exists(roundFile)) {
+            var exported=new IndexedRoundEvidence(roundFile,json);
+            if(exported.size()!=rounds.size()) throw new IllegalStateException("Export changed: "+roundFile);
+            for(int i=0;i<rounds.size();i++)
+                if(!ResearchProvenance.hash(exported.get(i)).equals(ResearchProvenance.hash(rounds.get(i))))
+                    throw new IllegalStateException("Export changed: "+roundFile);
+        } else ResearchProvenance.saveJson(roundFile,rounds,json);
+        // Research matrices retain many runs. Keep only an index, not every round tree.
+        List<JsonNode> retained=config.hasProvenance()?new IndexedRoundEvidence(roundFile,json):List.copyOf(rounds);
+        log.info("matrix.run_completed row={} seed={} evidence={}",row,config.seed(),folder);
+        return new RunResult(row,config,experiment,result,retained);
     }
 
     private Path compare(String name,String question,String changedField,Runner left,Runner right) throws Exception {
@@ -202,7 +307,9 @@ public class ControlledExperiments {
         Path root=workspace.isBlank()?Path.of("").toAbsolutePath().normalize():Path.of(workspace).toAbsolutePath().normalize();
         if(workspace.isBlank() && !Files.isDirectory(root.resolve("configurations")) && root.getParent()!=null) root=root.getParent();
         boolean fuzzyMode="fuzzy_matrix".equals(env.getProperty("minifls.launch.method","none"));
-        Path source=root.resolve(fuzzyMode?env.getProperty("minifls.fuzzy.matrix.config","configurations/fuzzy-matrix.json"):
+        boolean lambdaMode="lambda_ablation".equals(env.getProperty("minifls.launch.method","none"));
+        Path source=root.resolve(lambdaMode?env.getProperty("minifls.lambda.matrix.config","configurations/lambda-ablation.json"):
+                fuzzyMode?env.getProperty("minifls.fuzzy.matrix.config","configurations/fuzzy-matrix.json"):
                 env.getProperty("minifls.matrix.config","configurations/controlled-matrix.json")).normalize();
         JsonNode document=json.readTree(Files.readString(source));
         if(!(document.path("baseConfig") instanceof ObjectNode base) || !document.path("seeds").isArray())
@@ -231,7 +338,7 @@ public class ControlledExperiments {
         var required=Set.of("resourceProfile","availability","dropout","deadlineSeconds","requiredRamMb","jitter");
         var fields=new HashSet<String>();heterogeneous.fieldNames().forEachRemaining(fields::add);
         if(!fields.equals(required)) throw new IllegalArgumentException("heterogeneousScenario must define exactly "+required);
-        settings=new Settings(root,source,iid,nonIid,List.copyOf(seeds),List.copyOf(targets),base,heterogeneous,document.path("fuzzySelection"),output);
+        settings=new Settings(root,source,iid,nonIid,List.copyOf(seeds),List.copyOf(targets),base,heterogeneous,document.path("fuzzySelection"),document.path("lambdaAblation"),output);
         log.info("matrix.configured batch={} source={} seeds={} output={}",batch,source,seeds,output);
         return settings;
     }
@@ -239,7 +346,7 @@ public class ControlledExperiments {
     private void preflight() throws Exception {
         if(ready) return;
         Settings s=loadSettings();
-        for(var row:Row.values()) if(!row.name().startsWith("F")) for(long seed:s.seeds()) configFor(row,seed);
+        for(var row:Row.values()) if(!row.name().startsWith("F")&&!row.name().startsWith("L")&&!row.name().startsWith("M")&&!row.name().startsWith("P")) for(long seed:s.seeds()) configFor(row,seed);
         var iid=worker.get("/datasets/manifest?manifestPath="+URLEncoder.encode(s.iid(),StandardCharsets.UTF_8));
         var nonIid=worker.get("/datasets/manifest?manifestPath="+URLEncoder.encode(s.nonIid(),StandardCharsets.UTF_8));
         if(!"iid_equal".equals(iid.path("strategy").asText()) || !"dirichlet_label_skew".equals(nonIid.path("strategy").asText()))
@@ -262,9 +369,21 @@ public class ControlledExperiments {
 
     void validatePair(RunResult a,RunResult b,String changedField) {
         var ca=(ObjectNode)json.valueToTree(a.config());var cb=(ObjectNode)json.valueToTree(b.config());
-        ca.remove(List.of("experimentId",changedField));cb.remove(List.of("experimentId",changedField));
+        if(a.config().hasProvenance() || b.config().hasProvenance()) {
+            if(!a.config().hasProvenance() || !b.config().hasProvenance() ||
+                    !a.config().provenance().path("runtimeIdentity").equals(b.config().provenance().path("runtimeIdentity")))
+                throw new IllegalStateException("Paired runtime provenance differs");
+            ca.remove("provenance");cb.remove("provenance");
+        }
+        if(changedField.equals("lambdaPolicy")) {
+            for(var config:List.of(ca,cb)) {
+                config.remove(List.of("experimentId","selection"));
+                ((ObjectNode)config.path("fuzzySelection").path("fairness")).remove("lambda");
+            }
+        } else {ca.remove(List.of("experimentId",changedField));cb.remove(List.of("experimentId",changedField));}
         if(!ca.equals(cb)) throw new IllegalStateException("Uncontrolled configuration differences");
         var sa=a.experiment().path("snapshot");var sb=b.experiment().path("snapshot");
+        if(a.rounds().size()!=b.rounds().size() || a.rounds().size()!=a.config().rounds()) throw new IllegalStateException("Incomplete paired rounds");
         if(!sa.path("manifest").equals(sb.path("manifest"))) throw new IllegalStateException("Partition manifests differ");
         for(String field:List.of("scenarioTraceHash","initializationMethod"))
             if(sa.path(field).asText().isBlank() || !sa.path(field).equals(sb.path(field))) throw new IllegalStateException("Paired evidence mismatch: "+field);
@@ -276,6 +395,25 @@ public class ControlledExperiments {
         for(int i=0;i<a.rounds().size();i++)
             if(!a.rounds().get(i).has("scenarioTrace") || !a.rounds().get(i).path("scenarioTrace").equals(b.rounds().get(i).path("scenarioTrace")))
                 throw new IllegalStateException("Per-client/round scenario traces differ");
+    }
+
+    private void checkLambdaProtocol(Settings s) {
+        var values=s.lambda().path("fixedLambdas");
+        if(!values.isArray()||values.size()!=5||!values.get(0).isNumber()||values.get(0).asDouble()!=0)
+            throw new IllegalArgumentException("lambdaAblation.fixedLambdas must contain five ascending values starting at 0");
+        double previous=-1;
+        for(var value:values) {
+            if(!value.isNumber()||!Double.isFinite(value.asDouble())||value.asDouble()<0||value.asDouble()<=previous)
+                throw new IllegalArgumentException("Fixed lambdas must be finite, nonnegative and strictly ascending");
+            previous=value.asDouble();
+        }
+        var window=s.lambda().path("stabilityWindow");
+        if(!window.isIntegralNumber()||!window.canConvertToInt()||window.asInt()<2) throw new IllegalArgumentException("stabilityWindow must be an integer >=2");
+        var fuzzy=s.fuzzy();var fairness=fuzzy.path("fairness");
+        if(!"credit_score".equals(fairness.path("mode").asText())) throw new IllegalArgumentException("Lambda ablation requires credit_score");
+        var weights=fuzzy.path("weights");
+        if(weights.path("fairnessDeficit").asDouble()!=0||weights.path("selectionStaleness").asDouble()!=0)
+            throw new IllegalArgumentException("Lambda-only ablation must not add fairness criteria to the decision matrix");
     }
 
     private static void write(Path path,String content) throws Exception {

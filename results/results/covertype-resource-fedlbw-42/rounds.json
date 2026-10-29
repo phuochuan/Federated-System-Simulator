@@ -1,0 +1,7709 @@
+[
+  {
+    "roundId": 1,
+    "modelVersion": 1,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      30,
+      31,
+      32,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      61,
+      62,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      92,
+      93,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      92,
+      87,
+      90,
+      85,
+      97
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 1.0605,
+        "estimateSource": "prior",
+        "clientId": 92
+      },
+      {
+        "predictedSeconds": 1.0645,
+        "estimateSource": "prior",
+        "clientId": 87
+      },
+      {
+        "predictedSeconds": 1.07,
+        "estimateSource": "prior",
+        "clientId": 90
+      },
+      {
+        "predictedSeconds": 1.074,
+        "estimateSource": "prior",
+        "clientId": 85
+      },
+      {
+        "predictedSeconds": 1.0885,
+        "estimateSource": "prior",
+        "clientId": 97
+      }
+    ],
+    "acceptedIds": [
+      85,
+      87,
+      90,
+      92,
+      97
+    ],
+    "participants": [
+      {
+        "clientId": 85,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 1,
+          "clientId": 85,
+          "baseModelVersion": 0,
+          "numSamples": 4296,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0001_client085_348c4d82-034a-4964-b527-99340429f619.pt",
+          "trainingLoss": 1.5243494819218442,
+          "actualTrainingMs": 95.53369999957795,
+          "workerRssMb": 490.37109375,
+          "workerPeakRssMb": 522.14453125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 85,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.04875801267155654,
+          "completionSeconds": 0.04875801267155654
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 87,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 1,
+          "clientId": 87,
+          "baseModelVersion": 0,
+          "numSamples": 4258,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0001_client087_348c4d82-034a-4964-b527-99340429f619.pt",
+          "trainingLoss": 1.3033800387729664,
+          "actualTrainingMs": 101.27230000034615,
+          "workerRssMb": 490.6015625,
+          "workerPeakRssMb": 522.14453125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 87,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05521267747156037,
+          "completionSeconds": 0.05521267747156037
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 90,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 1,
+          "clientId": 90,
+          "baseModelVersion": 0,
+          "numSamples": 4280,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0001_client090_348c4d82-034a-4964-b527-99340429f619.pt",
+          "trainingLoss": 1.0355849243770137,
+          "actualTrainingMs": 97.74649999963003,
+          "workerRssMb": 490.27734375,
+          "workerPeakRssMb": 522.14453125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 90,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.04826619463538668,
+          "completionSeconds": 0.04826619463538668
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 92,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 1,
+          "clientId": 92,
+          "baseModelVersion": 0,
+          "numSamples": 4242,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0001_client092_348c4d82-034a-4964-b527-99340429f619.pt",
+          "trainingLoss": 1.5840663305153997,
+          "actualTrainingMs": 118.49339999935182,
+          "workerRssMb": 490.22265625,
+          "workerPeakRssMb": 522.14453125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 92,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.06100761117315338,
+          "completionSeconds": 0.06100761117315338
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 97,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 1,
+          "clientId": 97,
+          "baseModelVersion": 0,
+          "numSamples": 4354,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0001_client097_348c4d82-034a-4964-b527-99340429f619.pt",
+          "trainingLoss": 1.5723966260431663,
+          "actualTrainingMs": 95.89270000105898,
+          "workerRssMb": 490.53125,
+          "workerPeakRssMb": 522.14453125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 97,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.0438828001310698,
+          "completionSeconds": 0.0438828001310698
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.23279009623172425,
+      0.1694075009575857,
+      0.1535392253049297,
+      0.21425733454909718,
+      0.23000584295666326
+    ],
+    "proxyLosses": [
+      1.3785600339536235,
+      1.8943383330211578,
+      2.0901181592386826,
+      1.4978022742634989,
+      1.395247698232338
+    ],
+    "proxyEvaluationMs": 1139.4020000025193,
+    "aggregationMs": 26.5326,
+    "evaluation": {
+      "loss": 1.4826353220879642,
+      "accuracy": 0.3646064611624585,
+      "macroF1": 0.07633942648131965,
+      "perClassPrecision": [
+        0.3646064611624585,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          42368,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          56660,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          7151,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          549,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1899,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          3473,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4102,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 791.340499999933
+    },
+    "virtualRoundSeconds": 1.2269422111756727,
+    "cumulativeVirtualSeconds": 1.2269422111756727,
+    "wallClockSeconds": 2.5334065,
+    "fairness": {
+      "maxStaleness": 1,
+      "opportunityAdjustedGini": 0.9418604651162791,
+      "participationGini": 0.95,
+      "meanStaleness": 0.95,
+      "coverage": 0.05
+    }
+  },
+  {
+    "roundId": 2,
+    "modelVersion": 2,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      35,
+      36,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      87,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98
+    ],
+    "selectedIds": [
+      54,
+      85,
+      97,
+      90,
+      87
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 2.1995,
+        "estimateSource": "prior",
+        "clientId": 54
+      },
+      {
+        "predictedSeconds": 0.047766849999788974,
+        "estimateSource": "history",
+        "clientId": 85
+      },
+      {
+        "predictedSeconds": 0.04794635000052949,
+        "estimateSource": "history",
+        "clientId": 97
+      },
+      {
+        "predictedSeconds": 0.048873249999815016,
+        "estimateSource": "history",
+        "clientId": 90
+      },
+      {
+        "predictedSeconds": 0.050636150000173075,
+        "estimateSource": "history",
+        "clientId": 87
+      }
+    ],
+    "acceptedIds": [
+      54,
+      85,
+      87,
+      90,
+      97
+    ],
+    "participants": [
+      {
+        "clientId": 54,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 2,
+          "clientId": 54,
+          "baseModelVersion": 1,
+          "numSamples": 4399,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0002_client054_ec649965-d319-4c31-b15b-7fcc36f92c98.pt",
+          "trainingLoss": 1.0420939432379603,
+          "actualTrainingMs": 100.10789999978442,
+          "workerRssMb": 492.6328125,
+          "workerPeakRssMb": 539.9453125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 54,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.0920738522430886,
+          "completionSeconds": 0.0920738522430886
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 85,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 2,
+          "clientId": 85,
+          "baseModelVersion": 1,
+          "numSamples": 4296,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0002_client085_ec649965-d319-4c31-b15b-7fcc36f92c98.pt",
+          "trainingLoss": 0.9857438736121747,
+          "actualTrainingMs": 93.93359999921813,
+          "workerRssMb": 492.3046875,
+          "workerPeakRssMb": 539.9453125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 85,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.0498898062246982,
+          "completionSeconds": 0.0498898062246982
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 87,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 2,
+          "clientId": 87,
+          "baseModelVersion": 1,
+          "numSamples": 4258,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0002_client087_ec649965-d319-4c31-b15b-7fcc36f92c98.pt",
+          "trainingLoss": 0.8013608940838087,
+          "actualTrainingMs": 100.09720000016387,
+          "workerRssMb": 492.484375,
+          "workerPeakRssMb": 539.9453125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 87,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.049847558372512556,
+          "completionSeconds": 0.049847558372512556
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 90,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 2,
+          "clientId": 90,
+          "baseModelVersion": 1,
+          "numSamples": 4280,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0002_client090_ec649965-d319-4c31-b15b-7fcc36f92c98.pt",
+          "trainingLoss": 0.41398017274163595,
+          "actualTrainingMs": 122.11380000007921,
+          "workerRssMb": 492.375,
+          "workerPeakRssMb": 539.9453125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 90,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.06445905335398609,
+          "completionSeconds": 0.06445905335398609
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 97,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 2,
+          "clientId": 97,
+          "baseModelVersion": 1,
+          "numSamples": 4354,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0002_client097_ec649965-d319-4c31-b15b-7fcc36f92c98.pt",
+          "trainingLoss": 1.082073271740014,
+          "actualTrainingMs": 94.4417999999132,
+          "workerRssMb": 492.3046875,
+          "workerPeakRssMb": 539.9453125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 97,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.04345636725770435,
+          "completionSeconds": 0.04345636725770435
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.19033590552131724,
+      0.25379777165198814,
+      0.16049697004132446,
+      0.1372682476401536,
+      0.2581011051452166
+    ],
+    "proxyLosses": [
+      1.6627060786889327,
+      1.2469481707546641,
+      1.9718295430846562,
+      2.305505261003144,
+      1.2261577373913146
+    ],
+    "proxyEvaluationMs": 1145.0907999987976,
+    "aggregationMs": 15.8011,
+    "evaluation": {
+      "loss": 1.376126356583323,
+      "accuracy": 0.3646064611624585,
+      "macroF1": 0.07633942648131965,
+      "perClassPrecision": [
+        0.3646064611624585,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          42368,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          56660,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          7151,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          549,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1899,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          3473,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4102,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 1025.5240999995294
+    },
+    "virtualRoundSeconds": 1.2529657522418862,
+    "cumulativeVirtualSeconds": 2.479907963417559,
+    "wallClockSeconds": 2.7426068,
+    "fairness": {
+      "maxStaleness": 2,
+      "opportunityAdjustedGini": 0.9474747474747475,
+      "participationGini": 0.948,
+      "meanStaleness": 1.89,
+      "coverage": 0.06
+    }
+  },
+  {
+    "roundId": 3,
+    "modelVersion": 3,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      95,
+      96,
+      98,
+      99
+    ],
+    "selectedIds": [
+      96,
+      87,
+      92,
+      90,
+      91
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 1.10825,
+        "estimateSource": "prior",
+        "clientId": 96
+      },
+      {
+        "predictedSeconds": 0.05004860000008193,
+        "estimateSource": "history",
+        "clientId": 87
+      },
+      {
+        "predictedSeconds": 0.05924669999967591,
+        "estimateSource": "history",
+        "clientId": 92
+      },
+      {
+        "predictedSeconds": 0.061056900000039604,
+        "estimateSource": "history",
+        "clientId": 90
+      },
+      {
+        "predictedSeconds": 1.0715000000000001,
+        "estimateSource": "prior",
+        "clientId": 91
+      }
+    ],
+    "acceptedIds": [
+      87,
+      90,
+      91,
+      92,
+      96
+    ],
+    "participants": [
+      {
+        "clientId": 87,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 3,
+          "clientId": 87,
+          "baseModelVersion": 2,
+          "numSamples": 4258,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0003_client087_9d299515-6a53-4339-94f2-d59df24e16ae.pt",
+          "trainingLoss": 0.6826188408149806,
+          "actualTrainingMs": 95.4027000007045,
+          "workerRssMb": 492.5234375,
+          "workerPeakRssMb": 541.09375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 87,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.04890338998052314,
+          "completionSeconds": 0.04890338998052314
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 90,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 3,
+          "clientId": 90,
+          "baseModelVersion": 2,
+          "numSamples": 4280,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0003_client090_9d299515-6a53-4339-94f2-d59df24e16ae.pt",
+          "trainingLoss": 0.25438506313573533,
+          "actualTrainingMs": 96.25790000063716,
+          "workerRssMb": 492.6640625,
+          "workerPeakRssMb": 541.09375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 90,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.0439369042712126,
+          "completionSeconds": 0.0439369042712126
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 91,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 3,
+          "clientId": 91,
+          "baseModelVersion": 2,
+          "numSamples": 4286,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0003_client091_9d299515-6a53-4339-94f2-d59df24e16ae.pt",
+          "trainingLoss": 1.1417101080096108,
+          "actualTrainingMs": 94.0377000006265,
+          "workerRssMb": 492.734375,
+          "workerPeakRssMb": 541.09375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 91,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.04965644565039306,
+          "completionSeconds": 0.04965644565039306
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 92,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 3,
+          "clientId": 92,
+          "baseModelVersion": 2,
+          "numSamples": 4242,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0003_client092_9d299515-6a53-4339-94f2-d59df24e16ae.pt",
+          "trainingLoss": 0.9391893794209482,
+          "actualTrainingMs": 92.87729999959993,
+          "workerRssMb": 492.578125,
+          "workerPeakRssMb": 541.09375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 92,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.04794745290226646,
+          "completionSeconds": 0.04794745290226646
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 96,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 3,
+          "clientId": 96,
+          "baseModelVersion": 2,
+          "numSamples": 4433,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0003_client096_9d299515-6a53-4339-94f2-d59df24e16ae.pt",
+          "trainingLoss": 0.8356900334411999,
+          "actualTrainingMs": 103.51059999993595,
+          "workerRssMb": 492.5234375,
+          "workerPeakRssMb": 541.09375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 96,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.04827958360719872,
+          "completionSeconds": 0.04827958360719872
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.16453344659293645,
+      0.13728407914615995,
+      0.21052455147019586,
+      0.255608841966127,
+      0.23204908082458076
+    ],
+    "proxyLosses": [
+      1.9444661469538485,
+      2.330421116063937,
+      1.5196788911667467,
+      1.2516379108043558,
+      1.3787157260211567
+    ],
+    "proxyEvaluationMs": 1057.5305000020307,
+    "aggregationMs": 15.4874,
+    "evaluation": {
+      "loss": 1.1858232576004502,
+      "accuracy": 0.4422040928727561,
+      "macroF1": 0.12320245540508208,
+      "perClassPrecision": [
+        0.43047114054575175,
+        0.49610089534995666,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.9695760951661632,
+        0.18189198729262265,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          41079,
+          1289,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          46354,
+          10306,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1683,
+          5468,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          10,
+          539,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1375,
+          524,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          852,
+          2621,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4075,
+          27,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 801.9096999996691
+    },
+    "virtualRoundSeconds": 1.1226743456524237,
+    "cumulativeVirtualSeconds": 3.602582309069983,
+    "wallClockSeconds": 2.4005757,
+    "fairness": {
+      "maxStaleness": 3,
+      "opportunityAdjustedGini": 0.935,
+      "participationGini": 0.938,
+      "meanStaleness": 2.79,
+      "coverage": 0.08
+    }
+  },
+  {
+    "roundId": 4,
+    "modelVersion": 4,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      25,
+      26,
+      27,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      51,
+      52,
+      53,
+      54,
+      56,
+      57,
+      58,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      69,
+      70,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      99
+    ],
+    "selectedIds": [
+      96,
+      92,
+      85,
+      91,
+      97
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 0.051755299999967974,
+        "estimateSource": "history",
+        "clientId": 96
+      },
+      {
+        "predictedSeconds": 0.046438649999799964,
+        "estimateSource": "history",
+        "clientId": 92
+      },
+      {
+        "predictedSeconds": 0.046966799999609066,
+        "estimateSource": "history",
+        "clientId": 85
+      },
+      {
+        "predictedSeconds": 0.04701885000031325,
+        "estimateSource": "history",
+        "clientId": 91
+      },
+      {
+        "predictedSeconds": 0.0472208999999566,
+        "estimateSource": "history",
+        "clientId": 97
+      }
+    ],
+    "acceptedIds": [
+      85,
+      91,
+      92,
+      96,
+      97
+    ],
+    "participants": [
+      {
+        "clientId": 85,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 4,
+          "clientId": 85,
+          "baseModelVersion": 3,
+          "numSamples": 4296,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0004_client085_dede761f-43a9-4d0a-8aa1-0b373aebc7b9.pt",
+          "trainingLoss": 0.7296191900136084,
+          "actualTrainingMs": 112.61519999970915,
+          "workerRssMb": 493.91796875,
+          "workerPeakRssMb": 541.09375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 85,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.0564452927714088,
+          "completionSeconds": 0.0564452927714088
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 91,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 4,
+          "clientId": 91,
+          "baseModelVersion": 3,
+          "numSamples": 4286,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0004_client091_dede761f-43a9-4d0a-8aa1-0b373aebc7b9.pt",
+          "trainingLoss": 1.0233417687936748,
+          "actualTrainingMs": 103.56420000061917,
+          "workerRssMb": 493.9375,
+          "workerPeakRssMb": 541.09375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 91,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.049787813503979976,
+          "completionSeconds": 0.049787813503979976
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 92,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 4,
+          "clientId": 92,
+          "baseModelVersion": 3,
+          "numSamples": 4242,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0004_client092_dede761f-43a9-4d0a-8aa1-0b373aebc7b9.pt",
+          "trainingLoss": 0.8879972957373228,
+          "actualTrainingMs": 103.820900001665,
+          "workerRssMb": 493.80859375,
+          "workerPeakRssMb": 541.09375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 92,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05586690319716863,
+          "completionSeconds": 0.05586690319716863
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 96,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 4,
+          "clientId": 96,
+          "baseModelVersion": 3,
+          "numSamples": 4433,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0004_client096_dede761f-43a9-4d0a-8aa1-0b373aebc7b9.pt",
+          "trainingLoss": 0.7462242242850543,
+          "actualTrainingMs": 113.57440000028873,
+          "workerRssMb": 493.8828125,
+          "workerPeakRssMb": 541.09375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 96,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.06165913738891114,
+          "completionSeconds": 0.06165913738891114
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 97,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 4,
+          "clientId": 97,
+          "baseModelVersion": 3,
+          "numSamples": 4354,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0004_client097_dede761f-43a9-4d0a-8aa1-0b373aebc7b9.pt",
+          "trainingLoss": 0.854219814698303,
+          "actualTrainingMs": 107.60219999974652,
+          "workerRssMb": 493.6015625,
+          "workerPeakRssMb": 541.09375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 97,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.058922536593082164,
+          "completionSeconds": 0.058922536593082164
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.21159356677026728,
+      0.1642460493512625,
+      0.21402580179431382,
+      0.18914503776196687,
+      0.2209895443221895
+    ],
+    "proxyLosses": [
+      1.2204749611691104,
+      1.57230357264353,
+      1.20660522246639,
+      1.3653260653476322,
+      1.1685831154575816
+    ],
+    "proxyEvaluationMs": 1171.8642999985605,
+    "aggregationMs": 15.3447,
+    "evaluation": {
+      "loss": 1.1957663915253383,
+      "accuracy": 0.4875991807369925,
+      "macroF1": 0.0936502610670444,
+      "perClassPrecision": [
+        0.0,
+        0.4875991807369925,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          0,
+          42368,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          56660,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          7151,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          549,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1899,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3473,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4102,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 909.1449000006833
+    },
+    "virtualRoundSeconds": 1.2488681373874715,
+    "cumulativeVirtualSeconds": 4.851450446457454,
+    "wallClockSeconds": 2.6814201,
+    "fairness": {
+      "maxStaleness": 4,
+      "opportunityAdjustedGini": 0.9328985507246376,
+      "participationGini": 0.931,
+      "meanStaleness": 3.72,
+      "coverage": 0.08
+    }
+  },
+  {
+    "roundId": 5,
+    "modelVersion": 5,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      51,
+      87,
+      90,
+      91,
+      92
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 2.189,
+        "estimateSource": "prior",
+        "clientId": 51
+      },
+      {
+        "predictedSeconds": 0.04770135000035225,
+        "estimateSource": "history",
+        "clientId": 87
+      },
+      {
+        "predictedSeconds": 0.04812895000031858,
+        "estimateSource": "history",
+        "clientId": 90
+      },
+      {
+        "predictedSeconds": 0.05178210000030958,
+        "estimateSource": "history",
+        "clientId": 91
+      },
+      {
+        "predictedSeconds": 0.0519104500008325,
+        "estimateSource": "history",
+        "clientId": 92
+      }
+    ],
+    "acceptedIds": [
+      51,
+      87,
+      90,
+      91,
+      92
+    ],
+    "participants": [
+      {
+        "clientId": 51,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 5,
+          "clientId": 51,
+          "baseModelVersion": 4,
+          "numSamples": 4378,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0005_client051_fec95af1-1155-4ef7-be15-c90e50b1c8dc.pt",
+          "trainingLoss": 1.1283149596979325,
+          "actualTrainingMs": 106.14369999893825,
+          "workerRssMb": 494.35546875,
+          "workerPeakRssMb": 542.24609375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 51,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.10117512090778027,
+          "completionSeconds": 0.10117512090778027
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 87,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 5,
+          "clientId": 87,
+          "baseModelVersion": 4,
+          "numSamples": 4258,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0005_client087_fec95af1-1155-4ef7-be15-c90e50b1c8dc.pt",
+          "trainingLoss": 0.7064201304292723,
+          "actualTrainingMs": 103.00989999996091,
+          "workerRssMb": 494.35546875,
+          "workerPeakRssMb": 542.24609375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 87,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.049748746797042824,
+          "completionSeconds": 0.049748746797042824
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 90,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 5,
+          "clientId": 90,
+          "baseModelVersion": 4,
+          "numSamples": 4280,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0005_client090_fec95af1-1155-4ef7-be15-c90e50b1c8dc.pt",
+          "trainingLoss": 0.2851968747502733,
+          "actualTrainingMs": 104.46310000043013,
+          "workerRssMb": 494.40625,
+          "workerPeakRssMb": 542.24609375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 90,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.0494559285480103,
+          "completionSeconds": 0.0494559285480103
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 91,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 5,
+          "clientId": 91,
+          "baseModelVersion": 4,
+          "numSamples": 4286,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0005_client091_fec95af1-1155-4ef7-be15-c90e50b1c8dc.pt",
+          "trainingLoss": 0.9674448267744904,
+          "actualTrainingMs": 107.88400000092224,
+          "workerRssMb": 494.40625,
+          "workerPeakRssMb": 542.24609375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 91,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05598540508376984,
+          "completionSeconds": 0.05598540508376984
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 92,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 5,
+          "clientId": 92,
+          "baseModelVersion": 4,
+          "numSamples": 4242,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0005_client092_fec95af1-1155-4ef7-be15-c90e50b1c8dc.pt",
+          "trainingLoss": 0.8681959165036257,
+          "actualTrainingMs": 103.45149999920977,
+          "workerRssMb": 494.40625,
+          "workerPeakRssMb": 542.24609375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 92,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05256593702363719,
+          "completionSeconds": 0.05256593702363719
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.2628771257308001,
+      0.16009602139414034,
+      0.13335183796632055,
+      0.19197987616157494,
+      0.25169513874716415
+    ],
+    "proxyLosses": [
+      1.1339737899143156,
+      1.8619811282683632,
+      2.235408038560554,
+      1.552744884030724,
+      1.184352514834163
+    ],
+    "proxyEvaluationMs": 1049.4608999961201,
+    "aggregationMs": 16.4977,
+    "evaluation": {
+      "loss": 1.1641813783653345,
+      "accuracy": 0.4074456549801208,
+      "macroF1": 0.10441224343765414,
+      "perClassPrecision": [
+        0.4154497562896952,
+        0.35194920461527957,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.9958223187311178,
+        0.09098129191669609,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          42191,
+          177,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          51505,
+          5155,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1144,
+          6007,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          549,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1751,
+          148,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          866,
+          2607,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4098,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 901.3474000003043
+    },
+    "virtualRoundSeconds": 1.1671337209039003,
+    "cumulativeVirtualSeconds": 6.018584167361354,
+    "wallClockSeconds": 2.5560796,
+    "fairness": {
+      "maxStaleness": 5,
+      "opportunityAdjustedGini": 0.9267567567567568,
+      "participationGini": 0.93,
+      "meanStaleness": 4.61,
+      "coverage": 0.09
+    }
+  },
+  {
+    "roundId": 6,
+    "modelVersion": 6,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      38,
+      39,
+      41,
+      42,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      63,
+      64,
+      65,
+      66,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      99
+    ],
+    "selectedIds": [
+      76,
+      87,
+      92,
+      90,
+      97
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 2.213,
+        "estimateSource": "prior",
+        "clientId": 76
+      },
+      {
+        "predictedSeconds": 0.051504949999980454,
+        "estimateSource": "history",
+        "clientId": 87
+      },
+      {
+        "predictedSeconds": 0.051725749999604886,
+        "estimateSource": "history",
+        "clientId": 92
+      },
+      {
+        "predictedSeconds": 0.052231550000215066,
+        "estimateSource": "history",
+        "clientId": 90
+      },
+      {
+        "predictedSeconds": 0.05380109999987326,
+        "estimateSource": "history",
+        "clientId": 97
+      }
+    ],
+    "acceptedIds": [
+      76,
+      87,
+      90,
+      92,
+      97
+    ],
+    "participants": [
+      {
+        "clientId": 76,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 6,
+          "clientId": 76,
+          "baseModelVersion": 5,
+          "numSamples": 4426,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0006_client076_aa8eaae2-0ce1-4027-abe5-a5a1193a03d0.pt",
+          "trainingLoss": 1.0923394605524122,
+          "actualTrainingMs": 111.33610000069893,
+          "workerRssMb": 493.4140625,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 76,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.10126942556886187,
+          "completionSeconds": 0.10126942556886187
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 87,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 6,
+          "clientId": 87,
+          "baseModelVersion": 5,
+          "numSamples": 4258,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0006_client087_aa8eaae2-0ce1-4027-abe5-a5a1193a03d0.pt",
+          "trainingLoss": 0.6062040232216432,
+          "actualTrainingMs": 102.62499999953434,
+          "workerRssMb": 493.4453125,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 87,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05070718046482314,
+          "completionSeconds": 0.05070718046482314
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 90,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 6,
+          "clientId": 90,
+          "baseModelVersion": 5,
+          "numSamples": 4280,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0006_client090_aa8eaae2-0ce1-4027-abe5-a5a1193a03d0.pt",
+          "trainingLoss": 0.20809444044934255,
+          "actualTrainingMs": 107.11199999968812,
+          "workerRssMb": 493.5859375,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 90,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05653900161927728,
+          "completionSeconds": 0.05653900161927728
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 92,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 6,
+          "clientId": 92,
+          "baseModelVersion": 5,
+          "numSamples": 4242,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0006_client092_aa8eaae2-0ce1-4027-abe5-a5a1193a03d0.pt",
+          "trainingLoss": 0.8199021481276121,
+          "actualTrainingMs": 104.39399999995658,
+          "workerRssMb": 493.5078125,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 92,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05689145996382955,
+          "completionSeconds": 0.05689145996382955
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 97,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 6,
+          "clientId": 97,
+          "baseModelVersion": 5,
+          "numSamples": 4354,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0006_client097_aa8eaae2-0ce1-4027-abe5-a5a1193a03d0.pt",
+          "trainingLoss": 0.8045262441648274,
+          "actualTrainingMs": 108.12470000018948,
+          "workerRssMb": 493.63671875,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 97,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.04963441702714318,
+          "completionSeconds": 0.04963441702714318
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.18706720299075275,
+      0.15666611977007244,
+      0.1323550276437269,
+      0.2576783175622647,
+      0.2662333320331833
+    ],
+    "proxyLosses": [
+      1.5721622553837165,
+      1.8772405686302482,
+      2.2220538274822728,
+      1.1413455293583241,
+      1.1046700783717374
+    ],
+    "proxyEvaluationMs": 1168.1306999980734,
+    "aggregationMs": 16.3998,
+    "evaluation": {
+      "loss": 1.1002149420558798,
+      "accuracy": 0.5052150565394744,
+      "macroF1": 0.15008924389695194,
+      "perClassPrecision": [
+        0.48274506533884476,
+        0.5636955510773524,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.9565001888217523,
+        0.32089657606777267,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          40525,
+          1843,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          38478,
+          18182,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          76,
+          7075,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          549,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          675,
+          1224,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          111,
+          3362,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4082,
+          20,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 787.582899998597
+    },
+    "virtualRoundSeconds": 1.2857999255669352,
+    "cumulativeVirtualSeconds": 7.304384092928289,
+    "wallClockSeconds": 2.5483145,
+    "fairness": {
+      "maxStaleness": 6,
+      "opportunityAdjustedGini": 0.9277777777777778,
+      "participationGini": 0.93,
+      "meanStaleness": 5.5,
+      "coverage": 0.1
+    }
+  },
+  {
+    "roundId": 7,
+    "modelVersion": 7,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      74,
+      75,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      87,
+      88,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      44,
+      87,
+      92,
+      90,
+      91
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 2.1955,
+        "estimateSource": "prior",
+        "clientId": 44
+      },
+      {
+        "predictedSeconds": 0.05131249999976717,
+        "estimateSource": "history",
+        "clientId": 87
+      },
+      {
+        "predictedSeconds": 0.05219699999997829,
+        "estimateSource": "history",
+        "clientId": 92
+      },
+      {
+        "predictedSeconds": 0.05355599999984406,
+        "estimateSource": "history",
+        "clientId": 90
+      },
+      {
+        "predictedSeconds": 0.05394200000046112,
+        "estimateSource": "history",
+        "clientId": 91
+      }
+    ],
+    "acceptedIds": [
+      44,
+      87,
+      90,
+      91,
+      92
+    ],
+    "participants": [
+      {
+        "clientId": 44,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 7,
+          "clientId": 44,
+          "baseModelVersion": 6,
+          "numSamples": 4391,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0007_client044_b77312f8-bc1c-4448-9b37-ff53b8dd6854.pt",
+          "trainingLoss": 0.4255539410425411,
+          "actualTrainingMs": 111.35339999964344,
+          "workerRssMb": 493.21484375,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 44,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.11719538706818651,
+          "completionSeconds": 0.11719538706818651
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 87,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 7,
+          "clientId": 87,
+          "baseModelVersion": 6,
+          "numSamples": 4258,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0007_client087_b77312f8-bc1c-4448-9b37-ff53b8dd6854.pt",
+          "trainingLoss": 0.557062766595646,
+          "actualTrainingMs": 104.36609999851498,
+          "workerRssMb": 493.27734375,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 87,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05681410784518403,
+          "completionSeconds": 0.05681410784518403
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 90,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 7,
+          "clientId": 90,
+          "baseModelVersion": 6,
+          "numSamples": 4280,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0007_client090_b77312f8-bc1c-4448-9b37-ff53b8dd6854.pt",
+          "trainingLoss": 0.1962566504133082,
+          "actualTrainingMs": 103.66909999902418,
+          "workerRssMb": 493.37890625,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 90,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05555724868040497,
+          "completionSeconds": 0.05555724868040497
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 91,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 7,
+          "clientId": 91,
+          "baseModelVersion": 6,
+          "numSamples": 4286,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0007_client091_b77312f8-bc1c-4448-9b37-ff53b8dd6854.pt",
+          "trainingLoss": 0.9314213134226708,
+          "actualTrainingMs": 106.26360000060231,
+          "workerRssMb": 493.515625,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 91,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05686856432553015,
+          "completionSeconds": 0.05686856432553015
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 92,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 7,
+          "clientId": 92,
+          "baseModelVersion": 6,
+          "numSamples": 4242,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0007_client092_b77312f8-bc1c-4448-9b37-ff53b8dd6854.pt",
+          "trainingLoss": 0.7876472862921251,
+          "actualTrainingMs": 105.79039999902307,
+          "workerRssMb": 493.34765625,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 92,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05442544624086734,
+          "completionSeconds": 0.05442544624086734
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.19593049537017115,
+      0.1720579663657534,
+      0.1440651504236548,
+      0.20109178845838357,
+      0.2868545993820371
+    ],
+    "proxyLosses": [
+      1.6043220807063978,
+      1.8269169783043182,
+      2.18189908580761,
+      1.5631449817810972,
+      1.0958012201417469
+    ],
+    "proxyEvaluationMs": 1236.8853999996645,
+    "aggregationMs": 17.1856,
+    "evaluation": {
+      "loss": 1.1731772015146913,
+      "accuracy": 0.4140376241372782,
+      "macroF1": 0.10798017282047234,
+      "perClassPrecision": [
+        0.422464661036476,
+        0.36269303546359033,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.9953266616314199,
+        0.10487116131309566,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          42170,
+          198,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          50718,
+          5942,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          569,
+          6582,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          549,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1704,
+          195,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          557,
+          2916,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4101,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 903.72650000063
+    },
+    "virtualRoundSeconds": 1.371266387067851,
+    "cumulativeVirtualSeconds": 8.67565047999614,
+    "wallClockSeconds": 2.7345194,
+    "fairness": {
+      "maxStaleness": 7,
+      "opportunityAdjustedGini": 0.9260888888888889,
+      "participationGini": 0.9288571428571428,
+      "meanStaleness": 6.38,
+      "coverage": 0.11
+    }
+  },
+  {
+    "roundId": 8,
+    "modelVersion": 8,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      36,
+      37,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      92,
+      87,
+      91,
+      97,
+      85
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 0.05289519999951153,
+        "estimateSource": "history",
+        "clientId": 92
+      },
+      {
+        "predictedSeconds": 0.05218304999925749,
+        "estimateSource": "history",
+        "clientId": 87
+      },
+      {
+        "predictedSeconds": 0.053131800000301155,
+        "estimateSource": "history",
+        "clientId": 91
+      },
+      {
+        "predictedSeconds": 0.05406235000009474,
+        "estimateSource": "history",
+        "clientId": 97
+      },
+      {
+        "predictedSeconds": 0.056307599999854574,
+        "estimateSource": "history",
+        "clientId": 85
+      }
+    ],
+    "acceptedIds": [
+      85,
+      87,
+      92,
+      97
+    ],
+    "participants": [
+      {
+        "clientId": 85,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 8,
+          "clientId": 85,
+          "baseModelVersion": 7,
+          "numSamples": 4296,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0008_client085_e9547eee-84bd-4f8f-93c0-d01ee048841c.pt",
+          "trainingLoss": 0.6425948186293661,
+          "actualTrainingMs": 104.1200999989087,
+          "workerRssMb": 493.79296875,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 85,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.049043815611213466,
+          "completionSeconds": 0.049043815611213466
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 87,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 8,
+          "clientId": 87,
+          "baseModelVersion": 7,
+          "numSamples": 4258,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0008_client087_e9547eee-84bd-4f8f-93c0-d01ee048841c.pt",
+          "trainingLoss": 0.5144337373420407,
+          "actualTrainingMs": 105.91829999975744,
+          "workerRssMb": 493.54296875,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 87,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.056293584546687925,
+          "completionSeconds": 0.056293584546687925
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 91,
+        "accepted": false,
+        "status": "DROPPED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 8,
+          "clientId": 91,
+          "baseModelVersion": 7,
+          "numSamples": 4286,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0008_client091_e9547eee-84bd-4f8f-93c0-d01ee048841c.pt",
+          "trainingLoss": 0.9131095686973504,
+          "actualTrainingMs": 105.71159999926749,
+          "workerRssMb": 493.6171875,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 91,
+          "status": "DROPPED",
+          "virtualTrainingSeconds": 0.04904556019388674,
+          "completionSeconds": 0.04904556019388674
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 92,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 8,
+          "clientId": 92,
+          "baseModelVersion": 7,
+          "numSamples": 4242,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0008_client092_e9547eee-84bd-4f8f-93c0-d01ee048841c.pt",
+          "trainingLoss": 0.7635328990004637,
+          "actualTrainingMs": 106.21009999886155,
+          "workerRssMb": 493.54296875,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 92,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.051522060601785255,
+          "completionSeconds": 0.051522060601785255
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 97,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 8,
+          "clientId": 97,
+          "baseModelVersion": 7,
+          "numSamples": 4354,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0008_client097_e9547eee-84bd-4f8f-93c0-d01ee048841c.pt",
+          "trainingLoss": 0.7592080281752208,
+          "actualTrainingMs": 108.86480000044685,
+          "workerRssMb": 493.75,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 97,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05825141235307653,
+          "completionSeconds": 0.05825141235307653
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.276205065229255,
+      0.15772240918458838,
+      0.27637091809652536,
+      0.2897016074896313
+    ],
+    "proxyLosses": [
+      1.0741342134407754,
+      1.8810346102510187,
+      1.0734896150859292,
+      1.02409273134255
+    ],
+    "proxyEvaluationMs": 946.6567999988911,
+    "aggregationMs": 15.4788,
+    "evaluation": {
+      "loss": 1.0680090707480292,
+      "accuracy": 0.553450026677682,
+      "macroF1": 0.16855812992534086,
+      "perClassPrecision": [
+        0.5211897972116604,
+        0.6138464580552672,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.9317645392749244,
+        0.4383162725026474,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          39477,
+          2891,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          31825,
+          24835,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          9,
+          7142,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          549,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          312,
+          1587,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          39,
+          3434,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4082,
+          20,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 812.3620999995183
+    },
+    "virtualRoundSeconds": 1.0203870123519676,
+    "cumulativeVirtualSeconds": 9.696037492348108,
+    "wallClockSeconds": 2.3480204,
+    "fairness": {
+      "maxStaleness": 8,
+      "opportunityAdjustedGini": 0.9285810810810811,
+      "participationGini": 0.9305128205128205,
+      "meanStaleness": 7.3,
+      "coverage": 0.11
+    }
+  },
+  {
+    "roundId": 9,
+    "modelVersion": 9,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      19,
+      20,
+      22,
+      23,
+      24,
+      26,
+      27,
+      28,
+      29,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      50,
+      51,
+      53,
+      54,
+      55,
+      56,
+      57,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      99
+    ],
+    "selectedIds": [
+      55,
+      90,
+      85,
+      87,
+      92
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 2.13,
+        "estimateSource": "prior",
+        "clientId": 55
+      },
+      {
+        "predictedSeconds": 0.05183454999951209,
+        "estimateSource": "history",
+        "clientId": 90
+      },
+      {
+        "predictedSeconds": 0.05206004999945435,
+        "estimateSource": "history",
+        "clientId": 85
+      },
+      {
+        "predictedSeconds": 0.05295914999987872,
+        "estimateSource": "history",
+        "clientId": 87
+      },
+      {
+        "predictedSeconds": 0.053105049999430776,
+        "estimateSource": "history",
+        "clientId": 92
+      }
+    ],
+    "acceptedIds": [
+      55,
+      85,
+      87,
+      90
+    ],
+    "participants": [
+      {
+        "clientId": 55,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 9,
+          "clientId": 55,
+          "baseModelVersion": 8,
+          "numSamples": 4260,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0009_client055_db3a8cc6-68fd-47e7-93f0-7ba07eebd65b.pt",
+          "trainingLoss": 1.0148141301293887,
+          "actualTrainingMs": 104.64219999994384,
+          "workerRssMb": 493.89453125,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 55,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.09653669957671955,
+          "completionSeconds": 0.09653669957671955
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 85,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 9,
+          "clientId": 85,
+          "baseModelVersion": 8,
+          "numSamples": 4296,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0009_client085_db3a8cc6-68fd-47e7-93f0-7ba07eebd65b.pt",
+          "trainingLoss": 0.5889930216737743,
+          "actualTrainingMs": 115.67480000121577,
+          "workerRssMb": 493.35546875,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 85,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05494464613296687,
+          "completionSeconds": 0.05494464613296687
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 87,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 9,
+          "clientId": 87,
+          "baseModelVersion": 8,
+          "numSamples": 4258,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0009_client087_db3a8cc6-68fd-47e7-93f0-7ba07eebd65b.pt",
+          "trainingLoss": 0.5125884310411926,
+          "actualTrainingMs": 104.78619999958028,
+          "workerRssMb": 493.421875,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 87,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.057174590784020825,
+          "completionSeconds": 0.057174590784020825
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 90,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 9,
+          "clientId": 90,
+          "baseModelVersion": 8,
+          "numSamples": 4280,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0009_client090_db3a8cc6-68fd-47e7-93f0-7ba07eebd65b.pt",
+          "trainingLoss": 0.16907358179652246,
+          "actualTrainingMs": 110.03189999973984,
+          "workerRssMb": 493.71484375,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 90,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05057516241990525,
+          "completionSeconds": 0.05057516241990525
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 92,
+        "accepted": false,
+        "status": "DROPPED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 9,
+          "clientId": 92,
+          "baseModelVersion": 8,
+          "numSamples": 4242,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0009_client092_db3a8cc6-68fd-47e7-93f0-7ba07eebd65b.pt",
+          "trainingLoss": 0.731817466478649,
+          "actualTrainingMs": 103.08919999988575,
+          "workerRssMb": 493.4921875,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 92,
+          "status": "DROPPED",
+          "virtualTrainingSeconds": 0.05520917855723884,
+          "completionSeconds": 0.05520917855723884
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.2909128628717667,
+      0.3401275522247814,
+      0.2003399641058697,
+      0.16861962079758216
+    ],
+    "proxyLosses": [
+      1.2508146064030579,
+      1.0698282326450816,
+      1.816302901393374,
+      2.1579817126225755
+    ],
+    "proxyEvaluationMs": 934.4098000001395,
+    "aggregationMs": 13.9733,
+    "evaluation": {
+      "loss": 1.014308097774881,
+      "accuracy": 0.5843703206485259,
+      "macroF1": 0.1796073564341534,
+      "perClassPrecision": [
+        0.5497164786070222,
+        0.636565586852435,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.9061083836858006,
+        0.520914225202965,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          38390,
+          3978,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          27145,
+          29515,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          7151,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          549,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          202,
+          1697,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          18,
+          3455,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4081,
+          21,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 789.3536999999924
+    },
+    "virtualRoundSeconds": 1.044919799576859,
+    "cumulativeVirtualSeconds": 10.740957291924968,
+    "wallClockSeconds": 2.313649,
+    "fairness": {
+      "maxStaleness": 9,
+      "opportunityAdjustedGini": 0.9261042944785275,
+      "participationGini": 0.9281395348837209,
+      "meanStaleness": 8.17,
+      "coverage": 0.12
+    }
+  },
+  {
+    "roundId": 10,
+    "modelVersion": 10,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      37,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      82,
+      83,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      98,
+      87,
+      97,
+      90,
+      96
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 1.10775,
+        "estimateSource": "prior",
+        "clientId": 98
+      },
+      {
+        "predictedSeconds": 0.05239309999979014,
+        "estimateSource": "history",
+        "clientId": 87
+      },
+      {
+        "predictedSeconds": 0.054432400000223424,
+        "estimateSource": "history",
+        "clientId": 97
+      },
+      {
+        "predictedSeconds": 0.05501594999986992,
+        "estimateSource": "history",
+        "clientId": 90
+      },
+      {
+        "predictedSeconds": 0.05678720000014437,
+        "estimateSource": "history",
+        "clientId": 96
+      }
+    ],
+    "acceptedIds": [
+      87,
+      90,
+      96,
+      97,
+      98
+    ],
+    "participants": [
+      {
+        "clientId": 87,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 10,
+          "clientId": 87,
+          "baseModelVersion": 9,
+          "numSamples": 4258,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0010_client087_0eaadc0a-bbbd-4687-9937-4ae93525f839.pt",
+          "trainingLoss": 0.4797786492731872,
+          "actualTrainingMs": 106.00770000019111,
+          "workerRssMb": 493.953125,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 87,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05001178242134861,
+          "completionSeconds": 0.05001178242134861
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 90,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 10,
+          "clientId": 90,
+          "baseModelVersion": 9,
+          "numSamples": 4280,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0010_client090_0eaadc0a-bbbd-4687-9937-4ae93525f839.pt",
+          "trainingLoss": 0.1667749991065988,
+          "actualTrainingMs": 104.8743999999715,
+          "workerRssMb": 494.11328125,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 90,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.04891788620438874,
+          "completionSeconds": 0.04891788620438874
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 96,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 10,
+          "clientId": 96,
+          "baseModelVersion": 9,
+          "numSamples": 4433,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0010_client096_0eaadc0a-bbbd-4687-9937-4ae93525f839.pt",
+          "trainingLoss": 0.6036292109819129,
+          "actualTrainingMs": 113.69010000089474,
+          "workerRssMb": 494.17578125,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 96,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.057094340734290504,
+          "completionSeconds": 0.057094340734290504
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 97,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 10,
+          "clientId": 97,
+          "baseModelVersion": 9,
+          "numSamples": 4354,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0010_client097_0eaadc0a-bbbd-4687-9937-4ae93525f839.pt",
+          "trainingLoss": 0.6932024795033267,
+          "actualTrainingMs": 107.75629999989178,
+          "workerRssMb": 494.01953125,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 97,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05817537831650982,
+          "completionSeconds": 0.05817537831650982
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 98,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 10,
+          "clientId": 98,
+          "baseModelVersion": 9,
+          "numSamples": 4431,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0010_client098_0eaadc0a-bbbd-4687-9937-4ae93525f839.pt",
+          "trainingLoss": 0.7227273942708055,
+          "actualTrainingMs": 112.02830000001995,
+          "workerRssMb": 493.984375,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 98,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.056436574979648414,
+          "completionSeconds": 0.056436574979648414
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.13580586273996442,
+      0.11807639296607075,
+      0.22701863357343513,
+      0.2585994539561931,
+      0.26049965676433656
+    ],
+    "proxyLosses": [
+      1.8621745347722272,
+      2.1417847625122093,
+      1.1139800081006517,
+      0.9779379476569761,
+      0.9708044241145286
+    ],
+    "proxyEvaluationMs": 1145.6089000002976,
+    "aggregationMs": 17.9081,
+    "evaluation": {
+      "loss": 0.9898514085721954,
+      "accuracy": 0.6059017917075438,
+      "macroF1": 0.18695495250191924,
+      "perClassPrecision": [
+        0.5733825678898377,
+        0.6471771437498779,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.8796025302114804,
+        0.5848923402753265,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          37267,
+          5101,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          23520,
+          33140,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          7151,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          549,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          127,
+          1772,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3473,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4081,
+          21,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 799.0638999999646
+    },
+    "virtualRoundSeconds": 1.2216923783168074,
+    "cumulativeVirtualSeconds": 11.962649670241776,
+    "wallClockSeconds": 2.5784773,
+    "fairness": {
+      "maxStaleness": 10,
+      "opportunityAdjustedGini": 0.9231306478786949,
+      "participationGini": 0.9254166666666667,
+      "meanStaleness": 8.97,
+      "coverage": 0.13
+    }
+  },
+  {
+    "roundId": 11,
+    "modelVersion": 11,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      65,
+      66,
+      67,
+      68,
+      69,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      71,
+      87,
+      97,
+      98,
+      96
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 2.1335,
+        "estimateSource": "prior",
+        "clientId": 71
+      },
+      {
+        "predictedSeconds": 0.053003850000095554,
+        "estimateSource": "history",
+        "clientId": 87
+      },
+      {
+        "predictedSeconds": 0.05387814999994589,
+        "estimateSource": "history",
+        "clientId": 97
+      },
+      {
+        "predictedSeconds": 0.05601415000000998,
+        "estimateSource": "history",
+        "clientId": 98
+      },
+      {
+        "predictedSeconds": 0.05684505000044737,
+        "estimateSource": "history",
+        "clientId": 96
+      }
+    ],
+    "acceptedIds": [
+      71,
+      87,
+      96,
+      97,
+      98
+    ],
+    "participants": [
+      {
+        "clientId": 71,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 11,
+          "clientId": 71,
+          "baseModelVersion": 10,
+          "numSamples": 4267,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0011_client071_0238e9d6-3380-4f72-8470-1dc4f31c0c2d.pt",
+          "trainingLoss": 0.67706935796018,
+          "actualTrainingMs": 105.49440000067989,
+          "workerRssMb": 493.484375,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 71,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.11205279818781416,
+          "completionSeconds": 0.11205279818781416
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 87,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 11,
+          "clientId": 87,
+          "baseModelVersion": 10,
+          "numSamples": 4258,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0011_client087_0238e9d6-3380-4f72-8470-1dc4f31c0c2d.pt",
+          "trainingLoss": 0.4589182953177455,
+          "actualTrainingMs": 105.26009999921371,
+          "workerRssMb": 493.546875,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 87,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05288384460364471,
+          "completionSeconds": 0.05288384460364471
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 96,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 11,
+          "clientId": 96,
+          "baseModelVersion": 10,
+          "numSamples": 4433,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0011_client096_0238e9d6-3380-4f72-8470-1dc4f31c0c2d.pt",
+          "trainingLoss": 0.5826574640754865,
+          "actualTrainingMs": 110.29939999934868,
+          "workerRssMb": 493.6484375,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 96,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05962471594112934,
+          "completionSeconds": 0.05962471594112934
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 97,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 11,
+          "clientId": 97,
+          "baseModelVersion": 10,
+          "numSamples": 4354,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0011_client097_0238e9d6-3380-4f72-8470-1dc4f31c0c2d.pt",
+          "trainingLoss": 0.6712741184847915,
+          "actualTrainingMs": 106.04179999972985,
+          "workerRssMb": 493.546875,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 97,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05450119536402058,
+          "completionSeconds": 0.05450119536402058
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 98,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 11,
+          "clientId": 98,
+          "baseModelVersion": 10,
+          "numSamples": 4431,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0011_client098_0238e9d6-3380-4f72-8470-1dc4f31c0c2d.pt",
+          "trainingLoss": 0.7006987928402556,
+          "actualTrainingMs": 109.54900000069756,
+          "workerRssMb": 493.57421875,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 98,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.054339566544797595,
+          "completionSeconds": 0.054339566544797595
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.18956430550104159,
+      0.12256295057294382,
+      0.21460944450559816,
+      0.23609324123727743,
+      0.23717005818313908
+    ],
+    "proxyLosses": [
+      1.2024108292145441,
+      1.8597314498505861,
+      1.0620882705888595,
+      0.9654413339935857,
+      0.9610579662251434
+    ],
+    "proxyEvaluationMs": 1158.576499998162,
+    "aggregationMs": 15.6974,
+    "evaluation": {
+      "loss": 0.9373569918902502,
+      "accuracy": 0.634455517116745,
+      "macroF1": 0.19611492459534233,
+      "perClassPrecision": [
+        0.6134372640929759,
+        0.6546648436049358,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.8247262084592145,
+        0.6844864101659018,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          34942,
+          7426,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          17877,
+          38783,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          7151,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          549,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          65,
+          1834,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3473,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4077,
+          25,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 889.8911999986012
+    },
+    "virtualRoundSeconds": 1.2863266981859762,
+    "cumulativeVirtualSeconds": 13.248976368427751,
+    "wallClockSeconds": 2.6441667,
+    "fairness": {
+      "maxStaleness": 11,
+      "opportunityAdjustedGini": 0.9193435553425972,
+      "participationGini": 0.9205660377358491,
+      "meanStaleness": 9.82,
+      "coverage": 0.14
+    }
+  },
+  {
+    "roundId": 12,
+    "modelVersion": 12,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      40,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      49,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      72,
+      73,
+      74,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      73,
+      90,
+      87,
+      97,
+      98
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 2.1525,
+        "estimateSource": "prior",
+        "clientId": 73
+      },
+      {
+        "predictedSeconds": 0.05243719999998575,
+        "estimateSource": "history",
+        "clientId": 90
+      },
+      {
+        "predictedSeconds": 0.052630049999606854,
+        "estimateSource": "history",
+        "clientId": 87
+      },
+      {
+        "predictedSeconds": 0.05302089999986492,
+        "estimateSource": "history",
+        "clientId": 97
+      },
+      {
+        "predictedSeconds": 0.05477450000034878,
+        "estimateSource": "history",
+        "clientId": 98
+      }
+    ],
+    "acceptedIds": [
+      73,
+      87,
+      90,
+      97
+    ],
+    "participants": [
+      {
+        "clientId": 73,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 12,
+          "clientId": 73,
+          "baseModelVersion": 11,
+          "numSamples": 4305,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0012_client073_8d0a2a50-2aa7-4ad6-90c8-bf545f52c08c.pt",
+          "trainingLoss": 0.8061480706854011,
+          "actualTrainingMs": 107.49279999981809,
+          "workerRssMb": 493.59375,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 73,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.09856572060269454,
+          "completionSeconds": 0.09856572060269454
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 87,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 12,
+          "clientId": 87,
+          "baseModelVersion": 11,
+          "numSamples": 4258,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0012_client087_8d0a2a50-2aa7-4ad6-90c8-bf545f52c08c.pt",
+          "trainingLoss": 0.42970596355184415,
+          "actualTrainingMs": 105.26740000022983,
+          "workerRssMb": 493.734375,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 87,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.050793436453634225,
+          "completionSeconds": 0.050793436453634225
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 90,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 12,
+          "clientId": 90,
+          "baseModelVersion": 11,
+          "numSamples": 4280,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0012_client090_8d0a2a50-2aa7-4ad6-90c8-bf545f52c08c.pt",
+          "trainingLoss": 0.16674629538972802,
+          "actualTrainingMs": 102.93830000046,
+          "workerRssMb": 493.734375,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 90,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05339523076687383,
+          "completionSeconds": 0.05339523076687383
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 97,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 12,
+          "clientId": 97,
+          "baseModelVersion": 11,
+          "numSamples": 4354,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0012_client097_8d0a2a50-2aa7-4ad6-90c8-bf545f52c08c.pt",
+          "trainingLoss": 0.6543901434418911,
+          "actualTrainingMs": 112.36850000022969,
+          "workerRssMb": 493.734375,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 97,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05512672006394018,
+          "completionSeconds": 0.05512672006394018
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 98,
+        "accepted": false,
+        "status": "DROPPED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 12,
+          "clientId": 98,
+          "baseModelVersion": 11,
+          "numSamples": 4431,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0012_client098_8d0a2a50-2aa7-4ad6-90c8-bf545f52c08c.pt",
+          "trainingLoss": 0.6843741000290515,
+          "actualTrainingMs": 119.81370000103198,
+          "workerRssMb": 493.734375,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 98,
+          "status": "DROPPED",
+          "virtualTrainingSeconds": 0.05806481283950824,
+          "completionSeconds": 0.05806481283950824
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.343933743836947,
+      0.16833768847399752,
+      0.1498779560639312,
+      0.33785061162512414
+    ],
+    "proxyLosses": [
+      0.9249746566803451,
+      1.889832274104834,
+      2.1225936420607834,
+      0.9416291866280824
+    ],
+    "proxyEvaluationMs": 851.4818000003288,
+    "aggregationMs": 13.6963,
+    "evaluation": {
+      "loss": 1.0659679610401633,
+      "accuracy": 0.5527529646649799,
+      "macroF1": 0.23717149394422446,
+      "perClassPrecision": [
+        0.5000740484770697,
+        0.6839173043361525,
+        0.6197471178876905,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.9563821752265861,
+        0.35965407695022944,
+        0.4660886589288211,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          40520,
+          1848,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          36013,
+          20378,
+          269,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          6,
+          3812,
+          3333,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          149,
+          400,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          354,
+          1545,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          53,
+          2044,
+          1376,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4082,
+          20,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 777.5169000015012
+    },
+    "virtualRoundSeconds": 0.9637438206030233,
+    "cumulativeVirtualSeconds": 14.212720189030774,
+    "wallClockSeconds": 2.2435865,
+    "fairness": {
+      "maxStaleness": 12,
+      "opportunityAdjustedGini": 0.9179363529871146,
+      "participationGini": 0.9194736842105263,
+      "meanStaleness": 10.66,
+      "coverage": 0.15
+    }
+  },
+  {
+    "roundId": 13,
+    "modelVersion": 13,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      56,
+      57,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      73,
+      90,
+      87,
+      96,
+      97
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 0.10749279999981809,
+        "estimateSource": "history",
+        "clientId": 73
+      },
+      {
+        "predictedSeconds": 0.05146915000023,
+        "estimateSource": "history",
+        "clientId": 90
+      },
+      {
+        "predictedSeconds": 0.052633700000114914,
+        "estimateSource": "history",
+        "clientId": 87
+      },
+      {
+        "predictedSeconds": 0.05514969999967434,
+        "estimateSource": "history",
+        "clientId": 96
+      },
+      {
+        "predictedSeconds": 0.056184250000114844,
+        "estimateSource": "history",
+        "clientId": 97
+      }
+    ],
+    "acceptedIds": [
+      73,
+      87,
+      90,
+      96,
+      97
+    ],
+    "participants": [
+      {
+        "clientId": 73,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 13,
+          "clientId": 73,
+          "baseModelVersion": 12,
+          "numSamples": 4305,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0013_client073_5e7e40f9-777e-457e-a920-9c6cee8ba816.pt",
+          "trainingLoss": 0.7630576325625908,
+          "actualTrainingMs": 109.7896999999648,
+          "workerRssMb": 493.5859375,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 73,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.09984617233372703,
+          "completionSeconds": 0.09984617233372703
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 87,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 13,
+          "clientId": 87,
+          "baseModelVersion": 12,
+          "numSamples": 4258,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0013_client087_5e7e40f9-777e-457e-a920-9c6cee8ba816.pt",
+          "trainingLoss": 0.3835325338236879,
+          "actualTrainingMs": 103.67940000105591,
+          "workerRssMb": 493.6640625,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 87,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05416171296110525,
+          "completionSeconds": 0.05416171296110525
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 90,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 13,
+          "clientId": 90,
+          "baseModelVersion": 12,
+          "numSamples": 4280,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0013_client090_5e7e40f9-777e-457e-a920-9c6cee8ba816.pt",
+          "trainingLoss": 0.1431310746435807,
+          "actualTrainingMs": 108.64370000126655,
+          "workerRssMb": 493.6640625,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 90,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05474492920294587,
+          "completionSeconds": 0.05474492920294587
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 96,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 13,
+          "clientId": 96,
+          "baseModelVersion": 12,
+          "numSamples": 4433,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0013_client096_5e7e40f9-777e-457e-a920-9c6cee8ba816.pt",
+          "trainingLoss": 0.5613398310255041,
+          "actualTrainingMs": 106.69910000069649,
+          "workerRssMb": 493.6953125,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 96,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.056083599010909195,
+          "completionSeconds": 0.056083599010909195
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 97,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 13,
+          "clientId": 97,
+          "baseModelVersion": 12,
+          "numSamples": 4354,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0013_client097_5e7e40f9-777e-457e-a920-9c6cee8ba816.pt",
+          "trainingLoss": 0.6506147238712109,
+          "actualTrainingMs": 106.02699999981269,
+          "workerRssMb": 493.77734375,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 97,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.0490503900002986,
+          "completionSeconds": 0.0490503900002986
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.262348029021919,
+      0.13334392939216028,
+      0.1125358849124116,
+      0.23261972833269035,
+      0.2591524283408187
+    ],
+    "proxyLosses": [
+      0.9201370233480156,
+      1.8103271412942163,
+      2.145059193281589,
+      1.0377285548206172,
+      0.9314832048881304
+    ],
+    "proxyEvaluationMs": 1275.312900001154,
+    "aggregationMs": 16.3235,
+    "evaluation": {
+      "loss": 0.9254835424926966,
+      "accuracy": 0.6455912979122562,
+      "macroF1": 0.2750736045293451,
+      "perClassPrecision": [
+        0.5847838381299485,
+        0.7383112503535453,
+        0.5862068965517241,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.8786112160120846,
+        0.598923402753265,
+        0.5396448049223885,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          37225,
+          5143,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          22245,
+          33935,
+          480,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3292,
+          3859,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          53,
+          496,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          104,
+          1795,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1725,
+          1748,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4082,
+          20,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 905.0649000000703
+    },
+    "virtualRoundSeconds": 1.3914825723348812,
+    "cumulativeVirtualSeconds": 15.604202761365656,
+    "wallClockSeconds": 2.7725645,
+    "fairness": {
+      "maxStaleness": 13,
+      "opportunityAdjustedGini": 0.9180636736164273,
+      "participationGini": 0.92,
+      "meanStaleness": 11.6,
+      "coverage": 0.15
+    }
+  },
+  {
+    "roundId": 14,
+    "modelVersion": 14,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      65,
+      66,
+      67,
+      68,
+      70,
+      71,
+      72,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      88,
+      89,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      43,
+      97,
+      96,
+      85,
+      92
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 2.1430000000000002,
+        "estimateSource": "prior",
+        "clientId": 43
+      },
+      {
+        "predictedSeconds": 0.053013499999906344,
+        "estimateSource": "history",
+        "clientId": 97
+      },
+      {
+        "predictedSeconds": 0.053349550000348245,
+        "estimateSource": "history",
+        "clientId": 96
+      },
+      {
+        "predictedSeconds": 0.057837400000607886,
+        "estimateSource": "history",
+        "clientId": 85
+      },
+      {
+        "predictedSeconds": 0.051544599999942875,
+        "estimateSource": "history",
+        "clientId": 92
+      }
+    ],
+    "acceptedIds": [
+      43,
+      92,
+      96,
+      97
+    ],
+    "participants": [
+      {
+        "clientId": 43,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 14,
+          "clientId": 43,
+          "baseModelVersion": 13,
+          "numSamples": 4286,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0014_client043_28eaede0-661c-4518-8b4a-364fd8e9c703.pt",
+          "trainingLoss": 0.3632286488314516,
+          "actualTrainingMs": 103.96160000163945,
+          "workerRssMb": 494.98046875,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 43,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.10286568626178128,
+          "completionSeconds": 0.10286568626178128
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 85,
+        "accepted": false,
+        "status": "DROPPED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 14,
+          "clientId": 85,
+          "baseModelVersion": 13,
+          "numSamples": 4296,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0014_client085_28eaede0-661c-4518-8b4a-364fd8e9c703.pt",
+          "trainingLoss": 0.5391202547918706,
+          "actualTrainingMs": 110.00179999973625,
+          "workerRssMb": 495.140625,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 85,
+          "status": "DROPPED",
+          "virtualTrainingSeconds": 0.056522839459866046,
+          "completionSeconds": 0.056522839459866046
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 92,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 14,
+          "clientId": 92,
+          "baseModelVersion": 13,
+          "numSamples": 4242,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0014_client092_28eaede0-661c-4518-8b4a-364fd8e9c703.pt",
+          "trainingLoss": 0.6733834418076943,
+          "actualTrainingMs": 107.32140000072832,
+          "workerRssMb": 495.19921875,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 92,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.057041526643319254,
+          "completionSeconds": 0.057041526643319254
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 96,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 14,
+          "clientId": 96,
+          "baseModelVersion": 13,
+          "numSamples": 4433,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0014_client096_28eaede0-661c-4518-8b4a-364fd8e9c703.pt",
+          "trainingLoss": 0.5355946986206815,
+          "actualTrainingMs": 115.78839999856427,
+          "workerRssMb": 494.99609375,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 96,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.06236956761373715,
+          "completionSeconds": 0.06236956761373715
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 97,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 14,
+          "clientId": 97,
+          "baseModelVersion": 13,
+          "numSamples": 4354,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0014_client097_28eaede0-661c-4518-8b4a-364fd8e9c703.pt",
+          "trainingLoss": 0.6343591493863714,
+          "actualTrainingMs": 106.38079999989714,
+          "workerRssMb": 494.98046875,
+          "workerPeakRssMb": 542.328125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 97,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05704159018050333,
+          "completionSeconds": 0.05704159018050333
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.16567917186445347,
+      0.2819727526070308,
+      0.2623236274366566,
+      0.2900244480918591
+    ],
+    "proxyLosses": [
+      1.588998165907316,
+      0.9336501409714408,
+      1.0035843999040077,
+      0.9077300274295367
+    ],
+    "proxyEvaluationMs": 825.4914999997709,
+    "aggregationMs": 14.3574,
+    "evaluation": {
+      "loss": 0.8873612224677145,
+      "accuracy": 0.673706132424571,
+      "macroF1": 0.27930136868687017,
+      "perClassPrecision": [
+        0.6355364613623998,
+        0.7125404488743533,
+        0.6326810176125245,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.7995657099697885,
+        0.726738439816449,
+        0.45210460075513914,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          33876,
+          8492,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          15307,
+          41177,
+          176,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3918,
+          3233,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          144,
+          405,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          43,
+          1856,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2177,
+          1296,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4077,
+          25,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 965.8180000005814
+    },
+    "virtualRoundSeconds": 0.9427145862615521,
+    "cumulativeVirtualSeconds": 16.546917347627208,
+    "wallClockSeconds": 2.3874533,
+    "fairness": {
+      "maxStaleness": 14,
+      "opportunityAdjustedGini": 0.9160092616087286,
+      "participationGini": 0.916969696969697,
+      "meanStaleness": 12.38,
+      "coverage": 0.16
+    }
+  },
+  {
+    "roundId": 15,
+    "modelVersion": 15,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      89,
+      87,
+      97,
+      90,
+      92
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 1.0935,
+        "estimateSource": "prior",
+        "clientId": 89
+      },
+      {
+        "predictedSeconds": 0.051839700000527955,
+        "estimateSource": "history",
+        "clientId": 87
+      },
+      {
+        "predictedSeconds": 0.05319039999994857,
+        "estimateSource": "history",
+        "clientId": 97
+      },
+      {
+        "predictedSeconds": 0.054321850000633276,
+        "estimateSource": "history",
+        "clientId": 90
+      },
+      {
+        "predictedSeconds": 0.05366070000036416,
+        "estimateSource": "history",
+        "clientId": 92
+      }
+    ],
+    "acceptedIds": [
+      87,
+      89,
+      90,
+      92,
+      97
+    ],
+    "participants": [
+      {
+        "clientId": 87,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 15,
+          "clientId": 87,
+          "baseModelVersion": 14,
+          "numSamples": 4258,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0015_client087_43d5cc9e-1eab-404c-99f8-131dd77f662e.pt",
+          "trainingLoss": 0.38667840828017597,
+          "actualTrainingMs": 109.38519999945129,
+          "workerRssMb": 494.48828125,
+          "workerPeakRssMb": 543.04296875,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 87,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05844811305695962,
+          "completionSeconds": 0.05844811305695962
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 89,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 15,
+          "clientId": 89,
+          "baseModelVersion": 14,
+          "numSamples": 4374,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0015_client089_43d5cc9e-1eab-404c-99f8-131dd77f662e.pt",
+          "trainingLoss": 0.3178613573980484,
+          "actualTrainingMs": 106.5175999992789,
+          "workerRssMb": 494.890625,
+          "workerPeakRssMb": 543.04296875,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 89,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05148283321030586,
+          "completionSeconds": 0.05148283321030586
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 90,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 15,
+          "clientId": 90,
+          "baseModelVersion": 14,
+          "numSamples": 4280,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0015_client090_43d5cc9e-1eab-404c-99f8-131dd77f662e.pt",
+          "trainingLoss": 0.15672868589792296,
+          "actualTrainingMs": 105.49749999881897,
+          "workerRssMb": 494.64453125,
+          "workerPeakRssMb": 543.04296875,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 90,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.04803803644987066,
+          "completionSeconds": 0.04803803644987066
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 92,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 15,
+          "clientId": 92,
+          "baseModelVersion": 14,
+          "numSamples": 4242,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0015_client092_43d5cc9e-1eab-404c-99f8-131dd77f662e.pt",
+          "trainingLoss": 0.6642411321134626,
+          "actualTrainingMs": 105.59879999891564,
+          "workerRssMb": 494.6171875,
+          "workerPeakRssMb": 543.04296875,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 92,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.04820474377630987,
+          "completionSeconds": 0.04820474377630987
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 97,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 15,
+          "clientId": 97,
+          "baseModelVersion": 14,
+          "numSamples": 4354,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0015_client097_43d5cc9e-1eab-404c-99f8-131dd77f662e.pt",
+          "trainingLoss": 0.6207388753895372,
+          "actualTrainingMs": 107.26590000012948,
+          "workerRssMb": 494.578125,
+          "workerPeakRssMb": 543.04296875,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 97,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05163531952816763,
+          "completionSeconds": 0.05163531952816763
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.13587569984969242,
+      0.19091531243637952,
+      0.12159953478166516,
+      0.2671069993567667,
+      0.2845024535754963
+    ],
+    "proxyLosses": [
+      1.8773020617970337,
+      1.3360883850578777,
+      2.0977031855750448,
+      0.9549720976620318,
+      0.8965818335491221
+    ],
+    "proxyEvaluationMs": 1158.1745000003139,
+    "aggregationMs": 15.6267,
+    "evaluation": {
+      "loss": 0.9295277931269975,
+      "accuracy": 0.644343470852481,
+      "macroF1": 0.2717475406594486,
+      "perClassPrecision": [
+        0.5846326731282484,
+        0.7283548856726899,
+        0.6262216485340217,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.8841106495468278,
+        0.600423579244617,
+        0.4748986155782408,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          37458,
+          4910,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          22432,
+          34020,
+          208,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3755,
+          3396,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          110,
+          439,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          99,
+          1800,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2093,
+          1380,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4082,
+          20,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 787.6422000008461
+    },
+    "virtualRoundSeconds": 1.2322493130572734,
+    "cumulativeVirtualSeconds": 17.77916666068448,
+    "wallClockSeconds": 2.540452,
+    "fairness": {
+      "maxStaleness": 15,
+      "opportunityAdjustedGini": 0.9148342053289907,
+      "participationGini": 0.9159154929577464,
+      "meanStaleness": 13.17,
+      "coverage": 0.17
+    }
+  },
+  {
+    "roundId": 16,
+    "modelVersion": 16,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      30,
+      31,
+      32,
+      34,
+      35,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      83,
+      84,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      67,
+      90,
+      89,
+      97,
+      87
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 2.121,
+        "estimateSource": "prior",
+        "clientId": 67
+      },
+      {
+        "predictedSeconds": 0.05274874999940948,
+        "estimateSource": "history",
+        "clientId": 90
+      },
+      {
+        "predictedSeconds": 0.05325879999963945,
+        "estimateSource": "history",
+        "clientId": 89
+      },
+      {
+        "predictedSeconds": 0.05363295000006474,
+        "estimateSource": "history",
+        "clientId": 97
+      },
+      {
+        "predictedSeconds": 0.054692599999725644,
+        "estimateSource": "history",
+        "clientId": 87
+      }
+    ],
+    "acceptedIds": [
+      67,
+      89,
+      90,
+      97
+    ],
+    "participants": [
+      {
+        "clientId": 67,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 16,
+          "clientId": 67,
+          "baseModelVersion": 15,
+          "numSamples": 4242,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0016_client067_5ec0e950-2895-43f6-ac20-f3bce9090913.pt",
+          "trainingLoss": 0.45915917277279916,
+          "actualTrainingMs": 105.96760000044014,
+          "workerRssMb": 495.125,
+          "workerPeakRssMb": 543.04296875,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 67,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.10768512933041435,
+          "completionSeconds": 0.10768512933041435
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 87,
+        "accepted": false,
+        "status": "DROPPED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 16,
+          "clientId": 87,
+          "baseModelVersion": 15,
+          "numSamples": 4258,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0016_client087_5ec0e950-2895-43f6-ac20-f3bce9090913.pt",
+          "trainingLoss": 0.3755310550052104,
+          "actualTrainingMs": 103.64960000151768,
+          "workerRssMb": 495.171875,
+          "workerPeakRssMb": 543.04296875,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 87,
+          "status": "DROPPED",
+          "virtualTrainingSeconds": 0.05317605635824491,
+          "completionSeconds": 0.05317605635824491
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 89,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 16,
+          "clientId": 89,
+          "baseModelVersion": 15,
+          "numSamples": 4374,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0016_client089_5ec0e950-2895-43f6-ac20-f3bce9090913.pt",
+          "trainingLoss": 0.3167396256189996,
+          "actualTrainingMs": 106.70100000061211,
+          "workerRssMb": 495.171875,
+          "workerPeakRssMb": 543.04296875,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 89,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05115366129105465,
+          "completionSeconds": 0.05115366129105465
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 90,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 16,
+          "clientId": 90,
+          "baseModelVersion": 15,
+          "numSamples": 4280,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0016_client090_5ec0e950-2895-43f6-ac20-f3bce9090913.pt",
+          "trainingLoss": 0.1486912605152509,
+          "actualTrainingMs": 104.51060000013968,
+          "workerRssMb": 495.171875,
+          "workerPeakRssMb": 543.04296875,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 90,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.04978773672081528,
+          "completionSeconds": 0.04978773672081528
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 97,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 16,
+          "clientId": 97,
+          "baseModelVersion": 15,
+          "numSamples": 4354,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0016_client097_5ec0e950-2895-43f6-ac20-f3bce9090913.pt",
+          "trainingLoss": 0.6175825327128295,
+          "actualTrainingMs": 107.91109999991022,
+          "workerRssMb": 495.171875,
+          "workerPeakRssMb": 543.04296875,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 97,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05211000402750419,
+          "completionSeconds": 0.05211000402750419
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.22810911531913705,
+      0.2413485278326608,
+      0.15792326648660307,
+      0.3726190903615991
+    ],
+    "proxyLosses": [
+      1.4511042827296177,
+      1.3715025202008697,
+      2.0960186648453365,
+      0.8883337508232424
+    ],
+    "proxyEvaluationMs": 825.2047999994829,
+    "aggregationMs": 16.2385,
+    "evaluation": {
+      "loss": 0.9235159794075087,
+      "accuracy": 0.6459097089550955,
+      "macroF1": 0.2707674233589942,
+      "perClassPrecision": [
+        0.5877065953093027,
+        0.7244732917428109,
+        0.6375123395853899,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.8812547205438066,
+        0.6087186727850336,
+        0.4515452384281919,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          37337,
+          5031,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          22014,
+          34490,
+          156,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3922,
+          3229,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          125,
+          424,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          97,
+          1802,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2217,
+          1256,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4082,
+          20,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 892.112300000008
+    },
+    "virtualRoundSeconds": 0.9491284293298973,
+    "cumulativeVirtualSeconds": 18.728295090014377,
+    "wallClockSeconds": 2.3003442,
+    "fairness": {
+      "maxStaleness": 16,
+      "opportunityAdjustedGini": 0.9111757292514506,
+      "participationGini": 0.9121333333333334,
+      "meanStaleness": 13.98,
+      "coverage": 0.18
+    }
+  },
+  {
+    "roundId": 17,
+    "modelVersion": 17,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      53,
+      90,
+      89,
+      97,
+      87
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 2.1545,
+        "estimateSource": "prior",
+        "clientId": 53
+      },
+      {
+        "predictedSeconds": 0.05225530000006984,
+        "estimateSource": "history",
+        "clientId": 90
+      },
+      {
+        "predictedSeconds": 0.053350500000306056,
+        "estimateSource": "history",
+        "clientId": 89
+      },
+      {
+        "predictedSeconds": 0.05395554999995511,
+        "estimateSource": "history",
+        "clientId": 97
+      },
+      {
+        "predictedSeconds": 0.05182480000075884,
+        "estimateSource": "history",
+        "clientId": 87
+      }
+    ],
+    "acceptedIds": [
+      53,
+      87,
+      89,
+      90
+    ],
+    "participants": [
+      {
+        "clientId": 53,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 17,
+          "clientId": 53,
+          "baseModelVersion": 16,
+          "numSamples": 4309,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0017_client053_20019c51-1cf6-4680-95db-cc1c52a9d3d9.pt",
+          "trainingLoss": 0.4587086430003179,
+          "actualTrainingMs": 103.97849999935715,
+          "workerRssMb": 494.41015625,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 53,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.09732534974509557,
+          "completionSeconds": 0.09732534974509557
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 87,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 17,
+          "clientId": 87,
+          "baseModelVersion": 16,
+          "numSamples": 4258,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0017_client087_20019c51-1cf6-4680-95db-cc1c52a9d3d9.pt",
+          "trainingLoss": 0.36885072233329474,
+          "actualTrainingMs": 104.46550000051502,
+          "workerRssMb": 494.51953125,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 87,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05618181941492806,
+          "completionSeconds": 0.05618181941492806
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 89,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 17,
+          "clientId": 89,
+          "baseModelVersion": 16,
+          "numSamples": 4374,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0017_client089_20019c51-1cf6-4680-95db-cc1c52a9d3d9.pt",
+          "trainingLoss": 0.31222229494206916,
+          "actualTrainingMs": 106.95380000106525,
+          "workerRssMb": 494.48046875,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 89,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.049531551985826774,
+          "completionSeconds": 0.049531551985826774
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 90,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 17,
+          "clientId": 90,
+          "baseModelVersion": 16,
+          "numSamples": 4280,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0017_client090_20019c51-1cf6-4680-95db-cc1c52a9d3d9.pt",
+          "trainingLoss": 0.14797536968210034,
+          "actualTrainingMs": 106.34500000014668,
+          "workerRssMb": 494.4765625,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 90,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05244050163898736,
+          "completionSeconds": 0.05244050163898736
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 97,
+        "accepted": false,
+        "status": "DROPPED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 17,
+          "clientId": 97,
+          "baseModelVersion": 16,
+          "numSamples": 4354,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0017_client097_20019c51-1cf6-4680-95db-cc1c52a9d3d9.pt",
+          "trainingLoss": 0.6119263663881133,
+          "actualTrainingMs": 106.75020000053337,
+          "workerRssMb": 494.48046875,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 97,
+          "status": "DROPPED",
+          "virtualTrainingSeconds": 0.05284451799745625,
+          "completionSeconds": 0.05284451799745625
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.3506966086328556,
+      0.19536155844099534,
+      0.2791289491743839,
+      0.1748128837517652
+    ],
+    "proxyLosses": [
+      1.0486880840768846,
+      1.8825164865304227,
+      1.3175679401482925,
+      2.1038000558453507
+    ],
+    "proxyEvaluationMs": 956.0342000004312,
+    "aggregationMs": 13.7889,
+    "evaluation": {
+      "loss": 1.0245204391160403,
+      "accuracy": 0.5900586909003287,
+      "macroF1": 0.253554262819599,
+      "perClassPrecision": [
+        0.5280530244667003,
+        0.7170340567801893,
+        0.6232657417289221,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.9383260951661632,
+        0.4466466643134486,
+        0.49000139840581736,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          39755,
+          2613,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          31147,
+          25307,
+          206,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3647,
+          3504,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          71,
+          478,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          277,
+          1622,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          25,
+          2014,
+          1434,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4082,
+          20,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 790.1593999995384
+    },
+    "virtualRoundSeconds": 1.0671484497455268,
+    "cumulativeVirtualSeconds": 19.795443539759905,
+    "wallClockSeconds": 2.3429014,
+    "fairness": {
+      "maxStaleness": 17,
+      "opportunityAdjustedGini": 0.9089313925383817,
+      "participationGini": 0.9094936708860759,
+      "meanStaleness": 14.77,
+      "coverage": 0.19
+    }
+  },
+  {
+    "roundId": 18,
+    "modelVersion": 18,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      38,
+      39,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      68,
+      69,
+      70,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      99
+    ],
+    "selectedIds": [
+      85,
+      90,
+      89,
+      87,
+      97
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 0.055000899999868125,
+        "estimateSource": "history",
+        "clientId": 85
+      },
+      {
+        "predictedSeconds": 0.05317250000007334,
+        "estimateSource": "history",
+        "clientId": 90
+      },
+      {
+        "predictedSeconds": 0.05347690000053262,
+        "estimateSource": "history",
+        "clientId": 89
+      },
+      {
+        "predictedSeconds": 0.05223275000025751,
+        "estimateSource": "history",
+        "clientId": 87
+      },
+      {
+        "predictedSeconds": 0.053375100000266684,
+        "estimateSource": "history",
+        "clientId": 97
+      }
+    ],
+    "acceptedIds": [
+      85,
+      87,
+      89,
+      90,
+      97
+    ],
+    "participants": [
+      {
+        "clientId": 85,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 18,
+          "clientId": 85,
+          "baseModelVersion": 17,
+          "numSamples": 4296,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0018_client085_cc31b032-3b18-470e-9787-cc8f3735f6f3.pt",
+          "trainingLoss": 0.5215246112431006,
+          "actualTrainingMs": 105.00010000032489,
+          "workerRssMb": 494.19140625,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 85,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05580840262614124,
+          "completionSeconds": 0.05580840262614124
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 87,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 18,
+          "clientId": 87,
+          "baseModelVersion": 17,
+          "numSamples": 4258,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0018_client087_cc31b032-3b18-470e-9787-cc8f3735f6f3.pt",
+          "trainingLoss": 0.3586550549813535,
+          "actualTrainingMs": 104.17270000107237,
+          "workerRssMb": 494.30078125,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 87,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.055213112419997774,
+          "completionSeconds": 0.055213112419997774
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 89,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 18,
+          "clientId": 89,
+          "baseModelVersion": 17,
+          "numSamples": 4374,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0018_client089_cc31b032-3b18-470e-9787-cc8f3735f6f3.pt",
+          "trainingLoss": 0.318619529753719,
+          "actualTrainingMs": 111.54279999936989,
+          "workerRssMb": 494.35546875,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 89,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05646789534998083,
+          "completionSeconds": 0.05646789534998083
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 90,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 18,
+          "clientId": 90,
+          "baseModelVersion": 17,
+          "numSamples": 4280,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0018_client090_cc31b032-3b18-470e-9787-cc8f3735f6f3.pt",
+          "trainingLoss": 0.13697990212136896,
+          "actualTrainingMs": 103.14450000078068,
+          "workerRssMb": 494.33984375,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 90,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05297306265611246,
+          "completionSeconds": 0.05297306265611246
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 97,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 18,
+          "clientId": 97,
+          "baseModelVersion": 17,
+          "numSamples": 4354,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0018_client097_cc31b032-3b18-470e-9787-cc8f3735f6f3.pt",
+          "trainingLoss": 0.6137079110811432,
+          "actualTrainingMs": 107.2944000006828,
+          "workerRssMb": 494.41796875,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 97,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05890969519181805,
+          "completionSeconds": 0.05890969519181805
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.26984734928658904,
+      0.13574650310690944,
+      0.1901210525997532,
+      0.12063552503550883,
+      0.2836495699712395
+    ],
+    "proxyLosses": [
+      0.9588992879877468,
+      1.9061738252844942,
+      1.3610088286278872,
+      2.144943879674968,
+      0.912239814509599
+    ],
+    "proxyEvaluationMs": 1146.1432999985846,
+    "aggregationMs": 16.0422,
+    "evaluation": {
+      "loss": 0.8911515202728029,
+      "accuracy": 0.6756940500163509,
+      "macroF1": 0.2774170262559775,
+      "perClassPrecision": [
+        0.6399450383978317,
+        0.7105623438409145,
+        0.6459051724137931,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.8024688444108762,
+        0.7328097423226262,
+        0.4191022234652496,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          33999,
+          8369,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          15018,
+          41521,
+          121,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4154,
+          2997,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          145,
+          404,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          48,
+          1851,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2355,
+          1118,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4063,
+          39,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 793.6142999988078
+    },
+    "virtualRoundSeconds": 1.2210951951904025,
+    "cumulativeVirtualSeconds": 21.01653873495031,
+    "wallClockSeconds": 2.5284045,
+    "fairness": {
+      "maxStaleness": 18,
+      "opportunityAdjustedGini": 0.9099832462708356,
+      "participationGini": 0.9107142857142857,
+      "meanStaleness": 15.63,
+      "coverage": 0.19
+    }
+  },
+  {
+    "roundId": 19,
+    "modelVersion": 19,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      48,
+      90,
+      87,
+      89,
+      97
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 2.1735,
+        "estimateSource": "prior",
+        "clientId": 48
+      },
+      {
+        "predictedSeconds": 0.05157225000039034,
+        "estimateSource": "history",
+        "clientId": 90
+      },
+      {
+        "predictedSeconds": 0.052086350000536186,
+        "estimateSource": "history",
+        "clientId": 87
+      },
+      {
+        "predictedSeconds": 0.055771399999684945,
+        "estimateSource": "history",
+        "clientId": 89
+      },
+      {
+        "predictedSeconds": 0.0536472000003414,
+        "estimateSource": "history",
+        "clientId": 97
+      }
+    ],
+    "acceptedIds": [
+      87,
+      89,
+      90,
+      97
+    ],
+    "participants": [
+      {
+        "clientId": 48,
+        "accepted": false,
+        "status": "DROPPED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 19,
+          "clientId": 48,
+          "baseModelVersion": 18,
+          "numSamples": 4347,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0019_client048_42d6dd11-0cf9-43a7-bc1f-9067005bf9dc.pt",
+          "trainingLoss": 0.9328215738014158,
+          "actualTrainingMs": 104.38590000012482,
+          "workerRssMb": 494.38671875,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 48,
+          "status": "DROPPED",
+          "virtualTrainingSeconds": 0.09582740635726573,
+          "completionSeconds": 0.09582740635726573
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 87,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 19,
+          "clientId": 87,
+          "baseModelVersion": 18,
+          "numSamples": 4258,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0019_client087_42d6dd11-0cf9-43a7-bc1f-9067005bf9dc.pt",
+          "trainingLoss": 0.3701199196618507,
+          "actualTrainingMs": 113.16989999977523,
+          "workerRssMb": 494.44921875,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 87,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.06214819459749768,
+          "completionSeconds": 0.06214819459749768
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 89,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 19,
+          "clientId": 89,
+          "baseModelVersion": 18,
+          "numSamples": 4374,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0019_client089_42d6dd11-0cf9-43a7-bc1f-9067005bf9dc.pt",
+          "trainingLoss": 0.30128530495015243,
+          "actualTrainingMs": 108.6395000002085,
+          "workerRssMb": 494.5,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 89,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.052244754812496186,
+          "completionSeconds": 0.052244754812496186
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 90,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 19,
+          "clientId": 90,
+          "baseModelVersion": 18,
+          "numSamples": 4280,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0019_client090_42d6dd11-0cf9-43a7-bc1f-9067005bf9dc.pt",
+          "trainingLoss": 0.1502684655799487,
+          "actualTrainingMs": 105.45400000046357,
+          "workerRssMb": 494.44921875,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 90,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.0491523086439252,
+          "completionSeconds": 0.0491523086439252
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 97,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 19,
+          "clientId": 97,
+          "baseModelVersion": 18,
+          "numSamples": 4354,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0019_client097_42d6dd11-0cf9-43a7-bc1f-9067005bf9dc.pt",
+          "trainingLoss": 0.601788068261232,
+          "actualTrainingMs": 104.77990000072168,
+          "workerRssMb": 494.5,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 97,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.050091678030049096,
+          "completionSeconds": 0.050091678030049096
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.18901705132182686,
+      0.2668568589787258,
+      0.15914395414515095,
+      0.3849821355542963
+    ],
+    "proxyLosses": [
+      1.8019978835543258,
+      1.2763708894016665,
+      2.1402530072047328,
+      0.8847380046536559
+    ],
+    "proxyEvaluationMs": 946.1791000012454,
+    "aggregationMs": 14.0464,
+    "evaluation": {
+      "loss": 0.9155181849573842,
+      "accuracy": 0.6506170289667992,
+      "macroF1": 0.2766350088138948,
+      "perClassPrecision": [
+        0.5896201770079638,
+        0.7371902584281612,
+        0.6145038167938931,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.8789888595166163,
+        0.611701376632545,
+        0.5178296741714445,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          37241,
+          5127,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          21742,
+          34659,
+          259,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3448,
+          3703,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          37,
+          512,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          96,
+          1803,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1921,
+          1552,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4082,
+          20,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 791.6062999993301
+    },
+    "virtualRoundSeconds": 1.0560529063585111,
+    "cumulativeVirtualSeconds": 22.07259164130882,
+    "wallClockSeconds": 2.3262229,
+    "fairness": {
+      "maxStaleness": 19,
+      "opportunityAdjustedGini": 0.9114481707444249,
+      "participationGini": 0.9122727272727272,
+      "meanStaleness": 16.59,
+      "coverage": 0.19
+    }
+  },
+  {
+    "roundId": 20,
+    "modelVersion": 20,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      41,
+      42,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      71,
+      72,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      60,
+      90,
+      89,
+      97,
+      96
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 2.141,
+        "estimateSource": "prior",
+        "clientId": 60
+      },
+      {
+        "predictedSeconds": 0.05272700000023178,
+        "estimateSource": "history",
+        "clientId": 90
+      },
+      {
+        "predictedSeconds": 0.05431975000010425,
+        "estimateSource": "history",
+        "clientId": 89
+      },
+      {
+        "predictedSeconds": 0.05238995000036084,
+        "estimateSource": "history",
+        "clientId": 97
+      },
+      {
+        "predictedSeconds": 0.05789419999928214,
+        "estimateSource": "history",
+        "clientId": 96
+      }
+    ],
+    "acceptedIds": [
+      60,
+      89,
+      90,
+      96,
+      97
+    ],
+    "participants": [
+      {
+        "clientId": 60,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 20,
+          "clientId": 60,
+          "baseModelVersion": 19,
+          "numSamples": 4282,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0020_client060_abdda261-1754-4706-bdc0-b0bb3f04ba34.pt",
+          "trainingLoss": 1.063349008393143,
+          "actualTrainingMs": 106.06040000129724,
+          "workerRssMb": 494.69140625,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 60,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.10512485195027266,
+          "completionSeconds": 0.10512485195027266
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 89,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 20,
+          "clientId": 89,
+          "baseModelVersion": 19,
+          "numSamples": 4374,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0020_client089_abdda261-1754-4706-bdc0-b0bb3f04ba34.pt",
+          "trainingLoss": 0.3064814463264603,
+          "actualTrainingMs": 109.71170000084385,
+          "workerRssMb": 494.91796875,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 89,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05430901761833155,
+          "completionSeconds": 0.05430901761833155
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 90,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 20,
+          "clientId": 90,
+          "baseModelVersion": 19,
+          "numSamples": 4280,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0020_client090_abdda261-1754-4706-bdc0-b0bb3f04ba34.pt",
+          "trainingLoss": 0.14457227304995618,
+          "actualTrainingMs": 110.83630000030098,
+          "workerRssMb": 494.80078125,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 90,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.058864102358649625,
+          "completionSeconds": 0.058864102358649625
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 96,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 20,
+          "clientId": 96,
+          "baseModelVersion": 19,
+          "numSamples": 4433,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0020_client096_abdda261-1754-4706-bdc0-b0bb3f04ba34.pt",
+          "trainingLoss": 0.5021346295065463,
+          "actualTrainingMs": 107.8626999988046,
+          "workerRssMb": 495.00390625,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 96,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.05336538464094664,
+          "completionSeconds": 0.05336538464094664
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 97,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "covertype-resource-fedlbw-42",
+          "roundId": 20,
+          "clientId": 97,
+          "baseModelVersion": 19,
+          "numSamples": 4354,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/covertype-resource-fedlbw-42/r0020_client097_abdda261-1754-4706-bdc0-b0bb3f04ba34.pt",
+          "trainingLoss": 0.5991397335420358,
+          "actualTrainingMs": 105.32319999947504,
+          "workerRssMb": 494.96484375,
+          "workerPeakRssMb": 543.46484375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 97,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.048586730325067766,
+          "completionSeconds": 0.048586730325067766
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.2285447807233368,
+      0.17697296527878414,
+      0.10733001705002068,
+      0.22948380998391624,
+      0.2576684269639421
+    ],
+    "proxyLosses": [
+      0.989754575348767,
+      1.2781796475900544,
+      2.1075487418173267,
+      0.9857045793725366,
+      0.8778849821001079
+    ],
+    "proxyEvaluationMs": 1148.760800002492,
+    "aggregationMs": 16.2804,
+    "evaluation": {
+      "loss": 0.8596727082951792,
+      "accuracy": 0.6618991067279393,
+      "macroF1": 0.2758678374377056,
+      "perClassPrecision": [
+        0.7156648390460493,
+        0.6480854651382265,
+        0.5904027420736933,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "perClassRecall": [
+        0.5021714501510574,
+        0.9090010589481116,
+        0.578100964900014,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          21276,
+          21092,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4692,
+          51504,
+          464,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3017,
+          4134,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          11,
+          538,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1899,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1607,
+          1866,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          3761,
+          341,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 893.3003999991342
+    },
+    "virtualRoundSeconds": 1.2701660519527647,
+    "cumulativeVirtualSeconds": 23.342757693261582,
+    "wallClockSeconds": 2.6772524,
+    "fairness": {
+      "maxStaleness": 20,
+      "opportunityAdjustedGini": 0.908616024879035,
+      "participationGini": 0.9095698924731183,
+      "meanStaleness": 17.3,
+      "coverage": 0.2
+    }
+  }
+]

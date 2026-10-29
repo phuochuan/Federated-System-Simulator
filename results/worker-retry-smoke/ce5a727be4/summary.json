@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "syntheticRounds": 2,
+  "lostSuccessfulReplies": 1,
+  "sameRequestAndOperationId": true,
+  "sameOriginalResponse": true,
+  "duplicateCheckpoints": 0,
+  "checkpoint": "artifacts/models/retry-ce5a727be4/r0001_client034_76807406-17fb-4f40-a66b-9484a89fcf29.pt",
+  "modelStateHash": "191754016299e138d7a23367bf3aef6b1be5aa66aac9c632ced9af7f3de7286b"
+}

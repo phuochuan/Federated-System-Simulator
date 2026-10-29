@@ -1,0 +1,31 @@
+{
+  "iidManifestPath": "artifacts/matrix-smoke/787c44c29a/iid",
+  "nonIidManifestPath": "artifacts/matrix-smoke/787c44c29a/non-iid",
+  "seeds": [
+    42,
+    43
+  ],
+  "baseConfig": {
+    "experimentId": "matrix-template",
+    "manifestPath": "artifacts/partitions/covertype-iid-42",
+    "totalClients": 100,
+    "selectedPerRound": 5,
+    "rounds": 1,
+    "seed": 42,
+    "selection": "random",
+    "aggregation": "fedavg",
+    "localEpochs": 1,
+    "batchSize": 32,
+    "learningRate": 0.01,
+    "simulationEnabled": true,
+    "resourceProfile": "cpu",
+    "availability": 1.0,
+    "dropout": 0.0,
+    "jitter": 0.0,
+    "exploration": 0.2,
+    "deadlineSeconds": null,
+    "requiredRamMb": 600.0,
+    "priorSecondsPerSample": 0.0005,
+    "targetAccuracy": 0.65
+  }
+}

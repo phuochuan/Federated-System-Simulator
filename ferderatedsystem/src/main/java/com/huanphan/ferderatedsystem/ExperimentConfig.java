@@ -28,7 +28,17 @@ public record ExperimentConfig(
         @DecimalMin("0") @DecimalMax("1") double targetAccuracy,
         @Pattern(regexp="mlp_54_128_64_7|mlp_54_256_128_7") String architecture,
         String scenarioTracePath,
-        FuzzySelectionConfig fuzzySelection) {
+        FuzzySelectionConfig fuzzySelection,
+        SimulationTimingConfig timing,
+        @Pattern(regexp="proxy|test") String evaluationSplit,
+        com.fasterxml.jackson.databind.JsonNode provenance,
+        @Pattern(regexp="proxy|test") String finalEvaluationSplit) {
+    public String effectiveEvaluationSplit() {return evaluationSplit==null?"test":evaluationSplit;}
+    public boolean hasProvenance() {return provenance!=null&&!provenance.isNull();}
+    public String durationMode() {return timing==null?"measured":timing.mode();}
+    public double durationInputMs(ClientProfile client,double measuredMs) {
+        return timing==null?measuredMs:timing.durationMs(client,this,measuredMs);
+    }
     public void check() {
         // Kiểm tra thêm quan hệ giữa các trường và tính hữu hạn của các số thực.
         if (selectedPerRound > totalClients) throw new IllegalArgumentException("K cannot exceed totalClients");
@@ -37,5 +47,10 @@ public record ExperimentConfig(
         if(deadlineSeconds!=null && !Double.isFinite(deadlineSeconds)) throw new IllegalArgumentException("Deadline must be finite");
         if(FuzzySelectionConfig.isFuzzy(selection)&&fuzzySelection==null) throw new IllegalArgumentException("fuzzySelection config is required for "+selection);
         if(fuzzySelection!=null) fuzzySelection.check(selection);
+        if(timing!=null) timing.check();
+        if(evaluationSplit!=null && !evaluationSplit.equals("proxy") && !evaluationSplit.equals("test"))
+            throw new IllegalArgumentException("evaluationSplit must be proxy or test");
+        if(finalEvaluationSplit!=null && !java.util.Set.of("proxy","test").contains(finalEvaluationSplit))
+            throw new IllegalArgumentException("finalEvaluationSplit must be proxy or test");
     }
 }

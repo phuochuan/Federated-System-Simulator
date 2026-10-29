@@ -4,6 +4,7 @@ Run from the workspace: .venv/Scripts/python.exe scripts/verify_fuzzy.py
 Synthetic smoke evidence must not be pooled with the 70-round Covertype protocol.
 """
 import json
+import argparse
 import math
 import os
 from pathlib import Path
@@ -117,12 +118,15 @@ def replay_fuzzy(rounds, state):
     close(state["snapshot"]["fuzzySelectionState"]["currentLambda"], previous_lambda)
 
 
-def verify():
-    folder = ROOT / "artifacts/fuzzy-smoke" / uuid.uuid4().hex[:10]
+def verify(lambda_ablation=False):
+    rows = [f"L{i}" for i in range(6)] if lambda_ablation else [f"F{i}" for i in range(1,6)]
+    adaptive_row = "L5" if lambda_ablation else "F5"
+    expected_experiments = len(rows)*2
+    folder = ROOT / ("artifacts/lambda-smoke" if lambda_ablation else "artifacts/fuzzy-smoke") / uuid.uuid4().hex[:10]
     folder.mkdir(parents=True)
     for name, strategy in (("iid", "iid_equal"), ("non-iid", "dirichlet_label_skew")):
         prepare(folder/name, dataset="synthetic", clients=100, samples=7000, strategy=strategy)
-    config = json.loads((ROOT/"configurations/fuzzy-matrix.json").read_text(encoding="utf-8"))
+    config = json.loads((ROOT/("configurations/lambda-ablation.json" if lambda_ablation else "configurations/fuzzy-matrix.json")).read_text(encoding="utf-8"))
     config.update(iidManifestPath=(folder/"iid").relative_to(ROOT).as_posix(),
                   nonIidManifestPath=(folder/"non-iid").relative_to(ROOT).as_posix(), seeds=[42, 43])
     config["baseConfig"]["rounds"] = 3
@@ -135,6 +139,8 @@ def verify():
     env = {**os.environ, "MINIFLS_WORKSPACE":str(ROOT), "MINIFLS_WORKER_URL":worker_base,
            "MINIFLS_SERVER_PORT":str(server_port), "MINIFLS_DATABASE":str(folder/"test.db"),
            "MINIFLS_METHOD":"fuzzy_matrix", "MINIFLS_FUZZY_MATRIX_CONFIG":str(matrix_file), "MINIFLS_MATRIX_ROUNDS":"3"}
+    if lambda_ablation:
+        env.update(MINIFLS_METHOD="lambda_ablation",MINIFLS_LAMBDA_MATRIX_CONFIG=str(matrix_file))
     flags = {"creationflags":subprocess.CREATE_NO_WINDOW} if os.name == "nt" else {}
     worker = server = None
     with (folder/"services.log").open("w", encoding="utf-8") as log:
@@ -162,9 +168,9 @@ def verify():
                     experiments = get(base,"/experiments")
                     if any(e["status"] == "FAILED" for e in experiments):
                         raise RuntimeError(f"Failed experiment: {experiments}; inspect {folder}/services.log")
-                    if len(experiments)==10 and all(e["status"]=="COMPLETED" for e in experiments):
+                    if len(experiments)==expected_experiments and all(e["status"]=="COMPLETED" for e in experiments):
                         batch = experiments[0]["id"][len("matrix-"):].rsplit("-",2)[0]
-                        report = ROOT/"artifacts/comparisons"/batch/"F-fuzzy-client-selection.txt"
+                        report = ROOT/"artifacts/comparisons"/batch/("L-fixed-lambda-ablation.txt" if lambda_ablation else "F-fuzzy-client-selection.txt")
                         if report.exists():
                             break
                 except (URLError, TimeoutError):
@@ -187,25 +193,41 @@ def verify():
                     assert metrics["selectorComputationMs"] >= 0
                     assert metrics["cumulativeVirtualSecondsWithSelector"] >= metrics["cumulativeVirtualSeconds"]
                     assert all(math.isfinite(v) and 0<=v<=1 for v in metrics["fuzzyTopsisScores"].values())
-                if row in ("F3","F4","F5"):
+                if lambda_ablation or row in ("F3","F4","F5"):
                     replay_fuzzy(rounds,state)
+                    for metrics in rounds:
+                        cc = metrics["fuzzyTopsisScores"]
+                        pure = [int(key) for key in sorted(cc,key=lambda key:(-cc[key],int(key)))[:len(metrics["selectedIds"])]]
+                        changed = len(set(metrics["selectedIds"])-set(pure))
+                        assert metrics["topsisTopKClientIds"] == pure
+                        assert metrics["slotsChangedVsTopsis"] == changed
+                        if metrics["selectedIds"]:
+                            close(metrics["slotsChangedVsTopsisRatio"],changed/len(metrics["selectedIds"]))
+                    if lambda_ablation and row!="L5":
+                        expected_lambda = config["lambdaAblation"]["fixedLambdas"][int(row[1:])]
+                        assert all(r["currentFairnessLambda"]==expected_lambda and r["nextFairnessLambda"]==expected_lambda for r in rounds)
+                        if row=="L0":assert all(r["slotsChangedVsTopsis"]==0 for r in rounds)
                 else:
                     assert state["snapshot"]["fuzzySelectionState"] is None
             for seed in (42,43):
-                reference = states[("F1",seed)]["snapshot"]
-                for row in ("F2","F3","F4","F5"):
+                reference = states[(rows[0],seed)]["snapshot"]
+                for row in rows[1:]:
                     snapshot = states[(row,seed)]["snapshot"]
                     assert snapshot["initialModelStateHash"] == reference["initialModelStateHash"]
                     assert snapshot["scenarioTraceHash"] == reference["scenarioTraceHash"]
                     for i in range(3):
-                        assert evidence[(row,seed)][i]["scenarioTrace"] == evidence[("F1",seed)][i]["scenarioTrace"]
+                        assert evidence[(row,seed)][i]["scenarioTrace"] == evidence[(rows[0],seed)][i]["scenarioTrace"]
             text = report.read_text(encoding="utf-8")
             assert "Status: COMPLETED" in text and "SMOKE TEST ONLY" in text
-            for pair in ("F1 VS F2","F1 VS F3","F3 VS F4","F4 VS F5","F1 VS F5","F2 VS F5"):
+            pairs = ("L0 VS L5","L1 VS L5","L2 VS L5","L3 VS L5","L4 VS L5","L0 VS L4") if lambda_ablation else ("F1 VS F2","F1 VS F3","F3 VS F4","F4 VS F5","F1 VS F5","F2 VS F5")
+            for pair in pairs:
                 assert pair in text
+            if lambda_ablation:
+                for name in ("accuracyTailSd","macroF1TailSd","slotsChangedVsTopsisRatio","finalAccuracyChangePp"):
+                    assert name in text
             # Crash an additional live run after an actual committed round; restart
             # both processes and resume from the SQLite checkpoint on disk.
-            resume_config = dict(states[("F5",42)]["config"])
+            resume_config = dict(states[(adaptive_row,42)]["config"])
             resume_config.update(experimentId="fuzzy-resume-smoke", rounds=12, scenarioTracePath=None)
             post(base,"/experiments",resume_config)
             deadline = time.monotonic()+45
@@ -254,7 +276,7 @@ def verify():
             assert len(new_rounds) == 12 and new_rounds[:committed] == old_rounds
             assert new_rounds[committed]["fairnessCredits"] == recovered["snapshot"]["fuzzySelectionState"]["deficits"]
             replay_fuzzy(new_rounds,resumed)
-            summary = dict(status="PASS", protocol="SYNTHETIC_SMOKE_ONLY", experiments=10, roundsPerExperiment=3,
+            summary = dict(status="PASS", protocol="LAMBDA_SYNTHETIC_SMOKE_ONLY" if lambda_ablation else "SYNTHETIC_SMOKE_ONLY", experiments=expected_experiments, roundsPerExperiment=3,
                            seeds=[42,43], pairedInitialWeights="verified", sharedTraces="verified",
                            independentNumericalAndCreditReplay="verified", liveProcessRestartResume={"status":"verified", "restartAfterRound":committed,"finalRound":12},
                            report=str(report), evidence=str(folder))
@@ -268,4 +290,6 @@ def verify():
 
 
 if __name__ == "__main__":
-    verify()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--lambda-ablation",action="store_true",help="Verify L0-L5 lambda policies, stability report and slots-changed metrics")
+    verify(parser.parse_args().lambda_ablation)

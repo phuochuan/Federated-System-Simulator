@@ -46,7 +46,7 @@ def partition(y, clients, strategy, alpha, seed, minimum=1):
     return [np.asarray(b, dtype=np.int64) for b in buckets]
 
 
-def prepare(output, dataset="covertype", clients=100, seed=42, strategy="iid_equal", alpha=0.5, samples=7000):
+def prepare(output, dataset="covertype", clients=100, seed=42, strategy="iid_equal", alpha=0.5, samples=7000, partition_seed=None):
     log.info("data.prepare_started dataset=%s output=%s clients=%s strategy=%s alpha=%s seed=%s",
              dataset, output, clients, strategy, alpha, seed)
     # Không ghi đè manifest cũ để các thí nghiệm đã chạy vẫn có thể tái lập.
@@ -73,7 +73,8 @@ def prepare(output, dataset="covertype", clients=100, seed=42, strategy="iid_equ
     # Chỉ fit trên train; proxy/test dùng lại thống kê này để tránh rò rỉ dữ liệu.
     scaler = StandardScaler().fit(x[train, :continuous])
     x[:, :continuous] = scaler.transform(x[:, :continuous])
-    parts = partition(y[train], clients, strategy, alpha, seed + 2)
+    effective_partition_seed = seed + 2 if partition_seed is None else partition_seed
+    parts = partition(y[train], clients, strategy, alpha, effective_partition_seed)
     log.info("data.partitioned train=%s proxy=%s test=%s minClientSamples=%s maxClientSamples=%s scaledColumns=%s",
              len(train), len(proxy), len(test), min(map(len, parts)), max(map(len, parts)), continuous)
     output.mkdir(parents=True)
@@ -83,7 +84,7 @@ def prepare(output, dataset="covertype", clients=100, seed=42, strategy="iid_equ
     np.savez(output / "partitions.npz", **{str(i): train[p] for i, p in enumerate(parts)})
     files = ["features.npy", "labels.npy", "splits.npz", "partitions.npz"]
     hashes = {f: hashlib.sha256((output / f).read_bytes()).hexdigest() for f in files}
-    manifest = dict(dataset=dataset, seed=seed, strategy=strategy, alpha=alpha, totalClients=clients,
+    manifest = dict(dataset=dataset, seed=seed, partitionSeed=effective_partition_seed, strategy=strategy, alpha=alpha, totalClients=clients,
                     counts=dict(train=len(train), proxy=len(proxy), test=len(test)), hashes=hashes,
                     scaler=dict(columns=continuous, mean=scaler.mean_.tolist(), scale=scaler.scale_.tolist()),
                     labelMapping="1..7 -> 0..6" if dataset == "covertype" else "0..6",
@@ -127,6 +128,7 @@ if __name__ == "__main__":
     p.add_argument("--dataset", choices=["covertype", "synthetic"], default="covertype")
     p.add_argument("--clients", type=int, default=100)
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--partition-seed", type=int, default=None, help="Partition RNG only; --seed still fixes train/proxy/test pools")
     p.add_argument("--strategy", default="iid_equal")
     p.add_argument("--alpha", type=float, default=.5)
     p.add_argument("--samples", type=int, default=7000)

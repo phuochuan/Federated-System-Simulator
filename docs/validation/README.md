@@ -2,6 +2,19 @@
 
 This page preserves the historical 17 October baseline evidence. For the implemented Fuzzy TOPSIS/fairness-credit selectors and F1–F5 smoke/restart checks, see [FMCDM validation — 25 October 2026](fuzzy-mcdm-2026-10-25.md). The datasets, architectures and protocols differ; do not pool these results or interpret the historical test counts below as current suite totals.
 
+For the L0–L5 fixed-lambda ablation, stability/replacement metrics and updated F regression checks, see [lambda-ablation validation](lambda-ablation-2026-10-25.md).
+
+For Java E0 reproducibility auditing, fairness-matched M1–M7 validation/locked
+evaluation, provenance/reuse checks and synthetic integration evidence, see
+[research experiment validation — 27 October 2026](research-experiments-2026-10-27.md).
+
+For the separate NO_MATCH→held-out Pareto mode, dominance/config tests and
+gate/resume/reuse/plot smoke, see [Pareto validation — 28 October 2026](pareto-tradeoff-2026-10-28.md).
+
+The real Covertype Pareto matrix subsequently completed **60/60 runs (4,200 rounds)**
+and its E0 audit completed **12/12 runs**. See [completion and recovery verification —
+29 October 2026](pareto-completed-2026-10-29.md) and the [published result archive](../../results/README.md).
+
 Implementation revision: `e32a18218a395d37934a57a8c5dd5a61f4f07124`. Both federated runs recorded that revision and a clean working tree at initialization. The centralized diagnostic ran during development before that commit; its training implementation is included in the same revision. Subsequent changes add this report and improve Windows service start/stop scripts.
 
 Environment: Windows, Intel Core i5-1135G7, JDK 17.0.11, Python 3.13.0, CPU PyTorch 2.14.1, one torch thread. Exact Python dependencies: [validated environment](../../ml-python/requirements-validated.txt).

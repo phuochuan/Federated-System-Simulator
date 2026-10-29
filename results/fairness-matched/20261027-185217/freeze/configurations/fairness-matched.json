@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "dataset": "covertype",
+  "splitSeed": 42,
+  "alpha": 0.5,
+  "rounds": 70,
+  "clients": 100,
+  "selectedPerRound": 5,
+  "timing": {"mode": "deterministic", "secondsPerSample": 0.0005},
+  "e0": {"seed": 45, "repeats": 2, "policies": {"L3": 0.7, "L5": null}, "modes": ["deterministic", "measured"]},
+  "validation": {"partitionSeeds": [1001, 1002], "trainingSeeds": [42, 43, 44], "evaluationSplit": "proxy"},
+  "evaluation": {"partitionSeeds": [2001, 2002, 2003], "trainingSeeds": [42, 43, 44, 45, 46], "evaluationSplit": "test"},
+  "fixedLambdas": [0.60, 0.625, 0.65, 0.675, 0.70, 0.725],
+  "matching": {
+    "metric": "feasibleOpportunityAdjustedGini",
+    "objective": "mean_absolute_paired_final_gini_gap",
+    "meanAbsoluteGapTolerance": 0.025,
+    "maxPartitionMeanAbsoluteGap": 0.05,
+    "tieBreak": "smaller_lambda",
+    "onNoMatch": "stop_without_heldout_evaluation"
+  },
+  "stabilityWindow": 10,
+  "accuracyTargets": [0.65, 0.68, 0.69, 0.70],
+  "baseProtocol": "configurations/lambda-ablation.json"
+}

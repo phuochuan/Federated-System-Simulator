@@ -1,0 +1,114 @@
+{
+  "experimentId": "large-mlp-smoke-1a42e6f557",
+  "architecture": "mlp_54_256_128_7",
+  "parameters": 47879,
+  "selectedClients": 2,
+  "trainingLosses": [
+    1.6519061573167741,
+    1.6519327907181487
+  ],
+  "proxyLosses": [
+    1.3703242187668077,
+    1.3732387982220384
+  ],
+  "weights": [
+    0.5005311668507673,
+    0.4994688331492328
+  ],
+  "globalModel": {
+    "checkpointPath": "artifacts/models/large-mlp-smoke-1a42e6f557/global_0001_initial.pt",
+    "modelVersion": 1,
+    "architecture": "mlp_54_256_128_7"
+  },
+  "evaluation": {
+    "architecture": "mlp_54_256_128_7",
+    "loss": 1.3707571537350502,
+    "accuracy": 0.4875991807369925,
+    "macroF1": 0.0936502610670444,
+    "perClassPrecision": [
+      0.0,
+      0.4875991807369925,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "perClassRecall": [
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "worstClassRecall": 0.0,
+    "confusionMatrix": [
+      [
+        0,
+        42368,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        56660,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        7151,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        549,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1899,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        3473,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        4102,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "evaluationMs": 1777.6065999996717
+  }
+}

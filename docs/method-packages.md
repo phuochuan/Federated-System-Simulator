@@ -56,12 +56,12 @@ Nhóm F dùng `ControlledExperiments.compareFuzzyClientSelection()` với F1 Fea
 
 1. Chuẩn bị dataset theo README và khởi động Python worker trước, với đúng một uvicorn worker.
 2. Mở Run Configuration của `FerderatedsystemApplication` và đặt các biến môi trường bên dưới.
-3. Run/Debug application. Với single-run mode, bean `paperExperiment` gọi `experiments.runConfigured()` khi Spring sẵn sàng. `fuzzy_matrix` gọi `matrix.compareFuzzyClientSelection()`; `matrix` chỉ chạy các lời gọi A/B/C bạn bật (hiện các lời gọi này đang comment).
+3. Run/Debug application. Với single-run mode, bean `paperExperiment` gọi `experiments.runConfigured()` khi Spring sẵn sàng. `fuzzy_matrix` gọi `matrix.compareFuzzyClientSelection()`; `lambda_ablation` gọi `matrix.compareFixedLambdaAblation()`; `matrix` chỉ chạy các lời gọi A/B/C bạn bật.
 4. Đọc log để lấy ID; xem trạng thái ở `/experiments/{id}` và kết quả ở `/experiments/{id}/rounds`.
 
 | Biến môi trường | Mặc định | Ý nghĩa |
 | --- | --- | --- |
-| `MINIFLS_METHOD` | `none` | `fedavg`/`fedlbw`: một run; `fuzzy_matrix`: nhóm F; `matrix`: các lời gọi A/B/C được bật; `none`: chỉ mở API |
+| `MINIFLS_METHOD` | `none` | `fedavg`/`fedlbw`: một run; `fuzzy_matrix`: nhóm F; `lambda_ablation`: nhóm L; `matrix`: các lời gọi A/B/C được bật; `none`: chỉ mở API |
 | `MINIFLS_WORKSPACE` | Tìm thư mục repo hiện tại hoặc thư mục cha | Root dùng chung cho Java và Python |
 | `MINIFLS_CONFIG` | `configurations/fedavg.json` | File JSON, tính từ workspace; chấp nhận đường dẫn tuyệt đối |
 | `MINIFLS_EXPERIMENT_ID` | `<method>-<UUID>` | ID duy nhất cho lần chạy mới |
@@ -71,7 +71,8 @@ Nhóm F dùng `ControlledExperiments.compareFuzzyClientSelection()` với F1 Fea
 | `MINIFLS_SEED` | Giữ giá trị JSON | Seed của experiment |
 | `MINIFLS_MATRIX_CONFIG` | `configurations/controlled-matrix.json` | Batch A/B/C khi `MINIFLS_METHOD=matrix` |
 | `MINIFLS_FUZZY_MATRIX_CONFIG` | `configurations/fuzzy-matrix.json` | Batch F1–F5 khi `MINIFLS_METHOD=fuzzy_matrix` |
-| `MINIFLS_MATRIX_ROUNDS` | `baseConfig.rounds` | Override round cho cả hai batch mode; để trống cho protocol 70 rounds |
+| `MINIFLS_LAMBDA_MATRIX_CONFIG` | `configurations/lambda-ablation.json` | Batch L0–L5; xem [lambda ablation](lambda-ablation.md) |
+| `MINIFLS_MATRIX_ROUNDS` | `baseConfig.rounds` | Override round cho cả ba batch mode; để trống cho protocol 70 rounds |
 | `MINIFLS_WORKER_URL` | `http://127.0.0.1:8000` | Địa chỉ Python |
 | `MINIFLS_SERVER_PORT` | `8080` | Cổng Java |
 | `MINIFLS_DATABASE` | `../artifacts/minifls.db` | Nên dùng đường dẫn tuyệt đối khi chạy IDE |
@@ -91,7 +92,7 @@ Benchmark tập trung có cùng lựa chọn, ví dụ:
 Thứ tự áp dụng: đọc JSON → chọn aggregation theo hàm/method → áp dụng biến override → validate → submit.
 ID trong JSON được thay bằng `MINIFLS_EXPERIMENT_ID` hoặc UUID mới để tránh trùng ID qua các lần test.
 `MINIFLS_SEED` không tạo lại dataset: split/partition vẫn lấy từ manifest đã chuẩn bị.
-Các override single-run (`MINIFLS_CONFIG`, `MINIFLS_SELECTION`, `MINIFLS_ROUNDS`, `MINIFLS_SEED`, manifest/ID) không áp dụng cho hai batch mode. File matrix có cấu trúc riêng; không dùng nguyên `fuzzy-matrix.json` làm `MINIFLS_CONFIG` hay body `POST /experiments`. Xem [ví dụ tạo body API đầy đủ](api-contract.md).
+Các override single-run (`MINIFLS_CONFIG`, `MINIFLS_SELECTION`, `MINIFLS_ROUNDS`, `MINIFLS_SEED`, manifest/ID) không áp dụng cho ba batch mode. File matrix có cấu trúc riêng; không dùng nguyên `fuzzy-matrix.json` hay `lambda-ablation.json` làm `MINIFLS_CONFIG` hay body `POST /experiments`. Xem [ví dụ tạo body API đầy đủ](api-contract.md).
 Để resume một run cũ, đặt `MINIFLS_METHOD=none` rồi dùng endpoint resume/CLI hiện có.
 
 Ví dụ PowerShell từ thư mục gốc repo, sau khi đã chuẩn bị dataset synthetic:

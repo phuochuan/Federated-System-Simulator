@@ -1,0 +1,59 @@
+{
+  "completed": 4,
+  "metrics": {
+    "seed45-20261027-183349-01-F5": {
+      "accuracy": 0.7217345656701262,
+      "macroF1": 0.37120677714723416,
+      "loss": 0.6498792088299934,
+      "coverage": 0.6,
+      "feasibleSelectionGini": 0.3127137057757532,
+      "finalLambda": 0.533921141443354,
+      "virtualSeconds": 23.973947257634652,
+      "wallSeconds": 168.8673317,
+      "meanTrainingMs": 177.06227285714087,
+      "accepted": 334
+    },
+    "seed45-20261027-183349-02-L5": {
+      "accuracy": 0.7275089929605343,
+      "macroF1": 0.39539508729396705,
+      "loss": 0.6396677296874966,
+      "coverage": 0.59,
+      "feasibleSelectionGini": 0.397398907969663,
+      "finalLambda": 0.43699321525416546,
+      "virtualSeconds": 17.89258394048297,
+      "wallSeconds": 161.043069904,
+      "meanTrainingMs": 163.05458200000106,
+      "accepted": 339
+    },
+    "seed45-20261027-183349-03-L5": {
+      "accuracy": 0.7167346517271648,
+      "macroF1": 0.42126165188062215,
+      "loss": 0.6541000560290989,
+      "coverage": 0.6,
+      "feasibleSelectionGini": 0.3258957853714663,
+      "finalLambda": 0.6384788605605026,
+      "virtualSeconds": 16.29481692952627,
+      "wallSeconds": 129.5055709,
+      "meanTrainingMs": 125.43658942856447,
+      "accepted": 333
+    },
+    "seed45-20261027-183349-04-F5": {
+      "accuracy": 0.7298669558183164,
+      "macroF1": 0.41389038535013345,
+      "loss": 0.63996207060185,
+      "coverage": 0.6,
+      "feasibleSelectionGini": 0.35674594686720096,
+      "finalLambda": 0.614884803505124,
+      "virtualSeconds": 16.691998191964807,
+      "wallSeconds": 157.819802,
+      "meanTrainingMs": 157.97624371428552,
+      "accepted": 335
+    }
+  },
+  "lastAudit": {
+    "rounds": 70,
+    "timingCriteriaChecked": 3815,
+    "scoreCreditControllerReplay": "PASS",
+    "timingHistoryAndFeasibility": "PASS"
+  }
+}

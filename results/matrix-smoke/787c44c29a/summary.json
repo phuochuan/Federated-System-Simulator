@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "experiments": 12,
+  "seeds": [
+    42,
+    43
+  ],
+  "reports": [
+    "D:\\research\\federated-system\\artifacts\\comparisons\\20261025-160500-0ef1a197\\A-model-size.txt",
+    "D:\\research\\federated-system\\artifacts\\comparisons\\20261025-160500-0ef1a197\\B-aggregation.txt",
+    "D:\\research\\federated-system\\artifacts\\comparisons\\20261025-160500-0ef1a197\\C-client-selection.txt"
+  ],
+  "evidence": "D:\\research\\federated-system\\artifacts\\matrix-smoke\\787c44c29a"
+}

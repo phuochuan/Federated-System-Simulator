@@ -1,0 +1,336 @@
+# Fairness-matched lambda experiments — validation
+
+Complete: true; smoke: true.
+
+Fairness status: **NO_MATCH**. Do not label this comparison fairness-matched. Inspect every coverage/Gini/staleness gap in JSON; held-out policy must not be retuned.
+
+Ratios except maximum accuracy drop in percentage points and times in seconds. Tail SD is within-run; summary sample SD is between training/scenario seeds inside each partition. Partitions are not treated as extra independent training seeds.
+
+Population selection/completion coverage: all 100 logical clients. RAM denominator: static feasible RAM population (normally 60). Feasible coverage/Gini/staleness: clients with >=1 valid estimated-feasible opportunity, whose count and membership are policy-specific and exported. Completion Ginis are explicitly separated into population, RAM-feasible and feasible completion/opportunity versions.
+
+Phase A reports proxy validation outcomes. Phase B reports test ONLY at the final checkpoint; tail stability, drift/drop and time-to-target use the independently held-out proxy trajectory, as labelled in every record. Final accuracy always uses the final checkpoint, including low accuracy/drift runs.
+
+## Per-partition mean ± sample SD across training/scenario seeds
+
+| Partition:policy | Metric | Mean | Sample SD | n | Min / worst case | Max |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| 1001:M1 | accuracy | 0.154286 | N/A | 1 | 0.154286 | 0.154286 |
+| 1001:M1 | macroF1 | 0.117209 | N/A | 1 | 0.117209 | 0.117209 |
+| 1001:M1 | loss | 1.943848 | N/A | 1 | 1.943848 | 1.943848 |
+| 1001:M1 | worstClassRecall | 0.000000 | N/A | 1 | 0.000000 | 0.000000 |
+| 1001:M1 | recall0 | 0.140000 | N/A | 1 | 0.140000 | 0.140000 |
+| 1001:M1 | recall1 | 0.000000 | N/A | 1 | 0.000000 | 0.000000 |
+| 1001:M1 | recall2 | 0.360000 | N/A | 1 | 0.360000 | 0.360000 |
+| 1001:M1 | recall3 | 0.460000 | N/A | 1 | 0.460000 | 0.460000 |
+| 1001:M1 | recall4 | 0.020000 | N/A | 1 | 0.020000 | 0.020000 |
+| 1001:M1 | recall5 | 0.060000 | N/A | 1 | 0.060000 | 0.060000 |
+| 1001:M1 | recall6 | 0.040000 | N/A | 1 | 0.040000 | 0.040000 |
+| 1001:M1 | accuracyTailMean | 0.150476 | N/A | 1 | 0.150476 | 0.150476 |
+| 1001:M1 | accuracyTailSd | 0.004364 | N/A | 1 | 0.004364 | 0.004364 |
+| 1001:M1 | macroF1TailSd | 0.004572 | N/A | 1 | 0.004572 | 0.004572 |
+| 1001:M1 | maxAccuracyDropPp | 0.000000 | N/A | 1 | 0.000000 | 0.000000 |
+| 1001:M1 | finalAccuracyChangePp | 0.285714 | N/A | 1 | 0.285714 | 0.285714 |
+| 1001:M1 | populationSelectionCoverage | 0.090000 | N/A | 1 | 0.090000 | 0.090000 |
+| 1001:M1 | populationCompletionCoverage | 0.090000 | N/A | 1 | 0.090000 | 0.090000 |
+| 1001:M1 | feasibleSelectionCoverage | 0.150000 | N/A | 1 | 0.150000 | 0.150000 |
+| 1001:M1 | feasibleCompletionCoverage | 0.150000 | N/A | 1 | 0.150000 | 0.150000 |
+| 1001:M1 | feasibleOpportunityAdjustedGini | 0.886559 | N/A | 1 | 0.886559 | 0.886559 |
+| 1001:M1 | feasibleCompletionOpportunityAdjustedGini | 0.886559 | N/A | 1 | 0.886559 | 0.886559 |
+| 1001:M1 | selectionGini | 0.932667 | N/A | 1 | 0.932667 | 0.932667 |
+| 1001:M1 | completionGini | 0.932667 | N/A | 1 | 0.932667 | 0.932667 |
+| 1001:M1 | ramFeasibleCompletionGini | 0.887778 | N/A | 1 | 0.887778 | 0.887778 |
+| 1001:M1 | maxFeasibleSelectionStaleness | 3.000000 | N/A | 1 | 3.000000 | 3.000000 |
+| 1001:M1 | meanFeasibleSelectionStaleness | 2.350000 | N/A | 1 | 2.350000 | 2.350000 |
+| 1001:M1 | populationNeverSelected | 91.000000 | N/A | 1 | 91.000000 | 91.000000 |
+| 1001:M1 | feasibleNeverSelected | 51.000000 | N/A | 1 | 51.000000 | 51.000000 |
+| 1001:M1 | acceptedSelectedRatio | 1.000000 | N/A | 1 | 1.000000 | 1.000000 |
+| 1001:M1 | virtualSeconds | 0.587139 | N/A | 1 | 0.587139 | 0.587139 |
+| 1001:M1 | virtualSecondsWithSelector | 0.644091 | N/A | 1 | 0.644091 | 0.644091 |
+| 1001:M1 | wallSeconds | 1.360557 | N/A | 1 | 1.360557 | 1.360557 |
+| 1001:M1 | selectorSeconds | 0.054992 | N/A | 1 | 0.054992 | 0.054992 |
+| 1001:M1 | fairnessUpdateSeconds | 0.001960 | N/A | 1 | 0.001960 | 0.001960 |
+| 1001:M1 | slotsChangedVsTopsis | 4.000000 | N/A | 1 | 4.000000 | 4.000000 |
+| 1001:M1 | slotsChangedVsTopsisRatio | 0.266667 | N/A | 1 | 0.266667 | 0.266667 |
+| 1001:M1 | meanAppliedLambda | 0.600000 | N/A | 1 | 0.600000 | 0.600000 |
+| 1001:M2 | accuracy | 0.142857 | N/A | 1 | 0.142857 | 0.142857 |
+| 1001:M2 | macroF1 | 0.107214 | N/A | 1 | 0.107214 | 0.107214 |
+| 1001:M2 | loss | 1.943909 | N/A | 1 | 1.943909 | 1.943909 |
+| 1001:M2 | worstClassRecall | 0.000000 | N/A | 1 | 0.000000 | 0.000000 |
+| 1001:M2 | recall0 | 0.080000 | N/A | 1 | 0.080000 | 0.080000 |
+| 1001:M2 | recall1 | 0.000000 | N/A | 1 | 0.000000 | 0.000000 |
+| 1001:M2 | recall2 | 0.360000 | N/A | 1 | 0.360000 | 0.360000 |
+| 1001:M2 | recall3 | 0.420000 | N/A | 1 | 0.420000 | 0.420000 |
+| 1001:M2 | recall4 | 0.040000 | N/A | 1 | 0.040000 | 0.040000 |
+| 1001:M2 | recall5 | 0.060000 | N/A | 1 | 0.060000 | 0.060000 |
+| 1001:M2 | recall6 | 0.040000 | N/A | 1 | 0.040000 | 0.040000 |
+| 1001:M2 | accuracyTailMean | 0.148571 | N/A | 1 | 0.148571 | 0.148571 |
+| 1001:M2 | accuracyTailSd | 0.007559 | N/A | 1 | 0.007559 | 0.007559 |
+| 1001:M2 | macroF1TailSd | 0.009135 | N/A | 1 | 0.009135 | 0.009135 |
+| 1001:M2 | maxAccuracyDropPp | 1.428571 | N/A | 1 | 1.428571 | 1.428571 |
+| 1001:M2 | finalAccuracyChangePp | -1.428571 | N/A | 1 | -1.428571 | -1.428571 |
+| 1001:M2 | populationSelectionCoverage | 0.110000 | N/A | 1 | 0.110000 | 0.110000 |
+| 1001:M2 | populationCompletionCoverage | 0.110000 | N/A | 1 | 0.110000 | 0.110000 |
+| 1001:M2 | feasibleSelectionCoverage | 0.183333 | N/A | 1 | 0.183333 | 0.183333 |
+| 1001:M2 | feasibleCompletionCoverage | 0.183333 | N/A | 1 | 0.183333 | 0.183333 |
+| 1001:M2 | feasibleOpportunityAdjustedGini | 0.855376 | N/A | 1 | 0.855376 | 0.855376 |
+| 1001:M2 | feasibleCompletionOpportunityAdjustedGini | 0.855376 | N/A | 1 | 0.855376 | 0.855376 |
+| 1001:M2 | selectionGini | 0.912667 | N/A | 1 | 0.912667 | 0.912667 |
+| 1001:M2 | completionGini | 0.912667 | N/A | 1 | 0.912667 | 0.912667 |
+| 1001:M2 | ramFeasibleCompletionGini | 0.854444 | N/A | 1 | 0.854444 | 0.854444 |
+| 1001:M2 | maxFeasibleSelectionStaleness | 3.000000 | N/A | 1 | 3.000000 | 3.000000 |
+| 1001:M2 | meanFeasibleSelectionStaleness | 2.300000 | N/A | 1 | 2.300000 | 2.300000 |
+| 1001:M2 | populationNeverSelected | 89.000000 | N/A | 1 | 89.000000 | 89.000000 |
+| 1001:M2 | feasibleNeverSelected | 49.000000 | N/A | 1 | 49.000000 | 49.000000 |
+| 1001:M2 | acceptedSelectedRatio | 1.000000 | N/A | 1 | 1.000000 | 1.000000 |
+| 1001:M2 | virtualSeconds | 0.537764 | N/A | 1 | 0.537764 | 0.537764 |
+| 1001:M2 | virtualSecondsWithSelector | 0.548679 | N/A | 1 | 0.548679 | 0.548679 |
+| 1001:M2 | wallSeconds | 1.286774 | N/A | 1 | 1.286774 | 1.286774 |
+| 1001:M2 | selectorSeconds | 0.010000 | N/A | 1 | 0.010000 | 0.010000 |
+| 1001:M2 | fairnessUpdateSeconds | 0.000915 | N/A | 1 | 0.000915 | 0.000915 |
+| 1001:M2 | slotsChangedVsTopsis | 6.000000 | N/A | 1 | 6.000000 | 6.000000 |
+| 1001:M2 | slotsChangedVsTopsisRatio | 0.400000 | N/A | 1 | 0.400000 | 0.400000 |
+| 1001:M2 | meanAppliedLambda | 0.625000 | N/A | 1 | 0.625000 | 0.625000 |
+| 1001:M3 | accuracy | 0.145714 | N/A | 1 | 0.145714 | 0.145714 |
+| 1001:M3 | macroF1 | 0.107456 | N/A | 1 | 0.107456 | 0.107456 |
+| 1001:M3 | loss | 1.943777 | N/A | 1 | 1.943777 | 1.943777 |
+| 1001:M3 | worstClassRecall | 0.000000 | N/A | 1 | 0.000000 | 0.000000 |
+| 1001:M3 | recall0 | 0.100000 | N/A | 1 | 0.100000 | 0.100000 |
+| 1001:M3 | recall1 | 0.000000 | N/A | 1 | 0.000000 | 0.000000 |
+| 1001:M3 | recall2 | 0.380000 | N/A | 1 | 0.380000 | 0.380000 |
+| 1001:M3 | recall3 | 0.420000 | N/A | 1 | 0.420000 | 0.420000 |
+| 1001:M3 | recall4 | 0.020000 | N/A | 1 | 0.020000 | 0.020000 |
+| 1001:M3 | recall5 | 0.060000 | N/A | 1 | 0.060000 | 0.060000 |
+| 1001:M3 | recall6 | 0.040000 | N/A | 1 | 0.040000 | 0.040000 |
+| 1001:M3 | accuracyTailMean | 0.148571 | N/A | 1 | 0.148571 | 0.148571 |
+| 1001:M3 | accuracyTailSd | 0.004949 | N/A | 1 | 0.004949 | 0.004949 |
+| 1001:M3 | macroF1TailSd | 0.005447 | N/A | 1 | 0.005447 | 0.005447 |
+| 1001:M3 | maxAccuracyDropPp | 0.857143 | N/A | 1 | 0.857143 | 0.857143 |
+| 1001:M3 | finalAccuracyChangePp | -0.857143 | N/A | 1 | -0.857143 | -0.857143 |
+| 1001:M3 | populationSelectionCoverage | 0.110000 | N/A | 1 | 0.110000 | 0.110000 |
+| 1001:M3 | populationCompletionCoverage | 0.110000 | N/A | 1 | 0.110000 | 0.110000 |
+| 1001:M3 | feasibleSelectionCoverage | 0.183333 | N/A | 1 | 0.183333 | 0.183333 |
+| 1001:M3 | feasibleCompletionCoverage | 0.183333 | N/A | 1 | 0.183333 | 0.183333 |
+| 1001:M3 | feasibleOpportunityAdjustedGini | 0.846875 | N/A | 1 | 0.846875 | 0.846875 |
+| 1001:M3 | feasibleCompletionOpportunityAdjustedGini | 0.846875 | N/A | 1 | 0.846875 | 0.846875 |
+| 1001:M3 | selectionGini | 0.908667 | N/A | 1 | 0.908667 | 0.908667 |
+| 1001:M3 | completionGini | 0.908667 | N/A | 1 | 0.908667 | 0.908667 |
+| 1001:M3 | ramFeasibleCompletionGini | 0.847778 | N/A | 1 | 0.847778 | 0.847778 |
+| 1001:M3 | maxFeasibleSelectionStaleness | 3.000000 | N/A | 1 | 3.000000 | 3.000000 |
+| 1001:M3 | meanFeasibleSelectionStaleness | 2.283333 | N/A | 1 | 2.283333 | 2.283333 |
+| 1001:M3 | populationNeverSelected | 89.000000 | N/A | 1 | 89.000000 | 89.000000 |
+| 1001:M3 | feasibleNeverSelected | 49.000000 | N/A | 1 | 49.000000 | 49.000000 |
+| 1001:M3 | acceptedSelectedRatio | 1.000000 | N/A | 1 | 1.000000 | 1.000000 |
+| 1001:M3 | virtualSeconds | 0.608207 | N/A | 1 | 0.608207 | 0.608207 |
+| 1001:M3 | virtualSecondsWithSelector | 0.619356 | N/A | 1 | 0.619356 | 0.619356 |
+| 1001:M3 | wallSeconds | 1.432492 | N/A | 1 | 1.432492 | 1.432492 |
+| 1001:M3 | selectorSeconds | 0.010153 | N/A | 1 | 0.010153 | 0.010153 |
+| 1001:M3 | fairnessUpdateSeconds | 0.000995 | N/A | 1 | 0.000995 | 0.000995 |
+| 1001:M3 | slotsChangedVsTopsis | 6.000000 | N/A | 1 | 6.000000 | 6.000000 |
+| 1001:M3 | slotsChangedVsTopsisRatio | 0.400000 | N/A | 1 | 0.400000 | 0.400000 |
+| 1001:M3 | meanAppliedLambda | 0.650000 | N/A | 1 | 0.650000 | 0.650000 |
+| 1001:M4 | accuracy | 0.145714 | N/A | 1 | 0.145714 | 0.145714 |
+| 1001:M4 | macroF1 | 0.108679 | N/A | 1 | 0.108679 | 0.108679 |
+| 1001:M4 | loss | 1.943925 | N/A | 1 | 1.943925 | 1.943925 |
+| 1001:M4 | worstClassRecall | 0.000000 | N/A | 1 | 0.000000 | 0.000000 |
+| 1001:M4 | recall0 | 0.080000 | N/A | 1 | 0.080000 | 0.080000 |
+| 1001:M4 | recall1 | 0.000000 | N/A | 1 | 0.000000 | 0.000000 |
+| 1001:M4 | recall2 | 0.380000 | N/A | 1 | 0.380000 | 0.380000 |
+| 1001:M4 | recall3 | 0.420000 | N/A | 1 | 0.420000 | 0.420000 |
+| 1001:M4 | recall4 | 0.040000 | N/A | 1 | 0.040000 | 0.040000 |
+| 1001:M4 | recall5 | 0.060000 | N/A | 1 | 0.060000 | 0.060000 |
+| 1001:M4 | recall6 | 0.040000 | N/A | 1 | 0.040000 | 0.040000 |
+| 1001:M4 | accuracyTailMean | 0.148571 | N/A | 1 | 0.148571 | 0.148571 |
+| 1001:M4 | accuracyTailSd | 0.004949 | N/A | 1 | 0.004949 | 0.004949 |
+| 1001:M4 | macroF1TailSd | 0.005059 | N/A | 1 | 0.005059 | 0.005059 |
+| 1001:M4 | maxAccuracyDropPp | 0.857143 | N/A | 1 | 0.857143 | 0.857143 |
+| 1001:M4 | finalAccuracyChangePp | -0.857143 | N/A | 1 | -0.857143 | -0.857143 |
+| 1001:M4 | populationSelectionCoverage | 0.120000 | N/A | 1 | 0.120000 | 0.120000 |
+| 1001:M4 | populationCompletionCoverage | 0.120000 | N/A | 1 | 0.120000 | 0.120000 |
+| 1001:M4 | feasibleSelectionCoverage | 0.200000 | N/A | 1 | 0.200000 | 0.200000 |
+| 1001:M4 | feasibleCompletionCoverage | 0.200000 | N/A | 1 | 0.200000 | 0.200000 |
+| 1001:M4 | feasibleOpportunityAdjustedGini | 0.832292 | N/A | 1 | 0.832292 | 0.832292 |
+| 1001:M4 | feasibleCompletionOpportunityAdjustedGini | 0.832292 | N/A | 1 | 0.832292 | 0.832292 |
+| 1001:M4 | selectionGini | 0.898000 | N/A | 1 | 0.898000 | 0.898000 |
+| 1001:M4 | completionGini | 0.898000 | N/A | 1 | 0.898000 | 0.898000 |
+| 1001:M4 | ramFeasibleCompletionGini | 0.830000 | N/A | 1 | 0.830000 | 0.830000 |
+| 1001:M4 | maxFeasibleSelectionStaleness | 3.000000 | N/A | 1 | 3.000000 | 3.000000 |
+| 1001:M4 | meanFeasibleSelectionStaleness | 2.266667 | N/A | 1 | 2.266667 | 2.266667 |
+| 1001:M4 | populationNeverSelected | 88.000000 | N/A | 1 | 88.000000 | 88.000000 |
+| 1001:M4 | feasibleNeverSelected | 48.000000 | N/A | 1 | 48.000000 | 48.000000 |
+| 1001:M4 | acceptedSelectedRatio | 1.000000 | N/A | 1 | 1.000000 | 1.000000 |
+| 1001:M4 | virtualSeconds | 0.528226 | N/A | 1 | 0.528226 | 0.528226 |
+| 1001:M4 | virtualSecondsWithSelector | 0.532789 | N/A | 1 | 0.532789 | 0.532789 |
+| 1001:M4 | wallSeconds | 1.210215 | N/A | 1 | 1.210215 | 1.210215 |
+| 1001:M4 | selectorSeconds | 0.004063 | N/A | 1 | 0.004063 | 0.004063 |
+| 1001:M4 | fairnessUpdateSeconds | 0.000500 | N/A | 1 | 0.000500 | 0.000500 |
+| 1001:M4 | slotsChangedVsTopsis | 7.000000 | N/A | 1 | 7.000000 | 7.000000 |
+| 1001:M4 | slotsChangedVsTopsisRatio | 0.466667 | N/A | 1 | 0.466667 | 0.466667 |
+| 1001:M4 | meanAppliedLambda | 0.675000 | N/A | 1 | 0.675000 | 0.675000 |
+| 1001:M5 | accuracy | 0.145714 | N/A | 1 | 0.145714 | 0.145714 |
+| 1001:M5 | macroF1 | 0.108679 | N/A | 1 | 0.108679 | 0.108679 |
+| 1001:M5 | loss | 1.943925 | N/A | 1 | 1.943925 | 1.943925 |
+| 1001:M5 | worstClassRecall | 0.000000 | N/A | 1 | 0.000000 | 0.000000 |
+| 1001:M5 | recall0 | 0.080000 | N/A | 1 | 0.080000 | 0.080000 |
+| 1001:M5 | recall1 | 0.000000 | N/A | 1 | 0.000000 | 0.000000 |
+| 1001:M5 | recall2 | 0.380000 | N/A | 1 | 0.380000 | 0.380000 |
+| 1001:M5 | recall3 | 0.420000 | N/A | 1 | 0.420000 | 0.420000 |
+| 1001:M5 | recall4 | 0.040000 | N/A | 1 | 0.040000 | 0.040000 |
+| 1001:M5 | recall5 | 0.060000 | N/A | 1 | 0.060000 | 0.060000 |
+| 1001:M5 | recall6 | 0.040000 | N/A | 1 | 0.040000 | 0.040000 |
+| 1001:M5 | accuracyTailMean | 0.148571 | N/A | 1 | 0.148571 | 0.148571 |
+| 1001:M5 | accuracyTailSd | 0.004949 | N/A | 1 | 0.004949 | 0.004949 |
+| 1001:M5 | macroF1TailSd | 0.005059 | N/A | 1 | 0.005059 | 0.005059 |
+| 1001:M5 | maxAccuracyDropPp | 0.857143 | N/A | 1 | 0.857143 | 0.857143 |
+| 1001:M5 | finalAccuracyChangePp | -0.857143 | N/A | 1 | -0.857143 | -0.857143 |
+| 1001:M5 | populationSelectionCoverage | 0.120000 | N/A | 1 | 0.120000 | 0.120000 |
+| 1001:M5 | populationCompletionCoverage | 0.120000 | N/A | 1 | 0.120000 | 0.120000 |
+| 1001:M5 | feasibleSelectionCoverage | 0.200000 | N/A | 1 | 0.200000 | 0.200000 |
+| 1001:M5 | feasibleCompletionCoverage | 0.200000 | N/A | 1 | 0.200000 | 0.200000 |
+| 1001:M5 | feasibleOpportunityAdjustedGini | 0.832292 | N/A | 1 | 0.832292 | 0.832292 |
+| 1001:M5 | feasibleCompletionOpportunityAdjustedGini | 0.832292 | N/A | 1 | 0.832292 | 0.832292 |
+| 1001:M5 | selectionGini | 0.898000 | N/A | 1 | 0.898000 | 0.898000 |
+| 1001:M5 | completionGini | 0.898000 | N/A | 1 | 0.898000 | 0.898000 |
+| 1001:M5 | ramFeasibleCompletionGini | 0.830000 | N/A | 1 | 0.830000 | 0.830000 |
+| 1001:M5 | maxFeasibleSelectionStaleness | 3.000000 | N/A | 1 | 3.000000 | 3.000000 |
+| 1001:M5 | meanFeasibleSelectionStaleness | 2.266667 | N/A | 1 | 2.266667 | 2.266667 |
+| 1001:M5 | populationNeverSelected | 88.000000 | N/A | 1 | 88.000000 | 88.000000 |
+| 1001:M5 | feasibleNeverSelected | 48.000000 | N/A | 1 | 48.000000 | 48.000000 |
+| 1001:M5 | acceptedSelectedRatio | 1.000000 | N/A | 1 | 1.000000 | 1.000000 |
+| 1001:M5 | virtualSeconds | 0.452096 | N/A | 1 | 0.452096 | 0.452096 |
+| 1001:M5 | virtualSecondsWithSelector | 0.457206 | N/A | 1 | 0.457206 | 0.457206 |
+| 1001:M5 | wallSeconds | 1.118392 | N/A | 1 | 1.118392 | 1.118392 |
+| 1001:M5 | selectorSeconds | 0.004581 | N/A | 1 | 0.004581 | 0.004581 |
+| 1001:M5 | fairnessUpdateSeconds | 0.000529 | N/A | 1 | 0.000529 | 0.000529 |
+| 1001:M5 | slotsChangedVsTopsis | 7.000000 | N/A | 1 | 7.000000 | 7.000000 |
+| 1001:M5 | slotsChangedVsTopsisRatio | 0.466667 | N/A | 1 | 0.466667 | 0.466667 |
+| 1001:M5 | meanAppliedLambda | 0.700000 | N/A | 1 | 0.700000 | 0.700000 |
+| 1001:M6 | accuracy | 0.145714 | N/A | 1 | 0.145714 | 0.145714 |
+| 1001:M6 | macroF1 | 0.108679 | N/A | 1 | 0.108679 | 0.108679 |
+| 1001:M6 | loss | 1.943925 | N/A | 1 | 1.943925 | 1.943925 |
+| 1001:M6 | worstClassRecall | 0.000000 | N/A | 1 | 0.000000 | 0.000000 |
+| 1001:M6 | recall0 | 0.080000 | N/A | 1 | 0.080000 | 0.080000 |
+| 1001:M6 | recall1 | 0.000000 | N/A | 1 | 0.000000 | 0.000000 |
+| 1001:M6 | recall2 | 0.380000 | N/A | 1 | 0.380000 | 0.380000 |
+| 1001:M6 | recall3 | 0.420000 | N/A | 1 | 0.420000 | 0.420000 |
+| 1001:M6 | recall4 | 0.040000 | N/A | 1 | 0.040000 | 0.040000 |
+| 1001:M6 | recall5 | 0.060000 | N/A | 1 | 0.060000 | 0.060000 |
+| 1001:M6 | recall6 | 0.040000 | N/A | 1 | 0.040000 | 0.040000 |
+| 1001:M6 | accuracyTailMean | 0.148571 | N/A | 1 | 0.148571 | 0.148571 |
+| 1001:M6 | accuracyTailSd | 0.004949 | N/A | 1 | 0.004949 | 0.004949 |
+| 1001:M6 | macroF1TailSd | 0.005059 | N/A | 1 | 0.005059 | 0.005059 |
+| 1001:M6 | maxAccuracyDropPp | 0.857143 | N/A | 1 | 0.857143 | 0.857143 |
+| 1001:M6 | finalAccuracyChangePp | -0.857143 | N/A | 1 | -0.857143 | -0.857143 |
+| 1001:M6 | populationSelectionCoverage | 0.120000 | N/A | 1 | 0.120000 | 0.120000 |
+| 1001:M6 | populationCompletionCoverage | 0.120000 | N/A | 1 | 0.120000 | 0.120000 |
+| 1001:M6 | feasibleSelectionCoverage | 0.200000 | N/A | 1 | 0.200000 | 0.200000 |
+| 1001:M6 | feasibleCompletionCoverage | 0.200000 | N/A | 1 | 0.200000 | 0.200000 |
+| 1001:M6 | feasibleOpportunityAdjustedGini | 0.832292 | N/A | 1 | 0.832292 | 0.832292 |
+| 1001:M6 | feasibleCompletionOpportunityAdjustedGini | 0.832292 | N/A | 1 | 0.832292 | 0.832292 |
+| 1001:M6 | selectionGini | 0.898000 | N/A | 1 | 0.898000 | 0.898000 |
+| 1001:M6 | completionGini | 0.898000 | N/A | 1 | 0.898000 | 0.898000 |
+| 1001:M6 | ramFeasibleCompletionGini | 0.830000 | N/A | 1 | 0.830000 | 0.830000 |
+| 1001:M6 | maxFeasibleSelectionStaleness | 3.000000 | N/A | 1 | 3.000000 | 3.000000 |
+| 1001:M6 | meanFeasibleSelectionStaleness | 2.266667 | N/A | 1 | 2.266667 | 2.266667 |
+| 1001:M6 | populationNeverSelected | 88.000000 | N/A | 1 | 88.000000 | 88.000000 |
+| 1001:M6 | feasibleNeverSelected | 48.000000 | N/A | 1 | 48.000000 | 48.000000 |
+| 1001:M6 | acceptedSelectedRatio | 1.000000 | N/A | 1 | 1.000000 | 1.000000 |
+| 1001:M6 | virtualSeconds | 0.453487 | N/A | 1 | 0.453487 | 0.453487 |
+| 1001:M6 | virtualSecondsWithSelector | 0.460077 | N/A | 1 | 0.460077 | 0.460077 |
+| 1001:M6 | wallSeconds | 1.096625 | N/A | 1 | 1.096625 | 1.096625 |
+| 1001:M6 | selectorSeconds | 0.005988 | N/A | 1 | 0.005988 | 0.005988 |
+| 1001:M6 | fairnessUpdateSeconds | 0.000602 | N/A | 1 | 0.000602 | 0.000602 |
+| 1001:M6 | slotsChangedVsTopsis | 7.000000 | N/A | 1 | 7.000000 | 7.000000 |
+| 1001:M6 | slotsChangedVsTopsisRatio | 0.466667 | N/A | 1 | 0.466667 | 0.466667 |
+| 1001:M6 | meanAppliedLambda | 0.725000 | N/A | 1 | 0.725000 | 0.725000 |
+| 1001:M7 | accuracy | 0.134286 | N/A | 1 | 0.134286 | 0.134286 |
+| 1001:M7 | macroF1 | 0.088486 | N/A | 1 | 0.088486 | 0.088486 |
+| 1001:M7 | loss | 1.944297 | N/A | 1 | 1.944297 | 1.944297 |
+| 1001:M7 | worstClassRecall | 0.000000 | N/A | 1 | 0.000000 | 0.000000 |
+| 1001:M7 | recall0 | 0.060000 | N/A | 1 | 0.060000 | 0.060000 |
+| 1001:M7 | recall1 | 0.000000 | N/A | 1 | 0.000000 | 0.000000 |
+| 1001:M7 | recall2 | 0.240000 | N/A | 1 | 0.240000 | 0.240000 |
+| 1001:M7 | recall3 | 0.560000 | N/A | 1 | 0.560000 | 0.560000 |
+| 1001:M7 | recall4 | 0.000000 | N/A | 1 | 0.000000 | 0.000000 |
+| 1001:M7 | recall5 | 0.060000 | N/A | 1 | 0.060000 | 0.060000 |
+| 1001:M7 | recall6 | 0.020000 | N/A | 1 | 0.020000 | 0.020000 |
+| 1001:M7 | accuracyTailMean | 0.141905 | N/A | 1 | 0.141905 | 0.141905 |
+| 1001:M7 | accuracyTailSd | 0.006598 | N/A | 1 | 0.006598 | 0.006598 |
+| 1001:M7 | macroF1TailSd | 0.011610 | N/A | 1 | 0.011610 | 0.011610 |
+| 1001:M7 | maxAccuracyDropPp | 1.142857 | N/A | 1 | 1.142857 | 1.142857 |
+| 1001:M7 | finalAccuracyChangePp | -1.142857 | N/A | 1 | -1.142857 | -1.142857 |
+| 1001:M7 | populationSelectionCoverage | 0.060000 | N/A | 1 | 0.060000 | 0.060000 |
+| 1001:M7 | populationCompletionCoverage | 0.060000 | N/A | 1 | 0.060000 | 0.060000 |
+| 1001:M7 | feasibleSelectionCoverage | 0.100000 | N/A | 1 | 0.100000 | 0.100000 |
+| 1001:M7 | feasibleCompletionCoverage | 0.100000 | N/A | 1 | 0.100000 | 0.100000 |
+| 1001:M7 | feasibleOpportunityAdjustedGini | 0.910417 | N/A | 1 | 0.910417 | 0.910417 |
+| 1001:M7 | feasibleCompletionOpportunityAdjustedGini | 0.910417 | N/A | 1 | 0.910417 | 0.910417 |
+| 1001:M7 | selectionGini | 0.948667 | N/A | 1 | 0.948667 | 0.948667 |
+| 1001:M7 | completionGini | 0.948667 | N/A | 1 | 0.948667 | 0.948667 |
+| 1001:M7 | ramFeasibleCompletionGini | 0.914444 | N/A | 1 | 0.914444 | 0.914444 |
+| 1001:M7 | maxFeasibleSelectionStaleness | 3.000000 | N/A | 1 | 3.000000 | 3.000000 |
+| 1001:M7 | meanFeasibleSelectionStaleness | 2.450000 | N/A | 1 | 2.450000 | 2.450000 |
+| 1001:M7 | populationNeverSelected | 94.000000 | N/A | 1 | 94.000000 | 94.000000 |
+| 1001:M7 | feasibleNeverSelected | 54.000000 | N/A | 1 | 54.000000 | 54.000000 |
+| 1001:M7 | acceptedSelectedRatio | 1.000000 | N/A | 1 | 1.000000 | 1.000000 |
+| 1001:M7 | virtualSeconds | 0.522556 | N/A | 1 | 0.522556 | 0.522556 |
+| 1001:M7 | virtualSecondsWithSelector | 0.535455 | N/A | 1 | 0.535455 | 0.535455 |
+| 1001:M7 | wallSeconds | 1.159528 | N/A | 1 | 1.159528 | 1.159528 |
+| 1001:M7 | selectorSeconds | 0.011099 | N/A | 1 | 0.011099 | 0.011099 |
+| 1001:M7 | fairnessUpdateSeconds | 0.001800 | N/A | 1 | 0.001800 | 0.001800 |
+| 1001:M7 | slotsChangedVsTopsis | 1.000000 | N/A | 1 | 1.000000 | 1.000000 |
+| 1001:M7 | slotsChangedVsTopsisRatio | 0.066667 | N/A | 1 | 0.066667 | 0.066667 |
+| 1001:M7 | meanAppliedLambda | 0.317617 | N/A | 1 | 0.317617 | 0.317617 |
+
+## Candidate fairness gaps
+
+Coverage uses maximum absolute paired gap; selection/completion Gini and staleness use mean absolute paired gaps. Coverage and all other tolerances must pass; among qualified policies minimize selection-Gini gap, tie smaller lambda. Completion Gini here is feasible completion/opportunity Gini. This is an operational match, not statistical equivalence.
+
+| Policy | Lambda | Selection coverage max gap | Completion coverage max gap | Selection Gini mean gap | Completion Gini mean gap | Max staleness mean gap | Mean staleness mean gap | All tolerances pass |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| M1 | 0.600000 | 0.050000 | 0.050000 | 0.023858 | 0.023858 | 0.000000 | 0.100000 | false |
+| M2 | 0.625000 | 0.083333 | 0.083333 | 0.055040 | 0.055040 | 0.000000 | 0.150000 | false |
+| M3 | 0.650000 | 0.083333 | 0.083333 | 0.063542 | 0.063542 | 0.000000 | 0.166667 | false |
+| M4 | 0.675000 | 0.100000 | 0.100000 | 0.078125 | 0.078125 | 0.000000 | 0.183333 | false |
+| M5 | 0.700000 | 0.100000 | 0.100000 | 0.078125 | 0.078125 | 0.000000 | 0.183333 | false |
+| M6 | 0.725000 | 0.100000 | 0.100000 | 0.078125 | 0.078125 | 0.000000 | 0.183333 | false |
+
+Configured tolerances: `{"selectionCoverageAbs":0,"completionCoverageAbs":0,"selectionGiniMeanAbs":0,"completionGiniMeanAbs":0,"maxStalenessMeanAbs":0,"meanStalenessMeanAbs":0}`. Selected policy: null; lambda: null.
+
+## Paired differences: Adaptive minus Fixed
+
+| Partition | Seed | Fixed policy | Accuracy difference | Tail SD difference | Selection Gini difference |
+| --- | --- | --- | ---: | ---: | ---: |
+| 1001 | 42 | M1 | -0.020000 | 0.002234 | 0.023858 |
+| 1001 | 42 | M2 | -0.008571 | -0.000961 | 0.055040 |
+| 1001 | 42 | M3 | -0.011429 | 0.001650 | 0.063542 |
+| 1001 | 42 | M6 | -0.011429 | 0.001650 | 0.078125 |
+| 1001 | 42 | M5 | -0.011429 | 0.001650 | 0.078125 |
+| 1001 | 42 | M4 | -0.011429 | 0.001650 | 0.078125 |
+
+All paired metric differences and their sample SD within each partition are in JSON. Accuracy–Gini points below are descriptive means across balanced partition/seed cells, not a significance or superiority test.
+
+## Observed Accuracy–Gini Pareto analysis
+
+| Policy | Mean accuracy | Mean selection Gini | On observed mean frontier |
+| --- | ---: | ---: | --- |
+| M1 | 0.154286 | 0.886559 | true |
+| M2 | 0.142857 | 0.855376 | false |
+| M3 | 0.145714 | 0.846875 | false |
+| M4 | 0.145714 | 0.832292 | true |
+| M5 | 0.145714 | 0.832292 | true |
+| M6 | 0.145714 | 0.832292 | true |
+| M7 | 0.134286 | 0.910417 | false |
+
+![Accuracy–Gini trade-off](accuracy-gini-pareto.png)
+
+![Learning stability](learning-stability.png)
+
+![Fairness evolution](fairness-evolution.png)
+
+![Adaptive behavior](adaptive-behavior.png)
+
+## Fairness and adaptive trajectories
+
+Per-round Gini/staleness, population never-selected count, applied/next lambda, smoothed Gini, full credit distributions and slots changed vs raw TOPSIS on the same pre-round history are retained under `trajectories` in JSON. Matching tolerances and each candidate's exact gaps are under `fairnessMatching`.
+
+Virtual time includes measured server overhead; virtual time with selector additionally includes measured selector/fairness overhead. Deterministic simulated duration does not make those measured overheads deterministic. No best-test-checkpoint selection, statistical equivalence, or adaptive-superiority claim is made.

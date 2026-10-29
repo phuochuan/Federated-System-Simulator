@@ -1,0 +1,89 @@
+{
+  "historical": {
+    "audits": [
+      {
+        "rounds": 70,
+        "timingCriteriaChecked": 3815,
+        "scoreCreditControllerReplay": "PASS",
+        "timingHistoryAndFeasibility": "PASS"
+      },
+      {
+        "rounds": 70,
+        "timingCriteriaChecked": 3815,
+        "scoreCreditControllerReplay": "PASS",
+        "timingHistoryAndFeasibility": "PASS"
+      }
+    ],
+    "metrics": {
+      "matrix-20261025-210944-391f30e9-F5-s45": {
+        "accuracy": 0.5771759522211322,
+        "macroF1": 0.3388053649420151,
+        "loss": 0.9883913732277124,
+        "coverage": 0.6,
+        "feasibleSelectionGini": 0.3283285885956464,
+        "finalLambda": 0.586850150305147,
+        "virtualSeconds": 26.235959302632764,
+        "wallSeconds": 213.3774029,
+        "meanTrainingMs": 221.19054400023222,
+        "accepted": 340
+      },
+      "matrix-20261025-233756-966e51c9-L5-s45": {
+        "accuracy": 0.700349391576737,
+        "macroF1": 0.4331317586260245,
+        "loss": 0.6820525852542878,
+        "coverage": 0.6,
+        "feasibleSelectionGini": 0.35136908650074683,
+        "finalLambda": 0.7347509984920003,
+        "virtualSeconds": 13.70262054255989,
+        "wallSeconds": 121.9582954,
+        "meanTrainingMs": 127.27921200013952,
+        "accepted": 332
+      }
+    },
+    "comparison": {
+      "left": "matrix-20261025-210944-391f30e9-F5-s45",
+      "right": "matrix-20261025-233756-966e51c9-L5-s45",
+      "differences": {
+        "selectedIdsEqual": {
+          "roundCount": 69,
+          "firstRound": 2
+        },
+        "acceptedIdsEqual": {
+          "roundCount": 64,
+          "firstRound": 7
+        },
+        "estimatedFeasibleIdsEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "criteriaObservationsEqual": {
+          "roundCount": 69,
+          "firstRound": 2
+        },
+        "fuzzyTopsisScoresEqual": {
+          "roundCount": 69,
+          "firstRound": 2
+        },
+        "fairnessCreditsEqual": {
+          "roundCount": 63,
+          "firstRound": 8
+        },
+        "currentFairnessLambdaEqual": {
+          "roundCount": 63,
+          "firstRound": 8
+        },
+        "selectedSetEqual": {
+          "roundCount": 64,
+          "firstRound": 7
+        },
+        "acceptedSetEqual": {
+          "roundCount": 64,
+          "firstRound": 7
+        }
+      },
+      "changedSlots": 246,
+      "selectedSlots": 350,
+      "maxEstimatedTimeDeltaSeconds": 2.0702316000009886
+    }
+  }
+}

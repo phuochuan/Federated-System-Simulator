@@ -51,6 +51,7 @@ public class RoundCoordinator {
         public SelectionHistory selectionHistory;
         public FairnessCreditState fuzzySelectionState;
         public double cumulativeVirtualSecondsWithSelector;
+        public JsonNode executionProvenance;
     }
     public void start(ExperimentConfig c) {submit(c);}
 
@@ -111,7 +112,7 @@ public class RoundCoordinator {
     }
     private Snapshot initialize(ExperimentConfig c,ScenarioTrace.Loaded trace) {
         log.info("experiment.initializing experiment={} manifest={}",c.experimentId(),c.manifestPath());
-        var manifest=worker.get("/datasets/manifest?manifestPath="+URLEncoder.encode(c.manifestPath(),StandardCharsets.UTF_8));
+        var manifest=worker.get("/datasets/manifest?manifestPath="+URLEncoder.encode(c.manifestPath(),StandardCharsets.UTF_8)+(c.hasProvenance()?"&verify=true":""));
         if(manifest.path("totalClients").asInt()!=c.totalClients()) throw new IllegalArgumentException("Manifest totalClients mismatch");
         Snapshot s=new Snapshot();s.manifest=manifest;
         for(var entry:manifest.path("clients")) s.clients.add(new ClientProfile(entry.path("clientId").asInt(),entry.path("numSamples").asInt(),c.totalClients(),c.resourceProfile()));
@@ -124,10 +125,11 @@ public class RoundCoordinator {
         s.initializationSeed=initialized.path("initializationSeed").asLong(c.seed());
         s.modelPayloadBytes=initialized.path("modelPayloadBytes").asLong();
         s.scenarioTraceHash=trace==null?null:trace.hash();
+        s.executionProvenance=c.provenance();
         s.selectionHistory=new SelectionHistory();
         if(FuzzySelectionConfig.isFuzzy(c.selection())) s.fuzzySelectionState=FairnessCreditState.initial(c.selection(),c.fuzzySelection());
         log.info("model.initialized experiment={} architecture={} checkpoint={}",c.experimentId(),initialized.path("architecture").asText(),s.checkpointPath);
-        s.initialEvaluation=evaluate(c,s.checkpointPath,"test");
+        s.initialEvaluation=evaluate(c,s.checkpointPath,c.effectiveEvaluationSplit());
         if(s.initialEvaluation.path("accuracy").asDouble()>=c.targetAccuracy()) s.timeToTargetSeconds=0.0;
         try {
             var process=new ProcessBuilder("git","rev-parse","HEAD").start();
@@ -144,6 +146,11 @@ public class RoundCoordinator {
         MDC.put("experimentId",c.experimentId());
         MDC.put("roundId",Integer.toString(lastCommittedRound));
         try {
+            if(c.hasProvenance()) {
+                ResearchProvenance.verify(c.provenance(),worker,json);
+                if(s!=null && !c.provenance().equals(s.executionProvenance))
+                    throw new IllegalStateException("Snapshot execution provenance differs from config");
+            }
             ScenarioTrace.Loaded trace=null;
             if(c.scenarioTracePath()!=null) {
                 Path root=workspace.isBlank()?Path.of("").toAbsolutePath().normalize():Path.of(workspace).toAbsolutePath().normalize();
@@ -159,7 +166,7 @@ public class RoundCoordinator {
             }
             if(s.round>0 && s.cumulativeVirtualSecondsWithSelector==0) s.cumulativeVirtualSecondsWithSelector=s.cumulativeVirtualSeconds;
             // Khi worker nạp lại dataset sau restart, hash của các file được kiểm tra lại.
-            var current=worker.get("/datasets/manifest?manifestPath="+URLEncoder.encode(c.manifestPath(),StandardCharsets.UTF_8));
+            var current=worker.get("/datasets/manifest?manifestPath="+URLEncoder.encode(c.manifestPath(),StandardCharsets.UTF_8)+(c.hasProvenance()?"&verify=true":""));
             if(!current.equals(s.manifest)) throw new IllegalArgumentException("Dataset manifest changed since experiment started");
             for(int round=s.round+1;round<=c.rounds();round++) {
                 executeRound(c,s,round,trace);
@@ -241,6 +248,7 @@ public class RoundCoordinator {
             var job=new LinkedHashMap<String,Object>();
             job.putAll(Map.of("clientId",p.clientId,"actualTrainingMs",update.path("actualTrainingMs").asDouble(),
                     "cpu",p.cpu,"ramMb",p.ramMb,"requiredRamMb",c.requiredRamMb()));
+            job.put("simulatedTrainingMs",c.durationInputMs(p,update.path("actualTrainingMs").asDouble()));
             if(trace!=null) {
                 var event=trace.event(round,p.clientId);
                 job.put("dropoutEvent",event.path("dropoutEvent").asBoolean());
@@ -264,7 +272,8 @@ public class RoundCoordinator {
             if(update==null || !acceptedIds.add(id)) throw new IllegalStateException("Unknown/duplicate simulation result");
             var p=s.clients.stream().filter(client -> client.clientId==id).findFirst().orElseThrow();
             p.lastStatus=result.path("status").asText();
-            p.estimatedSeconds=update.path("actualTrainingMs").asDouble()/1000/p.cpu;
+            double durationInputMs=c.durationInputMs(p,update.path("actualTrainingMs").asDouble());
+            p.estimatedSeconds=durationInputMs/1000/p.cpu;
             p.recentTrainingLoss=update.path("trainingLoss").asDouble();
             // Train xong trên laptop chưa đủ: update còn phải hoàn thành hợp lệ trong mô phỏng.
             boolean accept=p.lastStatus.equals("COMPLETED") && (c.deadlineSeconds()==null || !c.simulationEnabled() || result.path("completionSeconds").asDouble()<=c.deadlineSeconds());
@@ -276,6 +285,7 @@ public class RoundCoordinator {
             var participant=new LinkedHashMap<String,Object>();
             participant.put("clientId",id);participant.put("accepted",accept);participant.put("status",p.lastStatus);
             participant.put("training",update);participant.put("simulation",result);participant.put("tier",p.tier);
+            participant.put("durationMode",c.durationMode());participant.put("durationInputMs",durationInputMs);
             participants.add(participant);
         }
         if(acceptedIds.size()!=selected.size()) throw new IllegalStateException("Missing simulation results");
@@ -310,7 +320,13 @@ public class RoundCoordinator {
             s.modelVersion++;s.checkpointPath=aggregated.path("checkpointPath").asText();outcome="COMMITTED";
             log.info("aggregation.completed experiment={} round={} modelVersion={} aggregationMs={} checkpoint={}",c.experimentId(),round,s.modelVersion,aggregationMs,s.checkpointPath);
         } else log.warn("aggregation.skipped experiment={} round={} reason=no_accepted_updates modelVersion={}",c.experimentId(),round,s.modelVersion);
-        var evaluation=evaluate(c,s.checkpointPath,"test");
+        var evaluation=evaluate(c,s.checkpointPath,c.effectiveEvaluationSplit());
+        var trajectoryEvaluation=evaluation;
+        String reportedSplit=c.effectiveEvaluationSplit();
+        if(round==c.rounds() && c.finalEvaluationSplit()!=null && !c.finalEvaluationSplit().equals(reportedSplit)) {
+            reportedSplit=c.finalEvaluationSplit();
+            evaluation=evaluate(c,s.checkpointPath,reportedSplit);
+        }
         long fairnessStarted=System.nanoTime();
         var selectedIds=new HashSet<Integer>(selected.stream().map(p->p.clientId).toList());
         var completedIds=new HashSet<Integer>(accepted.stream().map(u->u.path("clientId").asInt()).toList());
@@ -329,7 +345,7 @@ public class RoundCoordinator {
         s.cumulativeVirtualSeconds+=virtual;
         double virtualWithSelector=virtual+(selectorMs+fairnessMs)/1000;
         s.cumulativeVirtualSecondsWithSelector+=virtualWithSelector;
-        if(s.timeToTargetSeconds==null && evaluation.path("accuracy").asDouble()>=c.targetAccuracy()) s.timeToTargetSeconds=s.cumulativeVirtualSeconds;
+        if(s.timeToTargetSeconds==null && trajectoryEvaluation.path("accuracy").asDouble()>=c.targetAccuracy()) s.timeToTargetSeconds=s.cumulativeVirtualSeconds;
         var metrics=new LinkedHashMap<String,Object>();
         metrics.put("roundId",round);metrics.put("modelVersion",s.modelVersion);metrics.put("outcome",outcome);
         metrics.put("selectionMethod",c.selection());metrics.put("feasibleCandidateCount",feasible.size());metrics.put("selectorComputationMs",selectorMs);
@@ -350,6 +366,10 @@ public class RoundCoordinator {
         metrics.put("logicalModelBytesDispatched",s.modelPayloadBytes*selected.size());
         metrics.put("logicalUpdateBytesAccepted",accepted.stream().mapToLong(u->u.path("modelPayloadBytes").asLong()).sum());
         metrics.put("evaluation",evaluation);metrics.put("virtualRoundSeconds",virtual);metrics.put("cumulativeVirtualSeconds",s.cumulativeVirtualSeconds);
+        metrics.put("modelStateHash",evaluation.path("modelStateHash").asText());
+        metrics.put("evaluationSplit",reportedSplit);metrics.put("durationMode",c.durationMode());
+        metrics.put("trajectoryEvaluation",trajectoryEvaluation);metrics.put("trajectoryEvaluationSplit",c.effectiveEvaluationSplit());
+        metrics.put("simulatedTrainingRoundSeconds",simulated.path("virtualRoundSeconds").asDouble());
         var fairnessMetrics=resourceFairness(s.clients,round,c.requiredRamMb());
         fairnessMetrics.putAll(s.selectionHistory.metrics());
         fairnessMetrics.put("selectionGini",SelectionHistory.gini(s.clients.stream().mapToDouble(p->p.selectionCount).toArray()));

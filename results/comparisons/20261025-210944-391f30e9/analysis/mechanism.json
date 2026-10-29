@@ -1,0 +1,834 @@
+{
+  "F3": [
+    {
+      "round": 2,
+      "lambda_": 0.0,
+      "cohorts": {
+        "seen": {
+          "n": 5,
+          "medianCC": 0.9412024606626267,
+          "medianEstimatedSeconds": 0.08833814999889,
+          "medianReliability": 0.6666666666666666,
+          "medianUtility": 0.5898724774569054
+        },
+        "unseen": {
+          "n": 51,
+          "medianCC": 0.12588493138814644,
+          "medianEstimatedSeconds": 2.1625,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.0847457627118644
+    },
+    {
+      "round": 10,
+      "lambda_": 0.0,
+      "cohorts": {
+        "seen": {
+          "n": 6,
+          "medianCC": 0.7993945950538848,
+          "medianEstimatedSeconds": 0.08780660000047646,
+          "medianReliability": 0.8944444444444444,
+          "medianUtility": 0.4099543254229303
+        },
+        "unseen": {
+          "n": 47,
+          "medianCC": 0.12549445304108572,
+          "medianEstimatedSeconds": 2.1625,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.1
+    },
+    {
+      "round": 20,
+      "lambda_": 0.0,
+      "cohorts": {
+        "seen": {
+          "n": 6,
+          "medianCC": 0.751445439057755,
+          "medianEstimatedSeconds": 0.11653445000047213,
+          "medianReliability": 0.9133986928104575,
+          "medianUtility": 0.3700514924244336
+        },
+        "unseen": {
+          "n": 48,
+          "medianCC": 0.16271106134218832,
+          "medianEstimatedSeconds": 2.1595000000000004,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.1
+    },
+    {
+      "round": 21,
+      "lambda_": 0.0,
+      "cohorts": {
+        "seen": {
+          "n": 6,
+          "medianCC": 0.7773320437964633,
+          "medianEstimatedSeconds": 0.08974589999888849,
+          "medianReliability": 0.8968253968253967,
+          "medianUtility": 0.3657786225622452
+        },
+        "unseen": {
+          "n": 54,
+          "medianCC": 0.1620089789094995,
+          "medianEstimatedSeconds": 2.1587500000000004,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.1
+    },
+    {
+      "round": 22,
+      "lambda_": 0.0,
+      "cohorts": {
+        "seen": {
+          "n": 6,
+          "medianCC": 0.776354441535289,
+          "medianEstimatedSeconds": 0.12428402499972435,
+          "medianReliability": 0.899749373433584,
+          "medianUtility": 0.3621775871943489
+        },
+        "unseen": {
+          "n": 51,
+          "medianCC": 0.16416889975846166,
+          "medianEstimatedSeconds": 2.1550000000000002,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.1
+    },
+    {
+      "round": 30,
+      "lambda_": 0.0,
+      "cohorts": {
+        "seen": {
+          "n": 6,
+          "medianCC": 0.7602219867363318,
+          "medianEstimatedSeconds": 0.09460559999934048,
+          "medianReliability": 0.9110671936758893,
+          "medianUtility": 0.34802533463191515
+        },
+        "unseen": {
+          "n": 49,
+          "medianCC": 0.17857203978939631,
+          "medianEstimatedSeconds": 2.1550000000000002,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.1
+    },
+    {
+      "round": 40,
+      "lambda_": 0.0,
+      "cohorts": {
+        "seen": {
+          "n": 6,
+          "medianCC": 0.6927350206371963,
+          "medianEstimatedSeconds": 0.11058332499851531,
+          "medianReliability": 0.9258241758241759,
+          "medianUtility": 0.34027532166793273
+        },
+        "unseen": {
+          "n": 50,
+          "medianCC": 0.1813219019013807,
+          "medianEstimatedSeconds": 2.16575,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.1
+    },
+    {
+      "round": 60,
+      "lambda_": 0.0,
+      "cohorts": {
+        "seen": {
+          "n": 6,
+          "medianCC": 0.7073118077703497,
+          "medianEstimatedSeconds": 0.08875747500133002,
+          "medianReliability": 0.9216836734693878,
+          "medianUtility": 0.3005442689116989
+        },
+        "unseen": {
+          "n": 48,
+          "medianCC": 0.23108204450909853,
+          "medianEstimatedSeconds": 2.1595000000000004,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.11666666666666667
+    },
+    {
+      "round": 69,
+      "lambda_": 0.0,
+      "cohorts": {
+        "seen": {
+          "n": 7,
+          "medianCC": 0.7542071534815006,
+          "medianEstimatedSeconds": 0.10359814999901573,
+          "medianReliability": 0.9180327868852459,
+          "medianUtility": 0.3398491673504441
+        },
+        "unseen": {
+          "n": 46,
+          "medianCC": 0.2327835965421844,
+          "medianEstimatedSeconds": 2.16325,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.13333333333333333
+    },
+    {
+      "round": 70,
+      "lambda_": 0.0,
+      "cohorts": {
+        "seen": {
+          "n": 8,
+          "medianCC": 0.7985324446593516,
+          "medianEstimatedSeconds": 0.10117067499959376,
+          "medianReliability": 0.925194660734149,
+          "medianUtility": 0.3284381652347712
+        },
+        "unseen": {
+          "n": 48,
+          "medianCC": 0.23300284311740227,
+          "medianEstimatedSeconds": 2.1587500000000004,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.13333333333333333
+    }
+  ],
+  "F4": [
+    {
+      "round": 2,
+      "lambda_": 0.3,
+      "cohorts": {
+        "seen": {
+          "n": 5,
+          "medianCC": 0.5392760928430229,
+          "medianEstimatedSeconds": 0.1869093499990413,
+          "medianReliability": 0.6666666666666666,
+          "medianUtility": 0.5898724774569054
+        },
+        "unseen": {
+          "n": 51,
+          "medianCC": 0.1252758023004371,
+          "medianEstimatedSeconds": 2.1625,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [
+        80
+      ],
+      "coverage": 0.1016949152542373
+    },
+    {
+      "round": 10,
+      "lambda_": 0.3,
+      "cohorts": {
+        "seen": {
+          "n": 6,
+          "medianCC": 0.8317441622576844,
+          "medianEstimatedSeconds": 0.07341605000146956,
+          "medianReliability": 0.8819444444444444,
+          "medianUtility": 0.40413595325715945
+        },
+        "unseen": {
+          "n": 47,
+          "medianCC": 0.13817654774948937,
+          "medianEstimatedSeconds": 2.1625,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.11666666666666667
+    },
+    {
+      "round": 20,
+      "lambda_": 0.3,
+      "cohorts": {
+        "seen": {
+          "n": 7,
+          "medianCC": 0.8154887572151396,
+          "medianEstimatedSeconds": 0.06927550000182237,
+          "medianReliability": 0.9090909090909091,
+          "medianUtility": 0.3397014727638691
+        },
+        "unseen": {
+          "n": 47,
+          "medianCC": 0.17672555231030396,
+          "medianEstimatedSeconds": 2.164,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [
+        87
+      ],
+      "coverage": 0.11666666666666667
+    },
+    {
+      "round": 21,
+      "lambda_": 0.3,
+      "cohorts": {
+        "seen": {
+          "n": 7,
+          "medianCC": 0.8028517979679003,
+          "medianEstimatedSeconds": 0.07156614999985322,
+          "medianReliability": 0.9,
+          "medianUtility": 0.33835690013930675
+        },
+        "unseen": {
+          "n": 53,
+          "medianCC": 0.1752928264864035,
+          "medianEstimatedSeconds": 2.1625,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.11666666666666667
+    },
+    {
+      "round": 22,
+      "lambda_": 0.3,
+      "cohorts": {
+        "seen": {
+          "n": 7,
+          "medianCC": 0.781766958911745,
+          "medianEstimatedSeconds": 0.0754271499972674,
+          "medianReliability": 0.9,
+          "medianUtility": 0.34144804255025973
+        },
+        "unseen": {
+          "n": 50,
+          "medianCC": 0.18612414438953867,
+          "medianEstimatedSeconds": 2.1587500000000004,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [
+        95
+      ],
+      "coverage": 0.11666666666666667
+    },
+    {
+      "round": 30,
+      "lambda_": 0.3,
+      "cohorts": {
+        "seen": {
+          "n": 6,
+          "medianCC": 0.7411212694596998,
+          "medianEstimatedSeconds": 0.10915562499940279,
+          "medianReliability": 0.9285714285714286,
+          "medianUtility": 0.3426775434422848
+        },
+        "unseen": {
+          "n": 49,
+          "medianCC": 0.1881153553776758,
+          "medianEstimatedSeconds": 2.1550000000000002,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.11666666666666667
+    },
+    {
+      "round": 40,
+      "lambda_": 0.3,
+      "cohorts": {
+        "seen": {
+          "n": 7,
+          "medianCC": 0.7610476581501683,
+          "medianEstimatedSeconds": 0.09981210000114515,
+          "medianReliability": 0.92,
+          "medianUtility": 0.3248064012953398
+        },
+        "unseen": {
+          "n": 49,
+          "medianCC": 0.19821590236880188,
+          "medianEstimatedSeconds": 2.1675,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.11666666666666667
+    },
+    {
+      "round": 60,
+      "lambda_": 0.3,
+      "cohorts": {
+        "seen": {
+          "n": 6,
+          "medianCC": 0.7400601661540553,
+          "medianEstimatedSeconds": 0.1274949500002549,
+          "medianReliability": 0.9307843137254901,
+          "medianUtility": 0.3046169276245258
+        },
+        "unseen": {
+          "n": 48,
+          "medianCC": 0.2108016853894087,
+          "medianEstimatedSeconds": 2.1595000000000004,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.11666666666666667
+    },
+    {
+      "round": 69,
+      "lambda_": 0.3,
+      "cohorts": {
+        "seen": {
+          "n": 8,
+          "medianCC": 0.7676875628412277,
+          "medianEstimatedSeconds": 0.09088827499908803,
+          "medianReliability": 0.9090909090909091,
+          "medianUtility": 0.329657014632646
+        },
+        "unseen": {
+          "n": 45,
+          "medianCC": 0.2123708059191617,
+          "medianEstimatedSeconds": 2.164,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.15
+    },
+    {
+      "round": 70,
+      "lambda_": 0.3,
+      "cohorts": {
+        "seen": {
+          "n": 9,
+          "medianCC": 0.7738578348955347,
+          "medianEstimatedSeconds": 0.09953384999971604,
+          "medianReliability": 0.9272727272727272,
+          "medianUtility": 0.3203938588142632
+        },
+        "unseen": {
+          "n": 47,
+          "medianCC": 0.21101012634277475,
+          "medianEstimatedSeconds": 2.1625,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.15
+    }
+  ],
+  "F5": [
+    {
+      "round": 2,
+      "lambda_": 0.31729166666666664,
+      "cohorts": {
+        "seen": {
+          "n": 5,
+          "medianCC": 0.8494268317797181,
+          "medianEstimatedSeconds": 0.08645679999972344,
+          "medianReliability": 0.6666666666666666,
+          "medianUtility": 0.5898724774569054
+        },
+        "unseen": {
+          "n": 51,
+          "medianCC": 0.1250260547453402,
+          "medianEstimatedSeconds": 2.1625,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.0847457627118644
+    },
+    {
+      "round": 10,
+      "lambda_": 0.45827313594221364,
+      "cohorts": {
+        "seen": {
+          "n": 7,
+          "medianCC": 0.7804785769174476,
+          "medianEstimatedSeconds": 0.11030155000116793,
+          "medianReliability": 0.875,
+          "medianUtility": 0.3985568312569132
+        },
+        "unseen": {
+          "n": 46,
+          "medianCC": 0.1474942984363553,
+          "medianEstimatedSeconds": 2.16325,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [],
+      "coverage": 0.13333333333333333
+    },
+    {
+      "round": 20,
+      "lambda_": 0.6348393649814703,
+      "cohorts": {
+        "seen": {
+          "n": 12,
+          "medianCC": 0.6822999583067161,
+          "medianEstimatedSeconds": 0.13702282499980356,
+          "medianReliability": 0.7916666666666667,
+          "medianUtility": 0.36598746743436916
+        },
+        "unseen": {
+          "n": 42,
+          "medianCC": 0.1793222872803684,
+          "medianEstimatedSeconds": 2.16575,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [
+        83
+      ],
+      "coverage": 0.21666666666666667
+    },
+    {
+      "round": 21,
+      "lambda_": 0.6523409613256803,
+      "cohorts": {
+        "seen": {
+          "n": 13,
+          "medianCC": 0.6976799701876453,
+          "medianEstimatedSeconds": 0.1228268000013486,
+          "medianReliability": 0.8,
+          "medianUtility": 0.3570836759136905
+        },
+        "unseen": {
+          "n": 47,
+          "medianCC": 0.24203823958680412,
+          "medianEstimatedSeconds": 2.164,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [
+        62,
+        75,
+        86,
+        89,
+        92
+      ],
+      "coverage": 0.3
+    },
+    {
+      "round": 22,
+      "lambda_": 0.6695922764795847,
+      "cohorts": {
+        "seen": {
+          "n": 17,
+          "medianCC": 0.6321185842567305,
+          "medianEstimatedSeconds": 0.11974375000136206,
+          "medianReliability": 0.6666666666666666,
+          "medianUtility": 0.36711964252944995
+        },
+        "unseen": {
+          "n": 40,
+          "medianCC": 0.2510081010875985,
+          "medianEstimatedSeconds": 2.16575,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [
+        41,
+        50,
+        59,
+        89
+      ],
+      "coverage": 0.35
+    },
+    {
+      "round": 30,
+      "lambda_": 0.7830877626227953,
+      "cohorts": {
+        "seen": {
+          "n": 43,
+          "medianCC": 0.47201067149778214,
+          "medianEstimatedSeconds": 0.19029720000253292,
+          "medianReliability": 0.6666666666666666,
+          "medianUtility": 0.33354044879358913
+        },
+        "unseen": {
+          "n": 12,
+          "medianCC": 0.2770731210839836,
+          "medianEstimatedSeconds": 2.16575,
+          "medianReliability": 0.5,
+          "medianUtility": 0.5
+        }
+      },
+      "fairnessReplacements": [
+        46,
+        52,
+        76,
+        81,
+        93
+      ],
+      "coverage": 0.8666666666666667
+    },
+    {
+      "round": 40,
+      "lambda_": 0.825404022682867,
+      "cohorts": {
+        "seen": {
+          "n": 56,
+          "medianCC": 0.4332186931255144,
+          "medianEstimatedSeconds": 0.17812045000027865,
+          "medianReliability": 0.75,
+          "medianUtility": 0.32039484923074624
+        }
+      },
+      "fairnessReplacements": [
+        42,
+        67
+      ],
+      "coverage": 1.0
+    },
+    {
+      "round": 60,
+      "lambda_": 0.7043175639853269,
+      "cohorts": {
+        "seen": {
+          "n": 54,
+          "medianCC": 0.47819828437109335,
+          "medianEstimatedSeconds": 0.18899949999831733,
+          "medianReliability": 0.8,
+          "medianUtility": 0.3024059227202067
+        }
+      },
+      "fairnessReplacements": [
+        54,
+        64,
+        73,
+        95
+      ],
+      "coverage": 1.0
+    },
+    {
+      "round": 69,
+      "lambda_": 0.6089277109624388,
+      "cohorts": {
+        "seen": {
+          "n": 53,
+          "medianCC": 0.44284838616382766,
+          "medianEstimatedSeconds": 0.20745570000144653,
+          "medianReliability": 0.8333333333333334,
+          "medianUtility": 0.29804931121504374
+        }
+      },
+      "fairnessReplacements": [
+        54,
+        57,
+        73,
+        99
+      ],
+      "coverage": 1.0
+    },
+    {
+      "round": 70,
+      "lambda_": 0.5978939073273009,
+      "cohorts": {
+        "seen": {
+          "n": 56,
+          "medianCC": 0.47078317395821745,
+          "medianEstimatedSeconds": 0.20604509999975562,
+          "medianReliability": 0.8333333333333334,
+          "medianUtility": 0.2922200594774519
+        }
+      },
+      "fairnessReplacements": [
+        50,
+        89,
+        93
+      ],
+      "coverage": 1.0
+    }
+  ],
+  "lastTwo": [
+    {
+      "round": 69,
+      "accuracy": 0.722560713240736,
+      "macroF1": 0.4097617906508108,
+      "recall": [
+        0.7865134063444109,
+        0.7338863395693611,
+        0.9365123758914837,
+        0.0,
+        0.0,
+        0.006046645551396487,
+        0.5704534373476353
+      ],
+      "accepted": [
+        54,
+        57,
+        73,
+        87,
+        99
+      ],
+      "weights": [
+        0.20214134730263764,
+        0.20269276720889623,
+        0.19782189137027847,
+        0.1956621634040989,
+        0.20168183071408877
+      ],
+      "labelProportions": [
+        0.4133351713996875,
+        0.42013601691021046,
+        0.0922709309806084,
+        0.004641117544343351,
+        0.013831449315320283,
+        0.02908740005514199,
+        0.02669791379468799
+      ],
+      "lambda_": 0.6089277109624388,
+      "nextLambda": 0.5978939073273009,
+      "gini": 0.3276617498509727,
+      "participants": [
+        {
+          "id": 54,
+          "status": "COMPLETED",
+          "loss": 0.46279396415163265
+        },
+        {
+          "id": 57,
+          "status": "COMPLETED",
+          "loss": 0.33315375719048
+        },
+        {
+          "id": 73,
+          "status": "COMPLETED",
+          "loss": 0.5811592557981317
+        },
+        {
+          "id": 87,
+          "status": "COMPLETED",
+          "loss": 0.18655009547440085
+        },
+        {
+          "id": 99,
+          "status": "COMPLETED",
+          "loss": 0.2431974543148631
+        }
+      ]
+    },
+    {
+      "round": 70,
+      "accuracy": 0.5771759522211322,
+      "macroF1": 0.3388053649420151,
+      "recall": [
+        0.08041446374622356,
+        0.9931697846805506,
+        0.5883093273668019,
+        0.09289617486338798,
+        0.0,
+        0.04232651885977541,
+        0.727450024378352
+      ],
+      "accepted": [
+        50,
+        89,
+        91,
+        93,
+        94
+      ],
+      "weights": [
+        0.20305476561783323,
+        0.20062379598202,
+        0.19658746903953767,
+        0.20236675534354645,
+        0.19736721401706264
+      ],
+      "labelProportions": [
+        0.15860930189890834,
+        0.7301165030731126,
+        0.020410971470507293,
+        0.010549490872397028,
+        0.02967617649756903,
+        0.023667553435464637,
+        0.026970002752041096
+      ],
+      "lambda_": 0.5978939073273009,
+      "nextLambda": 0.586850150305147,
+      "gini": 0.3283285885956464,
+      "participants": [
+        {
+          "id": 50,
+          "status": "COMPLETED",
+          "loss": 0.40265218178090106
+        },
+        {
+          "id": 89,
+          "status": "COMPLETED",
+          "loss": 0.2442437998701788
+        },
+        {
+          "id": 91,
+          "status": "COMPLETED",
+          "loss": 0.37471275347946853
+        },
+        {
+          "id": 93,
+          "status": "COMPLETED",
+          "loss": 0.4995367877448783
+        },
+        {
+          "id": 94,
+          "status": "COMPLETED",
+          "loss": 0.5851968522546127
+        }
+      ]
+    }
+  ],
+  "accuracyDeltaByClass": [
+    -0.25744823669127903,
+    0.12642639541488096,
+    -0.021428202612691693,
+    0.0004388908968864563,
+    0.0,
+    0.0010843186864253626,
+    0.005542073286174076
+  ],
+  "initialHashes": {
+    "42": 1,
+    "43": 1,
+    "44": 1,
+    "45": 1,
+    "46": 1
+  }
+}

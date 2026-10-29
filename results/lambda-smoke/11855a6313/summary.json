@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "protocol": "LAMBDA_SYNTHETIC_SMOKE_ONLY",
+  "experiments": 12,
+  "roundsPerExperiment": 3,
+  "seeds": [
+    42,
+    43
+  ],
+  "pairedInitialWeights": "verified",
+  "sharedTraces": "verified",
+  "independentNumericalAndCreditReplay": "verified",
+  "liveProcessRestartResume": {
+    "status": "verified",
+    "restartAfterRound": 1,
+    "finalRound": 12
+  },
+  "report": "D:\\research\\federated-system\\artifacts\\comparisons\\20261025-232329-a5c0f6bb\\L-fixed-lambda-ablation.txt",
+  "evidence": "D:\\research\\federated-system\\artifacts\\lambda-smoke\\11855a6313"
+}

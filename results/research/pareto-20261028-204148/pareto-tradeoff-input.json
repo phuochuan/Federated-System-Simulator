@@ -1,0 +1,167 @@
+{
+  "iidManifestPath": "artifacts/partitions/covertype-iid-42",
+  "nonIidManifestPath": "artifacts/partitions/covertype-dirichlet-42",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "accuracyTargets": [
+    0.65,
+    0.68,
+    0.69,
+    0.7
+  ],
+  "lambdaAblation": {
+    "fixedLambdas": [
+      0.0,
+      0.3,
+      0.5,
+      0.7,
+      0.9
+    ],
+    "stabilityWindow": 10
+  },
+  "heterogeneousScenario": {
+    "resourceProfile": "heterogeneous",
+    "availability": 0.9,
+    "dropout": 0.05,
+    "deadlineSeconds": 10.0,
+    "requiredRamMb": 600.0,
+    "jitter": 0.1
+  },
+  "baseConfig": {
+    "experimentId": "lambda-template",
+    "manifestPath": "artifacts/partitions/covertype-dirichlet-42",
+    "totalClients": 100,
+    "selectedPerRound": 5,
+    "rounds": 70,
+    "seed": 42,
+    "selection": "fuzzy_topsis",
+    "aggregation": "fedavg",
+    "localEpochs": 1,
+    "batchSize": 32,
+    "learningRate": 0.01,
+    "simulationEnabled": true,
+    "resourceProfile": "heterogeneous",
+    "availability": 0.9,
+    "dropout": 0.05,
+    "jitter": 0.1,
+    "exploration": 0.2,
+    "deadlineSeconds": 10.0,
+    "requiredRamMb": 600.0,
+    "priorSecondsPerSample": 0.0005,
+    "targetAccuracy": 0.7
+  },
+  "fuzzySelection": {
+    "weights": {
+      "estimatedTime": 0.4,
+      "reliability": 0.35,
+      "learningUtility": 0.25
+    },
+    "uncertaintyMode": "history_based",
+    "uncertaintyFallback": 0.1,
+    "uncertaintyScale": 1.0,
+    "uncertaintyMax": 0.45,
+    "reliabilityAlpha": 1.0,
+    "reliabilityBeta": 1.0,
+    "learningUtilityPrior": 0.5,
+    "epsilon": 1e-09,
+    "allowFairnessDoubleCounting": false,
+    "fairness": {
+      "mode": "credit_score",
+      "lambda": 0.3,
+      "lambdaMin": 0.0,
+      "lambdaMax": 1.0,
+      "adaptationRate": 0.05,
+      "targetFeasibleGini": 0.55,
+      "smoothing": 0.8,
+      "maxUpdate": 0.05,
+      "fairnessQuota": 0
+    }
+  },
+  "timing": {
+    "mode": "deterministic",
+    "secondsPerSample": 0.0005
+  },
+  "splitSeed": 42,
+  "fixedLambdas": [
+    0.6,
+    0.625,
+    0.65,
+    0.675,
+    0.7,
+    0.725
+  ],
+  "stabilityWindow": 10,
+  "requireAudit": true,
+  "auditReportPath": "artifacts/research/pareto-20261028-204148/e0/reproducibility-audit.json",
+  "validation": {
+    "partitionSeeds": [
+      1001,
+      1002
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ]
+  },
+  "evaluation": {
+    "partitionSeeds": [
+      2001,
+      2002,
+      2003
+    ],
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ]
+  },
+  "partitionPattern": "artifacts/partitions/covertype-dirichlet-p{partitionSeed}-split42",
+  "matching": {
+    "selectionCoverageAbs": 0.02,
+    "completionCoverageAbs": 0.02,
+    "selectionGiniMeanAbs": 0.025,
+    "completionGiniMeanAbs": 0.05,
+    "maxStalenessMeanAbs": 5.0,
+    "meanStalenessMeanAbs": 2.0
+  },
+  "analysisType": "PARETO_COMPARISON",
+  "dataset": "covertype",
+  "alpha": 0.5,
+  "largeAccuracyDropPp": 10.0,
+  "policies": [
+    {
+      "id": "P1",
+      "selection": "fuzzy_topsis_fair",
+      "lambda": 0.65
+    },
+    {
+      "id": "P2",
+      "selection": "fuzzy_topsis_fair",
+      "lambda": 0.675
+    },
+    {
+      "id": "P3",
+      "selection": "fuzzy_topsis_fair",
+      "lambda": 0.725
+    },
+    {
+      "id": "P4",
+      "selection": "adaptive_fuzzy_topsis_fair",
+      "lambda": 0.3
+    }
+  ],
+  "phaseA": {
+    "reportPath": "artifacts/research/retry-20261028-183037/e1/validation/fairness-matched-results.json",
+    "lockPath": "artifacts/research/retry-20261028-183037/e1/policy-lock.json",
+    "reportSha256": "35bff3f7ab34bdd572f20d0402b35e349e377087090ab04aa9d2dd5a7072d206",
+    "lockSha256": "7036a7ba87c885781310878b7017e182dc3fd978b2db8e29f7f7996ed6fba9fd"
+  }
+}

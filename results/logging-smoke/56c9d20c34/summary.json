@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "experiment": "logging-56c9d20c34",
+  "round": 2,
+  "javaLog": "D:\\research\\federated-system\\artifacts\\logging-smoke\\56c9d20c34\\server.log",
+  "pythonLog": "D:\\research\\federated-system\\artifacts\\logging-smoke\\56c9d20c34\\worker.log"
+}

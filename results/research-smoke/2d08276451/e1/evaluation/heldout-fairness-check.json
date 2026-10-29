@@ -1,0 +1,45 @@
+{
+  "learningMetricsUsed" : false,
+  "candidates" : [ {
+    "policy" : "M1",
+    "lambda" : 0.6,
+    "gaps" : {
+      "feasibleSelectionCoverage" : 0.08333333333333334,
+      "feasibleCompletionCoverage" : 0.08333333333333334,
+      "feasibleOpportunityAdjustedGini" : 0.05392020697167762,
+      "feasibleCompletionOpportunityAdjustedGini" : 0.05392020697167762,
+      "maxFeasibleSelectionStaleness" : 0.0,
+      "meanFeasibleSelectionStaleness" : 0.15000000000000005
+    },
+    "sameObservedFeasiblePopulation" : true,
+    "withinAllTolerances" : true,
+    "coverageGap" : 0.08333333333333334
+  } ],
+  "nearestCandidate" : {
+    "policy" : "M1",
+    "lambda" : 0.6,
+    "gaps" : {
+      "feasibleSelectionCoverage" : 0.08333333333333334,
+      "feasibleCompletionCoverage" : 0.08333333333333334,
+      "feasibleOpportunityAdjustedGini" : 0.05392020697167762,
+      "feasibleCompletionOpportunityAdjustedGini" : 0.05392020697167762,
+      "maxFeasibleSelectionStaleness" : 0.0,
+      "meanFeasibleSelectionStaleness" : 0.15000000000000005
+    },
+    "sameObservedFeasiblePopulation" : true,
+    "withinAllTolerances" : true,
+    "coverageGap" : 0.08333333333333334
+  },
+  "status" : "MATCHED",
+  "selectedPolicy" : "M1",
+  "selectedLambda" : 0.6,
+  "tolerances" : {
+    "selectionCoverageAbs" : 1,
+    "completionCoverageAbs" : 1,
+    "selectionGiniMeanAbs" : 1,
+    "completionGiniMeanAbs" : 1,
+    "maxStalenessMeanAbs" : 100,
+    "meanStalenessMeanAbs" : 100
+  },
+  "definition" : "Coverage uses maximum absolute paired gap; selection/completion Gini and staleness use mean absolute paired gaps. Coverage and all other tolerances must pass; among qualified policies minimize selection-Gini gap, tie smaller lambda. Completion Gini here is feasible completion/opportunity Gini. This is an operational match, not statistical equivalence."
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "partition": 45,
+    "seed": 45,
+    "fixedLambda": 0.7,
+    "direction": "adaptive_minus_fixed",
+    "accuracy": -0.0057142857142856995,
+    "macroF1": -0.006817790485619646,
+    "gini": 0.07769587769587771,
+    "accuracyTailSd": 0.0014315095939788271,
+    "maxAccuracyDropPp": 0.21428571428571686,
+    "virtualWithSelectorSeconds": -0.062472809649384176
+  }
+]

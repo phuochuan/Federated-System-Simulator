@@ -1,0 +1,1939 @@
+{
+  "batch": "20261025-210944-391f30e9",
+  "records": {
+    "F1-s42": {
+      "accuracy": 0.5640694652415621,
+      "macroF1": 0.34384792101580125,
+      "recall": [
+        0.9715115181268882,
+        0.281909636427815,
+        0.9381904628723255,
+        0.0,
+        0.00105318588730911,
+        0.05326806795277858,
+        0.3695758166747928
+      ],
+      "populationCoverage": 0.59,
+      "feasibleCoverage": 0.9833333333333333,
+      "selectionCoverage": 1.0,
+      "opportunityGini": 0.25635606515623266,
+      "completionGini": 0.2654690618762475,
+      "selectionGini": 0.5525714285714286,
+      "virtualSeconds": 18.983769558539723,
+      "selectorSeconds": 0.0133749,
+      "selected": 60,
+      "top5SelectionShare": 0.16,
+      "selectionMin": 1,
+      "selectionMax": 15,
+      "accepted": 334,
+      "firstFullSelectionRound": 49,
+      "finalLambda": null,
+      "maxLambda": 0.0
+    },
+    "F1-s43": {
+      "accuracy": 0.6790158517065111,
+      "macroF1": 0.3827179075923143,
+      "recall": [
+        0.41097054380664655,
+        0.9450405930109425,
+        0.7986295622989792,
+        0.0,
+        0.0,
+        0.010077742585660812,
+        0.5360799609946367
+      ],
+      "populationCoverage": 0.6,
+      "feasibleCoverage": 1.0,
+      "selectionCoverage": 1.0,
+      "opportunityGini": 0.21018516524556072,
+      "completionGini": 0.2270392749244713,
+      "selectionGini": 0.5298857142857143,
+      "virtualSeconds": 17.948641231359982,
+      "selectorSeconds": 0.0045345,
+      "selected": 60,
+      "top5SelectionShare": 0.15142857142857144,
+      "selectionMin": 1,
+      "selectionMax": 14,
+      "accepted": 331,
+      "firstFullSelectionRound": 65,
+      "finalLambda": null,
+      "maxLambda": 0.0
+    },
+    "F1-s44": {
+      "accuracy": 0.6010309633224902,
+      "macroF1": 0.3327946304740843,
+      "recall": [
+        0.1402709592145015,
+        0.9758206847864455,
+        0.8928821143895959,
+        0.0,
+        0.0,
+        0.0,
+        0.5419307654802535
+      ],
+      "populationCoverage": 0.6,
+      "feasibleCoverage": 1.0,
+      "selectionCoverage": 1.0,
+      "opportunityGini": 0.18818383451657586,
+      "completionGini": 0.1880952380952381,
+      "selectionGini": 0.5112571428571429,
+      "virtualSeconds": 27.109062731287406,
+      "selectorSeconds": 0.0085546,
+      "selected": 60,
+      "top5SelectionShare": 0.13428571428571429,
+      "selectionMin": 2,
+      "selectionMax": 11,
+      "accepted": 336,
+      "firstFullSelectionRound": 34,
+      "finalLambda": null,
+      "maxLambda": 0.0
+    },
+    "F1-s45": {
+      "accuracy": 0.6570454897506067,
+      "macroF1": 0.41842626897674684,
+      "recall": [
+        0.34441087613293053,
+        0.9389163430991881,
+        0.4378408614179835,
+        0.0,
+        0.0,
+        0.6605240426144544,
+        0.7640175524134568
+      ],
+      "populationCoverage": 0.6,
+      "feasibleCoverage": 1.0,
+      "selectionCoverage": 1.0,
+      "opportunityGini": 0.23727872297095084,
+      "completionGini": 0.24381965552178317,
+      "selectionGini": 0.5413714285714286,
+      "virtualSeconds": 25.669626780716477,
+      "selectorSeconds": 0.007474699999999999,
+      "selected": 60,
+      "top5SelectionShare": 0.15142857142857144,
+      "selectionMin": 1,
+      "selectionMax": 11,
+      "accepted": 329,
+      "firstFullSelectionRound": 50,
+      "finalLambda": null,
+      "maxLambda": 0.0
+    },
+    "F1-s46": {
+      "accuracy": 0.651228033940896,
+      "macroF1": 0.3514223111600489,
+      "recall": [
+        0.9169656344410876,
+        0.5178962230850689,
+        0.9163753321213817,
+        0.0,
+        0.0,
+        0.06334581053843939,
+        0.17235494880546076
+      ],
+      "populationCoverage": 0.6,
+      "feasibleCoverage": 1.0,
+      "selectionCoverage": 1.0,
+      "opportunityGini": 0.1896321326906531,
+      "completionGini": 0.18672654690618762,
+      "selectionGini": 0.5142857142857142,
+      "virtualSeconds": 31.83695011322357,
+      "selectorSeconds": 0.0166788,
+      "selected": 60,
+      "top5SelectionShare": 0.13428571428571429,
+      "selectionMin": 2,
+      "selectionMax": 11,
+      "accepted": 334,
+      "firstFullSelectionRound": 33,
+      "finalLambda": null,
+      "maxLambda": 0.0
+    },
+    "F2-s42": {
+      "accuracy": 0.7118810347498322,
+      "macroF1": 0.37029879298904017,
+      "recall": [
+        0.7970166163141994,
+        0.7500705965407695,
+        0.7782128373654035,
+        0.03278688524590164,
+        0.0,
+        0.0,
+        0.21257922964407605
+      ],
+      "populationCoverage": 0.43,
+      "feasibleCoverage": 0.7166666666666667,
+      "selectionCoverage": 0.7333333333333333,
+      "opportunityGini": 0.7519996277587696,
+      "completionGini": 0.7535035035035035,
+      "selectionGini": 0.8508,
+      "virtualSeconds": 15.708004584766943,
+      "selectorSeconds": 0.013414500000000001,
+      "selected": 44,
+      "top5SelectionShare": 0.5371428571428571,
+      "selectionMin": 0,
+      "selectionMax": 54,
+      "accepted": 333,
+      "firstFullSelectionRound": null,
+      "finalLambda": null,
+      "maxLambda": 0.0
+    },
+    "F2-s43": {
+      "accuracy": 0.6645582692208396,
+      "macroF1": 0.31696267786997473,
+      "recall": [
+        0.9034648791540786,
+        0.5680550653018002,
+        0.9056076073276464,
+        0.0,
+        0.0,
+        0.0,
+        0.0689907362262311
+      ],
+      "populationCoverage": 0.38,
+      "feasibleCoverage": 0.6333333333333333,
+      "selectionCoverage": 0.65,
+      "opportunityGini": 0.7181188730177449,
+      "completionGini": 0.7207193515704154,
+      "selectionGini": 0.8301714285714286,
+      "virtualSeconds": 29.604932597360044,
+      "selectorSeconds": 0.0161268,
+      "selected": 39,
+      "top5SelectionShare": 0.5057142857142857,
+      "selectionMin": 0,
+      "selectionMax": 47,
+      "accepted": 329,
+      "firstFullSelectionRound": null,
+      "finalLambda": null,
+      "maxLambda": 0.0
+    },
+    "F2-s44": {
+      "accuracy": 0.6976213834529527,
+      "macroF1": 0.422568675869932,
+      "recall": [
+        0.7773083459214502,
+        0.6671373102717967,
+        0.9855964200811075,
+        0.0,
+        0.12374934175882044,
+        0.0,
+        0.7432959531935641
+      ],
+      "populationCoverage": 0.5,
+      "feasibleCoverage": 0.8333333333333334,
+      "selectionCoverage": 0.8333333333333334,
+      "opportunityGini": 0.6674269748206432,
+      "completionGini": 0.6631736526946108,
+      "selectionGini": 0.8010285714285714,
+      "virtualSeconds": 24.537136731119116,
+      "selectorSeconds": 0.0211919,
+      "selected": 50,
+      "top5SelectionShare": 0.4342857142857143,
+      "selectionMin": 0,
+      "selectionMax": 43,
+      "accepted": 334,
+      "firstFullSelectionRound": null,
+      "finalLambda": null,
+      "maxLambda": 0.0
+    },
+    "F2-s45": {
+      "accuracy": 0.6620195865819866,
+      "macroF1": 0.423201914930007,
+      "recall": [
+        0.3535687311178248,
+        0.9459759971761383,
+        0.473220528597399,
+        0.0,
+        0.0,
+        0.5801900374316153,
+        0.7191613846903949
+      ],
+      "populationCoverage": 0.44,
+      "feasibleCoverage": 0.7333333333333333,
+      "selectionCoverage": 0.7333333333333333,
+      "opportunityGini": 0.7067449756352439,
+      "completionGini": 0.7101208459214502,
+      "selectionGini": 0.8248,
+      "virtualSeconds": 23.795957168510522,
+      "selectorSeconds": 0.0136875,
+      "selected": 44,
+      "top5SelectionShare": 0.47714285714285715,
+      "selectionMin": 0,
+      "selectionMax": 57,
+      "accepted": 331,
+      "firstFullSelectionRound": null,
+      "finalLambda": null,
+      "maxLambda": 0.0
+    },
+    "F2-s46": {
+      "accuracy": 0.6577683688748903,
+      "macroF1": 0.36017346257340904,
+      "recall": [
+        0.9105456948640483,
+        0.5261030709495235,
+        0.944063767305272,
+        0.0,
+        0.0,
+        0.0,
+        0.3159434422233057
+      ],
+      "populationCoverage": 0.41,
+      "feasibleCoverage": 0.6833333333333333,
+      "selectionCoverage": 0.7,
+      "opportunityGini": 0.6781488237533665,
+      "completionGini": 0.6855355355355356,
+      "selectionGini": 0.8081714285714285,
+      "virtualSeconds": 28.03750202126836,
+      "selectorSeconds": 0.0149079,
+      "selected": 42,
+      "top5SelectionShare": 0.44571428571428573,
+      "selectionMin": 0,
+      "selectionMax": 39,
+      "accepted": 333,
+      "firstFullSelectionRound": null,
+      "finalLambda": null,
+      "maxLambda": 0.0
+    },
+    "F3-s42": {
+      "accuracy": 0.7029655255503348,
+      "macroF1": 0.3781320705642551,
+      "recall": [
+        0.7588746223564955,
+        0.8054888810448289,
+        0.34316878758215635,
+        0.1912568306010929,
+        0.0,
+        0.3285344082925425,
+        0.047537786445636276
+      ],
+      "populationCoverage": 0.08,
+      "feasibleCoverage": 0.13333333333333333,
+      "selectionCoverage": 0.13333333333333333,
+      "opportunityGini": 0.8972820232028681,
+      "completionGini": 0.8992798353909465,
+      "selectionGini": 0.9389714285714286,
+      "virtualSeconds": 12.10022884980229,
+      "selectorSeconds": 0.1434144,
+      "selected": 8,
+      "top5SelectionShare": 0.8285714285714286,
+      "selectionMin": 0,
+      "selectionMax": 63,
+      "accepted": 324,
+      "firstFullSelectionRound": null,
+      "finalLambda": 0.0,
+      "maxLambda": 0.0,
+      "fairnessReplacements": 0,
+      "coldClientReplacements": 0,
+      "meanDisplacedCCSum": 0
+    },
+    "F3-s43": {
+      "accuracy": 0.700745253954321,
+      "macroF1": 0.41499614107572064,
+      "recall": [
+        0.5444675226586103,
+        0.9198552770914226,
+        0.4220388756817228,
+        0.0,
+        0.0,
+        0.2686438237834725,
+        0.5582642613359337
+      ],
+      "populationCoverage": 0.09,
+      "feasibleCoverage": 0.15,
+      "selectionCoverage": 0.15,
+      "opportunityGini": 0.886216873351536,
+      "completionGini": 0.8875124378109452,
+      "selectionGini": 0.9317142857142857,
+      "virtualSeconds": 22.34989879441597,
+      "selectorSeconds": 1.1592742,
+      "selected": 9,
+      "top5SelectionShare": 0.7342857142857143,
+      "selectionMin": 0,
+      "selectionMax": 57,
+      "accepted": 335,
+      "firstFullSelectionRound": null,
+      "finalLambda": 0.0,
+      "maxLambda": 0.0,
+      "fairnessReplacements": 0,
+      "coldClientReplacements": 0,
+      "meanDisplacedCCSum": 0
+    },
+    "F3-s44": {
+      "accuracy": 0.712492039723929,
+      "macroF1": 0.43766352561508476,
+      "recall": [
+        0.5736168806646526,
+        0.8986057183198023,
+        0.5969794434344847,
+        0.0,
+        0.0,
+        0.33630866685862365,
+        0.5212091662603608
+      ],
+      "populationCoverage": 0.09,
+      "feasibleCoverage": 0.15,
+      "selectionCoverage": 0.15,
+      "opportunityGini": 0.8967950753430642,
+      "completionGini": 0.8995910020449898,
+      "selectionGini": 0.9387428571428571,
+      "virtualSeconds": 20.70437761112759,
+      "selectorSeconds": 0.1944562,
+      "selected": 9,
+      "top5SelectionShare": 0.8114285714285714,
+      "selectionMin": 0,
+      "selectionMax": 63,
+      "accepted": 326,
+      "firstFullSelectionRound": null,
+      "finalLambda": 0.0,
+      "maxLambda": 0.0,
+      "fairnessReplacements": 0,
+      "coldClientReplacements": 0,
+      "meanDisplacedCCSum": 0
+    },
+    "F3-s45": {
+      "accuracy": 0.6849021531471059,
+      "macroF1": 0.34949419970518625,
+      "recall": [
+        0.5170175604229608,
+        0.9306212495587716,
+        0.4968535869109216,
+        0.0,
+        0.0,
+        0.331413763317017,
+        0.06070209653827401
+      ],
+      "populationCoverage": 0.08,
+      "feasibleCoverage": 0.13333333333333333,
+      "selectionCoverage": 0.13333333333333333,
+      "opportunityGini": 0.9022800846037629,
+      "completionGini": 0.9017517517517517,
+      "selectionGini": 0.9414285714285714,
+      "virtualSeconds": 17.337958444988647,
+      "selectorSeconds": 0.2030778,
+      "selected": 8,
+      "top5SelectionShare": 0.8485714285714285,
+      "selectionMin": 0,
+      "selectionMax": 64,
+      "accepted": 333,
+      "firstFullSelectionRound": null,
+      "finalLambda": 0.0,
+      "maxLambda": 0.0,
+      "fairnessReplacements": 0,
+      "coldClientReplacements": 0,
+      "meanDisplacedCCSum": 0
+    },
+    "F3-s46": {
+      "accuracy": 0.7039637871981549,
+      "macroF1": 0.32822958908529526,
+      "recall": [
+        0.7298668806646526,
+        0.8303918108012708,
+        0.4237169626625647,
+        0.0,
+        0.0,
+        0.20587388424992803,
+        0.020477815699658702
+      ],
+      "populationCoverage": 0.09,
+      "feasibleCoverage": 0.15,
+      "selectionCoverage": 0.15,
+      "opportunityGini": 0.8868740644075781,
+      "completionGini": 0.8874251497005988,
+      "selectionGini": 0.9321142857142857,
+      "virtualSeconds": 18.974898919149364,
+      "selectorSeconds": 0.13931739999999998,
+      "selected": 9,
+      "top5SelectionShare": 0.7485714285714286,
+      "selectionMin": 0,
+      "selectionMax": 61,
+      "accepted": 334,
+      "firstFullSelectionRound": null,
+      "finalLambda": 0.0,
+      "maxLambda": 0.0,
+      "fairnessReplacements": 0,
+      "coldClientReplacements": 0,
+      "meanDisplacedCCSum": 0
+    },
+    "F4-s42": {
+      "accuracy": 0.7096607631538183,
+      "macroF1": 0.4111625387718557,
+      "recall": [
+        0.8240181268882175,
+        0.681486057183198,
+        0.8520486645224444,
+        0.0,
+        0.0,
+        0.0,
+        0.6938078985860556
+      ],
+      "populationCoverage": 0.08,
+      "feasibleCoverage": 0.13333333333333333,
+      "selectionCoverage": 0.13333333333333333,
+      "opportunityGini": 0.8901982773088688,
+      "completionGini": 0.8886018237082067,
+      "selectionGini": 0.9338285714285715,
+      "virtualSeconds": 12.268689857041402,
+      "selectorSeconds": 0.072351,
+      "selected": 8,
+      "top5SelectionShare": 0.7428571428571429,
+      "selectionMin": 0,
+      "selectionMax": 63,
+      "accepted": 329,
+      "firstFullSelectionRound": null,
+      "finalLambda": 0.3,
+      "maxLambda": 0.3,
+      "fairnessReplacements": 12,
+      "coldClientReplacements": 3,
+      "meanDisplacedCCSum": 0.027733725022726675
+    },
+    "F4-s43": {
+      "accuracy": 0.7067950637682656,
+      "macroF1": 0.33317768769783423,
+      "recall": [
+        0.7321799471299094,
+        0.8319449346981997,
+        0.41588589008530275,
+        0.0,
+        0.0,
+        0.2873596314425569,
+        0.0
+      ],
+      "populationCoverage": 0.1,
+      "feasibleCoverage": 0.16666666666666666,
+      "selectionCoverage": 0.16666666666666666,
+      "opportunityGini": 0.8827572047374328,
+      "completionGini": 0.8848303393213572,
+      "selectionGini": 0.93,
+      "virtualSeconds": 19.383817826987112,
+      "selectorSeconds": 0.1672628,
+      "selected": 10,
+      "top5SelectionShare": 0.7342857142857143,
+      "selectionMin": 0,
+      "selectionMax": 55,
+      "accepted": 334,
+      "firstFullSelectionRound": null,
+      "finalLambda": 0.3,
+      "maxLambda": 0.3,
+      "fairnessReplacements": 7,
+      "coldClientReplacements": 3,
+      "meanDisplacedCCSum": 0.018656569177827043
+    },
+    "F4-s44": {
+      "accuracy": 0.7005215056539474,
+      "macroF1": 0.3589730804397076,
+      "recall": [
+        0.7005523036253777,
+        0.8555241793152135,
+        0.3254090337015802,
+        0.5336976320582878,
+        0.0,
+        0.15490930031672906,
+        0.021696733300828865
+      ],
+      "populationCoverage": 0.12,
+      "feasibleCoverage": 0.2,
+      "selectionCoverage": 0.2,
+      "opportunityGini": 0.8606568200833912,
+      "completionGini": 0.8614803625377644,
+      "selectionGini": 0.916,
+      "virtualSeconds": 17.14593466830628,
+      "selectorSeconds": 0.0995484,
+      "selected": 12,
+      "top5SelectionShare": 0.6428571428571429,
+      "selectionMin": 0,
+      "selectionMax": 55,
+      "accepted": 331,
+      "firstFullSelectionRound": null,
+      "finalLambda": 0.3,
+      "maxLambda": 0.3,
+      "fairnessReplacements": 24,
+      "coldClientReplacements": 6,
+      "meanDisplacedCCSum": 0.10911646006506745
+    },
+    "F4-s45": {
+      "accuracy": 0.5735443451919933,
+      "macroF1": 0.345481436277721,
+      "recall": [
+        0.9643362915407855,
+        0.3439816448993999,
+        0.432806600475458,
+        0.0,
+        0.0,
+        0.7483443708609272,
+        0.1477328132618235
+      ],
+      "populationCoverage": 0.09,
+      "feasibleCoverage": 0.15,
+      "selectionCoverage": 0.15,
+      "opportunityGini": 0.8938847224139583,
+      "completionGini": 0.8941441441441441,
+      "selectionGini": 0.9364,
+      "virtualSeconds": 18.018023934270612,
+      "selectorSeconds": 0.22231120000000001,
+      "selected": 9,
+      "top5SelectionShare": 0.8,
+      "selectionMin": 0,
+      "selectionMax": 60,
+      "accepted": 333,
+      "firstFullSelectionRound": null,
+      "finalLambda": 0.3,
+      "maxLambda": 0.3,
+      "fairnessReplacements": 14,
+      "coldClientReplacements": 4,
+      "meanDisplacedCCSum": 0.07701074787141972
+    },
+    "F4-s46": {
+      "accuracy": 0.6721226829142356,
+      "macroF1": 0.3531360095957643,
+      "recall": [
+        0.5369854607250756,
+        0.9263325097070244,
+        0.17354216193539365,
+        0.6302367941712204,
+        0.0,
+        0.24992801612438814,
+        0.09995124329595319
+      ],
+      "populationCoverage": 0.11,
+      "feasibleCoverage": 0.18333333333333332,
+      "selectionCoverage": 0.18333333333333332,
+      "opportunityGini": 0.8925825093894664,
+      "completionGini": 0.8945771144278607,
+      "selectionGini": 0.9352571428571429,
+      "virtualSeconds": 16.89168901226637,
+      "selectorSeconds": 0.2644476,
+      "selected": 11,
+      "top5SelectionShare": 0.7857142857142857,
+      "selectionMin": 0,
+      "selectionMax": 62,
+      "accepted": 335,
+      "firstFullSelectionRound": null,
+      "finalLambda": 0.3,
+      "maxLambda": 0.3,
+      "fairnessReplacements": 12,
+      "coldClientReplacements": 5,
+      "meanDisplacedCCSum": 0.10685263140415811
+    },
+    "F5-s42": {
+      "accuracy": 0.7303574809383659,
+      "macroF1": 0.4062703413462646,
+      "recall": [
+        0.7117399924471299,
+        0.8212495587716202,
+        0.8602992588449168,
+        0.0,
+        0.0,
+        0.001151742009789807,
+        0.49390541199414917
+      ],
+      "populationCoverage": 0.6,
+      "feasibleCoverage": 1.0,
+      "selectionCoverage": 1.0,
+      "opportunityGini": 0.4042225301999265,
+      "completionGini": 0.41838905775075985,
+      "selectionGini": 0.6438285714285714,
+      "virtualSeconds": 15.57394579512771,
+      "selectorSeconds": 0.06563970000000001,
+      "selected": 60,
+      "top5SelectionShare": 0.34,
+      "selectionMin": 1,
+      "selectionMax": 33,
+      "accepted": 329,
+      "firstFullSelectionRound": 39,
+      "finalLambda": 0.6061161994011562,
+      "maxLambda": 0.8128121193855226,
+      "fairnessReplacements": 205,
+      "coldClientReplacements": 55,
+      "meanDisplacedCCSum": 1.237355865454801
+    },
+    "F5-s43": {
+      "accuracy": 0.6744806457720177,
+      "macroF1": 0.3754770624617047,
+      "recall": [
+        0.47297488670694865,
+        0.9379103423932227,
+        0.33617675849531536,
+        0.0,
+        0.0,
+        0.5128131298589116,
+        0.2462213554363725
+      ],
+      "populationCoverage": 0.6,
+      "feasibleCoverage": 1.0,
+      "selectionCoverage": 1.0,
+      "opportunityGini": 0.3721346832955011,
+      "completionGini": 0.3740356083086053,
+      "selectionGini": 0.6228571428571429,
+      "virtualSeconds": 24.806060067686726,
+      "selectorSeconds": 0.2451447,
+      "selected": 60,
+      "top5SelectionShare": 0.31142857142857144,
+      "selectionMin": 2,
+      "selectionMax": 28,
+      "accepted": 337,
+      "firstFullSelectionRound": 34,
+      "finalLambda": 0.36410843289742134,
+      "maxLambda": 0.6911050201786837,
+      "fairnessReplacements": 202,
+      "coldClientReplacements": 53,
+      "meanDisplacedCCSum": 0.9945374617477507
+    },
+    "F5-s44": {
+      "accuracy": 0.6946610213249341,
+      "macroF1": 0.4316952777583446,
+      "recall": [
+        0.5082845543806647,
+        0.9266678432756795,
+        0.4132289190323032,
+        0.03642987249544627,
+        0.0,
+        0.4065649294558019,
+        0.5592393954168698
+      ],
+      "populationCoverage": 0.6,
+      "feasibleCoverage": 1.0,
+      "selectionCoverage": 1.0,
+      "opportunityGini": 0.31186635049493433,
+      "completionGini": 0.3241414141414141,
+      "selectionGini": 0.5889142857142857,
+      "virtualSeconds": 24.02482627120705,
+      "selectorSeconds": 0.2576867,
+      "selected": 60,
+      "top5SelectionShare": 0.2714285714285714,
+      "selectionMin": 3,
+      "selectionMax": 24,
+      "accepted": 330,
+      "firstFullSelectionRound": 33,
+      "finalLambda": 0.4892021775584078,
+      "maxLambda": 0.7630175206568318,
+      "fairnessReplacements": 224,
+      "coldClientReplacements": 54,
+      "meanDisplacedCCSum": 1.3061865046053973
+    },
+    "F5-s45": {
+      "accuracy": 0.5771759522211322,
+      "macroF1": 0.3388053649420151,
+      "recall": [
+        0.08041446374622356,
+        0.9931697846805506,
+        0.5883093273668019,
+        0.09289617486338798,
+        0.0,
+        0.04232651885977541,
+        0.727450024378352
+      ],
+      "populationCoverage": 0.6,
+      "feasibleCoverage": 1.0,
+      "selectionCoverage": 1.0,
+      "opportunityGini": 0.3283285885956464,
+      "completionGini": 0.3349019607843137,
+      "selectionGini": 0.5970285714285715,
+      "virtualSeconds": 26.235959302632764,
+      "selectorSeconds": 0.1742927,
+      "selected": 60,
+      "top5SelectionShare": 0.32285714285714284,
+      "selectionMin": 2,
+      "selectionMax": 25,
+      "accepted": 340,
+      "firstFullSelectionRound": 37,
+      "finalLambda": 0.586850150305147,
+      "maxLambda": 0.8256084598800992,
+      "fairnessReplacements": 222,
+      "coldClientReplacements": 55,
+      "meanDisplacedCCSum": 1.3556053921166742
+    },
+    "F5-s46": {
+      "accuracy": 0.7075953942272939,
+      "macroF1": 0.37100657910622903,
+      "recall": [
+        0.8466767371601208,
+        0.6883868690434168,
+        0.8770801286533352,
+        0.0,
+        0.0,
+        0.0,
+        0.2623110677718186
+      ],
+      "populationCoverage": 0.59,
+      "feasibleCoverage": 0.9833333333333333,
+      "selectionCoverage": 1.0,
+      "opportunityGini": 0.3841940458455333,
+      "completionGini": 0.40054726368159205,
+      "selectionGini": 0.6325142857142857,
+      "virtualSeconds": 23.844167064634537,
+      "selectorSeconds": 0.1318637,
+      "selected": 60,
+      "top5SelectionShare": 0.29428571428571426,
+      "selectionMin": 1,
+      "selectionMax": 24,
+      "accepted": 335,
+      "firstFullSelectionRound": 30,
+      "finalLambda": 0.36648920084953907,
+      "maxLambda": 0.6939666170374091,
+      "fairnessReplacements": 205,
+      "coldClientReplacements": 54,
+      "meanDisplacedCCSum": 0.9544709920141193
+    }
+  },
+  "seed45": [
+    {
+      "round": 5,
+      "accuracy": 0.5599817559078157,
+      "delta": -0.061238188671451366,
+      "macroF1": 0.14842012423955306,
+      "recall": [
+        0.22616125377643503,
+        0.9793328626897282,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lambda_": 0.37002046096558805,
+      "opportunityGini": 0.9032163742690058,
+      "selected": [
+        91,
+        82,
+        87,
+        85,
+        95
+      ],
+      "accepted": [
+        82,
+        85,
+        87,
+        91,
+        95
+      ],
+      "labelProportions": [
+        0.3520910780669145,
+        0.5451672862453532,
+        0.031691449814126395,
+        0.004693308550185874,
+        0.010548327137546469,
+        0.03531598513011153,
+        0.020492565055762083
+      ]
+    },
+    {
+      "round": 9,
+      "accuracy": 0.5756871654532624,
+      "delta": -0.09385380630281759,
+      "macroF1": 0.20433817174409682,
+      "recall": [
+        0.22889916918429004,
+        0.976173667490293,
+        0.2640190183191162,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lambda_": 0.4406345500280751,
+      "opportunityGini": 0.9009208103130755,
+      "selected": [
+        91,
+        97,
+        82,
+        85,
+        83
+      ],
+      "accepted": [
+        82,
+        83,
+        85,
+        91,
+        97
+      ],
+      "labelProportions": [
+        0.2669587272308047,
+        0.624348628083929,
+        0.048374452386442245,
+        0.0034124971178233804,
+        0.009407424486972562,
+        0.034217200830066866,
+        0.013281069863961263
+      ]
+    },
+    {
+      "round": 10,
+      "accuracy": 0.6798764220925629,
+      "delta": 0.10418925663930056,
+      "macroF1": 0.2788706265754098,
+      "recall": [
+        0.7014256042296072,
+        0.8133074479350512,
+        0.44790938330303454,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lambda_": 0.45827313594221364,
+      "opportunityGini": 0.9024748076968039,
+      "selected": [
+        85,
+        87,
+        82,
+        91,
+        97
+      ],
+      "accepted": [
+        82,
+        85,
+        87,
+        91,
+        97
+      ],
+      "labelProportions": [
+        0.3943904367645007,
+        0.501558212009861,
+        0.03595516070514908,
+        0.004465323968556677,
+        0.010512116842643844,
+        0.03348992976417508,
+        0.019628819945113726
+      ]
+    },
+    {
+      "round": 15,
+      "accuracy": 0.6928624292180857,
+      "delta": 0.005275296466497936,
+      "macroF1": 0.29720215211895207,
+      "recall": [
+        0.7376085725075529,
+        0.7840451817860925,
+        0.6764088938609985,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lambda_": 0.5464794659543493,
+      "opportunityGini": 0.9054748874659746,
+      "selected": [
+        97,
+        82,
+        91,
+        85,
+        87
+      ],
+      "accepted": [
+        82,
+        87,
+        91,
+        97
+      ],
+      "labelProportions": [
+        0.4028367145265361,
+        0.4685810614427716,
+        0.0447596349473929,
+        0.005580422019415218,
+        0.012381561355577516,
+        0.04133000058129396,
+        0.02453060512701273
+      ]
+    },
+    {
+      "round": 16,
+      "accuracy": 0.6162286363401662,
+      "delta": -0.0766337928779195,
+      "macroF1": 0.2770343836936441,
+      "recall": [
+        0.9246365181268882,
+        0.4680021178962231,
+        0.8271570409732905,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lambda_": 0.5641650557006126,
+      "opportunityGini": 0.9056361504927282,
+      "selected": [
+        91,
+        97,
+        87,
+        82,
+        80
+      ],
+      "accepted": [
+        80,
+        82,
+        87,
+        97
+      ],
+      "labelProportions": [
+        0.4804330207247887,
+        0.31330323028829454,
+        0.09991895334028018,
+        0.00289452356142179,
+        0.012504341785342132,
+        0.014935741576936437,
+        0.0760101887229362
+      ]
+    },
+    {
+      "round": 20,
+      "accuracy": 0.6988950276243094,
+      "delta": 0.006419855079947023,
+      "macroF1": 0.3012258742303109,
+      "recall": [
+        0.6953597054380665,
+        0.8231556653723967,
+        0.714865053838624,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lambda_": 0.6348393649814703,
+      "opportunityGini": 0.8935094885771868,
+      "selected": [
+        97,
+        85,
+        87,
+        91,
+        83
+      ],
+      "accepted": [
+        83,
+        85,
+        87,
+        91,
+        97
+      ],
+      "labelProportions": [
+        0.35285146501525094,
+        0.5240317959145947,
+        0.06396154912653665,
+        0.00485257417506239,
+        0.009797578334411684,
+        0.025325815694611332,
+        0.019179221739532303
+      ]
+    },
+    {
+      "round": 21,
+      "accuracy": 0.636116417961825,
+      "delta": -0.06277860966248439,
+      "macroF1": 0.3090741991563023,
+      "recall": [
+        0.8993108006042296,
+        0.5649311683727497,
+        0.30569151167668857,
+        0.0,
+        0.0,
+        0.4667434494673193,
+        0.0
+      ],
+      "lambda_": 0.6523409613256803,
+      "opportunityGini": 0.8750038078536466,
+      "selected": [
+        62,
+        75,
+        89,
+        86,
+        92
+      ],
+      "accepted": [
+        62,
+        75,
+        86,
+        89,
+        92
+      ],
+      "labelProportions": [
+        0.5198481661026251,
+        0.3499039604866002,
+        0.010061282356169396,
+        0.008323424494649227,
+        0.011204609896643191,
+        0.05908716729168572,
+        0.04157138937162718
+      ]
+    },
+    {
+      "round": 22,
+      "accuracy": 0.5647751329581246,
+      "delta": -0.0713412850037004,
+      "macroF1": 0.21430365103952903,
+      "recall": [
+        0.14579399546827795,
+        0.9851217790328274,
+        0.5081806740316039,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lambda_": 0.6695922764795847,
+      "opportunityGini": 0.8579059627357113,
+      "selected": [
+        92,
+        89,
+        41,
+        50,
+        59
+      ],
+      "accepted": [
+        41,
+        50,
+        59,
+        89,
+        92
+      ],
+      "labelProportions": [
+        0.177018061186878,
+        0.7495853298931072,
+        0.0340950976778474,
+        0.006911168448212311,
+        0.023728345005528936,
+        0.005390711389605602,
+        0.003271286398820494
+      ]
+    },
+    {
+      "round": 25,
+      "accuracy": 0.6940241992392557,
+      "delta": -0.004113526445328031,
+      "macroF1": 0.2991217786203307,
+      "recall": [
+        0.6531344410876133,
+        0.8582774444052241,
+        0.5937631100545379,
+        0.0,
+        0.0,
+        0.0,
+        0.024134568503169185
+      ],
+      "lambda_": 0.718662846784837,
+      "opportunityGini": 0.7841428016950064,
+      "selected": [
+        94,
+        99,
+        72,
+        40,
+        67
+      ],
+      "accepted": [
+        40,
+        67,
+        72,
+        94,
+        99
+      ],
+      "labelProportions": [
+        0.39566810444784567,
+        0.505403274430685,
+        0.016140253235007652,
+        0.002968322434024396,
+        0.011270349241686378,
+        0.006771485552618153,
+        0.06177821065813274
+      ]
+    },
+    {
+      "round": 26,
+      "accuracy": 0.5809624619197604,
+      "delta": -0.11306173731949531,
+      "macroF1": 0.2651765877735051,
+      "recall": [
+        0.9561225453172205,
+        0.3740557712672079,
+        0.8116347364005034,
+        0.0,
+        0.0,
+        0.0,
+        0.00048756704046806434
+      ],
+      "lambda_": 0.7336161064554064,
+      "opportunityGini": 0.7557775772910017,
+      "selected": [
+        87,
+        66,
+        55,
+        64,
+        53
+      ],
+      "accepted": [
+        53,
+        55,
+        64,
+        66,
+        87
+      ],
+      "labelProportions": [
+        0.5906692585392946,
+        0.28070906229750997,
+        0.04656114042395631,
+        0.008238452281773582,
+        0.005368879015088401,
+        0.02485420716467648,
+        0.04359900027770064
+      ]
+    },
+    {
+      "round": 30,
+      "accuracy": 0.637906404364813,
+      "delta": -0.0008003304590281646,
+      "macroF1": 0.28759386112702046,
+      "recall": [
+        0.914770581570997,
+        0.5058065654782916,
+        0.9383303034540623,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lambda_": 0.7830877626227953,
+      "opportunityGini": 0.6302559201765039,
+      "selected": [
+        52,
+        46,
+        76,
+        93,
+        81
+      ],
+      "accepted": [
+        46,
+        52,
+        76,
+        81,
+        93
+      ],
+      "labelProportions": [
+        0.4576062690783179,
+        0.275046699166249,
+        0.19076039910702083,
+        0.006469543031573192,
+        0.03740489316141966,
+        0.019317508770331223,
+        0.013394687685088159
+      ]
+    },
+    {
+      "round": 33,
+      "accuracy": 0.591754014560851,
+      "delta": -0.11389649059396567,
+      "macroF1": 0.2473927832228305,
+      "recall": [
+        0.19576095166163143,
+        0.9780444758206848,
+        0.6924905607607328,
+        0.0,
+        0.0,
+        0.0,
+        0.02462213554363725
+      ],
+      "lambda_": 0.8073085241945841,
+      "opportunityGini": 0.5620440911531253,
+      "selected": [
+        45,
+        61,
+        92,
+        56,
+        63
+      ],
+      "accepted": [
+        45,
+        56,
+        61,
+        63,
+        92
+      ],
+      "labelProportions": [
+        0.21729879740980573,
+        0.6942645698427382,
+        0.057631822386679,
+        0.0034227567067530063,
+        0.005272895467160037,
+        0.016882516188714152,
+        0.005226641998149861
+      ]
+    },
+    {
+      "round": 35,
+      "accuracy": 0.6820192423538322,
+      "delta": -0.02241785855665135,
+      "macroF1": 0.32036691855984406,
+      "recall": [
+        0.8669042673716012,
+        0.64219908224497,
+        0.82058453363166,
+        0.0,
+        0.0,
+        0.0,
+        0.06533398342272062
+      ],
+      "lambda_": 0.8172949579670636,
+      "opportunityGini": 0.5401283778733384,
+      "selected": [
+        98,
+        75,
+        78,
+        81,
+        97
+      ],
+      "accepted": [
+        75,
+        78,
+        81,
+        97,
+        98
+      ],
+      "labelProportions": [
+        0.43306154056393203,
+        0.3734797066460165,
+        0.14385277638591537,
+        0.004190771193003234,
+        0.009064820297909169,
+        0.007151642144581606,
+        0.029198742768642098
+      ]
+    },
+    {
+      "round": 38,
+      "accuracy": 0.6148431180186228,
+      "delta": -0.07200392420096036,
+      "macroF1": 0.30280443124724676,
+      "recall": [
+        0.23999244712990936,
+        0.9715848923402753,
+        0.7491259963641449,
+        0.0,
+        0.0,
+        0.0,
+        0.21233544612384203
+      ],
+      "lambda_": 0.8248813000463225,
+      "opportunityGini": 0.4934261911714253,
+      "selected": [
+        53,
+        76,
+        59,
+        94,
+        99
+      ],
+      "accepted": [
+        53,
+        59,
+        76,
+        94,
+        99
+      ],
+      "labelProportions": [
+        0.2622852668908027,
+        0.6060424630405747,
+        0.07382673974116888,
+        0.0037304840418182655,
+        0.02671210795376042,
+        0.004927923363883388,
+        0.022475014967991525
+      ]
+    },
+    {
+      "round": 40,
+      "accuracy": 0.7068811208068708,
+      "delta": -0.002203060188292749,
+      "macroF1": 0.32928773682780893,
+      "recall": [
+        0.6401765483383686,
+        0.8617190257677374,
+        0.8200251713047126,
+        0.0,
+        0.0,
+        0.0,
+        0.08020477815699659
+      ],
+      "lambda_": 0.825404022682867,
+      "opportunityGini": 0.46853565960202703,
+      "selected": [
+        85,
+        82,
+        91,
+        67,
+        42
+      ],
+      "accepted": [
+        42,
+        67,
+        82,
+        85,
+        91
+      ],
+      "labelProportions": [
+        0.37000465766185375,
+        0.5029343269678621,
+        0.05388914764788076,
+        0.00312063344201211,
+        0.011085235211923615,
+        0.036283185840707964,
+        0.022682813227759665
+      ]
+    },
+    {
+      "round": 41,
+      "accuracy": 0.5787249789160256,
+      "delta": -0.12815614189084523,
+      "macroF1": 0.3375708826618929,
+      "recall": [
+        0.948357250755287,
+        0.3268090363572185,
+        0.9507761152286394,
+        0.0,
+        0.0,
+        0.00028793550244745177,
+        0.4271087274500244
+      ],
+      "lambda_": 0.8244258295211013,
+      "opportunityGini": 0.46306432086625576,
+      "selected": [
+        97,
+        80,
+        86,
+        66,
+        77
+      ],
+      "accepted": [
+        66,
+        77,
+        80,
+        86,
+        97
+      ],
+      "labelProportions": [
+        0.47925358763926457,
+        0.2415295034615561,
+        0.09660263169960112,
+        0.003117692907248636,
+        0.012608316904314337,
+        0.0589152262619779,
+        0.10797304112603733
+      ]
+    },
+    {
+      "round": 44,
+      "accuracy": 0.5681657802791691,
+      "delta": -0.10506703843307341,
+      "macroF1": 0.37509210974533685,
+      "recall": [
+        0.9599933912386707,
+        0.3195728909283445,
+        0.497273108656132,
+        0.0,
+        0.0,
+        0.6593723006046646,
+        0.34032179424670894
+      ],
+      "lambda_": 0.8174179848452325,
+      "opportunityGini": 0.4283603204700804,
+      "selected": [
+        87,
+        48,
+        40,
+        61,
+        46
+      ],
+      "accepted": [
+        40,
+        46,
+        48,
+        61,
+        87
+      ],
+      "labelProportions": [
+        0.5545148341254095,
+        0.2688598717298021,
+        0.05864439625340285,
+        0.0034143865639274674,
+        0.010012457896922438,
+        0.034882111382826556,
+        0.06967194204770913
+      ]
+    },
+    {
+      "round": 45,
+      "accuracy": 0.6688353040395174,
+      "delta": 0.10066952376034832,
+      "macroF1": 0.4077213273412513,
+      "recall": [
+        0.8910734516616314,
+        0.5792093187433816,
+        0.5890085302754859,
+        0.0,
+        0.0,
+        0.5346962280449179,
+        0.26328620185275475
+      ],
+      "lambda_": 0.813781634013609,
+      "opportunityGini": 0.41605948343381355,
+      "selected": [
+        68,
+        63,
+        62,
+        65,
+        51
+      ],
+      "accepted": [
+        51,
+        62,
+        63,
+        65,
+        68
+      ],
+      "labelProportions": [
+        0.48846941096201957,
+        0.34769160791448717,
+        0.04657721173527405,
+        0.0005913122583579714,
+        0.009233568342051399,
+        0.046850125085285424,
+        0.06058676370252445
+      ]
+    },
+    {
+      "round": 47,
+      "accuracy": 0.6457375948778851,
+      "delta": -0.07054956024853276,
+      "macroF1": 0.3158506454663693,
+      "recall": [
+        0.35042956948640486,
+        0.9607306741969643,
+        0.698503705775416,
+        0.0,
+        0.0,
+        0.0014396775122372588,
+        0.18381277425646025
+      ],
+      "lambda_": 0.804758995695137,
+      "opportunityGini": 0.41490139207437404,
+      "selected": [
+        97,
+        92,
+        82,
+        50,
+        89
+      ],
+      "accepted": [
+        50,
+        82,
+        89,
+        92,
+        97
+      ],
+      "labelProportions": [
+        0.2808957699751175,
+        0.6420145608699659,
+        0.025251128928209382,
+        0.006681411851442263,
+        0.0253893650354806,
+        0.014146161644088103,
+        0.005621601695696249
+      ]
+    },
+    {
+      "round": 50,
+      "accuracy": 0.7121564172733688,
+      "delta": -0.004845011273472033,
+      "macroF1": 0.3279104877069859,
+      "recall": [
+        0.7016380287009063,
+        0.8315037063183904,
+        0.7920570549573486,
+        0.0,
+        0.0,
+        0.0,
+        0.060945880058508047
+      ],
+      "lambda_": 0.7882401695673319,
+      "opportunityGini": 0.3861730430729741,
+      "selected": [
+        70,
+        74,
+        58,
+        90,
+        49
+      ],
+      "accepted": [
+        49,
+        58,
+        70,
+        74,
+        90
+      ],
+      "labelProportions": [
+        0.42549470777726645,
+        0.5179475379659457,
+        0.030740911182696732,
+        0.00796134376438104,
+        0.0048320294523699955,
+        0.0097100782328578,
+        0.0033133916244822825
+      ]
+    },
+    {
+      "round": 53,
+      "accuracy": 0.6792223885991635,
+      "delta": -0.03598044784082888,
+      "macroF1": 0.4263007409166461,
+      "recall": [
+        0.8750236027190332,
+        0.611277797387928,
+        0.5113970074115508,
+        0.0,
+        0.000526592943654555,
+        0.5234667434494673,
+        0.4249146757679181
+      ],
+      "lambda_": 0.7676847265855418,
+      "opportunityGini": 0.3532412247684069,
+      "selected": [
+        91,
+        85,
+        77,
+        64,
+        52
+      ],
+      "accepted": [
+        52,
+        64,
+        85,
+        91
+      ],
+      "labelProportions": [
+        0.5231277533039648,
+        0.36645026663575236,
+        0.011650823092974728,
+        0.006202179457454209,
+        0.031590540227220035,
+        0.03164850452121493,
+        0.029329932761418966
+      ]
+    },
+    {
+      "round": 55,
+      "accuracy": 0.7056935336741192,
+      "delta": 0.00253007693499252,
+      "macroF1": 0.41127239547069233,
+      "recall": [
+        0.6003823640483383,
+        0.8908930462407342,
+        0.4824500069920291,
+        0.0,
+        0.0,
+        0.3213360207313562,
+        0.37103851779619695
+      ],
+      "lambda_": 0.7514251170700968,
+      "opportunityGini": 0.3392274511175893,
+      "selected": [
+        75,
+        55,
+        84,
+        83,
+        44
+      ],
+      "accepted": [
+        44,
+        55,
+        75,
+        83,
+        84
+      ],
+      "labelProportions": [
+        0.36936282301648576,
+        0.5211862482401562,
+        0.03724056496661974,
+        0.008628911394704574,
+        0.004132794404832191,
+        0.02711294790862437,
+        0.03233571006857714
+      ]
+    },
+    {
+      "round": 57,
+      "accuracy": 0.65212302714239,
+      "delta": -0.04923323178602779,
+      "macroF1": 0.36573961478566325,
+      "recall": [
+        0.9134960347432024,
+        0.5111013060360042,
+        0.9222486365543281,
+        0.0,
+        0.0,
+        0.0,
+        0.37079473427596293
+      ],
+      "lambda_": 0.733427139121292,
+      "opportunityGini": 0.3355841916120558,
+      "selected": [
+        43,
+        47,
+        67,
+        66,
+        40
+      ],
+      "accepted": [
+        40,
+        43,
+        47,
+        66,
+        67
+      ],
+      "labelProportions": [
+        0.5505997869482655,
+        0.25769996757908387,
+        0.12111527951461257,
+        0.0008799962947524431,
+        0.009263118892130981,
+        0.009309434486591635,
+        0.05113241628456301
+      ]
+    },
+    {
+      "round": 60,
+      "accuracy": 0.636495068931688,
+      "delta": -0.07404347601590333,
+      "macroF1": 0.40945416893208364,
+      "recall": [
+        0.9217097809667674,
+        0.4587716201906107,
+        0.8533072297580758,
+        0.0,
+        0.0,
+        0.1891736251079758,
+        0.5260848366650415
+      ],
+      "lambda_": 0.7043175639853269,
+      "opportunityGini": 0.3387363418298374,
+      "selected": [
+        80,
+        95,
+        54,
+        73,
+        64
+      ],
+      "accepted": [
+        54,
+        64,
+        73,
+        80,
+        95
+      ],
+      "labelProportions": [
+        0.5189525727888665,
+        0.2778337300860648,
+        0.08308917780626258,
+        0.0035249954220838674,
+        0.01034609045962278,
+        0.02627723860098883,
+        0.0799761948361106
+      ]
+    },
+    {
+      "round": 65,
+      "accuracy": 0.7019930810140962,
+      "delta": -0.02468115867196774,
+      "macroF1": 0.398124412400445,
+      "recall": [
+        0.48923716012084595,
+        0.92659724673491,
+        0.7777933156201929,
+        0.0,
+        0.0,
+        0.0,
+        0.6782057532910776
+      ],
+      "lambda_": 0.6527258765105856,
+      "opportunityGini": 0.3164127211284165,
+      "selected": [
+        80,
+        62,
+        79,
+        63,
+        89
+      ],
+      "accepted": [
+        62,
+        63,
+        79,
+        80,
+        89
+      ],
+      "labelProportions": [
+        0.27253228677041025,
+        0.5572947565372154,
+        0.06954775703920048,
+        0.009811527403824214,
+        0.01072422762743577,
+        0.009583352347921325,
+        0.07050609227399261
+      ]
+    },
+    {
+      "round": 70,
+      "accuracy": 0.5771759522211322,
+      "delta": -0.14538476101960385,
+      "macroF1": 0.3388053649420151,
+      "recall": [
+        0.08041446374622356,
+        0.9931697846805506,
+        0.5883093273668019,
+        0.09289617486338798,
+        0.0,
+        0.04232651885977541,
+        0.727450024378352
+      ],
+      "lambda_": 0.5978939073273009,
+      "opportunityGini": 0.3283285885956464,
+      "selected": [
+        94,
+        91,
+        93,
+        50,
+        89
+      ],
+      "accepted": [
+        50,
+        89,
+        91,
+        93,
+        94
+      ],
+      "labelProportions": [
+        0.15860930189890834,
+        0.7301165030731126,
+        0.020410971470507293,
+        0.010549490872397028,
+        0.02967617649756903,
+        0.023667553435464637,
+        0.026970002752041096
+      ]
+    }
+  ],
+  "seed45Last10": {
+    "F1": {
+      "final": 0.6570454897506067,
+      "last10Mean": 0.635551023218189,
+      "last10Min": 0.5202836439992427,
+      "last10Max": 0.7175952221132167
+    },
+    "F2": {
+      "final": 0.6620195865819866,
+      "last10Mean": 0.6862394795270306,
+      "last10Min": 0.6182595824512487,
+      "last10Max": 0.7229049413951567
+    },
+    "F3": {
+      "final": 0.6849021531471059,
+      "last10Mean": 0.6887239462315623,
+      "last10Min": 0.6439303970671761,
+      "last10Max": 0.7211493778076109
+    },
+    "F4": {
+      "final": 0.5735443451919933,
+      "last10Mean": 0.6416034147432919,
+      "last10Min": 0.5561952462091875,
+      "last10Max": 0.7273196674756028
+    },
+    "F5": {
+      "final": 0.5771759522211322,
+      "last10Mean": 0.6937668886938263,
+      "last10Min": 0.5771759522211322,
+      "last10Max": 0.7266742396860639
+    }
+  },
+  "traceChecks": {
+    "42": {
+      "F2": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      },
+      "F3": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      },
+      "F4": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      },
+      "F5": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      }
+    },
+    "43": {
+      "F2": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      },
+      "F3": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      },
+      "F4": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      },
+      "F5": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      }
+    },
+    "44": {
+      "F2": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      },
+      "F3": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      },
+      "F4": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      },
+      "F5": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      }
+    },
+    "45": {
+      "F2": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      },
+      "F3": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      },
+      "F4": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      },
+      "F5": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      }
+    },
+    "46": {
+      "F2": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      },
+      "F3": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      },
+      "F4": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      },
+      "F5": {
+        "differentFeasiblePools": 0,
+        "tracesEqual": true
+      }
+    }
+  },
+  "note": "Observed-history same-round ranking contrasts are not full counterfactual training trajectories; no causal attribution."
+}

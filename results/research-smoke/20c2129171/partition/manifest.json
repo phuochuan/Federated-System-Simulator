@@ -1,0 +1,1437 @@
+{
+  "dataset": "synthetic",
+  "seed": 42,
+  "partitionSeed": 45,
+  "strategy": "dirichlet_label_skew",
+  "alpha": 0.5,
+  "totalClients": 100,
+  "counts": {
+    "train": 5250,
+    "proxy": 350,
+    "test": 1400
+  },
+  "hashes": {
+    "features.npy": "035cb3e31ec4b84246b29f285c2b2ed8b7a99a38f891ef511a037de4eedd63b9",
+    "labels.npy": "d017374c43dee214088a5d2caaa025ac231aca48a08f4d99e10023eb190c6ade",
+    "splits.npz": "ae539c239daffba25dcec08ec1c59f4674591504f3bd5a3317da670762c969a7",
+    "partitions.npz": "11f300e41ad5e098aa0bec433fdc80d3dc4ebc7e02633442e0575f0874513db4"
+  },
+  "scaler": {
+    "columns": 54,
+    "mean": [
+      -0.23299208624292875,
+      -0.5611064783150047,
+      -0.021365118024305307,
+      -0.0005082323677627192,
+      0.4531910222663677,
+      0.007883501635551165,
+      0.000911093359103515,
+      0.1460363253006889,
+      -0.02466494389988241,
+      -0.02993471529482243,
+      0.002904200282712866,
+      -0.004690511864385501,
+      -0.18141910911348116,
+      -0.0020637711379663196,
+      -0.02508728751312897,
+      0.1670086036398539,
+      0.3488516292048873,
+      -0.024265496921379096,
+      -0.00530200582382713,
+      0.0025497135561024713,
+      0.00989630646790569,
+      -0.005723986897290507,
+      -0.33365609962551945,
+      -0.14900617267188085,
+      0.0010525369107656714,
+      0.006110645581458119,
+      0.4026958882762327,
+      -0.0068351748593073955,
+      -0.2926157974368072,
+      0.3761245316638212,
+      -0.03157053437637591,
+      0.011993758435560657,
+      0.16369782830413343,
+      -0.0037973874797019,
+      0.014491354021476582,
+      -0.31024217562324236,
+      0.008517072461027834,
+      -0.40758093589669026,
+      0.005355735875017542,
+      -0.013362804184814671,
+      0.005767788921028287,
+      0.0016847843514378404,
+      0.012783056422609315,
+      0.0005680288203736945,
+      -0.00435982341357504,
+      -0.01273444911006594,
+      0.003464999731053554,
+      -0.023439435128787798,
+      0.29232014890103825,
+      0.030080782503028224,
+      0.00948740808839821,
+      0.023931270229250436,
+      -0.038435124658382155,
+      -0.5761152042716498
+    ],
+    "scale": [
+      2.794848150662825,
+      2.749541638080402,
+      1.0140949735194995,
+      1.0017208358567595,
+      2.75033506050111,
+      1.000584222651452,
+      0.9923665158356938,
+      2.757601710714051,
+      1.0060929297092907,
+      2.8379182949085724,
+      1.0020266838163432,
+      1.0075435286113077,
+      2.6926850623536747,
+      0.9937271072792178,
+      2.800463537683835,
+      2.7537114343427844,
+      2.7973561547710464,
+      0.9971891611902801,
+      0.9778988507585119,
+      0.9996182650344123,
+      0.9912548226433258,
+      1.0094498000350236,
+      2.7957434945925206,
+      2.8006053327675953,
+      1.0156954191132612,
+      0.9780703556073015,
+      2.7728925329965097,
+      2.7271061185455703,
+      2.728062500888388,
+      2.7233692470780415,
+      1.0108864954474086,
+      0.9800290273792762,
+      2.6902144234527157,
+      1.0127709615204084,
+      0.9852423534115494,
+      2.650037726828649,
+      0.9991287658189044,
+      2.649875503807988,
+      0.9883408644887485,
+      1.000346971796319,
+      0.9957463194505989,
+      0.9892400543456725,
+      0.9972232253694272,
+      1.0030057248969253,
+      0.9821037669953837,
+      1.0148074207682158,
+      1.005789713312744,
+      1.0157302403402937,
+      2.7608113997084374,
+      1.0181441222421932,
+      0.9955743139600284,
+      0.9825942871866115,
+      1.0145800974433496,
+      2.751855362419935
+    ]
+  },
+  "labelMapping": "0..6",
+  "clients": [
+    {
+      "clientId": 0,
+      "numSamples": 55,
+      "labelHistogram": [
+        18,
+        2,
+        0,
+        28,
+        5,
+        1,
+        1
+      ]
+    },
+    {
+      "clientId": 1,
+      "numSamples": 56,
+      "labelHistogram": [
+        24,
+        5,
+        6,
+        5,
+        12,
+        3,
+        1
+      ]
+    },
+    {
+      "clientId": 2,
+      "numSamples": 67,
+      "labelHistogram": [
+        3,
+        58,
+        2,
+        4,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "clientId": 3,
+      "numSamples": 51,
+      "labelHistogram": [
+        3,
+        4,
+        17,
+        16,
+        5,
+        2,
+        4
+      ]
+    },
+    {
+      "clientId": 4,
+      "numSamples": 52,
+      "labelHistogram": [
+        1,
+        0,
+        2,
+        28,
+        0,
+        4,
+        17
+      ]
+    },
+    {
+      "clientId": 5,
+      "numSamples": 55,
+      "labelHistogram": [
+        32,
+        22,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "clientId": 6,
+      "numSamples": 60,
+      "labelHistogram": [
+        0,
+        3,
+        13,
+        0,
+        16,
+        2,
+        26
+      ]
+    },
+    {
+      "clientId": 7,
+      "numSamples": 53,
+      "labelHistogram": [
+        0,
+        14,
+        8,
+        3,
+        2,
+        1,
+        25
+      ]
+    },
+    {
+      "clientId": 8,
+      "numSamples": 60,
+      "labelHistogram": [
+        0,
+        0,
+        10,
+        42,
+        6,
+        2,
+        0
+      ]
+    },
+    {
+      "clientId": 9,
+      "numSamples": 61,
+      "labelHistogram": [
+        1,
+        0,
+        0,
+        0,
+        11,
+        12,
+        37
+      ]
+    },
+    {
+      "clientId": 10,
+      "numSamples": 43,
+      "labelHistogram": [
+        7,
+        1,
+        2,
+        1,
+        2,
+        29,
+        1
+      ]
+    },
+    {
+      "clientId": 11,
+      "numSamples": 44,
+      "labelHistogram": [
+        0,
+        1,
+        9,
+        0,
+        11,
+        18,
+        5
+      ]
+    },
+    {
+      "clientId": 12,
+      "numSamples": 53,
+      "labelHistogram": [
+        15,
+        3,
+        2,
+        9,
+        11,
+        8,
+        5
+      ]
+    },
+    {
+      "clientId": 13,
+      "numSamples": 57,
+      "labelHistogram": [
+        15,
+        0,
+        2,
+        26,
+        0,
+        3,
+        11
+      ]
+    },
+    {
+      "clientId": 14,
+      "numSamples": 55,
+      "labelHistogram": [
+        17,
+        0,
+        9,
+        3,
+        3,
+        18,
+        5
+      ]
+    },
+    {
+      "clientId": 15,
+      "numSamples": 52,
+      "labelHistogram": [
+        0,
+        8,
+        0,
+        28,
+        13,
+        2,
+        1
+      ]
+    },
+    {
+      "clientId": 16,
+      "numSamples": 56,
+      "labelHistogram": [
+        12,
+        1,
+        20,
+        0,
+        3,
+        12,
+        8
+      ]
+    },
+    {
+      "clientId": 17,
+      "numSamples": 45,
+      "labelHistogram": [
+        12,
+        0,
+        2,
+        0,
+        4,
+        27,
+        0
+      ]
+    },
+    {
+      "clientId": 18,
+      "numSamples": 51,
+      "labelHistogram": [
+        4,
+        3,
+        1,
+        4,
+        31,
+        1,
+        7
+      ]
+    },
+    {
+      "clientId": 19,
+      "numSamples": 45,
+      "labelHistogram": [
+        4,
+        2,
+        2,
+        0,
+        2,
+        0,
+        35
+      ]
+    },
+    {
+      "clientId": 20,
+      "numSamples": 54,
+      "labelHistogram": [
+        0,
+        28,
+        1,
+        3,
+        0,
+        10,
+        12
+      ]
+    },
+    {
+      "clientId": 21,
+      "numSamples": 61,
+      "labelHistogram": [
+        7,
+        2,
+        8,
+        20,
+        1,
+        1,
+        22
+      ]
+    },
+    {
+      "clientId": 22,
+      "numSamples": 55,
+      "labelHistogram": [
+        35,
+        1,
+        0,
+        0,
+        0,
+        0,
+        19
+      ]
+    },
+    {
+      "clientId": 23,
+      "numSamples": 59,
+      "labelHistogram": [
+        6,
+        0,
+        0,
+        1,
+        21,
+        23,
+        8
+      ]
+    },
+    {
+      "clientId": 24,
+      "numSamples": 55,
+      "labelHistogram": [
+        9,
+        2,
+        8,
+        13,
+        15,
+        4,
+        4
+      ]
+    },
+    {
+      "clientId": 25,
+      "numSamples": 56,
+      "labelHistogram": [
+        1,
+        9,
+        16,
+        0,
+        28,
+        2,
+        0
+      ]
+    },
+    {
+      "clientId": 26,
+      "numSamples": 48,
+      "labelHistogram": [
+        3,
+        5,
+        2,
+        9,
+        16,
+        0,
+        13
+      ]
+    },
+    {
+      "clientId": 27,
+      "numSamples": 53,
+      "labelHistogram": [
+        22,
+        6,
+        3,
+        3,
+        4,
+        7,
+        8
+      ]
+    },
+    {
+      "clientId": 28,
+      "numSamples": 52,
+      "labelHistogram": [
+        15,
+        4,
+        0,
+        6,
+        16,
+        1,
+        10
+      ]
+    },
+    {
+      "clientId": 29,
+      "numSamples": 61,
+      "labelHistogram": [
+        2,
+        1,
+        13,
+        42,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "clientId": 30,
+      "numSamples": 52,
+      "labelHistogram": [
+        0,
+        13,
+        29,
+        4,
+        1,
+        0,
+        5
+      ]
+    },
+    {
+      "clientId": 31,
+      "numSamples": 43,
+      "labelHistogram": [
+        4,
+        11,
+        0,
+        6,
+        12,
+        0,
+        10
+      ]
+    },
+    {
+      "clientId": 32,
+      "numSamples": 49,
+      "labelHistogram": [
+        14,
+        2,
+        0,
+        0,
+        3,
+        30,
+        0
+      ]
+    },
+    {
+      "clientId": 33,
+      "numSamples": 46,
+      "labelHistogram": [
+        0,
+        17,
+        0,
+        0,
+        0,
+        0,
+        29
+      ]
+    },
+    {
+      "clientId": 34,
+      "numSamples": 51,
+      "labelHistogram": [
+        19,
+        0,
+        11,
+        9,
+        2,
+        8,
+        2
+      ]
+    },
+    {
+      "clientId": 35,
+      "numSamples": 53,
+      "labelHistogram": [
+        4,
+        4,
+        1,
+        1,
+        1,
+        19,
+        23
+      ]
+    },
+    {
+      "clientId": 36,
+      "numSamples": 63,
+      "labelHistogram": [
+        3,
+        0,
+        7,
+        0,
+        53,
+        0,
+        0
+      ]
+    },
+    {
+      "clientId": 37,
+      "numSamples": 65,
+      "labelHistogram": [
+        18,
+        2,
+        0,
+        0,
+        1,
+        44,
+        0
+      ]
+    },
+    {
+      "clientId": 38,
+      "numSamples": 53,
+      "labelHistogram": [
+        6,
+        0,
+        0,
+        25,
+        4,
+        15,
+        3
+      ]
+    },
+    {
+      "clientId": 39,
+      "numSamples": 41,
+      "labelHistogram": [
+        5,
+        0,
+        7,
+        9,
+        16,
+        0,
+        4
+      ]
+    },
+    {
+      "clientId": 40,
+      "numSamples": 47,
+      "labelHistogram": [
+        24,
+        5,
+        4,
+        0,
+        2,
+        0,
+        12
+      ]
+    },
+    {
+      "clientId": 41,
+      "numSamples": 47,
+      "labelHistogram": [
+        19,
+        2,
+        25,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "clientId": 42,
+      "numSamples": 57,
+      "labelHistogram": [
+        1,
+        22,
+        31,
+        0,
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "clientId": 43,
+      "numSamples": 43,
+      "labelHistogram": [
+        23,
+        0,
+        1,
+        0,
+        0,
+        12,
+        7
+      ]
+    },
+    {
+      "clientId": 44,
+      "numSamples": 48,
+      "labelHistogram": [
+        0,
+        1,
+        29,
+        2,
+        1,
+        2,
+        13
+      ]
+    },
+    {
+      "clientId": 45,
+      "numSamples": 47,
+      "labelHistogram": [
+        0,
+        0,
+        10,
+        7,
+        4,
+        2,
+        24
+      ]
+    },
+    {
+      "clientId": 46,
+      "numSamples": 55,
+      "labelHistogram": [
+        0,
+        0,
+        7,
+        26,
+        2,
+        0,
+        20
+      ]
+    },
+    {
+      "clientId": 47,
+      "numSamples": 59,
+      "labelHistogram": [
+        35,
+        12,
+        2,
+        1,
+        0,
+        5,
+        4
+      ]
+    },
+    {
+      "clientId": 48,
+      "numSamples": 60,
+      "labelHistogram": [
+        4,
+        0,
+        1,
+        2,
+        31,
+        10,
+        12
+      ]
+    },
+    {
+      "clientId": 49,
+      "numSamples": 61,
+      "labelHistogram": [
+        16,
+        5,
+        0,
+        17,
+        17,
+        4,
+        2
+      ]
+    },
+    {
+      "clientId": 50,
+      "numSamples": 61,
+      "labelHistogram": [
+        1,
+        29,
+        1,
+        15,
+        0,
+        2,
+        13
+      ]
+    },
+    {
+      "clientId": 51,
+      "numSamples": 59,
+      "labelHistogram": [
+        0,
+        0,
+        29,
+        6,
+        10,
+        13,
+        1
+      ]
+    },
+    {
+      "clientId": 52,
+      "numSamples": 53,
+      "labelHistogram": [
+        3,
+        1,
+        7,
+        22,
+        13,
+        6,
+        1
+      ]
+    },
+    {
+      "clientId": 53,
+      "numSamples": 42,
+      "labelHistogram": [
+        0,
+        2,
+        0,
+        0,
+        16,
+        0,
+        24
+      ]
+    },
+    {
+      "clientId": 54,
+      "numSamples": 50,
+      "labelHistogram": [
+        24,
+        5,
+        5,
+        3,
+        2,
+        11,
+        0
+      ]
+    },
+    {
+      "clientId": 55,
+      "numSamples": 41,
+      "labelHistogram": [
+        0,
+        5,
+        23,
+        8,
+        3,
+        1,
+        1
+      ]
+    },
+    {
+      "clientId": 56,
+      "numSamples": 40,
+      "labelHistogram": [
+        0,
+        1,
+        0,
+        16,
+        11,
+        0,
+        12
+      ]
+    },
+    {
+      "clientId": 57,
+      "numSamples": 47,
+      "labelHistogram": [
+        0,
+        0,
+        0,
+        3,
+        10,
+        24,
+        10
+      ]
+    },
+    {
+      "clientId": 58,
+      "numSamples": 52,
+      "labelHistogram": [
+        0,
+        8,
+        27,
+        2,
+        3,
+        12,
+        0
+      ]
+    },
+    {
+      "clientId": 59,
+      "numSamples": 53,
+      "labelHistogram": [
+        13,
+        7,
+        8,
+        0,
+        4,
+        3,
+        18
+      ]
+    },
+    {
+      "clientId": 60,
+      "numSamples": 55,
+      "labelHistogram": [
+        4,
+        8,
+        17,
+        0,
+        22,
+        0,
+        4
+      ]
+    },
+    {
+      "clientId": 61,
+      "numSamples": 46,
+      "labelHistogram": [
+        9,
+        2,
+        3,
+        13,
+        0,
+        17,
+        2
+      ]
+    },
+    {
+      "clientId": 62,
+      "numSamples": 47,
+      "labelHistogram": [
+        17,
+        2,
+        5,
+        1,
+        0,
+        0,
+        22
+      ]
+    },
+    {
+      "clientId": 63,
+      "numSamples": 57,
+      "labelHistogram": [
+        0,
+        0,
+        4,
+        14,
+        10,
+        25,
+        4
+      ]
+    },
+    {
+      "clientId": 64,
+      "numSamples": 44,
+      "labelHistogram": [
+        2,
+        18,
+        10,
+        1,
+        2,
+        1,
+        10
+      ]
+    },
+    {
+      "clientId": 65,
+      "numSamples": 49,
+      "labelHistogram": [
+        13,
+        23,
+        4,
+        7,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "clientId": 66,
+      "numSamples": 46,
+      "labelHistogram": [
+        5,
+        30,
+        0,
+        2,
+        0,
+        9,
+        0
+      ]
+    },
+    {
+      "clientId": 67,
+      "numSamples": 61,
+      "labelHistogram": [
+        6,
+        6,
+        5,
+        27,
+        1,
+        14,
+        2
+      ]
+    },
+    {
+      "clientId": 68,
+      "numSamples": 54,
+      "labelHistogram": [
+        4,
+        29,
+        0,
+        2,
+        7,
+        1,
+        11
+      ]
+    },
+    {
+      "clientId": 69,
+      "numSamples": 48,
+      "labelHistogram": [
+        0,
+        12,
+        26,
+        0,
+        5,
+        0,
+        5
+      ]
+    },
+    {
+      "clientId": 70,
+      "numSamples": 49,
+      "labelHistogram": [
+        2,
+        3,
+        8,
+        0,
+        12,
+        4,
+        20
+      ]
+    },
+    {
+      "clientId": 71,
+      "numSamples": 47,
+      "labelHistogram": [
+        1,
+        0,
+        11,
+        27,
+        3,
+        3,
+        2
+      ]
+    },
+    {
+      "clientId": 72,
+      "numSamples": 49,
+      "labelHistogram": [
+        8,
+        1,
+        4,
+        14,
+        0,
+        8,
+        14
+      ]
+    },
+    {
+      "clientId": 73,
+      "numSamples": 43,
+      "labelHistogram": [
+        10,
+        1,
+        9,
+        16,
+        4,
+        3,
+        0
+      ]
+    },
+    {
+      "clientId": 74,
+      "numSamples": 51,
+      "labelHistogram": [
+        22,
+        1,
+        3,
+        16,
+        9,
+        0,
+        0
+      ]
+    },
+    {
+      "clientId": 75,
+      "numSamples": 67,
+      "labelHistogram": [
+        0,
+        11,
+        7,
+        9,
+        6,
+        33,
+        1
+      ]
+    },
+    {
+      "clientId": 76,
+      "numSamples": 53,
+      "labelHistogram": [
+        3,
+        19,
+        23,
+        5,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "clientId": 77,
+      "numSamples": 56,
+      "labelHistogram": [
+        1,
+        13,
+        18,
+        0,
+        0,
+        11,
+        13
+      ]
+    },
+    {
+      "clientId": 78,
+      "numSamples": 50,
+      "labelHistogram": [
+        11,
+        28,
+        0,
+        2,
+        0,
+        7,
+        2
+      ]
+    },
+    {
+      "clientId": 79,
+      "numSamples": 42,
+      "labelHistogram": [
+        2,
+        0,
+        0,
+        0,
+        40,
+        0,
+        0
+      ]
+    },
+    {
+      "clientId": 80,
+      "numSamples": 62,
+      "labelHistogram": [
+        6,
+        0,
+        43,
+        5,
+        6,
+        0,
+        2
+      ]
+    },
+    {
+      "clientId": 81,
+      "numSamples": 50,
+      "labelHistogram": [
+        6,
+        13,
+        4,
+        1,
+        0,
+        26,
+        0
+      ]
+    },
+    {
+      "clientId": 82,
+      "numSamples": 42,
+      "labelHistogram": [
+        4,
+        0,
+        0,
+        3,
+        9,
+        8,
+        18
+      ]
+    },
+    {
+      "clientId": 83,
+      "numSamples": 59,
+      "labelHistogram": [
+        0,
+        0,
+        0,
+        5,
+        48,
+        3,
+        3
+      ]
+    },
+    {
+      "clientId": 84,
+      "numSamples": 72,
+      "labelHistogram": [
+        4,
+        7,
+        14,
+        7,
+        27,
+        8,
+        5
+      ]
+    },
+    {
+      "clientId": 85,
+      "numSamples": 52,
+      "labelHistogram": [
+        13,
+        0,
+        3,
+        15,
+        17,
+        2,
+        2
+      ]
+    },
+    {
+      "clientId": 86,
+      "numSamples": 61,
+      "labelHistogram": [
+        2,
+        0,
+        26,
+        2,
+        17,
+        6,
+        8
+      ]
+    },
+    {
+      "clientId": 87,
+      "numSamples": 47,
+      "labelHistogram": [
+        0,
+        43,
+        0,
+        2,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "clientId": 88,
+      "numSamples": 44,
+      "labelHistogram": [
+        0,
+        22,
+        16,
+        0,
+        1,
+        5,
+        0
+      ]
+    },
+    {
+      "clientId": 89,
+      "numSamples": 48,
+      "labelHistogram": [
+        24,
+        3,
+        6,
+        6,
+        0,
+        2,
+        7
+      ]
+    },
+    {
+      "clientId": 90,
+      "numSamples": 55,
+      "labelHistogram": [
+        16,
+        17,
+        7,
+        2,
+        0,
+        5,
+        8
+      ]
+    },
+    {
+      "clientId": 91,
+      "numSamples": 56,
+      "labelHistogram": [
+        0,
+        14,
+        3,
+        2,
+        4,
+        28,
+        5
+      ]
+    },
+    {
+      "clientId": 92,
+      "numSamples": 54,
+      "labelHistogram": [
+        3,
+        3,
+        3,
+        0,
+        3,
+        36,
+        6
+      ]
+    },
+    {
+      "clientId": 93,
+      "numSamples": 51,
+      "labelHistogram": [
+        2,
+        5,
+        1,
+        15,
+        0,
+        24,
+        4
+      ]
+    },
+    {
+      "clientId": 94,
+      "numSamples": 55,
+      "labelHistogram": [
+        20,
+        10,
+        0,
+        11,
+        0,
+        14,
+        0
+      ]
+    },
+    {
+      "clientId": 95,
+      "numSamples": 50,
+      "labelHistogram": [
+        8,
+        8,
+        10,
+        6,
+        0,
+        17,
+        1
+      ]
+    },
+    {
+      "clientId": 96,
+      "numSamples": 59,
+      "labelHistogram": [
+        0,
+        5,
+        11,
+        5,
+        12,
+        0,
+        26
+      ]
+    },
+    {
+      "clientId": 97,
+      "numSamples": 58,
+      "labelHistogram": [
+        16,
+        7,
+        23,
+        0,
+        5,
+        7,
+        0
+      ]
+    },
+    {
+      "clientId": 98,
+      "numSamples": 57,
+      "labelHistogram": [
+        2,
+        46,
+        1,
+        6,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "clientId": 99,
+      "numSamples": 41,
+      "labelHistogram": [
+        0,
+        0,
+        1,
+        23,
+        14,
+        2,
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+# Keep archived evidence byte-identical to its recorded SHA-256 on all platforms.
+results/** -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab,cr-at-eol linguist-generated=true

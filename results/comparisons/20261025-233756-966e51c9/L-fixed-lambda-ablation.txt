@@ -1,0 +1,618 @@
+L: FIXED LAMBDA ABLATION
+Status: COMPLETED
+Question: Does adaptive feedback improve the trade-off beyond fixed fairness coefficients? Either outcome is valid.
+Config: D:\research\federated-system\configurations\lambda-ablation.json
+Seeds: [42, 43, 44, 45, 46]
+Only selection method and configured initial lambda may differ. Engine/criteria/uncertainty/credit rule/training/aggregation/partition/scenario are controlled.
+L0: pure TOPSIS, applied lambda=0 (no credit scheduler); L1-L4: fixed credit score; L5: adaptive feedback.
+Tail window is predeclared: last min(10, completed rounds) rounds. Sample SD requires >=2 observations; otherwise N/A.
+accuracyTailSd and macroF1TailSd are within-run variability in ratio units; summary SD is across-seed sample SD. Tail mean never replaces final accuracy.
+maxAccuracyDropPp: largest positive consecutive-round accuracy decrease; initial evaluation excluded. finalAccuracyChangePp: last minus penultimate, in percentage points.
+slotsChangedVsTopsis = selected slots absent from raw-CC Top-K on THE SAME pre-round history, counting replacements once. Ratio uses total selected slots, not requested K*rounds.
+This is a factual-state ranking contrast, not a counterfactual full training trajectory without credit.
+coverage is population completion coverage; feasibleSelectionCoverage and feasibleCompletionCoverage use valid opportunity populations. LOW RAM-impossible clients are excluded only from conditional denominators.
+virtualSeconds excludes selector/bookkeeping; virtualSecondsWithSelector includes both. Measured training times may change ranking and estimated candidate pools despite identical exogenous traces.
+No monotonic coverage assumption, best-checkpoint selection, significance, equivalence or adaptive-superiority claim. Test metrics are reporting only; tune on separate validation.
+
+=== L0 RUNS ===
+seed=42 experiment=matrix-20261025-233756-966e51c9-L0-s42 selection=fuzzy_topsis initialLambda=0.0 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="3f38902a94d28364366de96c65eb242213752c4c9cc6246a9b84731aeba993f5" scenarioHash="fd9015ec0ae2bfd1c49e63c14575a20f47e7ed874c2754d1b238a49816e34f95"
+ accuracy=0.703577 macroF1=0.376271 accuracyTailMean=0.673073 accuracyTailSd=0.044818 macroF1TailSd=0.026337 maxAccuracyDropPp=22.267259 finalAccuracyChangePp=14.132287 coverage=0.080000 ramFeasibleCoverage=0.133333 feasibleSelectionCoverage=0.133333 feasibleCompletionCoverage=0.133333 feasibleOpportunityAdjustedGini=0.890421 ramFeasibleCompletionGini=0.892229 maxFeasibleSelectionStaleness=68.000000 meanFeasibleSelectionStaleness=54.233333 acceptedSelectedRatio=0.931429 virtualSeconds=14.363820 virtualSecondsWithSelector=14.635238 wallSeconds=161.723862 selectorSeconds=0.259116 fairnessUpdateSeconds=0.012302 slotsChangedVsTopsis=0.000000 slotsChangedVsTopsisRatio=0.000000 meanAppliedLambda=0.000000
+ perClassRecall=[0.758921827794562,0.8052770914225202,0.35351699063068104,0.14754098360655737,0.0,0.3342931183414915,0.05021940516821063]
+ appliedLambdaFirst/Last/Next=0.0/0.0/0.0
+seed=43 experiment=matrix-20261025-233756-966e51c9-L0-s43 selection=fuzzy_topsis initialLambda=0.0 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="353f297716e97f7655c38cc458918e9b7a3a52ac4a3fb7a14250ceaba73c6a37" scenarioHash="ccee3cfc026f23198ae2a13d5f17b65d8a195dc778773374b3205f7310da4463"
+ accuracy=0.652639 macroF1=0.361014 accuracyTailMean=0.695284 accuracyTailSd=0.036919 macroF1TailSd=0.041104 maxAccuracyDropPp=9.831156 finalAccuracyChangePp=-0.188465 coverage=0.090000 ramFeasibleCoverage=0.150000 feasibleSelectionCoverage=0.150000 feasibleCompletionCoverage=0.150000 feasibleOpportunityAdjustedGini=0.886529 ramFeasibleCompletionGini=0.886578 maxFeasibleSelectionStaleness=67.000000 meanFeasibleSelectionStaleness=54.366667 acceptedSelectedRatio=0.968571 virtualSeconds=11.932252 virtualSecondsWithSelector=11.994730 wallSeconds=136.854460 selectorSeconds=0.057088 fairnessUpdateSeconds=0.005390 slotsChangedVsTopsis=0.000000 slotsChangedVsTopsisRatio=0.000000 meanAppliedLambda=0.000000
+ perClassRecall=[0.9215209592145015,0.5173843981644899,0.8609984617536008,0.0,0.0,0.0020155485171321624,0.32081911262798635]
+ appliedLambdaFirst/Last/Next=0.0/0.0/0.0
+seed=44 experiment=matrix-20261025-233756-966e51c9-L0-s44 selection=fuzzy_topsis initialLambda=0.0 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="e03d951da9acd499c26642c433edd343e79de3d5a0c68c9e957d208b2770d794" scenarioHash="926a81ab009f7d4b78e37e75c421e4c49c9422867956d80fa645b23dabeafc43"
+ accuracy=0.723748 macroF1=0.415528 accuracyTailMean=0.702250 accuracyTailSd=0.030627 macroF1TailSd=0.032267 maxAccuracyDropPp=17.714841 finalAccuracyChangePp=1.139395 coverage=0.090000 ramFeasibleCoverage=0.150000 feasibleSelectionCoverage=0.150000 feasibleCompletionCoverage=0.150000 feasibleOpportunityAdjustedGini=0.891147 ramFeasibleCompletionGini=0.892958 maxFeasibleSelectionStaleness=68.000000 meanFeasibleSelectionStaleness=54.433333 acceptedSelectedRatio=0.940000 virtualSeconds=11.775665 virtualSecondsWithSelector=11.917508 wallSeconds=132.864866 selectorSeconds=0.135374 fairnessUpdateSeconds=0.006469 slotsChangedVsTopsis=0.000000 slotsChangedVsTopsisRatio=0.000000 meanAppliedLambda=0.000000
+ perClassRecall=[0.782359327794562,0.7419872926226615,0.8923227520626485,0.0,0.0,0.023322775698243592,0.5975134080936129]
+ appliedLambdaFirst/Last/Next=0.0/0.0/0.0
+seed=45 experiment=matrix-20261025-233756-966e51c9-L0-s45 selection=fuzzy_topsis initialLambda=0.0 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="781ff16f06d981d5f547a9843d15a89490c1bbc28c173472c95857d6e90a798f" scenarioHash="38319bcf1472baee720f71ae0663c319b9e4e1c12425222509d44a28a2f296d4"
+ accuracy=0.718998 macroF1=0.342636 accuracyTailMean=0.685345 accuracyTailSd=0.022666 macroF1TailSd=0.028031 maxAccuracyDropPp=7.659937 finalAccuracyChangePp=5.441387 coverage=0.080000 ramFeasibleCoverage=0.133333 feasibleSelectionCoverage=0.133333 feasibleCompletionCoverage=0.133333 feasibleOpportunityAdjustedGini=0.903605 ramFeasibleCompletionGini=0.903671 maxFeasibleSelectionStaleness=69.000000 meanFeasibleSelectionStaleness=55.300000 acceptedSelectedRatio=0.960000 virtualSeconds=11.325655 virtualSecondsWithSelector=11.388710 wallSeconds=130.027267 selectorSeconds=0.057534 fairnessUpdateSeconds=0.005520 slotsChangedVsTopsis=0.000000 slotsChangedVsTopsisRatio=0.000000 meanAppliedLambda=0.000000
+ perClassRecall=[0.7477813444108762,0.8014825273561595,0.8435183890364983,0.0,0.0,0.020155485171321624,0.08605558264261336]
+ appliedLambdaFirst/Last/Next=0.0/0.0/0.0
+seed=46 experiment=matrix-20261025-233756-966e51c9-L0-s46 selection=fuzzy_topsis initialLambda=0.0 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="0336885babacbbe02053449ecb8a1d645591309080f931df7a76f15f654049e7" scenarioHash="9b5c157f5de1c7ba3e842e56b8f7111ae6b6594e565428132e33975ef19fa901"
+ accuracy=0.637597 macroF1=0.304185 accuracyTailMean=0.685564 accuracyTailSd=0.027506 macroF1TailSd=0.051076 maxAccuracyDropPp=14.238998 finalAccuracyChangePp=-5.449132 coverage=0.080000 ramFeasibleCoverage=0.133333 feasibleSelectionCoverage=0.133333 feasibleCompletionCoverage=0.133333 feasibleOpportunityAdjustedGini=0.903323 ramFeasibleCompletionGini=0.905025 maxFeasibleSelectionStaleness=67.000000 meanFeasibleSelectionStaleness=55.250000 acceptedSelectedRatio=0.957143 virtualSeconds=10.501259 virtualSecondsWithSelector=10.545358 wallSeconds=122.322090 selectorSeconds=0.040510 fairnessUpdateSeconds=0.003590 slotsChangedVsTopsis=0.000000 slotsChangedVsTopsisRatio=0.000000 meanAppliedLambda=0.000000
+ perClassRecall=[0.9282949395770392,0.5095128838686904,0.7853447070339813,0.0,0.0,0.0,0.06704046806435884]
+ appliedLambdaFirst/Last/Next=0.0/0.0/0.0
+
+=== L1 RUNS ===
+seed=42 experiment=matrix-20261025-233756-966e51c9-L1-s42 selection=fuzzy_topsis_fair initialLambda=0.3 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="3f38902a94d28364366de96c65eb242213752c4c9cc6246a9b84731aeba993f5" scenarioHash="fd9015ec0ae2bfd1c49e63c14575a20f47e7ed874c2754d1b238a49816e34f95"
+ accuracy=0.560687 macroF1=0.421087 accuracyTailMean=0.608385 accuracyTailSd=0.078243 macroF1TailSd=0.037923 maxAccuracyDropPp=24.949657 finalAccuracyChangePp=-12.805287 coverage=0.110000 ramFeasibleCoverage=0.183333 feasibleSelectionCoverage=0.183333 feasibleCompletionCoverage=0.183333 feasibleOpportunityAdjustedGini=0.880916 ramFeasibleCompletionGini=0.881611 maxFeasibleSelectionStaleness=68.000000 meanFeasibleSelectionStaleness=52.333333 acceptedSelectedRatio=0.940000 virtualSeconds=14.279641 virtualSecondsWithSelector=14.396749 wallSeconds=158.735252 selectorSeconds=0.101710 fairnessUpdateSeconds=0.015398 slotsChangedVsTopsis=16.000000 slotsChangedVsTopsisRatio=0.045714 meanAppliedLambda=0.300000
+ perClassRecall=[0.9721487915407855,0.26890222379103423,0.773877779331562,0.14754098360655737,0.00315955766192733,0.3535847970054708,0.4583130180399805]
+ appliedLambdaFirst/Last/Next=0.3/0.3/0.3
+seed=43 experiment=matrix-20261025-233756-966e51c9-L1-s43 selection=fuzzy_topsis_fair initialLambda=0.3 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="353f297716e97f7655c38cc458918e9b7a3a52ac4a3fb7a14250ceaba73c6a37" scenarioHash="ccee3cfc026f23198ae2a13d5f17b65d8a195dc778773374b3205f7310da4463"
+ accuracy=0.688525 macroF1=0.290842 accuracyTailMean=0.683810 accuracyTailSd=0.010795 macroF1TailSd=0.005904 maxAccuracyDropPp=13.825063 finalAccuracyChangePp=-0.038726 coverage=0.090000 ramFeasibleCoverage=0.150000 feasibleSelectionCoverage=0.150000 feasibleCompletionCoverage=0.150000 feasibleOpportunityAdjustedGini=0.893488 ramFeasibleCompletionGini=0.893461 maxFeasibleSelectionStaleness=67.000000 meanFeasibleSelectionStaleness=55.366667 acceptedSelectedRatio=0.968571 virtualSeconds=11.914806 virtualSecondsWithSelector=11.974431 wallSeconds=135.128291 selectorSeconds=0.052515 fairnessUpdateSeconds=0.007110 slotsChangedVsTopsis=14.000000 slotsChangedVsTopsisRatio=0.040000 meanAppliedLambda=0.300000
+ perClassRecall=[0.7930749622356495,0.7641193081539005,0.0669836386519368,0.0,0.0,0.7581341779441405,0.0]
+ appliedLambdaFirst/Last/Next=0.3/0.3/0.3
+seed=44 experiment=matrix-20261025-233756-966e51c9-L1-s44 selection=fuzzy_topsis_fair initialLambda=0.3 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="e03d951da9acd499c26642c433edd343e79de3d5a0c68c9e957d208b2770d794" scenarioHash="926a81ab009f7d4b78e37e75c421e4c49c9422867956d80fa645b23dabeafc43"
+ accuracy=0.639077 macroF1=0.415725 accuracyTailMean=0.603768 accuracyTailSd=0.084613 macroF1TailSd=0.048577 maxAccuracyDropPp=17.714841 finalAccuracyChangePp=-6.663396 coverage=0.090000 ramFeasibleCoverage=0.150000 feasibleSelectionCoverage=0.150000 feasibleCompletionCoverage=0.150000 feasibleOpportunityAdjustedGini=0.892237 ramFeasibleCompletionGini=0.893161 maxFeasibleSelectionStaleness=68.000000 meanFeasibleSelectionStaleness=54.833333 acceptedSelectedRatio=0.940000 virtualSeconds=12.653197 virtualSecondsWithSelector=12.722937 wallSeconds=133.140261 selectorSeconds=0.063691 fairnessUpdateSeconds=0.006049 slotsChangedVsTopsis=5.000000 slotsChangedVsTopsisRatio=0.014286 meanAppliedLambda=0.300000
+ perClassRecall=[0.8762273413897281,0.5362513236851394,0.09047685638372256,0.2604735883424408,0.0,0.8733083789231212,0.7145294978059483]
+ appliedLambdaFirst/Last/Next=0.3/0.3/0.3
+seed=45 experiment=matrix-20261025-233756-966e51c9-L1-s45 selection=fuzzy_topsis_fair initialLambda=0.3 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="781ff16f06d981d5f547a9843d15a89490c1bbc28c173472c95857d6e90a798f" scenarioHash="38319bcf1472baee720f71ae0663c319b9e4e1c12425222509d44a28a2f296d4"
+ accuracy=0.694265 macroF1=0.434858 accuracyTailMean=0.700592 accuracyTailSd=0.033195 macroF1TailSd=0.038397 maxAccuracyDropPp=9.718421 finalAccuracyChangePp=-2.431972 coverage=0.080000 ramFeasibleCoverage=0.133333 feasibleSelectionCoverage=0.133333 feasibleCompletionCoverage=0.133333 feasibleOpportunityAdjustedGini=0.896824 ramFeasibleCompletionGini=0.897305 maxFeasibleSelectionStaleness=69.000000 meanFeasibleSelectionStaleness=55.150000 acceptedSelectedRatio=0.954286 virtualSeconds=11.249328 virtualSecondsWithSelector=11.309167 wallSeconds=130.091086 selectorSeconds=0.052561 fairnessUpdateSeconds=0.007278 slotsChangedVsTopsis=14.000000 slotsChangedVsTopsisRatio=0.040000 meanAppliedLambda=0.300000
+ perClassRecall=[0.4727152567975831,0.9342040240028239,0.49377709411271153,0.0,0.0,0.3780593147135042,0.6999024865919063]
+ appliedLambdaFirst/Last/Next=0.3/0.3/0.3
+seed=46 experiment=matrix-20261025-233756-966e51c9-L1-s46 selection=fuzzy_topsis_fair initialLambda=0.3 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="0336885babacbbe02053449ecb8a1d645591309080f931df7a76f15f654049e7" scenarioHash="9b5c157f5de1c7ba3e842e56b8f7111ae6b6594e565428132e33975ef19fa901"
+ accuracy=0.544509 macroF1=0.350082 accuracyTailMean=0.663284 accuracyTailSd=0.054813 macroF1TailSd=0.034429 maxAccuracyDropPp=14.568596 finalAccuracyChangePp=-14.568596 coverage=0.090000 ramFeasibleCoverage=0.150000 feasibleSelectionCoverage=0.150000 feasibleCompletionCoverage=0.150000 feasibleOpportunityAdjustedGini=0.901626 ramFeasibleCompletionGini=0.902853 maxFeasibleSelectionStaleness=67.000000 meanFeasibleSelectionStaleness=54.366667 acceptedSelectedRatio=0.951429 virtualSeconds=10.581172 virtualSecondsWithSelector=10.632583 wallSeconds=123.049464 selectorSeconds=0.046220 fairnessUpdateSeconds=0.005191 slotsChangedVsTopsis=9.000000 slotsChangedVsTopsisRatio=0.025714 meanAppliedLambda=0.300000
+ perClassRecall=[0.9704493957703928,0.30550653018002116,0.07859040693609286,0.7395264116575592,0.0,0.7492081773682695,0.31131155533885907]
+ appliedLambdaFirst/Last/Next=0.3/0.3/0.3
+
+=== L2 RUNS ===
+seed=42 experiment=matrix-20261025-233756-966e51c9-L2-s42 selection=fuzzy_topsis_fair initialLambda=0.5 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="3f38902a94d28364366de96c65eb242213752c4c9cc6246a9b84731aeba993f5" scenarioHash="fd9015ec0ae2bfd1c49e63c14575a20f47e7ed874c2754d1b238a49816e34f95"
+ accuracy=0.597778 macroF1=0.416337 accuracyTailMean=0.680271 accuracyTailSd=0.035745 macroF1TailSd=0.018256 maxAccuracyDropPp=18.246674 finalAccuracyChangePp=-9.230478 coverage=0.140000 ramFeasibleCoverage=0.233333 feasibleSelectionCoverage=0.233333 feasibleCompletionCoverage=0.233333 feasibleOpportunityAdjustedGini=0.875589 ramFeasibleCompletionGini=0.878150 maxFeasibleSelectionStaleness=66.000000 meanFeasibleSelectionStaleness=49.566667 acceptedSelectedRatio=0.937143 virtualSeconds=14.582984 virtualSecondsWithSelector=14.903457 wallSeconds=155.603070 selectorSeconds=0.306882 fairnessUpdateSeconds=0.013591 slotsChangedVsTopsis=41.000000 slotsChangedVsTopsisRatio=0.117143 meanAppliedLambda=0.500000
+ perClassRecall=[0.9510007552870091,0.4033709848217437,0.29072856943084885,0.581056466302368,0.0,0.6999712064497553,0.36250609458800587]
+ appliedLambdaFirst/Last/Next=0.5/0.5/0.5
+seed=43 experiment=matrix-20261025-233756-966e51c9-L2-s43 selection=fuzzy_topsis_fair initialLambda=0.5 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="353f297716e97f7655c38cc458918e9b7a3a52ac4a3fb7a14250ceaba73c6a37" scenarioHash="ccee3cfc026f23198ae2a13d5f17b65d8a195dc778773374b3205f7310da4463"
+ accuracy=0.703577 macroF1=0.372074 accuracyTailMean=0.642432 accuracyTailSd=0.065049 macroF1TailSd=0.043005 maxAccuracyDropPp=14.025576 finalAccuracyChangePp=6.147054 coverage=0.210000 ramFeasibleCoverage=0.350000 feasibleSelectionCoverage=0.350000 feasibleCompletionCoverage=0.350000 feasibleOpportunityAdjustedGini=0.845369 ramFeasibleCompletionGini=0.845670 maxFeasibleSelectionStaleness=66.000000 meanFeasibleSelectionStaleness=42.866667 acceptedSelectedRatio=0.945714 virtualSeconds=11.898736 virtualSecondsWithSelector=11.959686 wallSeconds=132.923191 selectorSeconds=0.053524 fairnessUpdateSeconds=0.007426 slotsChangedVsTopsis=63.000000 slotsChangedVsTopsisRatio=0.180000 meanAppliedLambda=0.500000
+ perClassRecall=[0.5492588746223565,0.9173667490292976,0.7161236190742554,0.0,0.0,0.025050388712928303,0.3169185763042418]
+ appliedLambdaFirst/Last/Next=0.5/0.5/0.5
+seed=44 experiment=matrix-20261025-233756-966e51c9-L2-s44 selection=fuzzy_topsis_fair initialLambda=0.5 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="e03d951da9acd499c26642c433edd343e79de3d5a0c68c9e957d208b2770d794" scenarioHash="926a81ab009f7d4b78e37e75c421e4c49c9422867956d80fa645b23dabeafc43"
+ accuracy=0.715461 macroF1=0.384687 accuracyTailMean=0.698185 accuracyTailSd=0.021672 macroF1TailSd=0.018840 maxAccuracyDropPp=17.714841 finalAccuracyChangePp=-0.320132 coverage=0.200000 ramFeasibleCoverage=0.333333 feasibleSelectionCoverage=0.333333 feasibleCompletionCoverage=0.333333 feasibleOpportunityAdjustedGini=0.833901 ramFeasibleCompletionGini=0.832075 maxFeasibleSelectionStaleness=65.000000 meanFeasibleSelectionStaleness=43.833333 acceptedSelectedRatio=0.945714 virtualSeconds=12.010866 virtualSecondsWithSelector=12.064322 wallSeconds=129.210244 selectorSeconds=0.047915 fairnessUpdateSeconds=0.005541 slotsChangedVsTopsis=56.000000 slotsChangedVsTopsisRatio=0.160000 meanAppliedLambda=0.500000
+ perClassRecall=[0.7708175981873112,0.7852629721143664,0.6042511536847993,0.0,0.0,0.3458105384393896,0.11335933690882496]
+ appliedLambdaFirst/Last/Next=0.5/0.5/0.5
+seed=45 experiment=matrix-20261025-233756-966e51c9-L2-s45 selection=fuzzy_topsis_fair initialLambda=0.5 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="781ff16f06d981d5f547a9843d15a89490c1bbc28c173472c95857d6e90a798f" scenarioHash="38319bcf1472baee720f71ae0663c319b9e4e1c12425222509d44a28a2f296d4"
+ accuracy=0.692277 macroF1=0.435987 accuracyTailMean=0.704434 accuracyTailSd=0.012303 macroF1TailSd=0.033253 maxAccuracyDropPp=7.350992 finalAccuracyChangePp=-2.066229 coverage=0.080000 ramFeasibleCoverage=0.133333 feasibleSelectionCoverage=0.133333 feasibleCompletionCoverage=0.133333 feasibleOpportunityAdjustedGini=0.903595 ramFeasibleCompletionGini=0.904154 maxFeasibleSelectionStaleness=69.000000 meanFeasibleSelectionStaleness=55.100000 acceptedSelectedRatio=0.951429 virtualSeconds=11.270249 virtualSecondsWithSelector=11.319827 wallSeconds=130.847353 selectorSeconds=0.044529 fairnessUpdateSeconds=0.005050 slotsChangedVsTopsis=15.000000 slotsChangedVsTopsisRatio=0.042857 meanAppliedLambda=0.500000
+ perClassRecall=[0.45246412386706947,0.9380515354747617,0.5901272549293805,0.0,0.0,0.3164411171897495,0.6838127742564603]
+ appliedLambdaFirst/Last/Next=0.5/0.5/0.5
+seed=46 experiment=matrix-20261025-233756-966e51c9-L2-s46 selection=fuzzy_topsis_fair initialLambda=0.5 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="0336885babacbbe02053449ecb8a1d645591309080f931df7a76f15f654049e7" scenarioHash="9b5c157f5de1c7ba3e842e56b8f7111ae6b6594e565428132e33975ef19fa901"
+ accuracy=0.685849 macroF1=0.338969 accuracyTailMean=0.656769 accuracyTailSd=0.049303 macroF1TailSd=0.043202 maxAccuracyDropPp=20.331836 finalAccuracyChangePp=4.147949 coverage=0.140000 ramFeasibleCoverage=0.233333 feasibleSelectionCoverage=0.233333 feasibleCompletionCoverage=0.233333 feasibleOpportunityAdjustedGini=0.895583 ramFeasibleCompletionGini=0.897405 maxFeasibleSelectionStaleness=66.000000 meanFeasibleSelectionStaleness=49.116667 acceptedSelectedRatio=0.954286 virtualSeconds=11.014977 virtualSecondsWithSelector=11.059442 wallSeconds=121.367912 selectorSeconds=0.039788 fairnessUpdateSeconds=0.004677 slotsChangedVsTopsis=33.000000 slotsChangedVsTopsisRatio=0.094286 meanAppliedLambda=0.500000
+ perClassRecall=[0.8681080060422961,0.659918813978115,0.721857082925465,0.061930783242258654,0.0,0.03397638928879931,0.051682106289614824]
+ appliedLambdaFirst/Last/Next=0.5/0.5/0.5
+
+=== L3 RUNS ===
+seed=42 experiment=matrix-20261025-233756-966e51c9-L3-s42 selection=fuzzy_topsis_fair initialLambda=0.7 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="3f38902a94d28364366de96c65eb242213752c4c9cc6246a9b84731aeba993f5" scenarioHash="fd9015ec0ae2bfd1c49e63c14575a20f47e7ed874c2754d1b238a49816e34f95"
+ accuracy=0.666787 macroF1=0.387780 accuracyTailMean=0.674810 accuracyTailSd=0.048186 macroF1TailSd=0.034175 maxAccuracyDropPp=19.659730 finalAccuracyChangePp=-1.850226 coverage=0.600000 ramFeasibleCoverage=1.000000 feasibleSelectionCoverage=1.000000 feasibleCompletionCoverage=1.000000 feasibleOpportunityAdjustedGini=0.292942 ramFeasibleCompletionGini=0.310754 maxFeasibleSelectionStaleness=17.000000 meanFeasibleSelectionStaleness=6.416667 acceptedSelectedRatio=0.934286 virtualSeconds=20.715437 virtualSecondsWithSelector=20.954937 wallSeconds=164.034138 selectorSeconds=0.230536 fairnessUpdateSeconds=0.008964 slotsChangedVsTopsis=242.000000 slotsChangedVsTopsisRatio=0.691429 meanAppliedLambda=0.700000
+ perClassRecall=[0.46341578549848944,0.9229438757500883,0.009509159558103763,0.668488160291439,0.0,0.6040886841347538,0.7364700146270112]
+ appliedLambdaFirst/Last/Next=0.7/0.7/0.7
+seed=43 experiment=matrix-20261025-233756-966e51c9-L3-s43 selection=fuzzy_topsis_fair initialLambda=0.7 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="353f297716e97f7655c38cc458918e9b7a3a52ac4a3fb7a14250ceaba73c6a37" scenarioHash="ccee3cfc026f23198ae2a13d5f17b65d8a195dc778773374b3205f7310da4463"
+ accuracy=0.723585 macroF1=0.442944 accuracyTailMean=0.710996 accuracyTailSd=0.018545 macroF1TailSd=0.037785 maxAccuracyDropPp=14.562572 finalAccuracyChangePp=-0.332180 coverage=0.600000 ramFeasibleCoverage=1.000000 feasibleSelectionCoverage=1.000000 feasibleCompletionCoverage=1.000000 feasibleOpportunityAdjustedGini=0.225051 ramFeasibleCompletionGini=0.231081 maxFeasibleSelectionStaleness=22.000000 meanFeasibleSelectionStaleness=5.650000 acceptedSelectedRatio=0.951429 virtualSeconds=17.848588 virtualSecondsWithSelector=17.906294 wallSeconds=147.984262 selectorSeconds=0.051262 fairnessUpdateSeconds=0.006444 slotsChangedVsTopsis=265.000000 slotsChangedVsTopsisRatio=0.757143 meanAppliedLambda=0.700000
+ perClassRecall=[0.7719741314199395,0.7655841863748676,0.7064746189344148,0.0,0.0,0.3170169881946444,0.4495368113115553]
+ appliedLambdaFirst/Last/Next=0.7/0.7/0.7
+seed=44 experiment=matrix-20261025-233756-966e51c9-L3-s44 selection=fuzzy_topsis_fair initialLambda=0.7 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="e03d951da9acd499c26642c433edd343e79de3d5a0c68c9e957d208b2770d794" scenarioHash="926a81ab009f7d4b78e37e75c421e4c49c9422867956d80fa645b23dabeafc43"
+ accuracy=0.555447 macroF1=0.348968 accuracyTailMean=0.655351 accuracyTailSd=0.066798 macroF1TailSd=0.035843 maxAccuracyDropPp=20.296553 finalAccuracyChangePp=-10.876749 coverage=0.600000 ramFeasibleCoverage=1.000000 feasibleSelectionCoverage=1.000000 feasibleCompletionCoverage=1.000000 feasibleOpportunityAdjustedGini=0.245287 ramFeasibleCompletionGini=0.265859 maxFeasibleSelectionStaleness=18.000000 meanFeasibleSelectionStaleness=6.200000 acceptedSelectedRatio=0.942857 virtualSeconds=17.013988 virtualSecondsWithSelector=17.108489 wallSeconds=136.387938 selectorSeconds=0.088552 fairnessUpdateSeconds=0.005949 slotsChangedVsTopsis=260.000000 slotsChangedVsTopsisRatio=0.742857 meanAppliedLambda=0.700000
+ perClassRecall=[0.9752171450151057,0.27451464878220966,0.8549853167389176,0.0,0.11901000526592943,0.15922833285344082,0.18990736226231106]
+ appliedLambdaFirst/Last/Next=0.7/0.7/0.7
+seed=45 experiment=matrix-20261025-233756-966e51c9-L3-s45 selection=fuzzy_topsis_fair initialLambda=0.7 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="781ff16f06d981d5f547a9843d15a89490c1bbc28c173472c95857d6e90a798f" scenarioHash="38319bcf1472baee720f71ae0663c319b9e4e1c12425222509d44a28a2f296d4"
+ accuracy=0.712415 macroF1=0.416487 accuracyTailMean=0.694923 accuracyTailSd=0.031561 macroF1TailSd=0.030636 maxAccuracyDropPp=18.971274 finalAccuracyChangePp=0.131667 coverage=0.600000 ramFeasibleCoverage=1.000000 feasibleSelectionCoverage=1.000000 feasibleCompletionCoverage=1.000000 feasibleOpportunityAdjustedGini=0.300742 ramFeasibleCompletionGini=0.327677 maxFeasibleSelectionStaleness=18.000000 meanFeasibleSelectionStaleness=6.300000 acceptedSelectedRatio=0.942857 virtualSeconds=15.022508 virtualSecondsWithSelector=15.074167 wallSeconds=130.772304 selectorSeconds=0.046769 fairnessUpdateSeconds=0.004889 slotsChangedVsTopsis=249.000000 slotsChangedVsTopsisRatio=0.711429 meanAppliedLambda=0.700000
+ perClassRecall=[0.7944439199395771,0.7574126367807977,0.4880436302615019,0.0,0.0,0.4457241577886553,0.2857142857142857]
+ appliedLambdaFirst/Last/Next=0.7/0.7/0.7
+seed=46 experiment=matrix-20261025-233756-966e51c9-L3-s46 selection=fuzzy_topsis_fair initialLambda=0.7 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="0336885babacbbe02053449ecb8a1d645591309080f931df7a76f15f654049e7" scenarioHash="9b5c157f5de1c7ba3e842e56b8f7111ae6b6594e565428132e33975ef19fa901"
+ accuracy=0.675427 macroF1=0.346334 accuracyTailMean=0.681206 accuracyTailSd=0.035431 macroF1TailSd=0.033450 maxAccuracyDropPp=16.348256 finalAccuracyChangePp=-4.648801 coverage=0.600000 ramFeasibleCoverage=1.000000 feasibleSelectionCoverage=1.000000 feasibleCompletionCoverage=1.000000 feasibleOpportunityAdjustedGini=0.309265 ramFeasibleCompletionGini=0.326032 maxFeasibleSelectionStaleness=19.000000 meanFeasibleSelectionStaleness=6.100000 acceptedSelectedRatio=0.945714 virtualSeconds=14.372153 virtualSecondsWithSelector=14.416845 wallSeconds=122.309344 selectorSeconds=0.039654 fairnessUpdateSeconds=0.005038 slotsChangedVsTopsis=253.000000 slotsChangedVsTopsisRatio=0.722857 meanAppliedLambda=0.700000
+ perClassRecall=[0.8954399546827795,0.5886692552064949,0.9000139840581737,0.0,0.0,0.0,0.1847879083373964]
+ appliedLambdaFirst/Last/Next=0.7/0.7/0.7
+
+=== L4 RUNS ===
+seed=42 experiment=matrix-20261025-233756-966e51c9-L4-s42 selection=fuzzy_topsis_fair initialLambda=0.9 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="3f38902a94d28364366de96c65eb242213752c4c9cc6246a9b84731aeba993f5" scenarioHash="fd9015ec0ae2bfd1c49e63c14575a20f47e7ed874c2754d1b238a49816e34f95"
+ accuracy=0.725831 macroF1=0.407754 accuracyTailMean=0.669309 accuracyTailSd=0.062639 macroF1TailSd=0.036518 maxAccuracyDropPp=16.769935 finalAccuracyChangePp=0.447497 coverage=0.600000 ramFeasibleCoverage=1.000000 feasibleSelectionCoverage=1.000000 feasibleCompletionCoverage=1.000000 feasibleOpportunityAdjustedGini=0.135336 ramFeasibleCompletionGini=0.152595 maxFeasibleSelectionStaleness=14.000000 meanFeasibleSelectionStaleness=5.150000 acceptedSelectedRatio=0.954286 virtualSeconds=25.538782 virtualSecondsWithSelector=25.632470 wallSeconds=189.589654 selectorSeconds=0.085182 fairnessUpdateSeconds=0.008505 slotsChangedVsTopsis=291.000000 slotsChangedVsTopsisRatio=0.831429 meanAppliedLambda=0.900000
+ perClassRecall=[0.6903087235649547,0.8114719378750441,0.944063767305272,0.0,0.0,0.0,0.5770355923939542]
+ appliedLambdaFirst/Last/Next=0.9/0.9/0.9
+seed=43 experiment=matrix-20261025-233756-966e51c9-L4-s43 selection=fuzzy_topsis_fair initialLambda=0.9 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="353f297716e97f7655c38cc458918e9b7a3a52ac4a3fb7a14250ceaba73c6a37" scenarioHash="ccee3cfc026f23198ae2a13d5f17b65d8a195dc778773374b3205f7310da4463"
+ accuracy=0.707139 macroF1=0.404118 accuracyTailMean=0.698566 accuracyTailSd=0.042082 macroF1TailSd=0.042684 maxAccuracyDropPp=14.246743 finalAccuracyChangePp=-0.506876 coverage=0.600000 ramFeasibleCoverage=1.000000 feasibleSelectionCoverage=1.000000 feasibleCompletionCoverage=1.000000 feasibleOpportunityAdjustedGini=0.150648 ramFeasibleCompletionGini=0.183030 maxFeasibleSelectionStaleness=12.000000 meanFeasibleSelectionStaleness=5.016667 acceptedSelectedRatio=0.942857 virtualSeconds=16.746411 virtualSecondsWithSelector=16.822828 wallSeconds=129.911831 selectorSeconds=0.070677 fairnessUpdateSeconds=0.005740 slotsChangedVsTopsis=291.000000 slotsChangedVsTopsisRatio=0.831429 meanAppliedLambda=0.900000
+ perClassRecall=[0.6587518882175226,0.8567243205082951,0.26276045308348484,0.0,0.0,0.6553412035704003,0.38127742564602635]
+ appliedLambdaFirst/Last/Next=0.9/0.9/0.9
+seed=44 experiment=matrix-20261025-233756-966e51c9-L4-s44 selection=fuzzy_topsis_fair initialLambda=0.9 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="e03d951da9acd499c26642c433edd343e79de3d5a0c68c9e957d208b2770d794" scenarioHash="926a81ab009f7d4b78e37e75c421e4c49c9422867956d80fa645b23dabeafc43"
+ accuracy=0.588165 macroF1=0.350663 accuracyTailMean=0.676557 accuracyTailSd=0.050043 macroF1TailSd=0.046423 maxAccuracyDropPp=24.362748 finalAccuracyChangePp=-12.814754 coverage=0.600000 ramFeasibleCoverage=1.000000 feasibleSelectionCoverage=1.000000 feasibleCompletionCoverage=1.000000 feasibleOpportunityAdjustedGini=0.139651 ramFeasibleCompletionGini=0.142836 maxFeasibleSelectionStaleness=16.000000 meanFeasibleSelectionStaleness=5.400000 acceptedSelectedRatio=0.957143 virtualSeconds=16.534508 virtualSecondsWithSelector=16.626653 wallSeconds=133.150602 selectorSeconds=0.085430 fairnessUpdateSeconds=0.006715 slotsChangedVsTopsis=289.000000 slotsChangedVsTopsisRatio=0.825714 meanAppliedLambda=0.900000
+ perClassRecall=[0.9600169939577039,0.3378220967172609,0.9327366801845896,0.0,0.0,0.0020155485171321624,0.4519746465138957]
+ appliedLambdaFirst/Last/Next=0.9/0.9/0.9
+seed=45 experiment=matrix-20261025-233756-966e51c9-L4-s45 selection=fuzzy_topsis_fair initialLambda=0.9 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="781ff16f06d981d5f547a9843d15a89490c1bbc28c173472c95857d6e90a798f" scenarioHash="38319bcf1472baee720f71ae0663c319b9e4e1c12425222509d44a28a2f296d4"
+ accuracy=0.704342 macroF1=0.397444 accuracyTailMean=0.656793 accuracyTailSd=0.088597 macroF1TailSd=0.063047 maxAccuracyDropPp=24.884253 finalAccuracyChangePp=11.455052 coverage=0.600000 ramFeasibleCoverage=1.000000 feasibleSelectionCoverage=1.000000 feasibleCompletionCoverage=1.000000 feasibleOpportunityAdjustedGini=0.149863 ramFeasibleCompletionGini=0.173824 maxFeasibleSelectionStaleness=11.000000 meanFeasibleSelectionStaleness=5.083333 acceptedSelectedRatio=0.951429 virtualSeconds=15.123340 virtualSecondsWithSelector=15.177189 wallSeconds=125.663647 selectorSeconds=0.048651 fairnessUpdateSeconds=0.005198 slotsChangedVsTopsis=298.000000 slotsChangedVsTopsisRatio=0.851429 meanAppliedLambda=0.900000
+ perClassRecall=[0.5049565709969789,0.9122308506883162,0.8921829114809118,0.0,0.0,0.0,0.5814236957581668]
+ appliedLambdaFirst/Last/Next=0.9/0.9/0.9
+seed=46 experiment=matrix-20261025-233756-966e51c9-L4-s46 selection=fuzzy_topsis_fair initialLambda=0.9 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="0336885babacbbe02053449ecb8a1d645591309080f931df7a76f15f654049e7" scenarioHash="9b5c157f5de1c7ba3e842e56b8f7111ae6b6594e565428132e33975ef19fa901"
+ accuracy=0.653336 macroF1=0.396784 accuracyTailMean=0.655456 accuracyTailSd=0.045039 macroF1TailSd=0.036612 maxAccuracyDropPp=17.146865 finalAccuracyChangePp=-2.501678 coverage=0.600000 ramFeasibleCoverage=1.000000 feasibleSelectionCoverage=1.000000 feasibleCompletionCoverage=1.000000 feasibleOpportunityAdjustedGini=0.167609 ramFeasibleCompletionGini=0.188990 maxFeasibleSelectionStaleness=11.000000 meanFeasibleSelectionStaleness=5.200000 acceptedSelectedRatio=0.942857 virtualSeconds=14.774025 virtualSecondsWithSelector=14.828302 wallSeconds=122.423610 selectorSeconds=0.048991 fairnessUpdateSeconds=0.005286 slotsChangedVsTopsis=291.000000 slotsChangedVsTopsisRatio=0.831429 meanAppliedLambda=0.900000
+ perClassRecall=[0.3345449395770393,0.9538651606071302,0.39015522304572786,0.0,0.0,0.44486035128131296,0.8200877620672843]
+ appliedLambdaFirst/Last/Next=0.9/0.9/0.9
+
+=== L5 RUNS ===
+seed=42 experiment=matrix-20261025-233756-966e51c9-L5-s42 selection=adaptive_fuzzy_topsis_fair initialLambda=0.3 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="3f38902a94d28364366de96c65eb242213752c4c9cc6246a9b84731aeba993f5" scenarioHash="fd9015ec0ae2bfd1c49e63c14575a20f47e7ed874c2754d1b238a49816e34f95"
+ accuracy=0.710780 macroF1=0.397490 accuracyTailMean=0.703113 accuracyTailSd=0.020202 macroF1TailSd=0.012873 maxAccuracyDropPp=15.828471 finalAccuracyChangePp=0.350252 coverage=0.600000 ramFeasibleCoverage=1.000000 feasibleSelectionCoverage=1.000000 feasibleCompletionCoverage=1.000000 feasibleOpportunityAdjustedGini=0.320795 ramFeasibleCompletionGini=0.317173 maxFeasibleSelectionStaleness=22.000000 meanFeasibleSelectionStaleness=7.500000 acceptedSelectedRatio=0.940000 virtualSeconds=16.013765 virtualSecondsWithSelector=16.716688 wallSeconds=138.249977 selectorSeconds=0.050323 fairnessUpdateSeconds=0.652599 slotsChangedVsTopsis=229.000000 slotsChangedVsTopsisRatio=0.654286 meanAppliedLambda=0.637651
+ perClassRecall=[0.7527143126888217,0.8037769149311683,0.46552929660187387,0.0546448087431694,0.0,0.31557731068240713,0.1721111652852267]
+ appliedLambdaFirst/Last/Next=0.3/0.526312787270495/0.5146797801269568
+seed=43 experiment=matrix-20261025-233756-966e51c9-L5-s43 selection=adaptive_fuzzy_topsis_fair initialLambda=0.3 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="353f297716e97f7655c38cc458918e9b7a3a52ac4a3fb7a14250ceaba73c6a37" scenarioHash="ccee3cfc026f23198ae2a13d5f17b65d8a195dc778773374b3205f7310da4463"
+ accuracy=0.690289 macroF1=0.360078 accuracyTailMean=0.700517 accuracyTailSd=0.017253 macroF1TailSd=0.028186 maxAccuracyDropPp=13.825063 finalAccuracyChangePp=-1.689300 coverage=0.590000 ramFeasibleCoverage=0.983333 feasibleSelectionCoverage=1.000000 feasibleCompletionCoverage=0.983333 feasibleOpportunityAdjustedGini=0.358244 ramFeasibleCompletionGini=0.374233 maxFeasibleSelectionStaleness=26.000000 meanFeasibleSelectionStaleness=8.866667 acceptedSelectedRatio=0.962857 virtualSeconds=16.051897 virtualSecondsWithSelector=16.115971 wallSeconds=130.991017 selectorSeconds=0.052967 fairnessUpdateSeconds=0.011107 slotsChangedVsTopsis=218.000000 slotsChangedVsTopsisRatio=0.622857 meanAppliedLambda=0.643413
+ perClassRecall=[0.5008496978851964,0.9329862336745499,0.6709551111732625,0.0,0.0,8.638065073423554E-4,0.3239882983910288]
+ appliedLambdaFirst/Last/Next=0.3/0.5638016479632103/0.5538135241984339
+seed=44 experiment=matrix-20261025-233756-966e51c9-L5-s44 selection=adaptive_fuzzy_topsis_fair initialLambda=0.3 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="e03d951da9acd499c26642c433edd343e79de3d5a0c68c9e957d208b2770d794" scenarioHash="926a81ab009f7d4b78e37e75c421e4c49c9422867956d80fa645b23dabeafc43"
+ accuracy=0.701451 macroF1=0.427736 accuracyTailMean=0.698848 accuracyTailSd=0.015099 macroF1TailSd=0.016234 maxAccuracyDropPp=18.488494 finalAccuracyChangePp=0.290873 coverage=0.600000 ramFeasibleCoverage=1.000000 feasibleSelectionCoverage=1.000000 feasibleCompletionCoverage=1.000000 feasibleOpportunityAdjustedGini=0.433204 ramFeasibleCompletionGini=0.457677 maxFeasibleSelectionStaleness=41.000000 meanFeasibleSelectionStaleness=14.133333 acceptedSelectedRatio=0.942857 virtualSeconds=18.550078 virtualSecondsWithSelector=18.635291 wallSeconds=160.530406 selectorSeconds=0.073499 fairnessUpdateSeconds=0.011714 slotsChangedVsTopsis=182.000000 slotsChangedVsTopsisRatio=0.520000 meanAppliedLambda=0.601117
+ perClassRecall=[0.7293476208459214,0.7508295093540417,0.3000978884072158,0.0,0.0,0.7843363086668587,0.7793759141882008]
+ appliedLambdaFirst/Last/Next=0.3/0.4938055043319578/0.48693901226740505
+seed=45 experiment=matrix-20261025-233756-966e51c9-L5-s45 selection=adaptive_fuzzy_topsis_fair initialLambda=0.3 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="781ff16f06d981d5f547a9843d15a89490c1bbc28c173472c95857d6e90a798f" scenarioHash="38319bcf1472baee720f71ae0663c319b9e4e1c12425222509d44a28a2f296d4"
+ accuracy=0.700349 macroF1=0.433132 accuracyTailMean=0.651363 accuracyTailSd=0.067950 macroF1TailSd=0.037152 maxAccuracyDropPp=12.585842 finalAccuracyChangePp=-3.072236 coverage=0.600000 ramFeasibleCoverage=1.000000 feasibleSelectionCoverage=1.000000 feasibleCompletionCoverage=1.000000 feasibleOpportunityAdjustedGini=0.351369 ramFeasibleCompletionGini=0.360843 maxFeasibleSelectionStaleness=23.000000 meanFeasibleSelectionStaleness=5.983333 acceptedSelectedRatio=0.948571 virtualSeconds=13.702621 virtualSecondsWithSelector=13.751876 wallSeconds=121.958295 selectorSeconds=0.042211 fairnessUpdateSeconds=0.007044 slotsChangedVsTopsis=217.000000 slotsChangedVsTopsisRatio=0.620000 meanAppliedLambda=0.720008
+ perClassRecall=[0.5472526435045317,0.8912460289445817,0.32065445392252834,0.0,0.0,0.7385545637777138,0.6923451974646514]
+ appliedLambdaFirst/Last/Next=0.3/0.7442659501159087/0.7347509984920003
+seed=46 experiment=matrix-20261025-233756-966e51c9-L5-s46 selection=adaptive_fuzzy_topsis_fair initialLambda=0.3 rounds=70 tailObservations=10
+ manifest=artifacts/partitions/covertype-dirichlet-42 dataSeed=42 alpha=0.5 initialModelHash="0336885babacbbe02053449ecb8a1d645591309080f931df7a76f15f654049e7" scenarioHash="9b5c157f5de1c7ba3e842e56b8f7111ae6b6594e565428132e33975ef19fa901"
+ accuracy=0.712707 macroF1=0.334962 accuracyTailMean=0.697295 accuracyTailSd=0.025538 macroF1TailSd=0.023849 maxAccuracyDropPp=24.750865 finalAccuracyChangePp=0.539578 coverage=0.590000 ramFeasibleCoverage=0.983333 feasibleSelectionCoverage=1.000000 feasibleCompletionCoverage=0.983333 feasibleOpportunityAdjustedGini=0.383275 ramFeasibleCompletionGini=0.409104 maxFeasibleSelectionStaleness=41.000000 meanFeasibleSelectionStaleness=8.216667 acceptedSelectedRatio=0.957143 virtualSeconds=13.637472 virtualSecondsWithSelector=13.684721 wallSeconds=121.574454 selectorSeconds=0.040420 fairnessUpdateSeconds=0.006829 slotsChangedVsTopsis=213.000000 slotsChangedVsTopsisRatio=0.608571 meanAppliedLambda=0.699174
+ perClassRecall=[0.7981731495468278,0.7672608542181433,0.7207383582715704,0.0,0.0,5.758710048949035E-4,0.09068746952705997]
+ appliedLambdaFirst/Last/Next=0.3/0.6881463005576572/0.6797207296478682
+
+SUMMARY: MEAN +/- SAMPLE SD ACROSS SEEDS
+accuracy | L0: 0.687312 +/- 0.039592 | L1: 0.625413 +/- 0.070081 | L2: 0.678988 +/- 0.046780 | L3: 0.666732 +/- 0.066669 | L4: 0.675763 +/- 0.055867 | L5: 0.703115 +/- 0.009023
+macroF1 | L0: 0.359927 +/- 0.041128 | L1: 0.382519 +/- 0.060800 | L2: 0.389611 +/- 0.037952 | L3: 0.388503 +/- 0.042097 | L4: 0.391353 +/- 0.023207 | L5: 0.390679 +/- 0.042611
+accuracyTailMean | L0: 0.688303 +/- 0.011085 | L1: 0.651968 +/- 0.043957 | L2: 0.676418 +/- 0.026527 | L3: 0.683457 +/- 0.020974 | L4: 0.671336 +/- 0.017582 | L5: 0.690227 +/- 0.021832
+accuracyTailSd | L0: 0.032507 +/- 0.008608 | L1: 0.052332 +/- 0.030867 | L2: 0.036814 +/- 0.021121 | L3: 0.040104 +/- 0.018286 | L4: 0.057680 +/- 0.018986 | L5: 0.029208 +/- 0.022008
+macroF1TailSd | L0: 0.035763 +/- 0.010294 | L1: 0.033046 +/- 0.016064 | L2: 0.031311 +/- 0.012328 | L3: 0.034378 +/- 0.002677 | L4: 0.045057 +/- 0.010901 | L5: 0.023659 +/- 0.009670
+maxAccuracyDropPp | L0: 14.342438 +/- 5.899027 | L1: 16.155316 +/- 5.682295 | L2: 15.533984 +/- 5.108103 | L3: 17.967677 +/- 2.424416 | L4: 19.482109 +/- 4.827580 | L5: 17.095747 +/- 4.826572
+finalAccuracyChangePp | L0: 3.015094 +/- 7.329786 | L1: -7.301595 +/- 6.323957 | L2: -0.264367 +/- 6.004495 | L3: -3.515258 +/- 4.518873 | L4: -0.784152 +/- 8.646925 | L5: -0.716167 +/- 1.598931
+coverage | L0: 0.084000 +/- 0.005477 | L1: 0.092000 +/- 0.010954 | L2: 0.154000 +/- 0.052726 | L3: 0.600000 +/- 0.000000 | L4: 0.600000 +/- 0.000000 | L5: 0.596000 +/- 0.005477
+ramFeasibleCoverage | L0: 0.140000 +/- 0.009129 | L1: 0.153333 +/- 0.018257 | L2: 0.256667 +/- 0.087876 | L3: 1.000000 +/- 0.000000 | L4: 1.000000 +/- 0.000000 | L5: 0.993333 +/- 0.009129
+feasibleSelectionCoverage | L0: 0.140000 +/- 0.009129 | L1: 0.153333 +/- 0.018257 | L2: 0.256667 +/- 0.087876 | L3: 1.000000 +/- 0.000000 | L4: 1.000000 +/- 0.000000 | L5: 1.000000 +/- 0.000000
+feasibleCompletionCoverage | L0: 0.140000 +/- 0.009129 | L1: 0.153333 +/- 0.018257 | L2: 0.256667 +/- 0.087876 | L3: 1.000000 +/- 0.000000 | L4: 1.000000 +/- 0.000000 | L5: 0.993333 +/- 0.009129
+feasibleOpportunityAdjustedGini | L0: 0.895005 +/- 0.007920 | L1: 0.893018 +/- 0.007679 | L2: 0.870807 +/- 0.030500 | L3: 0.274658 +/- 0.037202 | L4: 0.148621 +/- 0.012482 | L5: 0.369377 +/- 0.042058
+ramFeasibleCompletionGini | L0: 0.896092 +/- 0.007945 | L1: 0.893678 +/- 0.007798 | L2: 0.871491 +/- 0.031635 | L3: 0.292281 +/- 0.042358 | L4: 0.168255 +/- 0.019816 | L5: 0.383806 +/- 0.052810
+maxFeasibleSelectionStaleness | L0: 67.800000 +/- 0.836660 | L1: 67.800000 +/- 0.836660 | L2: 66.400000 +/- 1.516575 | L3: 18.800000 +/- 1.923538 | L4: 12.800000 +/- 2.167948 | L5: 30.600000 +/- 9.607289
+meanFeasibleSelectionStaleness | L0: 54.716667 +/- 0.515051 | L1: 54.410000 +/- 1.220291 | L2: 48.096667 +/- 4.944110 | L3: 6.133333 +/- 0.294628 | L4: 5.170000 +/- 0.145964 | L5: 8.940000 +/- 3.094947
+acceptedSelectedRatio | L0: 0.951429 +/- 0.015253 | L1: 0.950857 +/- 0.011849 | L2: 0.946857 +/- 0.006578 | L3: 0.943429 +/- 0.006194 | L4: 0.949714 +/- 0.006578 | L5: 0.950286 +/- 0.009604
+virtualSeconds | L0: 11.979730 +/- 1.444081 | L1: 12.135629 +/- 1.424368 | L2: 12.155562 +/- 1.419858 | L3: 16.994535 +/- 2.516976 | L4: 17.743413 +/- 4.441432 | L5: 15.591166 +/- 2.032827
+virtualSecondsWithSelector | L0: 12.096309 +/- 1.532530 | L1: 12.207173 +/- 1.449152 | L2: 12.261347 +/- 1.536359 | L3: 17.092146 +/- 2.589099 | L4: 17.817488 +/- 4.454991 | L5: 15.780909 +/- 2.100382
+wallSeconds | L0: 136.758509 +/- 14.934510 | L1: 136.028871 +/- 13.494973 | L2: 133.990354 +/- 12.848174 | L3: 140.297597 +/- 16.218062 | L4: 140.147869 +/- 27.938192 | L5: 134.660830 +/- 16.032717
+selectorSeconds | L0: 0.109924 +/- 0.091188 | L1: 0.063339 +/- 0.022354 | L2: 0.098527 +/- 0.116581 | L3: 0.091355 +/- 0.080074 | L4: 0.067786 +/- 0.018314 | L5: 0.051884 +/- 0.013189
+fairnessUpdateSeconds | L0: 0.006654 +/- 0.003324 | L1: 0.008205 +/- 0.004109 | L2: 0.007257 +/- 0.003695 | L3: 0.006257 +/- 0.001644 | L4: 0.006289 +/- 0.001378 | L5: 0.137859 +/- 0.287757
+slotsChangedVsTopsis | L0: 0.000000 +/- 0.000000 | L1: 11.600000 +/- 4.505552 | L2: 41.600000 +/- 19.021041 | L3: 253.800000 +/- 9.038805 | L4: 292.000000 +/- 3.464102 | L5: 211.800000 +/- 17.683325
+slotsChangedVsTopsisRatio | L0: 0.000000 +/- 0.000000 | L1: 0.033143 +/- 0.012873 | L2: 0.118857 +/- 0.054346 | L3: 0.725143 +/- 0.025825 | L4: 0.834286 +/- 0.009897 | L5: 0.605143 +/- 0.050524
+meanAppliedLambda | L0: 0.000000 +/- 0.000000 | L1: 0.300000 +/- 0.000000 | L2: 0.500000 +/- 0.000000 | L3: 0.700000 +/- 0.000000 | L4: 0.900000 +/- 0.000000 | L5: 0.660273 +/- 0.048418
+
+=== L0 VS L5 ===
+PAIRED DIFFERENCES: RIGHT MINUS LEFT
+accuracy seed=42:0.007203 seed=43:0.037650 seed=44:-0.022297 seed=45:-0.018649 seed=46:0.075111 | meanDelta +/- sampleSD = 0.015804 +/- 0.040949
+macroF1 seed=42:0.021219 seed=43:-0.000936 seed=44:0.012208 seed=45:0.090496 seed=46:0.030776 | meanDelta +/- sampleSD = 0.030753 +/- 0.035384
+accuracyTailMean seed=42:0.030040 seed=43:0.005233 seed=44:-0.003403 seed=45:-0.033982 seed=46:0.011731 | meanDelta +/- sampleSD = 0.001924 +/- 0.023533
+accuracyTailSd seed=42:-0.024615 seed=43:-0.019666 seed=44:-0.015528 seed=45:0.045284 seed=46:-0.001968 | meanDelta +/- sampleSD = -0.003299 +/- 0.028434
+macroF1TailSd seed=42:-0.013465 seed=43:-0.012918 seed=44:-0.016033 seed=45:0.009121 seed=46:-0.027227 | meanDelta +/- sampleSD = -0.012104 +/- 0.013202
+maxAccuracyDropPp seed=42:-6.438788 seed=43:3.993907 seed=44:0.773653 seed=45:4.925905 seed=46:10.511867 | meanDelta +/- sampleSD = 2.753309 +/- 6.222302
+finalAccuracyChangePp seed=42:-13.782035 seed=43:-1.500835 seed=44:-0.848522 seed=45:-8.513623 seed=46:5.988709 | meanDelta +/- sampleSD = -3.731261 +/- 7.610057
+coverage seed=42:0.520000 seed=43:0.500000 seed=44:0.510000 seed=45:0.520000 seed=46:0.510000 | meanDelta +/- sampleSD = 0.512000 +/- 0.008367
+ramFeasibleCoverage seed=42:0.866667 seed=43:0.833333 seed=44:0.850000 seed=45:0.866667 seed=46:0.850000 | meanDelta +/- sampleSD = 0.853333 +/- 0.013944
+feasibleSelectionCoverage seed=42:0.866667 seed=43:0.850000 seed=44:0.850000 seed=45:0.866667 seed=46:0.866667 | meanDelta +/- sampleSD = 0.860000 +/- 0.009129
+feasibleCompletionCoverage seed=42:0.866667 seed=43:0.833333 seed=44:0.850000 seed=45:0.866667 seed=46:0.850000 | meanDelta +/- sampleSD = 0.853333 +/- 0.013944
+feasibleOpportunityAdjustedGini seed=42:-0.569626 seed=43:-0.528284 seed=44:-0.457943 seed=45:-0.552236 seed=46:-0.520048 | meanDelta +/- sampleSD = -0.525628 +/- 0.042612
+ramFeasibleCompletionGini seed=42:-0.575056 seed=43:-0.512345 seed=44:-0.435282 seed=45:-0.542827 seed=46:-0.495920 | meanDelta +/- sampleSD = -0.512286 +/- 0.052608
+maxFeasibleSelectionStaleness seed=42:-46.000000 seed=43:-41.000000 seed=44:-27.000000 seed=45:-46.000000 seed=46:-26.000000 | meanDelta +/- sampleSD = -37.200000 +/- 9.984989
+meanFeasibleSelectionStaleness seed=42:-46.733333 seed=43:-45.500000 seed=44:-40.300000 seed=45:-49.316667 seed=46:-47.033333 | meanDelta +/- sampleSD = -45.776667 +/- 3.357694
+acceptedSelectedRatio seed=42:0.008571 seed=43:-0.005714 seed=44:0.002857 seed=45:-0.011429 seed=46:0.000000 | meanDelta +/- sampleSD = -0.001143 +/- 0.007720
+virtualSeconds seed=42:1.649945 seed=43:4.119645 seed=44:6.774413 seed=45:2.376965 seed=46:3.136213 | meanDelta +/- sampleSD = 3.611436 +/- 1.991225
+virtualSecondsWithSelector seed=42:2.081449 seed=43:4.121241 seed=44:6.717783 seed=45:2.363166 seed=46:3.139363 | meanDelta +/- sampleSD = 3.684600 +/- 1.871124
+wallSeconds seed=42:-23.473885 seed=43:-5.863443 seed=44:27.665540 seed=45:-8.068972 seed=46:-0.747636 | meanDelta +/- sampleSD = -2.097679 +/- 18.671176
+selectorSeconds seed=42:-0.208793 seed=43:-0.004121 seed=44:-0.061875 seed=45:-0.015323 seed=46:-0.000090 | meanDelta +/- sampleSD = -0.058040 +/- 0.087794
+fairnessUpdateSeconds seed=42:0.640297 seed=43:0.005717 seed=44:0.005244 seed=45:0.001524 seed=46:0.003239 | meanDelta +/- sampleSD = 0.131204 +/- 0.284596
+slotsChangedVsTopsis seed=42:229.000000 seed=43:218.000000 seed=44:182.000000 seed=45:217.000000 seed=46:213.000000 | meanDelta +/- sampleSD = 211.800000 +/- 17.683325
+slotsChangedVsTopsisRatio seed=42:0.654286 seed=43:0.622857 seed=44:0.520000 seed=45:0.620000 seed=46:0.608571 | meanDelta +/- sampleSD = 0.605143 +/- 0.050524
+meanAppliedLambda seed=42:0.637651 seed=43:0.643413 seed=44:0.601117 seed=45:0.720008 seed=46:0.699174 | meanDelta +/- sampleSD = 0.660273 +/- 0.048418
+seed=42 roundsWithDifferentEstimatedCandidateSets=0
+seed=43 roundsWithDifferentEstimatedCandidateSets=0
+seed=44 roundsWithDifferentEstimatedCandidateSets=0
+seed=45 roundsWithDifferentEstimatedCandidateSets=0
+seed=46 roundsWithDifferentEstimatedCandidateSets=0
+
+=== L1 VS L5 ===
+PAIRED DIFFERENCES: RIGHT MINUS LEFT
+accuracy seed=42:0.150092 seed=43:0.001764 seed=44:0.062374 seed=45:0.006084 seed=46:0.168198 | meanDelta +/- sampleSD = 0.077703 +/- 0.078359
+macroF1 seed=42:-0.023597 seed=43:0.069236 seed=44:0.012011 seed=45:-0.001726 seed=46:-0.015120 | meanDelta +/- sampleSD = 0.008161 +/- 0.036720
+accuracyTailMean seed=42:0.094727 seed=43:0.016707 seed=44:0.095080 seed=45:-0.049229 seed=46:0.034011 | meanDelta +/- sampleSD = 0.038259 +/- 0.060320
+accuracyTailSd seed=42:-0.058040 seed=43:0.006458 seed=44:-0.069514 seed=45:0.034755 seed=46:-0.029275 | meanDelta +/- sampleSD = -0.023123 +/- 0.043687
+macroF1TailSd seed=42:-0.025050 seed=43:0.022282 seed=44:-0.032343 seed=45:-0.001245 seed=46:-0.010580 | meanDelta +/- sampleSD = -0.009387 +/- 0.021465
+maxAccuracyDropPp seed=42:-9.121186 seed=43:0.000000 seed=44:0.773653 seed=45:2.867421 seed=46:10.182269 | meanDelta +/- sampleSD = 0.940431 +/- 6.915078
+finalAccuracyChangePp seed=42:13.155539 seed=43:-1.650574 seed=44:6.954269 seed=45:-0.640264 seed=46:15.108174 | meanDelta +/- sampleSD = 6.585429 +/- 7.680852
+coverage seed=42:0.490000 seed=43:0.500000 seed=44:0.510000 seed=45:0.520000 seed=46:0.500000 | meanDelta +/- sampleSD = 0.504000 +/- 0.011402
+ramFeasibleCoverage seed=42:0.816667 seed=43:0.833333 seed=44:0.850000 seed=45:0.866667 seed=46:0.833333 | meanDelta +/- sampleSD = 0.840000 +/- 0.019003
+feasibleSelectionCoverage seed=42:0.816667 seed=43:0.850000 seed=44:0.850000 seed=45:0.866667 seed=46:0.850000 | meanDelta +/- sampleSD = 0.846667 +/- 0.018257
+feasibleCompletionCoverage seed=42:0.816667 seed=43:0.833333 seed=44:0.850000 seed=45:0.866667 seed=46:0.833333 | meanDelta +/- sampleSD = 0.840000 +/- 0.019003
+feasibleOpportunityAdjustedGini seed=42:-0.560121 seed=43:-0.535244 seed=44:-0.459032 seed=45:-0.545455 seed=46:-0.518351 | meanDelta +/- sampleSD = -0.523641 +/- 0.039190
+ramFeasibleCompletionGini seed=42:-0.564438 seed=43:-0.519228 seed=44:-0.435484 seed=45:-0.536462 seed=46:-0.493748 | meanDelta +/- sampleSD = -0.509872 +/- 0.048902
+maxFeasibleSelectionStaleness seed=42:-46.000000 seed=43:-41.000000 seed=44:-27.000000 seed=45:-46.000000 seed=46:-26.000000 | meanDelta +/- sampleSD = -37.200000 +/- 9.984989
+meanFeasibleSelectionStaleness seed=42:-44.833333 seed=43:-46.500000 seed=44:-40.700000 seed=45:-49.166667 seed=46:-46.150000 | meanDelta +/- sampleSD = -45.470000 +/- 3.096243
+acceptedSelectedRatio seed=42:0.000000 seed=43:-0.005714 seed=44:0.002857 seed=45:-0.005714 seed=46:0.005714 | meanDelta +/- sampleSD = -0.000571 +/- 0.005111
+virtualSeconds seed=42:1.734124 seed=43:4.137091 seed=44:5.896881 seed=45:2.453292 seed=46:3.056300 | meanDelta +/- sampleSD = 3.455538 +/- 1.624179
+virtualSecondsWithSelector seed=42:2.319938 seed=43:4.141540 seed=44:5.912354 seed=45:2.442708 seed=46:3.052138 | meanDelta +/- sampleSD = 3.573736 +/- 1.492886
+wallSeconds seed=42:-20.485275 seed=43:-4.137274 seed=44:27.390145 seed=45:-8.132790 seed=46:-1.475010 | meanDelta +/- sampleSD = -1.368041 +/- 17.648965
+selectorSeconds seed=42:-0.051387 seed=43:0.000452 seed=44:0.009808 seed=45:-0.010350 seed=46:-0.005800 | meanDelta +/- sampleSD = -0.011455 +/- 0.023567
+fairnessUpdateSeconds seed=42:0.637201 seed=43:0.003997 seed=44:0.005665 seed=45:-0.000234 seed=46:0.001638 | meanDelta +/- sampleSD = 0.129653 +/- 0.283737
+slotsChangedVsTopsis seed=42:213.000000 seed=43:204.000000 seed=44:177.000000 seed=45:203.000000 seed=46:204.000000 | meanDelta +/- sampleSD = 200.200000 +/- 13.590438
+slotsChangedVsTopsisRatio seed=42:0.608571 seed=43:0.582857 seed=44:0.505714 seed=45:0.580000 seed=46:0.582857 | meanDelta +/- sampleSD = 0.572000 +/- 0.038830
+meanAppliedLambda seed=42:0.337651 seed=43:0.343413 seed=44:0.301117 seed=45:0.420008 seed=46:0.399174 | meanDelta +/- sampleSD = 0.360273 +/- 0.048418
+seed=42 roundsWithDifferentEstimatedCandidateSets=0
+seed=43 roundsWithDifferentEstimatedCandidateSets=0
+seed=44 roundsWithDifferentEstimatedCandidateSets=0
+seed=45 roundsWithDifferentEstimatedCandidateSets=0
+seed=46 roundsWithDifferentEstimatedCandidateSets=0
+
+=== L2 VS L5 ===
+PAIRED DIFFERENCES: RIGHT MINUS LEFT
+accuracy seed=42:0.113001 seed=43:-0.013287 seed=44:-0.014010 seed=45:0.008072 seed=46:0.026858 | meanDelta +/- sampleSD = 0.024127 +/- 0.052484
+macroF1 seed=42:-0.018847 seed=43:-0.011996 seed=44:0.043049 seed=45:-0.002856 seed=46:-0.004007 | meanDelta +/- sampleSD = 0.001069 +/- 0.024346
+accuracyTailMean seed=42:0.022841 seed=43:0.058085 seed=44:0.000663 seed=45:-0.053071 seed=46:0.040526 | meanDelta +/- sampleSD = 0.013809 +/- 0.043016
+accuracyTailSd seed=42:-0.015542 seed=43:-0.047796 seed=44:-0.006572 seed=45:0.055647 seed=46:-0.023766 | meanDelta +/- sampleSD = -0.007606 +/- 0.038540
+macroF1TailSd seed=42:-0.005384 seed=43:-0.014819 seed=44:-0.002605 seed=45:0.003899 seed=46:-0.019353 | meanDelta +/- sampleSD = -0.007652 +/- 0.009385
+maxAccuracyDropPp seed=42:-2.418203 seed=43:-0.200513 seed=44:0.773653 seed=45:5.234850 seed=46:4.419029 | meanDelta +/- sampleSD = 1.561763 +/- 3.210233
+finalAccuracyChangePp seed=42:9.580730 seed=43:-7.836354 seed=44:0.611005 seed=45:-1.006007 seed=46:-3.608372 | meanDelta +/- sampleSD = -0.451799 +/- 6.453370
+coverage seed=42:0.460000 seed=43:0.380000 seed=44:0.400000 seed=45:0.520000 seed=46:0.450000 | meanDelta +/- sampleSD = 0.442000 +/- 0.054955
+ramFeasibleCoverage seed=42:0.766667 seed=43:0.633333 seed=44:0.666667 seed=45:0.866667 seed=46:0.750000 | meanDelta +/- sampleSD = 0.736667 +/- 0.091591
+feasibleSelectionCoverage seed=42:0.766667 seed=43:0.650000 seed=44:0.666667 seed=45:0.866667 seed=46:0.766667 | meanDelta +/- sampleSD = 0.743333 +/- 0.087876
+feasibleCompletionCoverage seed=42:0.766667 seed=43:0.633333 seed=44:0.666667 seed=45:0.866667 seed=46:0.750000 | meanDelta +/- sampleSD = 0.736667 +/- 0.091591
+feasibleOpportunityAdjustedGini seed=42:-0.554795 seed=43:-0.487124 seed=44:-0.400697 seed=45:-0.552226 seed=46:-0.512308 | meanDelta +/- sampleSD = -0.501430 +/- 0.063044
+ramFeasibleCompletionGini seed=42:-0.560977 seed=43:-0.471436 seed=44:-0.374398 seed=45:-0.543311 seed=46:-0.488301 | meanDelta +/- sampleSD = -0.487685 +/- 0.073424
+maxFeasibleSelectionStaleness seed=42:-44.000000 seed=43:-40.000000 seed=44:-24.000000 seed=45:-46.000000 seed=46:-25.000000 | meanDelta +/- sampleSD = -35.800000 +/- 10.545141
+meanFeasibleSelectionStaleness seed=42:-42.066667 seed=43:-34.000000 seed=44:-29.700000 seed=45:-49.116667 seed=46:-40.900000 | meanDelta +/- sampleSD = -39.156667 +/- 7.528756
+acceptedSelectedRatio seed=42:0.002857 seed=43:0.017143 seed=44:-0.002857 seed=45:-0.002857 seed=46:0.002857 | meanDelta +/- sampleSD = 0.003429 +/- 0.008182
+virtualSeconds seed=42:1.430781 seed=43:4.153161 seed=44:6.539212 seed=45:2.432372 seed=46:2.622494 | meanDelta +/- sampleSD = 3.435604 +/- 1.989611
+virtualSecondsWithSelector seed=42:1.813230 seed=43:4.156285 seed=44:6.570969 seed=45:2.432048 seed=46:2.625279 | meanDelta +/- sampleSD = 3.519562 +/- 1.911184
+wallSeconds seed=42:-17.353093 seed=43:-1.932174 seed=44:31.320162 seed=45:-8.889058 seed=46:0.206542 | meanDelta +/- sampleSD = 0.670476 +/- 18.456882
+selectorSeconds seed=42:-0.256559 seed=43:-0.000557 seed=44:0.025585 seed=45:-0.002318 seed=46:0.000632 | meanDelta +/- sampleSD = -0.046643 +/- 0.117904
+fairnessUpdateSeconds seed=42:0.639008 seed=43:0.003681 seed=44:0.006172 seed=45:0.001994 seed=46:0.002153 | meanDelta +/- sampleSD = 0.130602 +/- 0.284213
+slotsChangedVsTopsis seed=42:188.000000 seed=43:155.000000 seed=44:126.000000 seed=45:202.000000 seed=46:180.000000 | meanDelta +/- sampleSD = 170.200000 +/- 30.036644
+slotsChangedVsTopsisRatio seed=42:0.537143 seed=43:0.442857 seed=44:0.360000 seed=45:0.577143 seed=46:0.514286 | meanDelta +/- sampleSD = 0.486286 +/- 0.085819
+meanAppliedLambda seed=42:0.137651 seed=43:0.143413 seed=44:0.101117 seed=45:0.220008 seed=46:0.199174 | meanDelta +/- sampleSD = 0.160273 +/- 0.048418
+seed=42 roundsWithDifferentEstimatedCandidateSets=0
+seed=43 roundsWithDifferentEstimatedCandidateSets=0
+seed=44 roundsWithDifferentEstimatedCandidateSets=0
+seed=45 roundsWithDifferentEstimatedCandidateSets=0
+seed=46 roundsWithDifferentEstimatedCandidateSets=0
+
+=== L3 VS L5 ===
+PAIRED DIFFERENCES: RIGHT MINUS LEFT
+accuracy seed=42:0.043992 seed=43:-0.033295 seed=44:0.146004 seed=45:-0.012065 seed=46:0.037280 | meanDelta +/- sampleSD = 0.036383 +/- 0.069422
+macroF1 seed=42:0.009711 seed=43:-0.082867 seed=44:0.078768 seed=45:0.016645 seed=46:-0.011373 | meanDelta +/- sampleSD = 0.002177 +/- 0.058198
+accuracyTailMean seed=42:0.028302 seed=43:-0.010478 seed=44:0.043497 seed=45:-0.043560 seed=46:0.016089 | meanDelta +/- sampleSD = 0.006770 +/- 0.034387
+accuracyTailSd seed=42:-0.027983 seed=43:-0.001293 seed=44:-0.051699 seed=45:0.036389 seed=46:-0.009893 | meanDelta +/- sampleSD = -0.010896 +/- 0.032734
+macroF1TailSd seed=42:-0.021302 seed=43:-0.009598 seed=44:-0.019609 seed=45:0.006516 seed=46:-0.009601 | meanDelta +/- sampleSD = -0.010719 +/- 0.011075
+maxAccuracyDropPp seed=42:-3.831259 seed=43:-0.737509 seed=44:-1.808058 seed=45:-6.385432 seed=46:8.402609 | meanDelta +/- sampleSD = -0.871930 +/- 5.613996
+finalAccuracyChangePp seed=42:2.200478 seed=43:-1.357119 seed=44:11.167622 seed=45:-3.203904 seed=46:5.188379 | meanDelta +/- sampleSD = 2.799091 +/- 5.687912
+coverage seed=42:0.000000 seed=43:-0.010000 seed=44:0.000000 seed=45:0.000000 seed=46:-0.010000 | meanDelta +/- sampleSD = -0.004000 +/- 0.005477
+ramFeasibleCoverage seed=42:0.000000 seed=43:-0.016667 seed=44:0.000000 seed=45:0.000000 seed=46:-0.016667 | meanDelta +/- sampleSD = -0.006667 +/- 0.009129
+feasibleSelectionCoverage seed=42:0.000000 seed=43:0.000000 seed=44:0.000000 seed=45:0.000000 seed=46:0.000000 | meanDelta +/- sampleSD = 0.000000 +/- 0.000000
+feasibleCompletionCoverage seed=42:0.000000 seed=43:-0.016667 seed=44:0.000000 seed=45:0.000000 seed=46:-0.016667 | meanDelta +/- sampleSD = -0.006667 +/- 0.009129
+feasibleOpportunityAdjustedGini seed=42:0.027852 seed=43:0.133193 seed=44:0.187917 seed=45:0.050627 seed=46:0.074010 | meanDelta +/- sampleSD = 0.094720 +/- 0.065212
+ramFeasibleCompletionGini seed=42:0.006419 seed=43:0.143152 seed=44:0.191818 seed=45:0.033167 seed=46:0.083072 | meanDelta +/- sampleSD = 0.091526 +/- 0.076558
+maxFeasibleSelectionStaleness seed=42:5.000000 seed=43:4.000000 seed=44:23.000000 seed=45:5.000000 seed=46:22.000000 | meanDelta +/- sampleSD = 11.800000 +/- 9.782638
+meanFeasibleSelectionStaleness seed=42:1.083333 seed=43:3.216667 seed=44:7.933333 seed=45:-0.316667 seed=46:2.116667 | meanDelta +/- sampleSD = 2.806667 +/- 3.148492
+acceptedSelectedRatio seed=42:0.005714 seed=43:0.011429 seed=44:0.000000 seed=45:0.005714 seed=46:0.011429 | meanDelta +/- sampleSD = 0.006857 +/- 0.004781
+virtualSeconds seed=42:-4.701671 seed=43:-1.796691 seed=44:1.536090 seed=45:-1.319888 seed=46:-0.734682 | meanDelta +/- sampleSD = -1.403368 +/- 2.243214
+virtualSecondsWithSelector seed=42:-4.238249 seed=43:-1.790323 seed=44:1.526802 seed=45:-1.322291 seed=46:-0.732124 | meanDelta +/- sampleSD = -1.311237 +/- 2.072853
+wallSeconds seed=42:-25.784161 seed=43:-16.993245 seed=44:24.142467 seed=45:-8.814009 seed=46:-0.734890 | meanDelta +/- sampleSD = -5.636767 +/- 19.077560
+selectorSeconds seed=42:-0.180213 seed=43:0.001705 seed=44:-0.015053 seed=45:-0.004558 seed=46:0.000766 | meanDelta +/- sampleSD = -0.039470 +/- 0.078959
+fairnessUpdateSeconds seed=42:0.643635 seed=43:0.004663 seed=44:0.005765 seed=45:0.002155 seed=46:0.001791 | meanDelta +/- sampleSD = 0.131602 +/- 0.286240
+slotsChangedVsTopsis seed=42:-13.000000 seed=43:-47.000000 seed=44:-78.000000 seed=45:-32.000000 seed=46:-40.000000 | meanDelta +/- sampleSD = -42.000000 +/- 23.801260
+slotsChangedVsTopsisRatio seed=42:-0.037143 seed=43:-0.134286 seed=44:-0.222857 seed=45:-0.091429 seed=46:-0.114286 | meanDelta +/- sampleSD = -0.120000 +/- 0.068004
+meanAppliedLambda seed=42:-0.062349 seed=43:-0.056587 seed=44:-0.098883 seed=45:0.020008 seed=46:-0.000826 | meanDelta +/- sampleSD = -0.039727 +/- 0.048418
+seed=42 roundsWithDifferentEstimatedCandidateSets=0
+seed=43 roundsWithDifferentEstimatedCandidateSets=0
+seed=44 roundsWithDifferentEstimatedCandidateSets=0
+seed=45 roundsWithDifferentEstimatedCandidateSets=0
+seed=46 roundsWithDifferentEstimatedCandidateSets=0
+
+=== L4 VS L5 ===
+PAIRED DIFFERENCES: RIGHT MINUS LEFT
+accuracy seed=42:-0.015051 seed=43:-0.016850 seed=44:0.113285 seed=45:-0.003993 seed=46:0.059371 | meanDelta +/- sampleSD = 0.027352 +/- 0.057324
+macroF1 seed=42:-0.010264 seed=43:-0.044040 seed=44:0.077073 seed=45:0.035688 seed=46:-0.061822 | meanDelta +/- sampleSD = -0.000673 +/- 0.057181
+accuracyTailMean seed=42:0.033803 seed=43:0.001951 seed=44:0.022290 seed=45:-0.005430 seed=46:0.041839 | meanDelta +/- sampleSD = 0.018891 +/- 0.020243
+accuracyTailSd seed=42:-0.042436 seed=43:-0.024829 seed=44:-0.034944 seed=45:-0.020647 seed=46:-0.019501 | meanDelta +/- sampleSD = -0.028471 +/- 0.009898
+macroF1TailSd seed=42:-0.023645 seed=43:-0.014498 seed=44:-0.030189 seed=45:-0.025895 seed=46:-0.012763 | meanDelta +/- sampleSD = -0.021398 +/- 0.007496
+maxAccuracyDropPp seed=42:-0.941464 seed=43:-0.421679 seed=44:-5.874253 seed=45:-12.298411 seed=46:7.604000 | meanDelta +/- sampleSD = -2.386362 +/- 7.351346
+finalAccuracyChangePp seed=42:-0.097244 seed=43:-1.182424 seed=44:13.105626 seed=45:-14.527289 seed=46:3.041256 | meanDelta +/- sampleSD = 0.067985 +/- 9.917576
+coverage seed=42:0.000000 seed=43:-0.010000 seed=44:0.000000 seed=45:0.000000 seed=46:-0.010000 | meanDelta +/- sampleSD = -0.004000 +/- 0.005477
+ramFeasibleCoverage seed=42:0.000000 seed=43:-0.016667 seed=44:0.000000 seed=45:0.000000 seed=46:-0.016667 | meanDelta +/- sampleSD = -0.006667 +/- 0.009129
+feasibleSelectionCoverage seed=42:0.000000 seed=43:0.000000 seed=44:0.000000 seed=45:0.000000 seed=46:0.000000 | meanDelta +/- sampleSD = 0.000000 +/- 0.000000
+feasibleCompletionCoverage seed=42:0.000000 seed=43:-0.016667 seed=44:0.000000 seed=45:0.000000 seed=46:-0.016667 | meanDelta +/- sampleSD = -0.006667 +/- 0.009129
+feasibleOpportunityAdjustedGini seed=42:0.185459 seed=43:0.207596 seed=44:0.293553 seed=45:0.201506 seed=46:0.215666 | meanDelta +/- sampleSD = 0.220756 +/- 0.042175
+ramFeasibleCompletionGini seed=42:0.164578 seed=43:0.191203 seed=44:0.314841 seed=45:0.187020 seed=46:0.220115 | meanDelta +/- sampleSD = 0.215551 +/- 0.058916
+maxFeasibleSelectionStaleness seed=42:8.000000 seed=43:14.000000 seed=44:25.000000 seed=45:12.000000 seed=46:30.000000 | meanDelta +/- sampleSD = 17.800000 +/- 9.284396
+meanFeasibleSelectionStaleness seed=42:2.350000 seed=43:3.850000 seed=44:8.733333 seed=45:0.900000 seed=46:3.016667 | meanDelta +/- sampleSD = 3.770000 +/- 2.977494
+acceptedSelectedRatio seed=42:-0.014286 seed=43:0.020000 seed=44:-0.014286 seed=45:-0.002857 seed=46:0.014286 | meanDelta +/- sampleSD = 0.000571 +/- 0.015959
+virtualSeconds seed=42:-9.525017 seed=43:-0.694515 seed=44:2.015570 seed=45:-1.420720 seed=46:-1.136554 | meanDelta +/- sampleSD = -2.152247 +/- 4.342240
+virtualSecondsWithSelector seed=42:-8.915782 seed=43:-0.706857 seed=44:2.008638 seed=45:-1.425314 seed=46:-1.143581 | meanDelta +/- sampleSD = -2.036579 +/- 4.081252
+wallSeconds seed=42:-51.339676 seed=43:1.079186 seed=44:27.379804 seed=45:-3.705352 seed=46:-0.849156 | meanDelta +/- sampleSD = -5.487039 +/- 28.506549
+selectorSeconds seed=42:-0.034859 seed=43:-0.017710 seed=44:-0.011931 seed=45:-0.006440 seed=46:-0.008571 | meanDelta +/- sampleSD = -0.015902 +/- 0.011420
+fairnessUpdateSeconds seed=42:0.644094 seed=43:0.005368 seed=44:0.004998 seed=45:0.001846 seed=46:0.001544 | meanDelta +/- sampleSD = 0.131570 +/- 0.286515
+slotsChangedVsTopsis seed=42:-62.000000 seed=43:-73.000000 seed=44:-107.000000 seed=45:-81.000000 seed=46:-78.000000 | meanDelta +/- sampleSD = -80.200000 +/- 16.634302
+slotsChangedVsTopsisRatio seed=42:-0.177143 seed=43:-0.208571 seed=44:-0.305714 seed=45:-0.231429 seed=46:-0.222857 | meanDelta +/- sampleSD = -0.229143 +/- 0.047527
+meanAppliedLambda seed=42:-0.262349 seed=43:-0.256587 seed=44:-0.298883 seed=45:-0.179992 seed=46:-0.200826 | meanDelta +/- sampleSD = -0.239727 +/- 0.048418
+seed=42 roundsWithDifferentEstimatedCandidateSets=0
+seed=43 roundsWithDifferentEstimatedCandidateSets=0
+seed=44 roundsWithDifferentEstimatedCandidateSets=0
+seed=45 roundsWithDifferentEstimatedCandidateSets=0
+seed=46 roundsWithDifferentEstimatedCandidateSets=0
+
+=== L0 VS L1 ===
+PAIRED DIFFERENCES: RIGHT MINUS LEFT
+accuracy seed=42:-0.142889 seed=43:0.035886 seed=44:-0.084672 seed=45:-0.024733 seed=46:-0.093088 | meanDelta +/- sampleSD = -0.061899 +/- 0.068909
+macroF1 seed=42:0.044816 seed=43:-0.070172 seed=44:0.000197 seed=45:0.092222 seed=46:0.045896 | meanDelta +/- sampleSD = 0.022592 +/- 0.061221
+accuracyTailMean seed=42:-0.064687 seed=43:-0.011474 seed=44:-0.098483 seed=45:0.015247 seed=46:-0.022280 | meanDelta +/- sampleSD = -0.036336 +/- 0.045118
+accuracyTailSd seed=42:0.033425 seed=43:-0.026124 seed=44:0.053986 seed=45:0.010529 seed=46:0.027307 | meanDelta +/- sampleSD = 0.019825 +/- 0.030023
+macroF1TailSd seed=42:0.011585 seed=43:-0.035200 seed=44:0.016309 seed=45:0.010366 seed=46:-0.016647 | meanDelta +/- sampleSD = -0.002717 +/- 0.022287
+maxAccuracyDropPp seed=42:2.682398 seed=43:3.993907 seed=44:0.000000 seed=45:2.058484 seed=46:0.329598 | meanDelta +/- sampleSD = 1.812878 +/- 1.662823
+finalAccuracyChangePp seed=42:-26.937574 seed=43:0.149739 seed=44:-7.802792 seed=45:-7.873358 seed=46:-9.119464 | meanDelta +/- sampleSD = -10.316690 +/- 9.994034
+coverage seed=42:0.030000 seed=43:0.000000 seed=44:0.000000 seed=45:0.000000 seed=46:0.010000 | meanDelta +/- sampleSD = 0.008000 +/- 0.013038
+ramFeasibleCoverage seed=42:0.050000 seed=43:0.000000 seed=44:0.000000 seed=45:0.000000 seed=46:0.016667 | meanDelta +/- sampleSD = 0.013333 +/- 0.021731
+feasibleSelectionCoverage seed=42:0.050000 seed=43:0.000000 seed=44:0.000000 seed=45:0.000000 seed=46:0.016667 | meanDelta +/- sampleSD = 0.013333 +/- 0.021731
+feasibleCompletionCoverage seed=42:0.050000 seed=43:0.000000 seed=44:0.000000 seed=45:0.000000 seed=46:0.016667 | meanDelta +/- sampleSD = 0.013333 +/- 0.021731
+feasibleOpportunityAdjustedGini seed=42:-0.009505 seed=43:0.006959 seed=44:0.001089 seed=45:-0.006781 seed=46:-0.001697 | meanDelta +/- sampleSD = -0.001987 +/- 0.006502
+ramFeasibleCompletionGini seed=42:-0.010618 seed=43:0.006883 seed=44:0.000203 seed=45:-0.006365 seed=46:-0.002172 | meanDelta +/- sampleSD = -0.002414 +/- 0.006638
+maxFeasibleSelectionStaleness seed=42:0.000000 seed=43:0.000000 seed=44:0.000000 seed=45:0.000000 seed=46:0.000000 | meanDelta +/- sampleSD = 0.000000 +/- 0.000000
+meanFeasibleSelectionStaleness seed=42:-1.900000 seed=43:1.000000 seed=44:0.400000 seed=45:-0.150000 seed=46:-0.883333 | meanDelta +/- sampleSD = -0.306667 +/- 1.129442
+acceptedSelectedRatio seed=42:0.008571 seed=43:0.000000 seed=44:0.000000 seed=45:-0.005714 seed=46:-0.005714 | meanDelta +/- sampleSD = -0.000571 +/- 0.005855
+virtualSeconds seed=42:-0.084179 seed=43:-0.017446 seed=44:0.877532 seed=45:-0.076327 seed=46:0.079914 | meanDelta +/- sampleSD = 0.155899 +/- 0.408700
+virtualSecondsWithSelector seed=42:-0.238489 seed=43:-0.020299 seed=44:0.805429 seed=45:-0.079543 seed=46:0.087225 | meanDelta +/- sampleSD = 0.110865 +/- 0.405735
+wallSeconds seed=42:-2.988610 seed=43:-1.726169 seed=44:0.275395 seed=45:0.063818 seed=46:0.727374 | meanDelta +/- sampleSD = -0.729638 +/- 1.569918
+selectorSeconds seed=42:-0.157406 seed=43:-0.004573 seed=44:-0.071683 seed=45:-0.004973 seed=46:0.005710 | meanDelta +/- sampleSD = -0.046585 +/- 0.069178
+fairnessUpdateSeconds seed=42:0.003096 seed=43:0.001720 seed=44:-0.000421 seed=45:0.001758 seed=46:0.001601 | meanDelta +/- sampleSD = 0.001551 +/- 0.001260
+slotsChangedVsTopsis seed=42:16.000000 seed=43:14.000000 seed=44:5.000000 seed=45:14.000000 seed=46:9.000000 | meanDelta +/- sampleSD = 11.600000 +/- 4.505552
+slotsChangedVsTopsisRatio seed=42:0.045714 seed=43:0.040000 seed=44:0.014286 seed=45:0.040000 seed=46:0.025714 | meanDelta +/- sampleSD = 0.033143 +/- 0.012873
+meanAppliedLambda seed=42:0.300000 seed=43:0.300000 seed=44:0.300000 seed=45:0.300000 seed=46:0.300000 | meanDelta +/- sampleSD = 0.300000 +/- 0.000000
+seed=42 roundsWithDifferentEstimatedCandidateSets=0
+seed=43 roundsWithDifferentEstimatedCandidateSets=0
+seed=44 roundsWithDifferentEstimatedCandidateSets=0
+seed=45 roundsWithDifferentEstimatedCandidateSets=0
+seed=46 roundsWithDifferentEstimatedCandidateSets=0
+
+=== L0 VS L2 ===
+PAIRED DIFFERENCES: RIGHT MINUS LEFT
+accuracy seed=42:-0.105799 seed=43:0.050937 seed=44:-0.008287 seed=45:-0.026721 seed=46:0.048252 | meanDelta +/- sampleSD = -0.008323 +/- 0.064328
+macroF1 seed=42:0.040066 seed=43:0.011060 seed=44:-0.030841 seed=45:0.093352 seed=46:0.034784 | meanDelta +/- sampleSD = 0.029684 +/- 0.045270
+accuracyTailMean seed=42:0.007199 seed=43:-0.052852 seed=44:-0.004065 seed=45:0.019088 seed=46:-0.028795 | meanDelta +/- sampleSD = -0.011885 +/- 0.028935
+accuracyTailSd seed=42:-0.009073 seed=43:0.028130 seed=44:-0.008956 seed=45:-0.010363 seed=46:0.021798 | meanDelta +/- sampleSD = 0.004307 +/- 0.018997
+macroF1TailSd seed=42:-0.008081 seed=43:0.001901 seed=44:-0.013428 seed=45:0.005222 seed=46:-0.007873 | meanDelta +/- sampleSD = -0.004452 +/- 0.007736
+maxAccuracyDropPp seed=42:-4.020585 seed=43:4.194420 seed=44:0.000000 seed=45:-0.308945 seed=46:6.092838 | meanDelta +/- sampleSD = 1.191546 +/- 3.996169
+finalAccuracyChangePp seed=42:-23.362765 seed=43:6.335519 seed=44:-1.459527 seed=45:-7.507616 seed=46:9.597081 | meanDelta +/- sampleSD = -3.279462 +/- 13.065046
+coverage seed=42:0.060000 seed=43:0.120000 seed=44:0.110000 seed=45:0.000000 seed=46:0.060000 | meanDelta +/- sampleSD = 0.070000 +/- 0.047958
+ramFeasibleCoverage seed=42:0.100000 seed=43:0.200000 seed=44:0.183333 seed=45:0.000000 seed=46:0.100000 | meanDelta +/- sampleSD = 0.116667 +/- 0.079931
+feasibleSelectionCoverage seed=42:0.100000 seed=43:0.200000 seed=44:0.183333 seed=45:0.000000 seed=46:0.100000 | meanDelta +/- sampleSD = 0.116667 +/- 0.079931
+feasibleCompletionCoverage seed=42:0.100000 seed=43:0.200000 seed=44:0.183333 seed=45:0.000000 seed=46:0.100000 | meanDelta +/- sampleSD = 0.116667 +/- 0.079931
+feasibleOpportunityAdjustedGini seed=42:-0.014832 seed=43:-0.041160 seed=44:-0.057246 seed=45:-0.000010 seed=46:-0.007740 | meanDelta +/- sampleSD = -0.024198 +/- 0.024102
+ramFeasibleCompletionGini seed=42:-0.014079 seed=43:-0.040908 seed=44:-0.060884 seed=45:0.000484 seed=46:-0.007620 | meanDelta +/- sampleSD = -0.024601 +/- 0.025548
+maxFeasibleSelectionStaleness seed=42:-2.000000 seed=43:-1.000000 seed=44:-3.000000 seed=45:0.000000 seed=46:-1.000000 | meanDelta +/- sampleSD = -1.400000 +/- 1.140175
+meanFeasibleSelectionStaleness seed=42:-4.666667 seed=43:-11.500000 seed=44:-10.600000 seed=45:-0.200000 seed=46:-6.133333 | meanDelta +/- sampleSD = -6.620000 +/- 4.607699
+acceptedSelectedRatio seed=42:0.005714 seed=43:-0.022857 seed=44:0.005714 seed=45:-0.008571 seed=46:-0.002857 | meanDelta +/- sampleSD = -0.004571 +/- 0.011884
+virtualSeconds seed=42:0.219164 seed=43:-0.033516 seed=44:0.235201 seed=45:-0.055407 seed=46:0.513719 | meanDelta +/- sampleSD = 0.175832 +/- 0.232845
+virtualSecondsWithSelector seed=42:0.268219 seed=43:-0.035044 seed=44:0.146814 seed=45:-0.068883 seed=46:0.514084 | meanDelta +/- sampleSD = 0.165038 +/- 0.238518
+wallSeconds seed=42:-6.120792 seed=43:-3.931269 seed=44:-3.654622 seed=45:0.820086 seed=46:-0.954178 | meanDelta +/- sampleSD = -2.768155 +/- 2.717757
+selectorSeconds seed=42:0.047766 seed=43:-0.003564 seed=44:-0.087459 seed=45:-0.013005 seed=46:-0.000721 | meanDelta +/- sampleSD = -0.011397 +/- 0.048641
+fairnessUpdateSeconds seed=42:0.001289 seed=43:0.002036 seed=44:-0.000928 seed=45:-0.000470 seed=46:0.001086 | meanDelta +/- sampleSD = 0.000603 +/- 0.001250
+slotsChangedVsTopsis seed=42:41.000000 seed=43:63.000000 seed=44:56.000000 seed=45:15.000000 seed=46:33.000000 | meanDelta +/- sampleSD = 41.600000 +/- 19.021041
+slotsChangedVsTopsisRatio seed=42:0.117143 seed=43:0.180000 seed=44:0.160000 seed=45:0.042857 seed=46:0.094286 | meanDelta +/- sampleSD = 0.118857 +/- 0.054346
+meanAppliedLambda seed=42:0.500000 seed=43:0.500000 seed=44:0.500000 seed=45:0.500000 seed=46:0.500000 | meanDelta +/- sampleSD = 0.500000 +/- 0.000000
+seed=42 roundsWithDifferentEstimatedCandidateSets=0
+seed=43 roundsWithDifferentEstimatedCandidateSets=0
+seed=44 roundsWithDifferentEstimatedCandidateSets=0
+seed=45 roundsWithDifferentEstimatedCandidateSets=0
+seed=46 roundsWithDifferentEstimatedCandidateSets=0
+
+=== L0 VS L3 ===
+PAIRED DIFFERENCES: RIGHT MINUS LEFT
+accuracy seed=42:-0.036789 seed=43:0.070945 seed=44:-0.168302 seed=45:-0.006583 seed=46:0.037831 | meanDelta +/- sampleSD = -0.020580 +/- 0.092289
+macroF1 seed=42:0.011508 seed=43:0.081931 seed=44:-0.066560 seed=45:0.073851 seed=46:0.042149 | meanDelta +/- sampleSD = 0.028576 +/- 0.060048
+accuracyTailMean seed=42:0.001737 seed=43:0.015711 seed=44:-0.046899 seed=45:0.009578 seed=46:-0.004358 | meanDelta +/- sampleSD = -0.004846 +/- 0.024712
+accuracyTailSd seed=42:0.003368 seed=43:-0.018374 seed=44:0.036171 seed=45:0.008895 seed=46:0.007925 | meanDelta +/- sampleSD = 0.007597 +/- 0.019433
+macroF1TailSd seed=42:0.007837 seed=43:-0.003319 seed=44:0.003576 seed=45:0.002605 seed=46:-0.017625 | meanDelta +/- sampleSD = -0.001385 +/- 0.009913
+maxAccuracyDropPp seed=42:-2.607528 seed=43:4.731416 seed=44:2.581711 seed=45:11.311337 seed=46:2.109258 | meanDelta +/- sampleSD = 3.625239 +/- 5.062960
+finalAccuracyChangePp seed=42:-15.982513 seed=43:-0.143715 seed=44:-12.016144 seed=45:-5.309719 seed=46:0.800330 | meanDelta +/- sampleSD = -6.530352 +/- 7.339197
+coverage seed=42:0.520000 seed=43:0.510000 seed=44:0.510000 seed=45:0.520000 seed=46:0.520000 | meanDelta +/- sampleSD = 0.516000 +/- 0.005477
+ramFeasibleCoverage seed=42:0.866667 seed=43:0.850000 seed=44:0.850000 seed=45:0.866667 seed=46:0.866667 | meanDelta +/- sampleSD = 0.860000 +/- 0.009129
+feasibleSelectionCoverage seed=42:0.866667 seed=43:0.850000 seed=44:0.850000 seed=45:0.866667 seed=46:0.866667 | meanDelta +/- sampleSD = 0.860000 +/- 0.009129
+feasibleCompletionCoverage seed=42:0.866667 seed=43:0.850000 seed=44:0.850000 seed=45:0.866667 seed=46:0.866667 | meanDelta +/- sampleSD = 0.860000 +/- 0.009129
+feasibleOpportunityAdjustedGini seed=42:-0.597479 seed=43:-0.661478 seed=44:-0.645860 seed=45:-0.602863 seed=46:-0.594058 | meanDelta +/- sampleSD = -0.620347 +/- 0.031074
+ramFeasibleCompletionGini seed=42:-0.581475 seed=43:-0.655497 seed=44:-0.627100 seed=45:-0.575994 seed=46:-0.578993 | meanDelta +/- sampleSD = -0.603812 +/- 0.035716
+maxFeasibleSelectionStaleness seed=42:-51.000000 seed=43:-45.000000 seed=44:-50.000000 seed=45:-51.000000 seed=46:-48.000000 | meanDelta +/- sampleSD = -49.000000 +/- 2.549510
+meanFeasibleSelectionStaleness seed=42:-47.816667 seed=43:-48.716667 seed=44:-48.233333 seed=45:-49.000000 seed=46:-49.150000 | meanDelta +/- sampleSD = -48.583333 +/- 0.552896
+acceptedSelectedRatio seed=42:0.002857 seed=43:-0.017143 seed=44:0.002857 seed=45:-0.017143 seed=46:-0.011429 | meanDelta +/- sampleSD = -0.008000 +/- 0.010182
+virtualSeconds seed=42:6.351616 seed=43:5.916336 seed=44:5.238323 seed=45:3.696853 seed=46:3.870895 | meanDelta +/- sampleSD = 5.014805 +/- 1.193242
+virtualSecondsWithSelector seed=42:6.319698 seed=43:5.911564 seed=44:5.190981 seed=45:3.685457 seed=46:3.871487 | meanDelta +/- sampleSD = 4.995837 +/- 1.184325
+wallSeconds seed=42:2.310276 seed=43:11.129802 seed=44:3.523072 seed=45:0.745036 seed=46:-0.012746 | meanDelta +/- sampleSD = 3.539088 +/- 4.459580
+selectorSeconds seed=42:-0.028580 seed=43:-0.005826 seed=44:-0.046822 seed=45:-0.010765 seed=46:-0.000856 | meanDelta +/- sampleSD = -0.018570 +/- 0.018944
+fairnessUpdateSeconds seed=42:-0.003338 seed=43:0.001054 seed=44:-0.000520 seed=45:-0.000631 seed=46:0.001448 | meanDelta +/- sampleSD = -0.000397 +/- 0.001886
+slotsChangedVsTopsis seed=42:242.000000 seed=43:265.000000 seed=44:260.000000 seed=45:249.000000 seed=46:253.000000 | meanDelta +/- sampleSD = 253.800000 +/- 9.038805
+slotsChangedVsTopsisRatio seed=42:0.691429 seed=43:0.757143 seed=44:0.742857 seed=45:0.711429 seed=46:0.722857 | meanDelta +/- sampleSD = 0.725143 +/- 0.025825
+meanAppliedLambda seed=42:0.700000 seed=43:0.700000 seed=44:0.700000 seed=45:0.700000 seed=46:0.700000 | meanDelta +/- sampleSD = 0.700000 +/- 0.000000
+seed=42 roundsWithDifferentEstimatedCandidateSets=0
+seed=43 roundsWithDifferentEstimatedCandidateSets=0
+seed=44 roundsWithDifferentEstimatedCandidateSets=0
+seed=45 roundsWithDifferentEstimatedCandidateSets=0
+seed=46 roundsWithDifferentEstimatedCandidateSets=0
+
+=== L0 VS L4 ===
+PAIRED DIFFERENCES: RIGHT MINUS LEFT
+accuracy seed=42:0.022254 seed=43:0.054500 seed=44:-0.135583 seed=45:-0.014656 seed=46:0.015740 | meanDelta +/- sampleSD = -0.011549 +/- 0.073559
+macroF1 seed=42:0.031483 seed=43:0.043105 seed=44:-0.064865 seed=45:0.054808 seed=46:0.092599 | meanDelta +/- sampleSD = 0.031426 +/- 0.058518
+accuracyTailMean seed=42:-0.003763 seed=43:0.003282 seed=44:-0.025693 seed=45:-0.028552 seed=46:-0.030108 | meanDelta +/- sampleSD = -0.016967 +/- 0.015552
+accuracyTailSd seed=42:0.017821 seed=43:0.005163 seed=44:0.019416 seed=45:0.065931 seed=46:0.017533 | meanDelta +/- sampleSD = 0.025173 +/- 0.023490
+macroF1TailSd seed=42:0.010181 seed=43:0.001580 seed=44:0.014156 seed=45:0.035016 seed=46:-0.014463 | meanDelta +/- sampleSD = 0.009294 +/- 0.018097
+maxAccuracyDropPp seed=42:-5.497324 seed=43:4.415587 seed=44:6.647906 seed=45:17.224316 seed=46:2.907867 | meanDelta +/- sampleSD = 5.139671 +/- 8.169521
+finalAccuracyChangePp seed=42:-13.684790 seed=43:-0.318411 seed=44:-13.954149 seed=45:6.013666 seed=46:2.947454 | meanDelta +/- sampleSD = -3.799246 +/- 9.417715
+coverage seed=42:0.520000 seed=43:0.510000 seed=44:0.510000 seed=45:0.520000 seed=46:0.520000 | meanDelta +/- sampleSD = 0.516000 +/- 0.005477
+ramFeasibleCoverage seed=42:0.866667 seed=43:0.850000 seed=44:0.850000 seed=45:0.866667 seed=46:0.866667 | meanDelta +/- sampleSD = 0.860000 +/- 0.009129
+feasibleSelectionCoverage seed=42:0.866667 seed=43:0.850000 seed=44:0.850000 seed=45:0.866667 seed=46:0.866667 | meanDelta +/- sampleSD = 0.860000 +/- 0.009129
+feasibleCompletionCoverage seed=42:0.866667 seed=43:0.850000 seed=44:0.850000 seed=45:0.866667 seed=46:0.866667 | meanDelta +/- sampleSD = 0.860000 +/- 0.009129
+feasibleOpportunityAdjustedGini seed=42:-0.755085 seed=43:-0.735881 seed=44:-0.751496 seed=45:-0.753742 seed=46:-0.735714 | meanDelta +/- sampleSD = -0.746384 +/- 0.009749
+ramFeasibleCompletionGini seed=42:-0.739634 seed=43:-0.703548 seed=44:-0.750123 seed=45:-0.729847 seed=46:-0.716035 | meanDelta +/- sampleSD = -0.727837 +/- 0.018501
+maxFeasibleSelectionStaleness seed=42:-54.000000 seed=43:-55.000000 seed=44:-52.000000 seed=45:-58.000000 seed=46:-56.000000 | meanDelta +/- sampleSD = -55.000000 +/- 2.236068
+meanFeasibleSelectionStaleness seed=42:-49.083333 seed=43:-49.350000 seed=44:-49.033333 seed=45:-50.216667 seed=46:-50.050000 | meanDelta +/- sampleSD = -49.546667 +/- 0.552067
+acceptedSelectedRatio seed=42:0.022857 seed=43:-0.025714 seed=44:0.017143 seed=45:-0.008571 seed=46:-0.014286 | meanDelta +/- sampleSD = -0.001714 +/- 0.020859
+virtualSeconds seed=42:11.174962 seed=43:4.814159 seed=44:4.758843 seed=45:3.797685 seed=46:4.272767 | meanDelta +/- sampleSD = 5.763683 +/- 3.052917
+virtualSecondsWithSelector seed=42:10.997231 seed=43:4.828098 seed=44:4.709145 seed=45:3.788479 seed=46:4.282944 | meanDelta +/- sampleSD = 5.721179 +/- 2.977515
+wallSeconds seed=42:27.865791 seed=43:-6.942629 seed=44:0.285735 seed=45:-4.363620 seed=46:0.101520 | meanDelta +/- sampleSD = 3.389360 +/- 14.021383
+selectorSeconds seed=42:-0.173934 seed=43:0.013589 seed=44:-0.049944 seed=45:-0.008883 seed=46:0.008482 | meanDelta +/- sampleSD = -0.042138 +/- 0.077790
+fairnessUpdateSeconds seed=42:-0.003796 seed=43:0.000350 seed=44:0.000246 seed=45:-0.000322 seed=46:0.001696 | meanDelta +/- sampleSD = -0.000365 +/- 0.002056
+slotsChangedVsTopsis seed=42:291.000000 seed=43:291.000000 seed=44:289.000000 seed=45:298.000000 seed=46:291.000000 | meanDelta +/- sampleSD = 292.000000 +/- 3.464102
+slotsChangedVsTopsisRatio seed=42:0.831429 seed=43:0.831429 seed=44:0.825714 seed=45:0.851429 seed=46:0.831429 | meanDelta +/- sampleSD = 0.834286 +/- 0.009897
+meanAppliedLambda seed=42:0.900000 seed=43:0.900000 seed=44:0.900000 seed=45:0.900000 seed=46:0.900000 | meanDelta +/- sampleSD = 0.900000 +/- 0.000000
+seed=42 roundsWithDifferentEstimatedCandidateSets=0
+seed=43 roundsWithDifferentEstimatedCandidateSets=0
+seed=44 roundsWithDifferentEstimatedCandidateSets=0
+seed=45 roundsWithDifferentEstimatedCandidateSets=0
+seed=46 roundsWithDifferentEstimatedCandidateSets=0
+
+TIME TO TARGET: FIRST CROSSING AND SUSTAINED THROUGH FINAL ROUND
+L0 seed=42 target=0.65 first=round=11 virtual=2.134048150961281 wall=23.3602278 sustainedFrom=70
+L0 seed=42 target=0.68 first=round=16 virtual=3.02131998840799 wall=34.1722475 sustainedFrom=70
+L0 seed=42 target=0.69 first=round=20 virtual=3.7805064497915897 wall=42.84036139999999 sustainedFrom=70
+L0 seed=42 target=0.7 first=round=45 virtual=8.609928675307684 wall=100.89797789999999 sustainedFrom=70
+L0 seed=43 target=0.65 first=round=11 virtual=1.8135603472486248 wall=20.7737793 sustainedFrom=63
+L0 seed=43 target=0.68 first=round=13 virtual=2.1246733065994095 wall=24.3901879 sustainedFrom=NOT_SUSTAINED
+L0 seed=43 target=0.69 first=round=21 virtual=3.3824970813408144 wall=39.531557899999996 sustainedFrom=NOT_SUSTAINED
+L0 seed=43 target=0.7 first=round=25 virtual=4.1244121325138865 wall=48.542944999999996 sustainedFrom=NOT_SUSTAINED
+L0 seed=44 target=0.65 first=round=11 virtual=1.719027003471044 wall=19.988938800000003 sustainedFrom=68
+L0 seed=44 target=0.68 first=round=14 virtual=2.1385734975448036 wall=25.095549000000005 sustainedFrom=68
+L0 seed=44 target=0.69 first=round=25 virtual=3.7745800353108665 wall=45.11595030000001 sustainedFrom=68
+L0 seed=44 target=0.7 first=round=43 virtual=6.798034754450983 wall=81.82929100000001 sustainedFrom=68
+L0 seed=45 target=0.65 first=round=10 virtual=1.6714947634588095 wall=19.046527100000002 sustainedFrom=59
+L0 seed=45 target=0.68 first=round=13 virtual=2.133497079427322 wall=24.7309426 sustainedFrom=70
+L0 seed=45 target=0.69 first=round=19 virtual=3.103395377457311 wall=35.7823132 sustainedFrom=70
+L0 seed=45 target=0.7 first=round=29 virtual=4.6567836878947535 wall=54.33537649999999 sustainedFrom=70
+L0 seed=46 target=0.65 first=round=10 virtual=1.5184778680099984 wall=17.4471318 sustainedFrom=NOT_SUSTAINED
+L0 seed=46 target=0.68 first=round=13 virtual=1.9417682155078244 wall=22.6014626 sustainedFrom=NOT_SUSTAINED
+L0 seed=46 target=0.69 first=round=18 virtual=2.6864352138675893 wall=31.3195821 sustainedFrom=NOT_SUSTAINED
+L0 seed=46 target=0.7 first=round=34 virtual=5.12588368310767 wall=59.18258919999999 sustainedFrom=NOT_SUSTAINED
+L1 seed=42 target=0.65 first=round=11 virtual=2.0097572764062885 wall=22.140381200000004 sustainedFrom=NOT_SUSTAINED
+L1 seed=42 target=0.68 first=round=16 virtual=2.8754561038685016 wall=32.526115000000004 sustainedFrom=NOT_SUSTAINED
+L1 seed=42 target=0.69 first=round=22 virtual=3.960529870902108 wall=44.686546199999995 sustainedFrom=NOT_SUSTAINED
+L1 seed=42 target=0.7 first=round=22 virtual=3.960529870902108 wall=44.686546199999995 sustainedFrom=NOT_SUSTAINED
+L1 seed=43 target=0.65 first=round=9 virtual=1.4341973834255337 wall=17.078525999999997 sustainedFrom=55
+L1 seed=43 target=0.68 first=round=32 virtual=5.504367007366041 wall=61.40009459999999 sustainedFrom=68
+L1 seed=43 target=0.69 first=round=60 virtual=10.254186431301942 wall=115.9884807 sustainedFrom=NOT_SUSTAINED
+L1 seed=43 target=0.7 first=NOT_REACHED sustainedFrom=NOT_SUSTAINED
+L1 seed=44 target=0.65 first=round=11 virtual=1.733200787206493 wall=20.5949654 sustainedFrom=NOT_SUSTAINED
+L1 seed=44 target=0.68 first=round=14 virtual=2.1652639806563196 wall=26.3572043 sustainedFrom=NOT_SUSTAINED
+L1 seed=44 target=0.69 first=round=25 virtual=4.044029336008126 wall=48.211274799999984 sustainedFrom=NOT_SUSTAINED
+L1 seed=44 target=0.7 first=round=40 virtual=6.568632124002675 wall=76.38637619999997 sustainedFrom=NOT_SUSTAINED
+L1 seed=45 target=0.65 first=round=10 virtual=1.6899535825576173 wall=19.052725699999996 sustainedFrom=69
+L1 seed=45 target=0.68 first=round=13 virtual=2.1434609441697936 wall=24.586651799999995 sustainedFrom=69
+L1 seed=45 target=0.69 first=round=17 virtual=2.777043764332474 wall=31.958991999999995 sustainedFrom=69
+L1 seed=45 target=0.7 first=round=34 virtual=5.483458956205117 wall=63.59619 sustainedFrom=NOT_SUSTAINED
+L1 seed=46 target=0.65 first=round=10 virtual=1.598092917531797 wall=18.513564900000002 sustainedFrom=NOT_SUSTAINED
+L1 seed=46 target=0.68 first=round=15 virtual=2.376620888779458 wall=27.312581900000005 sustainedFrom=NOT_SUSTAINED
+L1 seed=46 target=0.69 first=round=19 virtual=2.9780455247323685 wall=34.304526 sustainedFrom=NOT_SUSTAINED
+L1 seed=46 target=0.7 first=round=36 virtual=5.447735060893411 wall=63.6983973 sustainedFrom=NOT_SUSTAINED
+L2 seed=42 target=0.65 first=round=11 virtual=2.8870595336790963 wall=29.468122500000003 sustainedFrom=NOT_SUSTAINED
+L2 seed=42 target=0.68 first=round=19 virtual=4.487063457129102 wall=46.73916809999999 sustainedFrom=NOT_SUSTAINED
+L2 seed=42 target=0.69 first=round=21 virtual=4.828838833078146 wall=51.16621089999999 sustainedFrom=NOT_SUSTAINED
+L2 seed=42 target=0.7 first=round=31 virtual=6.819924391858971 wall=72.41077339999998 sustainedFrom=NOT_SUSTAINED
+L2 seed=43 target=0.65 first=round=9 virtual=1.5050750434221059 wall=17.092105599999996 sustainedFrom=70
+L2 seed=43 target=0.68 first=round=15 virtual=2.5019943215050438 wall=28.589952799999995 sustainedFrom=70
+L2 seed=43 target=0.69 first=round=22 virtual=3.5879667876714914 wall=42.142637199999996 sustainedFrom=70
+L2 seed=43 target=0.7 first=round=51 virtual=8.332695790523422 wall=97.20760580000001 sustainedFrom=70
+L2 seed=44 target=0.65 first=round=10 virtual=1.6604668479490545 wall=18.273712600000003 sustainedFrom=61
+L2 seed=44 target=0.68 first=round=12 virtual=1.9876779555517554 wall=21.6726913 sustainedFrom=67
+L2 seed=44 target=0.69 first=round=20 virtual=3.2792525422481376 wall=36.617803200000004 sustainedFrom=67
+L2 seed=44 target=0.7 first=round=46 virtual=7.2893630342085975 wall=84.72335129999999 sustainedFrom=68
+L2 seed=45 target=0.65 first=round=11 virtual=1.8106011196425966 wall=20.605021599999997 sustainedFrom=47
+L2 seed=45 target=0.68 first=round=11 virtual=1.8106011196425966 wall=20.605021599999997 sustainedFrom=61
+L2 seed=45 target=0.69 first=round=17 virtual=2.7733779648772403 wall=32.7292732 sustainedFrom=69
+L2 seed=45 target=0.7 first=round=24 virtual=3.8520970301245954 wall=45.958567200000005 sustainedFrom=NOT_SUSTAINED
+L2 seed=46 target=0.65 first=round=10 virtual=1.4876762621947428 wall=17.4154431 sustainedFrom=70
+L2 seed=46 target=0.68 first=round=17 virtual=2.5416214295218427 wall=29.486245000000007 sustainedFrom=70
+L2 seed=46 target=0.69 first=round=18 virtual=2.6772100835359645 wall=31.276578200000007 sustainedFrom=NOT_SUSTAINED
+L2 seed=46 target=0.7 first=round=34 virtual=5.206569239351283 wall=59.043448600000005 sustainedFrom=NOT_SUSTAINED
+L3 seed=42 target=0.65 first=round=12 virtual=2.3971995654073983 wall=24.766901599999997 sustainedFrom=65
+L3 seed=42 target=0.68 first=round=16 virtual=3.335899117513433 wall=32.8713717 sustainedFrom=NOT_SUSTAINED
+L3 seed=42 target=0.69 first=round=23 virtual=6.2693147960788975 wall=58.8647313 sustainedFrom=NOT_SUSTAINED
+L3 seed=42 target=0.7 first=round=27 virtual=8.768627230570516 wall=71.429792 sustainedFrom=NOT_SUSTAINED
+L3 seed=43 target=0.65 first=round=9 virtual=1.7509842352917817 wall=17.2267199 sustainedFrom=61
+L3 seed=43 target=0.68 first=round=19 virtual=4.218658784721521 wall=39.700676400000006 sustainedFrom=69
+L3 seed=43 target=0.69 first=round=19 virtual=4.218658784721521 wall=39.700676400000006 sustainedFrom=69
+L3 seed=43 target=0.7 first=round=21 virtual=4.762219885651363 wall=44.119720400000006 sustainedFrom=69
+L3 seed=44 target=0.65 first=round=9 virtual=1.8228101424486582 wall=18.4002416 sustainedFrom=NOT_SUSTAINED
+L3 seed=44 target=0.68 first=round=13 virtual=2.574867684618078 wall=25.5362047 sustainedFrom=NOT_SUSTAINED
+L3 seed=44 target=0.69 first=round=13 virtual=2.574867684618078 wall=25.5362047 sustainedFrom=NOT_SUSTAINED
+L3 seed=44 target=0.7 first=round=26 virtual=5.430609718635212 wall=50.15856829999999 sustainedFrom=NOT_SUSTAINED
+L3 seed=45 target=0.65 first=round=9 virtual=1.5017331773204194 wall=16.5978756 sustainedFrom=66
+L3 seed=45 target=0.68 first=round=16 virtual=2.9115658222538174 wall=29.535872399999995 sustainedFrom=68
+L3 seed=45 target=0.69 first=round=19 virtual=3.5773160159925212 wall=34.93845869999999 sustainedFrom=69
+L3 seed=45 target=0.7 first=round=28 virtual=5.601758792410511 wall=51.66913889999998 sustainedFrom=69
+L3 seed=46 target=0.65 first=round=11 virtual=1.8407517251240562 wall=19.5700284 sustainedFrom=64
+L3 seed=46 target=0.68 first=round=18 virtual=3.2464360712481177 wall=31.787431700000006 sustainedFrom=NOT_SUSTAINED
+L3 seed=46 target=0.69 first=round=23 virtual=4.314837045214288 wall=40.396920500000014 sustainedFrom=NOT_SUSTAINED
+L3 seed=46 target=0.7 first=round=25 virtual=4.747735520700321 wall=43.847477900000015 sustainedFrom=NOT_SUSTAINED
+L4 seed=42 target=0.65 first=round=12 virtual=3.0447012969579625 wall=25.314400400000004 sustainedFrom=68
+L4 seed=42 target=0.68 first=round=13 virtual=3.3010448633864806 wall=27.260277300000006 sustainedFrom=68
+L4 seed=42 target=0.69 first=round=16 virtual=4.157503139170998 wall=34.0066922 sustainedFrom=68
+L4 seed=42 target=0.7 first=round=29 virtual=10.883596379425937 wall=79.0476873 sustainedFrom=68
+L4 seed=43 target=0.65 first=round=10 virtual=1.9098167832917787 wall=18.0514719 sustainedFrom=65
+L4 seed=43 target=0.68 first=round=12 virtual=2.253017089128651 wall=21.3372067 sustainedFrom=65
+L4 seed=43 target=0.69 first=round=16 virtual=3.0714102965820054 wall=29.162252900000002 sustainedFrom=65
+L4 seed=43 target=0.7 first=round=25 virtual=5.38533786512997 wall=46.71639520000002 sustainedFrom=65
+L4 seed=44 target=0.65 first=round=11 virtual=2.168478579519894 wall=20.729986299999997 sustainedFrom=NOT_SUSTAINED
+L4 seed=44 target=0.68 first=round=17 virtual=3.52505323508117 wall=32.3588148 sustainedFrom=NOT_SUSTAINED
+L4 seed=44 target=0.69 first=round=17 virtual=3.52505323508117 wall=32.3588148 sustainedFrom=NOT_SUSTAINED
+L4 seed=44 target=0.7 first=round=24 virtual=5.078012308312281 wall=45.7740622 sustainedFrom=NOT_SUSTAINED
+L4 seed=45 target=0.65 first=round=7 virtual=1.4022690231214392 wall=13.507845300000001 sustainedFrom=70
+L4 seed=45 target=0.68 first=round=12 virtual=2.528860334625483 wall=22.7473959 sustainedFrom=70
+L4 seed=45 target=0.69 first=round=17 virtual=3.612478909275296 wall=31.884666799999998 sustainedFrom=70
+L4 seed=45 target=0.7 first=round=20 virtual=4.251490272949304 wall=37.4186527 sustainedFrom=70
+L4 seed=46 target=0.65 first=round=8 virtual=1.5388363035858021 wall=14.54942 sustainedFrom=69
+L4 seed=46 target=0.68 first=round=18 virtual=3.6871544283231725 wall=31.9285639 sustainedFrom=NOT_SUSTAINED
+L4 seed=46 target=0.69 first=round=22 virtual=4.552880734277306 wall=38.90448810000001 sustainedFrom=NOT_SUSTAINED
+L4 seed=46 target=0.7 first=round=30 virtual=6.1631301405682954 wall=52.76915180000001 sustainedFrom=NOT_SUSTAINED
+L5 seed=42 target=0.65 first=round=11 virtual=1.9497596773086232 wall=22.705933500000004 sustainedFrom=61
+L5 seed=42 target=0.68 first=round=17 virtual=3.1696467544209215 wall=34.611526600000005 sustainedFrom=68
+L5 seed=42 target=0.69 first=round=20 virtual=3.7557117083341156 wall=40.1272175 sustainedFrom=68
+L5 seed=42 target=0.7 first=round=20 virtual=3.7557117083341156 wall=40.1272175 sustainedFrom=68
+L5 seed=43 target=0.65 first=round=11 virtual=1.8213381476717447 wall=20.5102725 sustainedFrom=61
+L5 seed=43 target=0.68 first=round=26 virtual=4.843615352359365 wall=47.8213213 sustainedFrom=63
+L5 seed=43 target=0.69 first=round=26 virtual=4.843615352359365 wall=47.8213213 sustainedFrom=67
+L5 seed=43 target=0.7 first=round=40 virtual=9.351294452362938 wall=75.66943239999999 sustainedFrom=NOT_SUSTAINED
+L5 seed=44 target=0.65 first=round=12 virtual=2.0328551292320522 wall=22.988576600000002 sustainedFrom=61
+L5 seed=44 target=0.68 first=round=14 virtual=2.420914048283636 wall=27.529668100000002 sustainedFrom=64
+L5 seed=44 target=0.69 first=round=22 virtual=5.468309853173796 wall=52.3523674 sustainedFrom=68
+L5 seed=44 target=0.7 first=round=35 virtual=9.640587114455158 wall=84.40402170000002 sustainedFrom=70
+L5 seed=45 target=0.65 first=round=7 virtual=1.1256296330841757 wall=12.457863 sustainedFrom=68
+L5 seed=45 target=0.68 first=round=21 virtual=3.2263541846054786 wall=36.612649 sustainedFrom=68
+L5 seed=45 target=0.69 first=round=21 virtual=3.2263541846054786 wall=36.612649 sustainedFrom=68
+L5 seed=45 target=0.7 first=round=21 virtual=3.2263541846054786 wall=36.612649 sustainedFrom=68
+L5 seed=46 target=0.65 first=round=10 virtual=1.492712162927813 wall=17.2783475 sustainedFrom=64
+L5 seed=46 target=0.68 first=round=15 virtual=2.226091001795763 wall=25.9217793 sustainedFrom=64
+L5 seed=46 target=0.69 first=round=22 virtual=3.538465883426799 wall=38.054497500000004 sustainedFrom=64
+L5 seed=46 target=0.7 first=round=27 virtual=4.6058498165807995 wall=46.78445000000001 sustainedFrom=67
+
+PARETO INTERPRETATION: compare accuracy/Macro-F1/coverage upward; Gini/staleness/instability/time downward. Paired estimates do not establish equality or superiority.
+If a fixed policy matches adaptive coverage/Gini and learning outcomes, adaptive feedback's added value is not established by this batch.
+This batch has ONE fixed partition; repeat the full protocol on additional partition manifests and report each separately before cross-partition claims.
+bạ

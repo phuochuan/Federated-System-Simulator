@@ -20,6 +20,12 @@ public final class FuzzyClientSelector {
         metrics.put("fairnessMode",FuzzySelectionConfig.usesCredit(c.selection())?c.fuzzySelection().fairness.mode:"none");
         metrics.put("criteriaObservations",extracted.observations());metrics.put("fuzzyDecisionMatrix",extracted.matrix());metrics.put("fuzzyTopsisDetails",ranked);
         metrics.put("selectorVersion",state.version);
+        var topsisTopK=ranked.scores().keySet().stream().sorted(Comparator.<Integer>comparingDouble(ranked.scores()::get).reversed()
+                .thenComparingInt(Integer::intValue)).limit(scheduled.selected().size()).toList();
+        var original=new HashSet<>(topsisTopK);
+        long changed=scheduled.selected().stream().filter(id->!original.contains(id)).count();
+        metrics.put("topsisTopKClientIds",topsisTopK);metrics.put("slotsChangedVsTopsis",changed);
+        metrics.put("slotsChangedVsTopsisRatio",scheduled.selected().isEmpty()?null:changed/(double)scheduled.selected().size());
         return new Decision(scheduled.selected().stream().map(byId::get).toList(),metrics);
     }
 }

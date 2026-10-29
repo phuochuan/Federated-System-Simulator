@@ -1,0 +1,4 @@
+round,selectedIdsEqual,acceptedIdsEqual,estimatedFeasibleIdsEqual,criteriaObservationsEqual,fuzzyTopsisScoresEqual,fairnessCreditsEqual,currentFairnessLambdaEqual,selectedSetEqual,acceptedSetEqual,slotsChanged,maxEstimatedTimeDeltaSeconds
+1,True,True,True,True,True,True,True,True,True,0,0.0
+2,True,True,True,False,False,True,True,True,True,0,0.0008164999999280553
+3,False,False,True,False,False,True,True,False,False,1,0.0005348999999341686

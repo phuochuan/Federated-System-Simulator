@@ -2,7 +2,7 @@
 
 This implementation investigates system efficiency, model quality and long-term client participation. It adds three **selection** methods to the Java coordinator; it does not add an aggregation method or change FedAvg/FedLBW. All three share the same fuzzy engine:
 
-FMCDM means **Fuzzy Multi-Criteria Decision Making**. In the [Controlled Experiment Matrix](controlled-matrix.md#nhóm-f--fmcdm-client-selection), it is the new **group F**, alongside the retained A/B/C groups. `MINIFLS_METHOD=fuzzy_matrix` is the enabled launcher for F1–F5; `MINIFLS_METHOD=matrix` executes only the A/B/C calls enabled in the application class (currently all commented). Python's method registry remains the aggregation catalog; these selectors run at the Federated Server in Java.
+FMCDM means **Fuzzy Multi-Criteria Decision Making**. In the [Controlled Experiment Matrix](controlled-matrix.md#nhóm-f--fmcdm-client-selection), it is **group F**, alongside the retained A/B/C groups. `MINIFLS_METHOD=fuzzy_matrix` is the enabled launcher for F1–F5; `MINIFLS_METHOD=matrix` executes only the A/B/C calls enabled in the application class. Python's method registry remains the aggregation catalog; these selectors run at the Federated Server in Java.
 
 | Method | Default criteria | Scheduler |
 |---|---|---|
@@ -114,6 +114,8 @@ Empty coverage denominators are null/N/A; all-zero Gini is zero by convention an
 Selector time includes shared feasibility diagnostics plus decision, criteria extraction, ranking, snapshotting audit input and scheduling for every policy. `fairnessUpdateMs` separately measures valid-opportunity accounting and, for fuzzy methods, credit/controller update. Both include their local summary logging. Existing virtual time includes simulated job duration plus proxy/weight/aggregation overhead, excluding test evaluation. `virtualRoundSecondsWithSelector` and `cumulativeVirtualSecondsWithSelector` additionally include selector and fairness bookkeeping. Wall time includes real sequential training, test evaluation and local overhead, excluding initialization; it is not a networked FL deployment time. Logical tensor bytes are reported; WAN communication latency/cost remains NOT_MODELED.
 
 ## Controlled F experiments
+
+The separate [L0–L5 fixed-lambda ablation](lambda-ablation.md) tests whether adaptive feedback adds value beyond a sufficiently large fixed credit coefficient. It keeps this engine/controller unchanged and adds stability and same-history raw-TOPSIS slot replacement diagnostics. Launch with `MINIFLS_METHOD=lambda_ablation`; the F protocol remains available unchanged.
 
 `configurations/fuzzy-matrix.json` is a separate protocol; existing A/B/C configuration and entry points are retained. F1 feasible_random, F2 resource_aware, F3 fuzzy_topsis, F4 fuzzy_topsis_fair, F5 adaptive_fuzzy_topsis_fair all use FedAvg, large `54-256-128-7` MLP, a fixed Non-IID alpha=.5 manifest, 100 clients, K=5, 70 rounds, seeds `[42,43,44,45,46]`, local epoch1, batch32 and LR=.01. Scenario: heterogeneous, availability .9, dropout .05, deadline10s, requiredRAM600MB, jitter .1. Seeds vary model/training/selection/scenario; the dataset partition remains fixed at data seed42.
 

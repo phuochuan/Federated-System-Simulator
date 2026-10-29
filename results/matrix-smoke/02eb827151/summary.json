@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "experiments": 16,
+  "seeds": [
+    42,
+    43
+  ],
+  "pairedInitialWeights": "verified",
+  "sharedTraces": "verified",
+  "reports": [
+    "D:\\research\\federated-system\\artifacts\\comparisons\\20261025-162100-993abb7f\\A-model-size.txt",
+    "D:\\research\\federated-system\\artifacts\\comparisons\\20261025-162100-993abb7f\\B-aggregation.txt",
+    "D:\\research\\federated-system\\artifacts\\comparisons\\20261025-162100-993abb7f\\C-client-selection.txt"
+  ],
+  "evidence": "D:\\research\\federated-system\\artifacts\\matrix-smoke\\02eb827151"
+}

@@ -33,6 +33,7 @@ class ControlledExperimentsTests {
         config.put("iidManifestPath","iid");config.put("nonIidManifestPath","non-iid");
         config.set("seeds",json.valueToTree(List.of(42,43,44)));
         config.set("fuzzySelection",json.readTree(Files.readString(Path.of("../configurations/fuzzy-matrix.json"))).get("fuzzySelection"));
+        config.set("lambdaAblation",json.readTree(Files.readString(Path.of("../configurations/lambda-ablation.json"))).get("lambdaAblation"));
         ((ObjectNode)config.path("baseConfig")).put("rounds",2);
         Files.writeString(root.resolve("matrix.json"),json.writeValueAsString(config));
         var env=new MockEnvironment().withProperty("minifls.launch.workspace",root.toString())
@@ -81,6 +82,8 @@ class ControlledExperimentsTests {
                     "acceptedIds":[0,1],"selectedIds":[0,1]}
                     """);
             metrics.put("roundId",round);metrics.put("modelVersion",round);
+            metrics.put("slotsChangedVsTopsis",0);metrics.put("currentFairnessLambda",config.selection().equals("fuzzy_topsis")?0:
+                    config.fuzzySelection()==null?0:config.fuzzySelection().fairness.initialLambda);
             metrics.set("scenarioTrace",trace.round(round));
             ((ObjectNode)metrics.path("evaluation")).put("architecture",config.architecture()).put("macroF1",f1);
             rounds.add(metrics);
@@ -208,5 +211,81 @@ class ControlledExperimentsTests {
         ((ObjectNode)c3.result().path("evaluation")).put("macroF1",.62);
         ((ObjectNode)c4.result().path("evaluation")).put("macroF1",.69);
         assertEquals(.03,FactorialReport.interaction(c1,c2,c3,c4,"macroF1"),1e-10);
+    }
+
+    @Test void lambdaPoliciesChangeOnlySelectionAndInitialLambda() throws Exception {
+        double[] expected={0,.3,.5,.7,.9,.3};
+        ObjectNode reference=null;
+        for(var row:ControlledExperiments.LAMBDA_ROWS) {
+            var c=matrix.configFor(row,42);
+            assertEquals(expected[row.ordinal()-ControlledExperiments.Row.L0.ordinal()],c.fuzzySelection().fairness.initialLambda);
+            var node=(ObjectNode)json.valueToTree(c);node.remove(List.of("experimentId","selection"));
+            ((ObjectNode)node.path("fuzzySelection").path("fairness")).remove("lambda");
+            if(reference==null) reference=node;else assertEquals(reference,node);
+            assertEquals("fedavg",c.aggregation());
+        }
+        assertEquals("fuzzy_topsis",matrix.configFor(ControlledExperiments.Row.L0,42).selection());
+        assertEquals("adaptive_fuzzy_topsis_fair",matrix.configFor(ControlledExperiments.Row.L5,42).selection());
+    }
+
+    @Test void lambdaBatchRunsAllSixRowsOnceAndExportsControlledPairs() throws Exception {
+        var input=(ObjectNode)json.readTree(Files.readString(root.resolve("matrix.json")));
+        input.putArray("accuracyTargets").add(.65).add(.99); // Reached and genuinely censored targets in the fixture.
+        Files.writeString(root.resolve("matrix.json"),json.writeValueAsString(input));
+        String report=Files.readString(matrix.compareFixedLambdaAblation());
+        verify(coordinator,times(18)).startAndAwait(any());
+        for(String pair:List.of("L0 VS L5","L1 VS L5","L2 VS L5","L3 VS L5","L4 VS L5","L0 VS L4")) assertTrue(report.contains(pair));
+        assertTrue(report.contains("Status: COMPLETED"));assertTrue(report.contains("accuracyTailSd"));
+        assertTrue(report.contains("slotsChangedVsTopsisRatio"));assertTrue(report.contains("NOT_REACHED"));
+        assertTrue(report.contains("RIGHT MINUS LEFT"));assertTrue(report.contains("ONE fixed partition"));
+    }
+
+    @Test void lambdaComparisonRejectsAnyOtherConfigOrTraceChange() throws Exception {
+        var a=matrix.runL0(42);var b=matrix.runL3(42);
+        assertDoesNotThrow(()->matrix.validatePair(a,b,"lambdaPolicy"));
+        b.config().fuzzySelection().uncertaintyFallback=.2;
+        assertThrows(IllegalStateException.class,()->matrix.validatePair(a,b,"lambdaPolicy"));
+        b.config().fuzzySelection().uncertaintyFallback=.1;
+        ((ObjectNode)b.rounds().get(0).path("scenarioTrace").path("clients").get(99)).put("jitterMultiplier",.99);
+        assertThrows(IllegalStateException.class,()->matrix.validatePair(a,b,"lambdaPolicy"));
+    }
+
+    @Test void failedLambdaBatchKeepsIncompleteEvidenceWithoutSummary() throws Exception {
+        doAnswer(i->{ExperimentConfig c=i.getArgument(0);
+            if(c.experimentId().contains("-L3-")) throw new IllegalStateException("injected worker failure");
+            complete(c);return null;
+        }).when(coordinator).startAndAwait(any());
+        assertThrows(IllegalStateException.class,matrix::compareFixedLambdaAblation);
+        try(var paths=Files.walk(root.resolve("artifacts/comparisons"))) {
+            var report=paths.filter(p->p.getFileName().toString().equals("L-fixed-lambda-ablation.txt")).findFirst().orElseThrow();
+            String text=Files.readString(report);assertTrue(text.contains("Status: INCOMPLETE"));
+            assertTrue(text.contains("injected worker failure"));assertFalse(text.contains("SUMMARY: MEAN"));
+        }
+    }
+
+    @Test void stabilityAndReplacementRatiosHaveIndependentExpectedNumbers() throws Exception {
+        var base=matrix.runL1(42);var rounds=new ArrayList<JsonNode>();
+        double[] accuracies={.8,.6,.7,.5},f1={.4,.3,.5,.1};int[] replacements={0,1,2,1};
+        for(int i=0;i<4;i++) {
+            var r=(ObjectNode)base.rounds().get(0).deepCopy();r.put("slotsChangedVsTopsis",replacements[i]);
+            ((ObjectNode)r.get("evaluation")).put("accuracy",accuracies[i]).put("macroF1",f1[i]);rounds.add(r);
+        }
+        var run=new ControlledExperiments.RunResult(base.row(),base.config(),base.experiment(),rounds.get(3),rounds);
+        assertEquals(.6,LambdaAblationReport.value(run,"accuracyTailMean",3),1e-12);
+        assertEquals(.1,LambdaAblationReport.value(run,"accuracyTailSd",3),1e-12);
+        assertEquals(.2,LambdaAblationReport.value(run,"macroF1TailSd",3),1e-12);
+        assertEquals(20,LambdaAblationReport.value(run,"maxAccuracyDropPp",3),1e-10);
+        assertEquals(-20,LambdaAblationReport.value(run,"finalAccuracyChangePp",3),1e-10);
+        assertEquals(.5,LambdaAblationReport.value(run,"slotsChangedVsTopsisRatio",3),1e-12);
+        var shortRun=new ControlledExperiments.RunResult(base.row(),base.config(),base.experiment(),rounds.get(0),List.of(rounds.get(0)));
+        assertTrue(Double.isNaN(LambdaAblationReport.value(shortRun,"accuracyTailSd",10)));
+    }
+
+    @Test void invalidLambdaBoundsAreRejectedBeforeAnyTraining() throws Exception {
+        var input=(ObjectNode)json.readTree(Files.readString(root.resolve("matrix.json")));
+        ((ObjectNode)input.path("fuzzySelection").path("fairness")).put("lambdaMax",.8);
+        Files.writeString(root.resolve("matrix.json"),json.writeValueAsString(input));
+        assertThrows(IllegalStateException.class,matrix::compareFixedLambdaAblation);
+        verifyNoInteractions(coordinator);
     }
 }

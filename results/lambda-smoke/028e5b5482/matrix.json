@@ -1,0 +1,82 @@
+{
+  "iidManifestPath": "artifacts/lambda-smoke/028e5b5482/iid",
+  "nonIidManifestPath": "artifacts/lambda-smoke/028e5b5482/non-iid",
+  "seeds": [
+    42,
+    43
+  ],
+  "accuracyTargets": [
+    0.65,
+    0.68,
+    0.69,
+    0.7
+  ],
+  "lambdaAblation": {
+    "fixedLambdas": [
+      0.0,
+      0.3,
+      0.5,
+      0.7,
+      0.9
+    ],
+    "stabilityWindow": 10
+  },
+  "heterogeneousScenario": {
+    "resourceProfile": "heterogeneous",
+    "availability": 0.9,
+    "dropout": 0.05,
+    "deadlineSeconds": 10.0,
+    "requiredRamMb": 600.0,
+    "jitter": 0.1
+  },
+  "baseConfig": {
+    "experimentId": "lambda-template",
+    "manifestPath": "artifacts/partitions/covertype-dirichlet-42",
+    "totalClients": 100,
+    "selectedPerRound": 5,
+    "rounds": 3,
+    "seed": 42,
+    "selection": "fuzzy_topsis",
+    "aggregation": "fedavg",
+    "localEpochs": 1,
+    "batchSize": 32,
+    "learningRate": 0.01,
+    "simulationEnabled": true,
+    "resourceProfile": "heterogeneous",
+    "availability": 0.9,
+    "dropout": 0.05,
+    "jitter": 0.1,
+    "exploration": 0.2,
+    "deadlineSeconds": 10.0,
+    "requiredRamMb": 600.0,
+    "priorSecondsPerSample": 0.0005,
+    "targetAccuracy": 0.7
+  },
+  "fuzzySelection": {
+    "weights": {
+      "estimatedTime": 0.4,
+      "reliability": 0.35,
+      "learningUtility": 0.25
+    },
+    "uncertaintyMode": "history_based",
+    "uncertaintyFallback": 0.1,
+    "uncertaintyScale": 1.0,
+    "uncertaintyMax": 0.45,
+    "reliabilityAlpha": 1.0,
+    "reliabilityBeta": 1.0,
+    "learningUtilityPrior": 0.5,
+    "epsilon": 1e-09,
+    "allowFairnessDoubleCounting": false,
+    "fairness": {
+      "mode": "credit_score",
+      "lambda": 0.3,
+      "lambdaMin": 0.0,
+      "lambdaMax": 1.0,
+      "adaptationRate": 0.05,
+      "targetFeasibleGini": 0.55,
+      "smoothing": 0.8,
+      "maxUpdate": 0.05,
+      "fairnessQuota": 0
+    }
+  }
+}

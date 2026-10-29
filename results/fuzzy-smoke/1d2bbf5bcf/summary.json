@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "protocol": "SYNTHETIC_SMOKE_ONLY",
+  "experiments": 10,
+  "roundsPerExperiment": 3,
+  "seeds": [
+    42,
+    43
+  ],
+  "pairedInitialWeights": "verified",
+  "sharedTraces": "verified",
+  "independentNumericalAndCreditReplay": "verified",
+  "report": "D:\\research\\federated-system\\artifacts\\comparisons\\20261025-205132-33c1e17e\\F-fuzzy-client-selection.txt",
+  "evidence": "D:\\research\\federated-system\\artifacts\\fuzzy-smoke\\1d2bbf5bcf"
+}

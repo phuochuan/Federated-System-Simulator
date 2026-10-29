@@ -1,0 +1,760 @@
+[
+  {
+    "roundId": 1,
+    "modelVersion": 0,
+    "outcome": "SKIPPED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      34,
+      15,
+      29,
+      75,
+      39
+    ],
+    "selectionDecisions": [
+      {
+        "estimateSource": "prior",
+        "predictedSeconds": 0.053,
+        "clientId": 34
+      },
+      {
+        "estimateSource": "prior",
+        "predictedSeconds": 0.053,
+        "clientId": 15
+      },
+      {
+        "estimateSource": "prior",
+        "predictedSeconds": 0.053,
+        "clientId": 29
+      },
+      {
+        "estimateSource": "prior",
+        "predictedSeconds": 0.026000000000000002,
+        "clientId": 75
+      },
+      {
+        "estimateSource": "prior",
+        "predictedSeconds": 0.053,
+        "clientId": 39
+      }
+    ],
+    "acceptedIds": [],
+    "participants": [
+      {
+        "clientId": 15,
+        "accepted": false,
+        "status": "TIMEOUT",
+        "training": {
+          "experimentId": "timeout-dace1599c0",
+          "roundId": 1,
+          "clientId": 15,
+          "baseModelVersion": 0,
+          "numSamples": 53,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/timeout-dace1599c0/r0001_client015_43a21f44-b384-405e-b2d3-2332e968fa28.pt",
+          "trainingLoss": 1.9429830087805695,
+          "actualTrainingMs": 13.958900000943686,
+          "workerRssMb": 358.42578125,
+          "workerPeakRssMb": 358.4296875,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 15,
+          "status": "TIMEOUT",
+          "virtualTrainingSeconds": 0.029868840690842266,
+          "completionSeconds": 1e-09
+        },
+        "tier": "LOW"
+      },
+      {
+        "clientId": 29,
+        "accepted": false,
+        "status": "TIMEOUT",
+        "training": {
+          "experimentId": "timeout-dace1599c0",
+          "roundId": 1,
+          "clientId": 29,
+          "baseModelVersion": 0,
+          "numSamples": 53,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/timeout-dace1599c0/r0001_client029_43a21f44-b384-405e-b2d3-2332e968fa28.pt",
+          "trainingLoss": 1.9598621129989624,
+          "actualTrainingMs": 27.641599999697064,
+          "workerRssMb": 358.42578125,
+          "workerPeakRssMb": 358.4296875,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 29,
+          "status": "TIMEOUT",
+          "virtualTrainingSeconds": 0.056336392017062024,
+          "completionSeconds": 1e-09
+        },
+        "tier": "LOW"
+      },
+      {
+        "clientId": 34,
+        "accepted": false,
+        "status": "TIMEOUT",
+        "training": {
+          "experimentId": "timeout-dace1599c0",
+          "roundId": 1,
+          "clientId": 34,
+          "baseModelVersion": 0,
+          "numSamples": 53,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/timeout-dace1599c0/r0001_client034_43a21f44-b384-405e-b2d3-2332e968fa28.pt",
+          "trainingLoss": 1.9497558800679333,
+          "actualTrainingMs": 25.918100000126287,
+          "workerRssMb": 358.42578125,
+          "workerPeakRssMb": 358.4296875,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 34,
+          "status": "TIMEOUT",
+          "virtualTrainingSeconds": 0.05098649598869337,
+          "completionSeconds": 1e-09
+        },
+        "tier": "LOW"
+      },
+      {
+        "clientId": 39,
+        "accepted": false,
+        "status": "TIMEOUT",
+        "training": {
+          "experimentId": "timeout-dace1599c0",
+          "roundId": 1,
+          "clientId": 39,
+          "baseModelVersion": 0,
+          "numSamples": 53,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/timeout-dace1599c0/r0001_client039_43a21f44-b384-405e-b2d3-2332e968fa28.pt",
+          "trainingLoss": 1.9544865612713795,
+          "actualTrainingMs": 19.164100000125472,
+          "workerRssMb": 358.42578125,
+          "workerPeakRssMb": 358.4296875,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 39,
+          "status": "TIMEOUT",
+          "virtualTrainingSeconds": 0.037581486434615494,
+          "completionSeconds": 1e-09
+        },
+        "tier": "LOW"
+      },
+      {
+        "clientId": 75,
+        "accepted": false,
+        "status": "TIMEOUT",
+        "training": {
+          "experimentId": "timeout-dace1599c0",
+          "roundId": 1,
+          "clientId": 75,
+          "baseModelVersion": 0,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/timeout-dace1599c0/r0001_client075_43a21f44-b384-405e-b2d3-2332e968fa28.pt",
+          "trainingLoss": 1.970761592571552,
+          "actualTrainingMs": 21.805899999890244,
+          "workerRssMb": 358.42578125,
+          "workerPeakRssMb": 358.4296875,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 75,
+          "status": "TIMEOUT",
+          "virtualTrainingSeconds": 0.021277504350212136,
+          "completionSeconds": 1e-09
+        },
+        "tier": "MEDIUM"
+      }
+    ],
+    "weights": [],
+    "proxyLosses": [],
+    "proxyEvaluationMs": 0.0,
+    "aggregationMs": 0.0,
+    "evaluation": {
+      "loss": 1.9533111136300223,
+      "accuracy": 0.13285714285714287,
+      "macroF1": 0.06638949089191201,
+      "perClassPrecision": [
+        0.1163141993957704,
+        0.09090909090909091,
+        0.2,
+        0.14756446991404013,
+        0.0,
+        0.5,
+        0.0
+      ],
+      "perClassRecall": [
+        0.385,
+        0.01,
+        0.01,
+        0.515,
+        0.0,
+        0.01,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          77,
+          5,
+          1,
+          117,
+          0,
+          0,
+          0
+        ],
+        [
+          91,
+          2,
+          0,
+          106,
+          1,
+          0,
+          0
+        ],
+        [
+          111,
+          6,
+          2,
+          80,
+          1,
+          0,
+          0
+        ],
+        [
+          88,
+          2,
+          3,
+          103,
+          0,
+          2,
+          2
+        ],
+        [
+          97,
+          3,
+          3,
+          97,
+          0,
+          0,
+          0
+        ],
+        [
+          101,
+          4,
+          0,
+          93,
+          0,
+          2,
+          0
+        ],
+        [
+          97,
+          0,
+          1,
+          102,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 52.36280000099214
+    },
+    "virtualRoundSeconds": 1e-09,
+    "cumulativeVirtualSeconds": 1e-09,
+    "wallClockSeconds": 0.1999317,
+    "fairness": {
+      "opportunityAdjustedGini": 0.0,
+      "maxStaleness": 1,
+      "coverage": 0.0,
+      "meanStaleness": 1.0,
+      "participationGini": 0.0
+    }
+  },
+  {
+    "roundId": 2,
+    "modelVersion": 0,
+    "outcome": "SKIPPED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      79,
+      38,
+      90,
+      59,
+      25
+    ],
+    "selectionDecisions": [
+      {
+        "estimateSource": "prior",
+        "predictedSeconds": 0.026000000000000002,
+        "clientId": 79
+      },
+      {
+        "estimateSource": "prior",
+        "predictedSeconds": 0.053,
+        "clientId": 38
+      },
+      {
+        "estimateSource": "prior",
+        "predictedSeconds": 0.013000000000000001,
+        "clientId": 90
+      },
+      {
+        "estimateSource": "prior",
+        "predictedSeconds": 0.026000000000000002,
+        "clientId": 59
+      },
+      {
+        "estimateSource": "prior",
+        "predictedSeconds": 0.053,
+        "clientId": 25
+      }
+    ],
+    "acceptedIds": [],
+    "participants": [
+      {
+        "clientId": 25,
+        "accepted": false,
+        "status": "TIMEOUT",
+        "training": {
+          "experimentId": "timeout-dace1599c0",
+          "roundId": 2,
+          "clientId": 25,
+          "baseModelVersion": 0,
+          "numSamples": 53,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/timeout-dace1599c0/r0002_client025_03e8820f-e209-42b7-aa6a-3ae8ed96db54.pt",
+          "trainingLoss": 1.954677275891574,
+          "actualTrainingMs": 18.116100000042934,
+          "workerRssMb": 356.7109375,
+          "workerPeakRssMb": 358.43359375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 25,
+          "status": "TIMEOUT",
+          "virtualTrainingSeconds": 0.03624825745714606,
+          "completionSeconds": 1e-09
+        },
+        "tier": "LOW"
+      },
+      {
+        "clientId": 38,
+        "accepted": false,
+        "status": "TIMEOUT",
+        "training": {
+          "experimentId": "timeout-dace1599c0",
+          "roundId": 2,
+          "clientId": 38,
+          "baseModelVersion": 0,
+          "numSamples": 53,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/timeout-dace1599c0/r0002_client038_03e8820f-e209-42b7-aa6a-3ae8ed96db54.pt",
+          "trainingLoss": 1.9594750471834868,
+          "actualTrainingMs": 23.115199999665492,
+          "workerRssMb": 356.7109375,
+          "workerPeakRssMb": 358.43359375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 38,
+          "status": "TIMEOUT",
+          "virtualTrainingSeconds": 0.04448621784674122,
+          "completionSeconds": 1e-09
+        },
+        "tier": "LOW"
+      },
+      {
+        "clientId": 59,
+        "accepted": false,
+        "status": "TIMEOUT",
+        "training": {
+          "experimentId": "timeout-dace1599c0",
+          "roundId": 2,
+          "clientId": 59,
+          "baseModelVersion": 0,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/timeout-dace1599c0/r0002_client059_03e8820f-e209-42b7-aa6a-3ae8ed96db54.pt",
+          "trainingLoss": 1.9775594564584584,
+          "actualTrainingMs": 17.154400000436,
+          "workerRssMb": 356.7109375,
+          "workerPeakRssMb": 358.43359375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 59,
+          "status": "TIMEOUT",
+          "virtualTrainingSeconds": 0.01621241623015827,
+          "completionSeconds": 1e-09
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 79,
+        "accepted": false,
+        "status": "TIMEOUT",
+        "training": {
+          "experimentId": "timeout-dace1599c0",
+          "roundId": 2,
+          "clientId": 79,
+          "baseModelVersion": 0,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/timeout-dace1599c0/r0002_client079_03e8820f-e209-42b7-aa6a-3ae8ed96db54.pt",
+          "trainingLoss": 1.938406779215886,
+          "actualTrainingMs": 24.941399999079295,
+          "workerRssMb": 356.7109375,
+          "workerPeakRssMb": 358.43359375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 79,
+          "status": "TIMEOUT",
+          "virtualTrainingSeconds": 0.025652432672117996,
+          "completionSeconds": 1e-09
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 90,
+        "accepted": false,
+        "status": "TIMEOUT",
+        "training": {
+          "experimentId": "timeout-dace1599c0",
+          "roundId": 2,
+          "clientId": 90,
+          "baseModelVersion": 0,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/timeout-dace1599c0/r0002_client090_03e8820f-e209-42b7-aa6a-3ae8ed96db54.pt",
+          "trainingLoss": 1.9719046721091638,
+          "actualTrainingMs": 18.25280000048224,
+          "workerRssMb": 356.7109375,
+          "workerPeakRssMb": 358.43359375,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 90,
+          "status": "TIMEOUT",
+          "virtualTrainingSeconds": 0.009634932408048549,
+          "completionSeconds": 1e-09
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [],
+    "proxyLosses": [],
+    "proxyEvaluationMs": 0.0,
+    "aggregationMs": 0.0,
+    "evaluation": {
+      "loss": 1.9533111136300223,
+      "accuracy": 0.13285714285714287,
+      "macroF1": 0.06638949089191201,
+      "perClassPrecision": [
+        0.1163141993957704,
+        0.09090909090909091,
+        0.2,
+        0.14756446991404013,
+        0.0,
+        0.5,
+        0.0
+      ],
+      "perClassRecall": [
+        0.385,
+        0.01,
+        0.01,
+        0.515,
+        0.0,
+        0.01,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          77,
+          5,
+          1,
+          117,
+          0,
+          0,
+          0
+        ],
+        [
+          91,
+          2,
+          0,
+          106,
+          1,
+          0,
+          0
+        ],
+        [
+          111,
+          6,
+          2,
+          80,
+          1,
+          0,
+          0
+        ],
+        [
+          88,
+          2,
+          3,
+          103,
+          0,
+          2,
+          2
+        ],
+        [
+          97,
+          3,
+          3,
+          97,
+          0,
+          0,
+          0
+        ],
+        [
+          101,
+          4,
+          0,
+          93,
+          0,
+          2,
+          0
+        ],
+        [
+          97,
+          0,
+          1,
+          102,
+          0,
+          0,
+          0
+        ]
+      ],
+      "evaluationMs": 34.22110000065004
+    },
+    "virtualRoundSeconds": 1e-09,
+    "cumulativeVirtualSeconds": 2e-09,
+    "wallClockSeconds": 0.1723241,
+    "fairness": {
+      "opportunityAdjustedGini": 0.0,
+      "maxStaleness": 2,
+      "coverage": 0.0,
+      "meanStaleness": 2.0,
+      "participationGini": 0.0
+    }
+  }
+]

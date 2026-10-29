@@ -1,0 +1,90 @@
+{
+  "p45:adaptive:None": {
+    "accuracy": {
+      "mean": 0.14857142857142858,
+      "sampleSd": null,
+      "min": 0.14857142857142858,
+      "max": 0.14857142857142858
+    },
+    "macroF1": {
+      "mean": 0.08935401175157663,
+      "sampleSd": null,
+      "min": 0.08935401175157663,
+      "max": 0.08935401175157663
+    },
+    "gini": {
+      "mean": 0.8923423423423423,
+      "sampleSd": null,
+      "min": 0.8923423423423423,
+      "max": 0.8923423423423423
+    },
+    "accuracyTailSd": {
+      "mean": 0.005408484138857405,
+      "sampleSd": null,
+      "min": 0.005408484138857405,
+      "max": 0.005408484138857405
+    },
+    "maxAccuracyDropPp": {
+      "mean": 1.0000000000000009,
+      "sampleSd": null,
+      "min": 1.0000000000000009,
+      "max": 1.0000000000000009
+    },
+    "virtualWithSelectorSeconds": {
+      "mean": 0.27951784138837216,
+      "sampleSd": null,
+      "min": 0.27951784138837216,
+      "max": 0.27951784138837216
+    },
+    "acceptedRatio": {
+      "mean": 1.0,
+      "sampleSd": null,
+      "min": 1.0,
+      "max": 1.0
+    }
+  },
+  "p45:fixed:0.7": {
+    "accuracy": {
+      "mean": 0.15428571428571428,
+      "sampleSd": null,
+      "min": 0.15428571428571428,
+      "max": 0.15428571428571428
+    },
+    "macroF1": {
+      "mean": 0.09617180223719628,
+      "sampleSd": null,
+      "min": 0.09617180223719628,
+      "max": 0.09617180223719628
+    },
+    "gini": {
+      "mean": 0.8146464646464646,
+      "sampleSd": null,
+      "min": 0.8146464646464646,
+      "max": 0.8146464646464646
+    },
+    "accuracyTailSd": {
+      "mean": 0.0039769745448785775,
+      "sampleSd": null,
+      "min": 0.0039769745448785775,
+      "max": 0.0039769745448785775
+    },
+    "maxAccuracyDropPp": {
+      "mean": 0.785714285714284,
+      "sampleSd": null,
+      "min": 0.785714285714284,
+      "max": 0.785714285714284
+    },
+    "virtualWithSelectorSeconds": {
+      "mean": 0.34199065103775633,
+      "sampleSd": null,
+      "min": 0.34199065103775633,
+      "max": 0.34199065103775633
+    },
+    "acceptedRatio": {
+      "mean": 1.0,
+      "sampleSd": null,
+      "min": 1.0,
+      "max": 1.0
+    }
+  }
+}

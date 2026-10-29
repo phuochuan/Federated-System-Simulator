@@ -1,6 +1,10 @@
 """API HTTP cục bộ cho ML; phải chạy đúng một uvicorn worker."""
 from contextlib import contextmanager
 import os
+import sys
+import platform
+import hashlib
+import importlib.metadata
 import logging
 from pathlib import Path
 import threading
@@ -20,6 +24,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from .data import Dataset
 from .model import ARCHITECTURE, load_checkpoint, model, save_checkpoint, weighted_average, state_hash, payload_bytes
 from .simulation import simulate_round
+from .operations import cached_response, commit_response, request_hash
 from .methods import METHODS, catalog, get_method
 from .logging_config import logged_operation, log_context, set_log_context
 
@@ -28,6 +33,8 @@ log = logging.getLogger(__name__)
 torch.set_num_threads(int(os.environ.get("MINIFLS_TORCH_THREADS", "1")))
 torch.use_deterministic_algorithms(True)
 ROOT = Path(os.environ.get("MINIFLS_WORKSPACE", Path(__file__).resolve().parents[2])).resolve()
+RUNTIME_SOURCE_HASHES = {p.relative_to(Path(__file__).parent).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+                         for p in sorted(Path(__file__).parent.rglob("*.py"))}
 app = FastAPI(title="MiniFLS ML Worker", version="0.1.0")
 lock = threading.Lock()
 datasets = {}
@@ -107,6 +114,7 @@ class MethodWeights(Strict):
 class Job(Strict):
     clientId: int = Field(ge=0)
     actualTrainingMs: float = Field(ge=0)
+    simulatedTrainingMs: float | None = Field(default=None, ge=0)
     cpu: float = Field(gt=0)
     ramMb: float = Field(gt=0)
     requiredRamMb: float = Field(gt=0)
@@ -180,6 +188,56 @@ def health():
     return dict(status="ok", maxActiveTraining=1, busy=lock.locked(), torchThreads=torch.get_num_threads())
 
 
+@app.get("/runtime")
+def runtime():
+    package_root = Path(__file__).parent
+    sources = {p.relative_to(package_root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+               for p in sorted(package_root.rglob("*.py"))}
+    return dict(python=sys.version, platform=platform.platform(), executionDevice="cpu",
+                idempotentCheckpointOperations=True,
+                torchThreads=torch.get_num_threads(), torchInteropThreads=torch.get_num_interop_threads(),
+                deterministicAlgorithms=torch.are_deterministic_algorithms_enabled(),
+                packages={name: importlib.metadata.version(name) for name in
+                          ("torch", "numpy", "scikit-learn", "simpy", "fastapi", "uvicorn")},
+                sourceHashes=RUNTIME_SOURCE_HASHES, sourceFilesUnchanged=sources == RUNTIME_SOURCE_HASHES)
+
+
+class PrepareDataset(Strict):
+    output: str
+    dataset: Literal["covertype", "synthetic"] = "covertype"
+    clients: int = Field(default=100, ge=1)
+    seed: int = Field(default=42, ge=0)
+    partitionSeed: int = Field(ge=0)
+    alpha: float = Field(default=.5, gt=0)
+
+
+@app.post("/datasets/prepare")
+def prepare_dataset(req: PrepareDataset):
+    from .data import prepare
+    with exclusive():
+        directory = path(req.output)
+        if not directory.exists():
+            prepare(directory, dataset=req.dataset, clients=req.clients, seed=req.seed,
+                    partition_seed=req.partitionSeed, strategy="dirichlet_label_skew", alpha=req.alpha)
+        data = Dataset(directory)  # Validate current hashes even when a directory already exists.
+        expected = dict(dataset=req.dataset, totalClients=req.clients, seed=req.seed,
+                        partitionSeed=req.partitionSeed, strategy="dirichlet_label_skew", alpha=req.alpha)
+        if any(data.manifest.get(k) != value for k, value in expected.items()):
+            raise ValueError("Existing partition manifest does not match requested partition protocol")
+        return data.manifest
+
+
+class ResearchPlotRequest(Strict):
+    resultsPath: str
+
+
+@app.post("/reports/research/plots")
+def research_plots(req: ResearchPlotRequest):
+    from .research_plot import plot_report
+    with exclusive():
+        return {"files": plot_report(path(req.resultsPath))}
+
+
 @app.get("/methods")
 def methods():
     return {"methods": list(METHODS), "catalog": catalog()}
@@ -198,8 +256,13 @@ def method_weights(method: str, req: MethodWeights):
 
 
 @app.get("/datasets/manifest")
-def manifest(manifestPath: str):
+def manifest(manifestPath: str, verify: bool = False):
     with exclusive():
+        if verify:
+            resolved = path(manifestPath)
+            checked = Dataset(resolved)
+            datasets.clear()
+            datasets[resolved] = checked
         return dataset(manifestPath).manifest
 
 
@@ -207,16 +270,22 @@ def manifest(manifestPath: str):
 @logged_operation("initialize")
 def initialize(req: Initialize):
     with exclusive():
+        target = artifact(req.experimentId, f"global_0000_{req.operationId}")
+        cached = cached_response(req, target)
+        if cached is not None:
+            log.info("operation.replayed operation=initialize experiment=%s operationId=%s", req.experimentId, req.operationId)
+            return cached
         dataset(req.manifestPath)
         torch.manual_seed(req.seed)
         state = model(req.architecture).state_dict()
-        target = artifact(req.experimentId, f"global_0000_{req.operationId}")
-        save_checkpoint(target, state, architecture=req.architecture, experimentId=req.experimentId, modelVersion=0)
+        save_checkpoint(target, state, architecture=req.architecture, experimentId=req.experimentId, modelVersion=0,
+                        operationRequestHash=request_hash(req))
         log.info("model.initialized architecture=%s parameters=%s seed=%s checkpoint=%s", req.architecture,
                  sum(t.numel() for t in state.values()), req.seed, relative(target))
-        return dict(checkpointPath=relative(target), modelVersion=0, architecture=req.architecture,
+        response = dict(checkpointPath=relative(target), modelVersion=0, architecture=req.architecture,
                     modelStateHash=state_hash(state), modelPayloadBytes=payload_bytes(state),
                     initializationMethod="pytorch-default-linear-v1", initializationSeed=req.seed)
+        return commit_response(req, target, response)
 
 
 def loader(data, indices, batch_size, shuffle=False, seed=0):
@@ -230,6 +299,11 @@ def loader(data, indices, batch_size, shuffle=False, seed=0):
 @logged_operation("train")
 def train(req: Train):
     with exclusive():
+        target = artifact(req.experimentId, f"r{req.roundId:04}_client{req.clientId:03}_{req.operationId}")
+        cached = cached_response(req, target)
+        if cached is not None:
+            log.info("operation.replayed operation=train experiment=%s round=%s client=%s operationId=%s", req.experimentId, req.roundId, req.clientId, req.operationId)
+            return cached
         started = time.perf_counter()
         data = dataset(req.manifestPath)
         if req.clientId not in data.partitions:
@@ -268,20 +342,20 @@ def train(req: Train):
                               batch_id + 1, len(batches), loss.item())
             log.info("train.epoch epoch=%s/%s loss=%.6f samples=%s elapsedMs=%.2f", epoch + 1, req.training.epochs,
                      epoch_loss / epoch_count, epoch_count, (time.perf_counter() - epoch_started) * 1000)
-        target = artifact(req.experimentId, f"r{req.roundId:04}_client{req.clientId:03}_{req.operationId}")
         metadata = dict(experimentId=req.experimentId, roundId=req.roundId, clientId=req.clientId,
                         baseModelVersion=req.baseModelVersion, numSamples=len(data.partitions[req.clientId]))
-        save_checkpoint(target, network.state_dict(), architecture=checkpoint["architecture"], **metadata)
+        save_checkpoint(target, network.state_dict(), architecture=checkpoint["architecture"], operationRequestHash=request_hash(req), **metadata)
         # RSS thuộc toàn process worker, không đại diện RAM của một thiết bị ảo.
         memory = psutil.Process().memory_info()
         training_ms = (time.perf_counter() - started) * 1000
         log.info("train.saved loss=%.6f trainingMs=%.2f workerRssMb=%.2f update=%s", total_loss / count,
                  training_ms, memory.rss / 2**20, relative(target))
-        return dict(**metadata, architecture=checkpoint["architecture"], modelPayloadBytes=payload_bytes(network.state_dict()), modelSchemaHash=checkpoint["modelSchemaHash"], updatePath=relative(target),
-                    trainingLoss=total_loss / count, actualTrainingMs=training_ms,
+        response = dict(**metadata, architecture=checkpoint["architecture"], modelPayloadBytes=payload_bytes(network.state_dict()), modelSchemaHash=checkpoint["modelSchemaHash"], updatePath=relative(target),
+                    trainingLoss=total_loss / count, actualTrainingMs=training_ms, modelStateHash=state_hash(network.state_dict()),
                     workerRssMb=memory.rss / 2**20,
                     workerPeakRssMb=getattr(memory, "peak_wset", memory.rss) / 2**20,
                     status="TRAINING_COMPLETED")
+        return commit_response(req, target, response)
 
 
 @app.post("/models/evaluate")
@@ -318,7 +392,8 @@ def evaluate(req: Evaluate):
                  req.split, loss / len(actual), accuracy, f1.mean(), recall.min())
         log.debug("evaluate.classes precision=%s recall=%s confusionMatrix=%s", precision.tolist(), recall.tolist(),
                   confusion)
-        return dict(architecture=checkpoint["architecture"], loss=loss / len(actual), accuracy=accuracy, macroF1=float(f1.mean()),
+        return dict(architecture=checkpoint["architecture"], modelStateHash=state_hash(checkpoint["state"]), split=req.split,
+                    loss=loss / len(actual), accuracy=accuracy, macroF1=float(f1.mean()),
                     perClassPrecision=precision.tolist(), perClassRecall=recall.tolist(), worstClassRecall=float(recall.min()),
                     confusionMatrix=confusion, evaluationMs=evaluation_ms)
 
@@ -327,6 +402,11 @@ def evaluate(req: Evaluate):
 @logged_operation("aggregate")
 def aggregate(req: Aggregate):
     with exclusive():
+        target = artifact(req.experimentId, f"global_{req.baseModelVersion + 1:04}_{req.operationId}")
+        cached = cached_response(req, target)
+        if cached is not None:
+            log.info("operation.replayed operation=aggregate experiment=%s round=%s operationId=%s", req.experimentId, req.roundId, req.operationId)
+            return cached
         # Kiểm tra lại artifact dù Java đã lọc metadata của các update được chấp nhận.
         checkpoints = [load_checkpoint(path(p)) for p in req.updates]
         ids = [c["clientId"] for c in checkpoints]
@@ -340,10 +420,11 @@ def aggregate(req: Aggregate):
             raise ValueError("Cannot aggregate updates from different architectures")
         log.info("aggregate.inputs clients=%s weights=%s architecture=%s baseModelVersion=%s", ids, req.weights, architecture, req.baseModelVersion)
         state = weighted_average([c["state"] for c in checkpoints], req.weights, architecture)
-        target = artifact(req.experimentId, f"global_{req.baseModelVersion + 1:04}_{req.operationId}")
-        save_checkpoint(target, state, architecture=architecture, experimentId=req.experimentId, modelVersion=req.baseModelVersion + 1)
+        save_checkpoint(target, state, architecture=architecture, experimentId=req.experimentId, modelVersion=req.baseModelVersion + 1,
+                        operationRequestHash=request_hash(req))
         log.info("aggregate.saved modelVersion=%s checkpoint=%s", req.baseModelVersion + 1, relative(target))
-        return dict(checkpointPath=relative(target), modelVersion=req.baseModelVersion + 1, architecture=architecture)
+        response = dict(checkpointPath=relative(target), modelVersion=req.baseModelVersion + 1, architecture=architecture, modelStateHash=state_hash(state))
+        return commit_response(req, target, response)
 
 
 @app.post("/simulation/round")

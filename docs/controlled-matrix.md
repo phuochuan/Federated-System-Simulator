@@ -6,8 +6,9 @@ Controlled Experiment Matrix có các nhóm A/B/C hiện có và nhóm **F — F
 | --- | --- | --- |
 | `MINIFLS_METHOD=matrix` | `configurations/controlled-matrix.json` | Các lời gọi A/B/C được bật thủ công |
 | `MINIFLS_METHOD=fuzzy_matrix` | `configurations/fuzzy-matrix.json` | `matrix.compareFuzzyClientSelection()` đã được bật |
+| `MINIFLS_METHOD=lambda_ablation` | `configurations/lambda-ablation.json` | `matrix.compareFixedLambdaAblation()` đã được bật |
 
-Trong working tree hiện tại, các lời gọi ở nhánh `matrix` đều đang được comment, nên riêng giá trị `MINIFLS_METHOD=matrix` chưa chạy experiment nào. Để chạy đầy đủ A/B/C, bỏ comment ba dòng sau trong `FerderatedsystemApplication.paperExperiment()`:
+Nhánh `matrix` chỉ chạy các lời gọi được bật trong application class; hiện `compareClientSelection()` đang bật, các lời gọi A/B và cặp riêng C5/C6 đang comment. Để chạy đầy đủ A/B/C, bật ba dòng sau trong `FerderatedsystemApplication.paperExperiment()`:
 
 ```java
 matrix.compareModelSizes();       // A1 và A2
@@ -168,9 +169,11 @@ không tạo kết luận thắng/thua; matrix dừng trước cặp tiếp theo
 không tự gộp các seed từ batch lỗi. Không cần train lại để xem TXT đã ghi.
 
 Các experiment vẫn truy cập được qua `/experiments/{id}`, `/rounds`, `/result` và
-`/metrics.csv`. Sau khi build JAR, `python scripts/verify_matrix.py` kiểm tra workflow A/B/C trên dữ liệu synthetic, cổng/database riêng và một round mỗi run, **với điều kiện đã bật ba lời gọi A/B/C** trong application class. `--client-selection-only` yêu cầu chỉ bật `compareClientSelection()` (C1–C5); tùy chọn này không kiểm tra cặp riêng C5/C6. Với source đang comment toàn bộ nhánh `matrix`, hãy bật lời gọi phù hợp trước khi dùng script này.
+`/metrics.csv`. Sau khi build JAR, `python scripts/verify_matrix.py` kiểm tra workflow A/B/C trên dữ liệu synthetic, cổng/database riêng và một round mỗi run, **với điều kiện đã bật ba lời gọi A/B/C** trong application class. `--client-selection-only` yêu cầu chỉ bật `compareClientSelection()` (C1–C5); tùy chọn này không kiểm tra cặp riêng C5/C6. Luôn kiểm tra các lời gọi đang bật trước khi dùng script này.
 
 ## Nhóm F — FMCDM client selection
+
+Đối chứng sâu hơn về fairness coefficient nằm ở **nhóm L0–L5**, xem [Fixed Lambda Ablation](lambda-ablation.md). Nhóm L giữ nguyên engine và protocol, so sánh fixed0/.3/.5/.7/.9 với adaptive; báo cáo riêng `L-fixed-lambda-ablation.txt`, có stability và slots changed trên cùng factual history. Nhóm L không thay thế F và không mặc định kết luận adaptive tốt hơn fixed lambda lớn.
 
 Nhóm F bổ sung thí nghiệm đối chứng cho selection tại **Federated Server**, trước khi dispatch local training. Cả năm dòng giữ aggregation **FedAvg**; không có aggregation method tên `fuzzy_topsis` và không có package FMCDM trong registry aggregation của Python.
 

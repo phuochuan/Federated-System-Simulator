@@ -1,0 +1,52 @@
+{
+  "experimentId": "seed45-frozen-template",
+  "manifestPath": "artifacts/partitions/covertype-dirichlet-42",
+  "totalClients": 100,
+  "selectedPerRound": 5,
+  "rounds": 70,
+  "seed": 45,
+  "selection": "adaptive_fuzzy_topsis_fair",
+  "aggregation": "fedavg",
+  "localEpochs": 1,
+  "batchSize": 32,
+  "learningRate": 0.01,
+  "simulationEnabled": true,
+  "resourceProfile": "heterogeneous",
+  "availability": 0.9,
+  "dropout": 0.05,
+  "jitter": 0.1,
+  "exploration": 0.2,
+  "deadlineSeconds": 10.0,
+  "requiredRamMb": 600.0,
+  "priorSecondsPerSample": 0.0005,
+  "targetAccuracy": 0.7,
+  "architecture": "mlp_54_256_128_7",
+  "scenarioTracePath": "artifacts/seed45-audit/20261027-183335/freeze/trace.json",
+  "fuzzySelection": {
+    "weights": {
+      "estimatedTime": 0.4,
+      "reliability": 0.35,
+      "learningUtility": 0.25
+    },
+    "uncertaintyMode": "history_based",
+    "uncertaintyFallback": 0.1,
+    "uncertaintyScale": 1.0,
+    "uncertaintyMax": 0.45,
+    "reliabilityAlpha": 1.0,
+    "reliabilityBeta": 1.0,
+    "learningUtilityPrior": 0.5,
+    "epsilon": 1e-09,
+    "allowFairnessDoubleCounting": false,
+    "fairness": {
+      "mode": "credit_score",
+      "lambdaMin": 0.0,
+      "lambdaMax": 1.0,
+      "adaptationRate": 0.05,
+      "targetFeasibleGini": 0.55,
+      "smoothing": 0.8,
+      "maxUpdate": 0.05,
+      "fairnessQuota": 0,
+      "lambda": 0.3
+    }
+  }
+}

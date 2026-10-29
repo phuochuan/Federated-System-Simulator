@@ -1,0 +1,532 @@
+{
+  "historical": {
+    "audits": [
+      {
+        "rounds": 70,
+        "timingCriteriaChecked": 3815,
+        "scoreCreditControllerReplay": "PASS",
+        "timingHistoryAndFeasibility": "PASS"
+      },
+      {
+        "rounds": 70,
+        "timingCriteriaChecked": 3815,
+        "scoreCreditControllerReplay": "PASS",
+        "timingHistoryAndFeasibility": "PASS"
+      }
+    ],
+    "metrics": {
+      "matrix-20261025-210944-391f30e9-F5-s45": {
+        "accuracy": 0.5771759522211322,
+        "macroF1": 0.3388053649420151,
+        "loss": 0.9883913732277124,
+        "coverage": 0.6,
+        "feasibleSelectionGini": 0.3283285885956464,
+        "finalLambda": 0.586850150305147,
+        "virtualSeconds": 26.235959302632764,
+        "wallSeconds": 213.3774029,
+        "meanTrainingMs": 221.19054400023222,
+        "accepted": 340
+      },
+      "matrix-20261025-233756-966e51c9-L5-s45": {
+        "accuracy": 0.700349391576737,
+        "macroF1": 0.4331317586260245,
+        "loss": 0.6820525852542878,
+        "coverage": 0.6,
+        "feasibleSelectionGini": 0.35136908650074683,
+        "finalLambda": 0.7347509984920003,
+        "virtualSeconds": 13.70262054255989,
+        "wallSeconds": 121.9582954,
+        "meanTrainingMs": 127.27921200013952,
+        "accepted": 332
+      }
+    },
+    "comparison": {
+      "left": "matrix-20261025-210944-391f30e9-F5-s45",
+      "right": "matrix-20261025-233756-966e51c9-L5-s45",
+      "differences": {
+        "selectedIdsEqual": {
+          "roundCount": 69,
+          "firstRound": 2
+        },
+        "acceptedIdsEqual": {
+          "roundCount": 64,
+          "firstRound": 7
+        },
+        "estimatedFeasibleIdsEqual": {
+          "roundCount": 0,
+          "firstRound": null
+        },
+        "criteriaObservationsEqual": {
+          "roundCount": 69,
+          "firstRound": 2
+        },
+        "fuzzyTopsisScoresEqual": {
+          "roundCount": 69,
+          "firstRound": 2
+        },
+        "fairnessCreditsEqual": {
+          "roundCount": 63,
+          "firstRound": 8
+        },
+        "currentFairnessLambdaEqual": {
+          "roundCount": 63,
+          "firstRound": 8
+        },
+        "selectedSetEqual": {
+          "roundCount": 64,
+          "firstRound": 7
+        },
+        "acceptedSetEqual": {
+          "roundCount": 64,
+          "firstRound": 7
+        }
+      },
+      "changedSlots": 246,
+      "selectedSlots": 350,
+      "maxEstimatedTimeDeltaSeconds": 2.0702316000009886
+    }
+  },
+  "repeats": {
+    "metrics": {
+      "seed45-20261027-183349-01-F5": {
+        "accuracy": 0.7217345656701262,
+        "macroF1": 0.37120677714723416,
+        "loss": 0.6498792088299934,
+        "coverage": 0.6,
+        "feasibleSelectionGini": 0.3127137057757532,
+        "finalLambda": 0.533921141443354,
+        "virtualSeconds": 23.973947257634652,
+        "wallSeconds": 168.8673317,
+        "meanTrainingMs": 177.06227285714087,
+        "accepted": 334
+      },
+      "seed45-20261027-183349-02-L5": {
+        "accuracy": 0.7275089929605343,
+        "macroF1": 0.39539508729396705,
+        "loss": 0.6396677296874966,
+        "coverage": 0.59,
+        "feasibleSelectionGini": 0.397398907969663,
+        "finalLambda": 0.43699321525416546,
+        "virtualSeconds": 17.89258394048297,
+        "wallSeconds": 161.043069904,
+        "meanTrainingMs": 163.05458200000106,
+        "accepted": 339
+      },
+      "seed45-20261027-183349-03-L5": {
+        "accuracy": 0.7167346517271648,
+        "macroF1": 0.42126165188062215,
+        "loss": 0.6541000560290989,
+        "coverage": 0.6,
+        "feasibleSelectionGini": 0.3258957853714663,
+        "finalLambda": 0.6384788605605026,
+        "virtualSeconds": 16.29481692952627,
+        "wallSeconds": 129.5055709,
+        "meanTrainingMs": 125.43658942856447,
+        "accepted": 333
+      },
+      "seed45-20261027-183349-04-F5": {
+        "accuracy": 0.7298669558183164,
+        "macroF1": 0.41389038535013345,
+        "loss": 0.63996207060185,
+        "coverage": 0.6,
+        "feasibleSelectionGini": 0.35674594686720096,
+        "finalLambda": 0.614884803505124,
+        "virtualSeconds": 16.691998191964807,
+        "wallSeconds": 157.819802,
+        "meanTrainingMs": 157.97624371428552,
+        "accepted": 335
+      }
+    },
+    "summary": {
+      "accuracy": {
+        "n": 4,
+        "mean": 0.7239612915440354,
+        "sampleSd": 0.005906089710952694,
+        "min": 0.7167346517271648,
+        "max": 0.7298669558183164,
+        "range": 0.013132304091151625,
+        "cv": 0.008158018639859078
+      },
+      "macroF1": {
+        "n": 4,
+        "mean": 0.4004384754179892,
+        "sampleSd": 0.02231954678735258,
+        "min": 0.37120677714723416,
+        "max": 0.42126165188062215,
+        "range": 0.05005487473338799,
+        "cv": 0.05573776786572468
+      },
+      "loss": {
+        "n": 4,
+        "mean": 0.6459022662871097,
+        "sampleSd": 0.00723821340834775,
+        "min": 0.6396677296874966,
+        "max": 0.6541000560290989,
+        "range": 0.014432326341602297,
+        "cv": 0.01120636013549811
+      },
+      "coverage": {
+        "n": 4,
+        "mean": 0.5974999999999999,
+        "sampleSd": 0.0050000000000000044,
+        "min": 0.59,
+        "max": 0.6,
+        "range": 0.010000000000000009,
+        "cv": 0.008368200836820092
+      },
+      "feasibleSelectionGini": {
+        "n": 4,
+        "mean": 0.34818858649602086,
+        "sampleSd": 0.03764005092166944,
+        "min": 0.3127137057757532,
+        "max": 0.397398907969663,
+        "range": 0.08468520219390979,
+        "cv": 0.10810248348591288
+      },
+      "finalLambda": {
+        "n": 4,
+        "mean": 0.5560695051907865,
+        "sampleSd": 0.09114138103338039,
+        "min": 0.43699321525416546,
+        "max": 0.6384788605605026,
+        "range": 0.20148564530633717,
+        "cv": 0.16390285779492608
+      },
+      "virtualSeconds": {
+        "n": 4,
+        "mean": 18.713336579902176,
+        "sampleSd": 3.572240462958327,
+        "min": 16.29481692952627,
+        "max": 23.973947257634652,
+        "range": 7.679130328108382,
+        "cv": 0.1908927597013809
+      },
+      "wallSeconds": {
+        "n": 4,
+        "mean": 154.308943626,
+        "sampleSd": 17.173900208828528,
+        "min": 129.5055709,
+        "max": 168.8673317,
+        "range": 39.361760799999985,
+        "cv": 0.11129555944892648
+      },
+      "meanTrainingMs": {
+        "n": 4,
+        "mean": 155.88242199999797,
+        "sampleSd": 21.84306733447666,
+        "min": 125.43658942856447,
+        "max": 177.06227285714087,
+        "range": 51.625683428576394,
+        "cv": 0.14012527553925833
+      },
+      "accepted": {
+        "n": 4,
+        "mean": 335.25,
+        "sampleSd": 2.6299556396765835,
+        "min": 333,
+        "max": 339,
+        "range": 6,
+        "cv": 0.007844759551608004
+      }
+    },
+    "pairs": [
+      {
+        "left": "seed45-20261027-183349-01-F5",
+        "right": "seed45-20261027-183349-02-L5",
+        "differences": {
+          "selectedIdsEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "acceptedIdsEqual": {
+            "roundCount": 64,
+            "firstRound": 7
+          },
+          "estimatedFeasibleIdsEqual": {
+            "roundCount": 0,
+            "firstRound": null
+          },
+          "criteriaObservationsEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "fuzzyTopsisScoresEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "fairnessCreditsEqual": {
+            "roundCount": 63,
+            "firstRound": 8
+          },
+          "currentFairnessLambdaEqual": {
+            "roundCount": 63,
+            "firstRound": 8
+          },
+          "selectedSetEqual": {
+            "roundCount": 64,
+            "firstRound": 7
+          },
+          "acceptedSetEqual": {
+            "roundCount": 64,
+            "firstRound": 7
+          }
+        },
+        "changedSlots": 265,
+        "selectedSlots": 350,
+        "maxEstimatedTimeDeltaSeconds": 2.3097309999999993
+      },
+      {
+        "left": "seed45-20261027-183349-01-F5",
+        "right": "seed45-20261027-183349-03-L5",
+        "differences": {
+          "selectedIdsEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "acceptedIdsEqual": {
+            "roundCount": 62,
+            "firstRound": 7
+          },
+          "estimatedFeasibleIdsEqual": {
+            "roundCount": 0,
+            "firstRound": null
+          },
+          "criteriaObservationsEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "fuzzyTopsisScoresEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "fairnessCreditsEqual": {
+            "roundCount": 63,
+            "firstRound": 8
+          },
+          "currentFairnessLambdaEqual": {
+            "roundCount": 62,
+            "firstRound": 9
+          },
+          "selectedSetEqual": {
+            "roundCount": 62,
+            "firstRound": 7
+          },
+          "acceptedSetEqual": {
+            "roundCount": 62,
+            "firstRound": 7
+          }
+        },
+        "changedSlots": 250,
+        "selectedSlots": 350,
+        "maxEstimatedTimeDeltaSeconds": 2.364727299999913
+      },
+      {
+        "left": "seed45-20261027-183349-01-F5",
+        "right": "seed45-20261027-183349-04-F5",
+        "differences": {
+          "selectedIdsEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "acceptedIdsEqual": {
+            "roundCount": 63,
+            "firstRound": 7
+          },
+          "estimatedFeasibleIdsEqual": {
+            "roundCount": 0,
+            "firstRound": null
+          },
+          "criteriaObservationsEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "fuzzyTopsisScoresEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "fairnessCreditsEqual": {
+            "roundCount": 63,
+            "firstRound": 8
+          },
+          "currentFairnessLambdaEqual": {
+            "roundCount": 63,
+            "firstRound": 8
+          },
+          "selectedSetEqual": {
+            "roundCount": 63,
+            "firstRound": 7
+          },
+          "acceptedSetEqual": {
+            "roundCount": 63,
+            "firstRound": 7
+          }
+        },
+        "changedSlots": 259,
+        "selectedSlots": 350,
+        "maxEstimatedTimeDeltaSeconds": 2.3183407499999475
+      },
+      {
+        "left": "seed45-20261027-183349-02-L5",
+        "right": "seed45-20261027-183349-03-L5",
+        "differences": {
+          "selectedIdsEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "acceptedIdsEqual": {
+            "roundCount": 64,
+            "firstRound": 7
+          },
+          "estimatedFeasibleIdsEqual": {
+            "roundCount": 0,
+            "firstRound": null
+          },
+          "criteriaObservationsEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "fuzzyTopsisScoresEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "fairnessCreditsEqual": {
+            "roundCount": 63,
+            "firstRound": 8
+          },
+          "currentFairnessLambdaEqual": {
+            "roundCount": 63,
+            "firstRound": 8
+          },
+          "selectedSetEqual": {
+            "roundCount": 64,
+            "firstRound": 7
+          },
+          "acceptedSetEqual": {
+            "roundCount": 64,
+            "firstRound": 7
+          }
+        },
+        "changedSlots": 268,
+        "selectedSlots": 350,
+        "maxEstimatedTimeDeltaSeconds": 2.135736099999993
+      },
+      {
+        "left": "seed45-20261027-183349-02-L5",
+        "right": "seed45-20261027-183349-04-F5",
+        "differences": {
+          "selectedIdsEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "acceptedIdsEqual": {
+            "roundCount": 63,
+            "firstRound": 7
+          },
+          "estimatedFeasibleIdsEqual": {
+            "roundCount": 0,
+            "firstRound": null
+          },
+          "criteriaObservationsEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "fuzzyTopsisScoresEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "fairnessCreditsEqual": {
+            "roundCount": 63,
+            "firstRound": 8
+          },
+          "currentFairnessLambdaEqual": {
+            "roundCount": 63,
+            "firstRound": 8
+          },
+          "selectedSetEqual": {
+            "roundCount": 63,
+            "firstRound": 7
+          },
+          "acceptedSetEqual": {
+            "roundCount": 63,
+            "firstRound": 7
+          }
+        },
+        "changedSlots": 255,
+        "selectedSlots": 350,
+        "maxEstimatedTimeDeltaSeconds": 2.135736099999993
+      },
+      {
+        "left": "seed45-20261027-183349-03-L5",
+        "right": "seed45-20261027-183349-04-F5",
+        "differences": {
+          "selectedIdsEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "acceptedIdsEqual": {
+            "roundCount": 63,
+            "firstRound": 7
+          },
+          "estimatedFeasibleIdsEqual": {
+            "roundCount": 0,
+            "firstRound": null
+          },
+          "criteriaObservationsEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "fuzzyTopsisScoresEqual": {
+            "roundCount": 69,
+            "firstRound": 2
+          },
+          "fairnessCreditsEqual": {
+            "roundCount": 63,
+            "firstRound": 8
+          },
+          "currentFairnessLambdaEqual": {
+            "roundCount": 63,
+            "firstRound": 8
+          },
+          "selectedSetEqual": {
+            "roundCount": 63,
+            "firstRound": 7
+          },
+          "acceptedSetEqual": {
+            "roundCount": 63,
+            "firstRound": 7
+          }
+        },
+        "changedSlots": 201,
+        "selectedSlots": 350,
+        "maxEstimatedTimeDeltaSeconds": 2.1186368000000657
+      }
+    ],
+    "audits": [
+      {
+        "rounds": 70,
+        "timingCriteriaChecked": 3815,
+        "scoreCreditControllerReplay": "PASS",
+        "timingHistoryAndFeasibility": "PASS"
+      },
+      {
+        "rounds": 70,
+        "timingCriteriaChecked": 3815,
+        "scoreCreditControllerReplay": "PASS",
+        "timingHistoryAndFeasibility": "PASS"
+      },
+      {
+        "rounds": 70,
+        "timingCriteriaChecked": 3815,
+        "scoreCreditControllerReplay": "PASS",
+        "timingHistoryAndFeasibility": "PASS"
+      },
+      {
+        "rounds": 70,
+        "timingCriteriaChecked": 3815,
+        "scoreCreditControllerReplay": "PASS",
+        "timingHistoryAndFeasibility": "PASS"
+      }
+    ],
+    "frozenHashesUnchanged": true
+  }
+}

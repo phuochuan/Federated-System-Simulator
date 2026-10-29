@@ -1,0 +1,1193 @@
+[
+  {
+    "roundId": 1,
+    "modelVersion": 1,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      43,
+      80,
+      81,
+      82,
+      83
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 0.0265,
+        "clientId": 43,
+        "estimateSource": "prior"
+      },
+      {
+        "predictedSeconds": 0.013000000000000001,
+        "clientId": 80,
+        "estimateSource": "prior"
+      },
+      {
+        "predictedSeconds": 0.013000000000000001,
+        "clientId": 81,
+        "estimateSource": "prior"
+      },
+      {
+        "predictedSeconds": 0.013000000000000001,
+        "clientId": 82,
+        "estimateSource": "prior"
+      },
+      {
+        "predictedSeconds": 0.013000000000000001,
+        "clientId": 83,
+        "estimateSource": "prior"
+      }
+    ],
+    "acceptedIds": [
+      43,
+      80,
+      81,
+      82,
+      83
+    ],
+    "participants": [
+      {
+        "clientId": 43,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "lbw-9d9df2f09b",
+          "roundId": 1,
+          "clientId": 43,
+          "baseModelVersion": 0,
+          "numSamples": 53,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/lbw-9d9df2f09b/r0001_client043_a69e2415-5bc6-4011-918e-5a8bc26e787b.pt",
+          "trainingLoss": 1.9476385971285262,
+          "actualTrainingMs": 12.101700000130222,
+          "workerRssMb": 358.53125,
+          "workerPeakRssMb": 358.53515625,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 43,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.01129160060626107,
+          "completionSeconds": 0.01129160060626107
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 80,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "lbw-9d9df2f09b",
+          "roundId": 1,
+          "clientId": 80,
+          "baseModelVersion": 0,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/lbw-9d9df2f09b/r0001_client080_a69e2415-5bc6-4011-918e-5a8bc26e787b.pt",
+          "trainingLoss": 1.9546964351947491,
+          "actualTrainingMs": 18.649199999345,
+          "workerRssMb": 358.53125,
+          "workerPeakRssMb": 358.53515625,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 80,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.008995544864329769,
+          "completionSeconds": 0.008995544864329769
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 81,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "lbw-9d9df2f09b",
+          "roundId": 1,
+          "clientId": 81,
+          "baseModelVersion": 0,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/lbw-9d9df2f09b/r0001_client081_a69e2415-5bc6-4011-918e-5a8bc26e787b.pt",
+          "trainingLoss": 1.955302541072552,
+          "actualTrainingMs": 17.459799999414827,
+          "workerRssMb": 358.53125,
+          "workerPeakRssMb": 358.53515625,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 81,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.00795459734658574,
+          "completionSeconds": 0.00795459734658574
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 82,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "lbw-9d9df2f09b",
+          "roundId": 1,
+          "clientId": 82,
+          "baseModelVersion": 0,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/lbw-9d9df2f09b/r0001_client082_a69e2415-5bc6-4011-918e-5a8bc26e787b.pt",
+          "trainingLoss": 1.9558916275317852,
+          "actualTrainingMs": 19.691699999384582,
+          "workerRssMb": 358.53125,
+          "workerPeakRssMb": 358.53515625,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 82,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.009632835854825033,
+          "completionSeconds": 0.009632835854825033
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 83,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "lbw-9d9df2f09b",
+          "roundId": 1,
+          "clientId": 83,
+          "baseModelVersion": 0,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/lbw-9d9df2f09b/r0001_client083_a69e2415-5bc6-4011-918e-5a8bc26e787b.pt",
+          "trainingLoss": 1.9399538131860585,
+          "actualTrainingMs": 17.273400000703987,
+          "workerRssMb": 358.53125,
+          "workerPeakRssMb": 358.53515625,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 83,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.008620327965895482,
+          "completionSeconds": 0.008620327965895482
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.19999783174721705,
+      0.1999996325836885,
+      0.1999925185771198,
+      0.2000040010841376,
+      0.20000601600783705
+    ],
+    "proxyLosses": [
+      1.956087646484375,
+      1.9560700334821428,
+      1.9561396135602678,
+      1.9560273088727678,
+      1.9560076032366072
+    ],
+    "proxyEvaluationMs": 178.40009999781614,
+    "aggregationMs": 43.1942,
+    "evaluation": {
+      "loss": 1.9531587873186385,
+      "accuracy": 0.13285714285714287,
+      "macroF1": 0.06640546921465416,
+      "perClassPrecision": [
+        0.11649016641452345,
+        0.09090909090909091,
+        0.2,
+        0.14756446991404013,
+        0.0,
+        0.4,
+        0.0
+      ],
+      "perClassRecall": [
+        0.385,
+        0.01,
+        0.01,
+        0.515,
+        0.0,
+        0.01,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          77,
+          5,
+          1,
+          117,
+          0,
+          0,
+          0
+        ],
+        [
+          90,
+          2,
+          0,
+          107,
+          1,
+          0,
+          0
+        ],
+        [
+          111,
+          6,
+          2,
+          80,
+          1,
+          0,
+          0
+        ],
+        [
+          88,
+          2,
+          3,
+          103,
+          0,
+          2,
+          2
+        ],
+        [
+          97,
+          3,
+          3,
+          97,
+          0,
+          0,
+          0
+        ],
+        [
+          101,
+          4,
+          0,
+          93,
+          0,
+          2,
+          0
+        ],
+        [
+          97,
+          0,
+          1,
+          101,
+          0,
+          1,
+          0
+        ]
+      ],
+      "evaluationMs": 54.27869999948598
+    },
+    "virtualRoundSeconds": 0.2328859006040772,
+    "cumulativeVirtualSeconds": 0.2328859006040772,
+    "wallClockSeconds": 0.4357841,
+    "fairness": {
+      "opportunityAdjustedGini": 0.95,
+      "maxStaleness": 1,
+      "coverage": 0.05,
+      "meanStaleness": 0.95,
+      "participationGini": 0.95
+    }
+  },
+  {
+    "roundId": 2,
+    "modelVersion": 2,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      64,
+      83,
+      81,
+      80,
+      82
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 0.026000000000000002,
+        "clientId": 64,
+        "estimateSource": "prior"
+      },
+      {
+        "predictedSeconds": 0.008636700000351993,
+        "clientId": 83,
+        "estimateSource": "history"
+      },
+      {
+        "predictedSeconds": 0.008729899999707413,
+        "clientId": 81,
+        "estimateSource": "history"
+      },
+      {
+        "predictedSeconds": 0.0093245999996725,
+        "clientId": 80,
+        "estimateSource": "history"
+      },
+      {
+        "predictedSeconds": 0.009845849999692291,
+        "clientId": 82,
+        "estimateSource": "history"
+      }
+    ],
+    "acceptedIds": [
+      64,
+      80,
+      81,
+      82,
+      83
+    ],
+    "participants": [
+      {
+        "clientId": 64,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "lbw-9d9df2f09b",
+          "roundId": 2,
+          "clientId": 64,
+          "baseModelVersion": 1,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/lbw-9d9df2f09b/r0002_client064_1b66ca92-737b-4562-b3aa-a41c2a446596.pt",
+          "trainingLoss": 1.9399320712456336,
+          "actualTrainingMs": 24.941499999840744,
+          "workerRssMb": 357.4140625,
+          "workerPeakRssMb": 358.70703125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 64,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.02667950662179813,
+          "completionSeconds": 0.02667950662179813
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 80,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "lbw-9d9df2f09b",
+          "roundId": 2,
+          "clientId": 80,
+          "baseModelVersion": 1,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/lbw-9d9df2f09b/r0002_client080_1b66ca92-737b-4562-b3aa-a41c2a446596.pt",
+          "trainingLoss": 1.954235581251291,
+          "actualTrainingMs": 17.162200001621386,
+          "workerRssMb": 357.4140625,
+          "workerPeakRssMb": 358.70703125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 80,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.008605898446828958,
+          "completionSeconds": 0.008605898446828958
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 81,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "lbw-9d9df2f09b",
+          "roundId": 2,
+          "clientId": 81,
+          "baseModelVersion": 1,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/lbw-9d9df2f09b/r0002_client081_1b66ca92-737b-4562-b3aa-a41c2a446596.pt",
+          "trainingLoss": 1.9548715261312632,
+          "actualTrainingMs": 19.96049999979732,
+          "workerRssMb": 357.4140625,
+          "workerPeakRssMb": 358.70703125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 81,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.009904327605471178,
+          "completionSeconds": 0.009904327605471178
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 82,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "lbw-9d9df2f09b",
+          "roundId": 2,
+          "clientId": 82,
+          "baseModelVersion": 1,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/lbw-9d9df2f09b/r0002_client082_1b66ca92-737b-4562-b3aa-a41c2a446596.pt",
+          "trainingLoss": 1.9552877224408662,
+          "actualTrainingMs": 20.42510000137554,
+          "workerRssMb": 357.4140625,
+          "workerPeakRssMb": 358.70703125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 82,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.009646668400693224,
+          "completionSeconds": 0.009646668400693224
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 83,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "lbw-9d9df2f09b",
+          "roundId": 2,
+          "clientId": 83,
+          "baseModelVersion": 1,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/lbw-9d9df2f09b/r0002_client083_1b66ca92-737b-4562-b3aa-a41c2a446596.pt",
+          "trainingLoss": 1.9394162068000207,
+          "actualTrainingMs": 22.97030000045197,
+          "workerRssMb": 357.4140625,
+          "workerPeakRssMb": 358.70703125,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 83,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.01186021784742777,
+          "completionSeconds": 0.01186021784742777
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.1999924359089511,
+      0.20000022804805195,
+      0.1999940049865366,
+      0.2000039192732445,
+      0.20000941178321588
+    ],
+    "proxyLosses": [
+      1.9559927804129464,
+      1.9559165736607143,
+      1.9559774344308036,
+      1.9558804757254464,
+      1.9558267647879464
+    ],
+    "proxyEvaluationMs": 189.96400000105496,
+    "aggregationMs": 44.8299,
+    "evaluation": {
+      "loss": 1.9530167497907367,
+      "accuracy": 0.13214285714285715,
+      "macroF1": 0.06615853918793027,
+      "perClassPrecision": [
+        0.11641791044776119,
+        0.09090909090909091,
+        0.2,
+        0.14658925979680695,
+        0.0,
+        0.4,
+        0.0
+      ],
+      "perClassRecall": [
+        0.39,
+        0.01,
+        0.01,
+        0.505,
+        0.0,
+        0.01,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          78,
+          5,
+          1,
+          116,
+          0,
+          0,
+          0
+        ],
+        [
+          91,
+          2,
+          0,
+          106,
+          1,
+          0,
+          0
+        ],
+        [
+          112,
+          6,
+          2,
+          79,
+          1,
+          0,
+          0
+        ],
+        [
+          90,
+          2,
+          3,
+          101,
+          0,
+          2,
+          2
+        ],
+        [
+          98,
+          3,
+          3,
+          96,
+          0,
+          0,
+          0
+        ],
+        [
+          103,
+          4,
+          0,
+          91,
+          0,
+          2,
+          0
+        ],
+        [
+          98,
+          0,
+          1,
+          100,
+          0,
+          1,
+          0
+        ]
+      ],
+      "evaluationMs": 61.555000000225846
+    },
+    "virtualRoundSeconds": 0.26147340662285307,
+    "cumulativeVirtualSeconds": 0.4943593072269303,
+    "wallClockSeconds": 0.4643769,
+    "fairness": {
+      "opportunityAdjustedGini": 0.948,
+      "maxStaleness": 2,
+      "coverage": 0.06,
+      "meanStaleness": 1.89,
+      "participationGini": 0.948
+    }
+  },
+  {
+    "roundId": 3,
+    "modelVersion": 3,
+    "outcome": "COMMITTED",
+    "population": 100,
+    "eligibleIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "selectedIds": [
+      69,
+      80,
+      81,
+      82,
+      83
+    ],
+    "selectionDecisions": [
+      {
+        "predictedSeconds": 0.026000000000000002,
+        "clientId": 69,
+        "estimateSource": "prior"
+      },
+      {
+        "predictedSeconds": 0.008581100000810693,
+        "clientId": 80,
+        "estimateSource": "history"
+      },
+      {
+        "predictedSeconds": 0.00998024999989866,
+        "clientId": 81,
+        "estimateSource": "history"
+      },
+      {
+        "predictedSeconds": 0.01021255000068777,
+        "clientId": 82,
+        "estimateSource": "history"
+      },
+      {
+        "predictedSeconds": 0.011485150000225985,
+        "clientId": 83,
+        "estimateSource": "history"
+      }
+    ],
+    "acceptedIds": [
+      69,
+      80,
+      81,
+      82,
+      83
+    ],
+    "participants": [
+      {
+        "clientId": 69,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "lbw-9d9df2f09b",
+          "roundId": 3,
+          "clientId": 69,
+          "baseModelVersion": 2,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/lbw-9d9df2f09b/r0003_client069_1df3fb2a-a454-4480-90c3-d5c4999a2a01.pt",
+          "trainingLoss": 1.9423655088131244,
+          "actualTrainingMs": 14.220499999282765,
+          "workerRssMb": 358.75,
+          "workerPeakRssMb": 358.75390625,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 69,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.014339549551217853,
+          "completionSeconds": 0.014339549551217853
+        },
+        "tier": "MEDIUM"
+      },
+      {
+        "clientId": 80,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "lbw-9d9df2f09b",
+          "roundId": 3,
+          "clientId": 80,
+          "baseModelVersion": 2,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/lbw-9d9df2f09b/r0003_client080_1df3fb2a-a454-4480-90c3-d5c4999a2a01.pt",
+          "trainingLoss": 1.9536714737231915,
+          "actualTrainingMs": 17.04020000033779,
+          "workerRssMb": 358.75,
+          "workerPeakRssMb": 358.75390625,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 80,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.008530301085182285,
+          "completionSeconds": 0.008530301085182285
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 81,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "lbw-9d9df2f09b",
+          "roundId": 3,
+          "clientId": 81,
+          "baseModelVersion": 2,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/lbw-9d9df2f09b/r0003_client081_1df3fb2a-a454-4480-90c3-d5c4999a2a01.pt",
+          "trainingLoss": 1.9546506038078895,
+          "actualTrainingMs": 15.671799999836367,
+          "workerRssMb": 358.75,
+          "workerPeakRssMb": 358.75390625,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 81,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.008613056214378977,
+          "completionSeconds": 0.008613056214378977
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 82,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "lbw-9d9df2f09b",
+          "roundId": 3,
+          "clientId": 82,
+          "baseModelVersion": 2,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/lbw-9d9df2f09b/r0003_client082_1df3fb2a-a454-4480-90c3-d5c4999a2a01.pt",
+          "trainingLoss": 1.95471806709583,
+          "actualTrainingMs": 21.29400000012538,
+          "workerRssMb": 358.75,
+          "workerPeakRssMb": 358.75390625,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 82,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.011062278657914466,
+          "completionSeconds": 0.011062278657914466
+        },
+        "tier": "HIGH"
+      },
+      {
+        "clientId": 83,
+        "accepted": true,
+        "status": "COMPLETED",
+        "training": {
+          "experimentId": "lbw-9d9df2f09b",
+          "roundId": 3,
+          "clientId": 83,
+          "baseModelVersion": 2,
+          "numSamples": 52,
+          "modelSchemaHash": "014710ad00136148454f0be8c111c438a7e3b7ab9e8084f95427018c17431e47",
+          "updatePath": "artifacts/models/lbw-9d9df2f09b/r0003_client083_1df3fb2a-a454-4480-90c3-d5c4999a2a01.pt",
+          "trainingLoss": 1.9388013161145723,
+          "actualTrainingMs": 13.528900000892463,
+          "workerRssMb": 358.75,
+          "workerPeakRssMb": 358.75390625,
+          "status": "TRAINING_COMPLETED"
+        },
+        "simulation": {
+          "clientId": 83,
+          "status": "COMPLETED",
+          "virtualTrainingSeconds": 0.006270784690863198,
+          "completionSeconds": 0.006270784690863198
+        },
+        "tier": "HIGH"
+      }
+    ],
+    "weights": [
+      0.2000103185452534,
+      0.19999378683906857,
+      0.1999897568698038,
+      0.20000402297786685,
+      0.20000211476800736
+    ],
+    "proxyLosses": [
+      1.955647495814732,
+      1.9558091517857144,
+      1.9558485630580358,
+      1.9557090541294644,
+      1.9557277134486608
+    ],
+    "proxyEvaluationMs": 157.93329999905836,
+    "aggregationMs": 26.3067,
+    "evaluation": {
+      "loss": 1.9528616768973215,
+      "accuracy": 0.13357142857142856,
+      "macroF1": 0.06694420166238849,
+      "perClassPrecision": [
+        0.11894273127753303,
+        0.08333333333333333,
+        0.2,
+        0.14792899408284024,
+        0.0,
+        0.4,
+        0.0
+      ],
+      "perClassRecall": [
+        0.405,
+        0.01,
+        0.01,
+        0.5,
+        0.0,
+        0.01,
+        0.0
+      ],
+      "worstClassRecall": 0.0,
+      "confusionMatrix": [
+        [
+          81,
+          5,
+          1,
+          113,
+          0,
+          0,
+          0
+        ],
+        [
+          92,
+          2,
+          0,
+          105,
+          1,
+          0,
+          0
+        ],
+        [
+          113,
+          7,
+          2,
+          77,
+          1,
+          0,
+          0
+        ],
+        [
+          91,
+          2,
+          3,
+          100,
+          0,
+          2,
+          2
+        ],
+        [
+          100,
+          3,
+          3,
+          94,
+          0,
+          0,
+          0
+        ],
+        [
+          104,
+          5,
+          0,
+          89,
+          0,
+          2,
+          0
+        ],
+        [
+          100,
+          0,
+          1,
+          98,
+          0,
+          1,
+          0
+        ]
+      ],
+      "evaluationMs": 40.198400000008405
+    },
+    "virtualRoundSeconds": 0.1985795495502762,
+    "cumulativeVirtualSeconds": 0.6929388567772065,
+    "wallClockSeconds": 0.3607774,
+    "fairness": {
+      "opportunityAdjustedGini": 0.946,
+      "maxStaleness": 3,
+      "coverage": 0.07,
+      "meanStaleness": 2.82,
+      "participationGini": 0.946
+    }
+  }
+]

@@ -1,0 +1,96 @@
+[
+  {
+    "name": "e0-20261027-185217-det-L3-r1",
+    "partition": 45,
+    "seed": 45,
+    "policy": "fixed",
+    "lambda": 0.7,
+    "accuracy": 0.15428571428571428,
+    "macroF1": 0.09617180223719628,
+    "gini": 0.8146464646464646,
+    "feasibleCoverage": 0.21666666666666667,
+    "accuracyTailSd": 0.0039769745448785775,
+    "macroF1TailSd": 0.0038609624239140765,
+    "maxAccuracyDropPp": 0.785714285714284,
+    "maxFeasibleStaleness": 3,
+    "meanFeasibleStaleness": 2.216666666666667,
+    "populationNeverSelectedRatio": 0.87,
+    "feasibleNeverSelectedRatio": 0.7833333333333333,
+    "firstThreeRoundsBelowControllerTarget": null,
+    "finalLambda": 0.7,
+    "slotsChangedRatio": 0.4666666666666667,
+    "acceptedRatio": 1.0,
+    "simulatedTrainingSeconds": 0.04066355103775636,
+    "virtualWithSelectorSeconds": 0.34199065103775633,
+    "wallSeconds": 0.717535,
+    "targets": {
+      "0.65": {
+        "firstRound": null,
+        "sustainedThroughFinal": false,
+        "virtualWithSelectorSeconds": null
+      },
+      "0.68": {
+        "firstRound": null,
+        "sustainedThroughFinal": false,
+        "virtualWithSelectorSeconds": null
+      },
+      "0.69": {
+        "firstRound": null,
+        "sustainedThroughFinal": false,
+        "virtualWithSelectorSeconds": null
+      },
+      "0.7": {
+        "firstRound": null,
+        "sustainedThroughFinal": false,
+        "virtualWithSelectorSeconds": null
+      }
+    }
+  },
+  {
+    "name": "e0-20261027-185217-det-L5-r1",
+    "partition": 45,
+    "seed": 45,
+    "policy": "adaptive",
+    "lambda": null,
+    "accuracy": 0.14857142857142858,
+    "macroF1": 0.08935401175157663,
+    "gini": 0.8923423423423423,
+    "feasibleCoverage": 0.13333333333333333,
+    "accuracyTailSd": 0.005408484138857405,
+    "macroF1TailSd": 0.006845026875673888,
+    "maxAccuracyDropPp": 1.0000000000000009,
+    "maxFeasibleStaleness": 3,
+    "meanFeasibleStaleness": 2.3833333333333333,
+    "populationNeverSelectedRatio": 0.92,
+    "feasibleNeverSelectedRatio": 0.8666666666666667,
+    "firstThreeRoundsBelowControllerTarget": null,
+    "finalLambda": 0.35183373415788666,
+    "slotsChangedRatio": 0.13333333333333333,
+    "acceptedRatio": 1.0,
+    "simulatedTrainingSeconds": 0.03797894138837214,
+    "virtualWithSelectorSeconds": 0.27951784138837216,
+    "wallSeconds": 0.5712608,
+    "targets": {
+      "0.65": {
+        "firstRound": null,
+        "sustainedThroughFinal": false,
+        "virtualWithSelectorSeconds": null
+      },
+      "0.68": {
+        "firstRound": null,
+        "sustainedThroughFinal": false,
+        "virtualWithSelectorSeconds": null
+      },
+      "0.69": {
+        "firstRound": null,
+        "sustainedThroughFinal": false,
+        "virtualWithSelectorSeconds": null
+      },
+      "0.7": {
+        "firstRound": null,
+        "sustainedThroughFinal": false,
+        "virtualWithSelectorSeconds": null
+      }
+    }
+  }
+]

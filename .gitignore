@@ -2,6 +2,7 @@
 .vscode/
 *.iml
 *.zip
+!results/raw/*.zip
 .env
 .env.*
 !.env.example

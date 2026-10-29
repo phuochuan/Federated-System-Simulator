@@ -1,0 +1,31 @@
+ M .env.example
+ M README.md
+ M docs/api-contract.md
+ M docs/controlled-matrix.md
+ M docs/fuzzy-mcdm-client-selection.md
+ M docs/method-packages.md
+ M docs/validation/README.md
+ M ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ControlledExperiments.java
+ M ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ExperimentConfig.java
+ M ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/FerderatedsystemApplication.java
+ M ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/RoundCoordinator.java
+ M ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/FuzzyClientSelector.java
+ M ferderatedsystem/src/main/resources/application.properties
+ M ferderatedsystem/src/test/java/com/huanphan/ferderatedsystem/ControlledExperimentsTests.java
+ M ferderatedsystem/src/test/java/com/huanphan/ferderatedsystem/FuzzyCoordinatorTests.java
+ M ferderatedsystem/src/test/java/com/huanphan/ferderatedsystem/FuzzySelectionTests.java
+ M ml-python/minifls/api.py
+ M ml-python/minifls/data.py
+ M ml-python/minifls/simulation.py
+ M ml-python/tests/test_core.py
+ M scripts/verify_fuzzy.py
+?? configurations/fairness-matched.json
+?? configurations/lambda-ablation.json
+?? docs/fairness-matched.md
+?? docs/lambda-ablation.md
+?? docs/validation/lambda-ablation-2026-10-25.md
+?? ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/LambdaAblationReport.java
+?? ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/SimulationTimingConfig.java
+?? scripts/audit_seed45.py
+?? scripts/fairness_matched.py
+?? scripts/test_fairness_matched.py

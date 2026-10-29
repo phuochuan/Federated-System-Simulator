@@ -31,12 +31,26 @@ class FuzzyCoordinatorTests {
     }
 
     private JsonNode execute(String method,boolean interrupt) throws Exception {
+        return execute(method,interrupt,false,1);
+    }
+
+    @Test void deterministicDurationIsIndependentOfMeasuredTrainingAndSurvivesResume() throws Exception {
+        var reference=execute("adaptive_fuzzy_topsis_fair",false,true,1);
+        assertEquals(reference,execute("adaptive_fuzzy_topsis_fair",false,true,10000));
+        assertEquals(reference,execute("adaptive_fuzzy_topsis_fair",true,true,50000));
+    }
+
+    private JsonNode execute(String method,boolean interrupt,boolean deterministic,double timeScale) throws Exception {
         var node=(ObjectNode)json.readTree(Files.readString(Path.of("../configurations/fuzzy-matrix.json")));
         var base=(ObjectNode)node.get("baseConfig");
         base.set("fuzzySelection",node.get("fuzzySelection"));base.put("selection",method);
         base.put("experimentId","replay");base.put("manifestPath","fixture");
         base.put("rounds",5);base.put("totalClients",8);base.put("selectedPerRound",2);
         base.put("availability",1);base.put("dropout",0);base.put("deadlineSeconds",10);
+        if(deterministic) {
+            base.putObject("timing").put("mode","deterministic").put("secondsPerSample",.0005);
+            base.put("evaluationSplit","proxy");
+        }
         var config=json.treeToValue(base,ExperimentConfig.class);
         try(var source=new SingleConnectionDataSource("jdbc:sqlite::memory:",true)) {
             var db=new JdbcTemplate(source);
@@ -52,17 +66,22 @@ class FuzzyCoordinatorTests {
                 String route=invocation.getArgument(0);var body=json.valueToTree(invocation.getArgument(1));
                 if(route.equals("/models/initialize")) return json.createObjectNode().put("checkpointPath","initial.pt")
                         .put("modelStateHash","fixed-initial-hash").put("modelPayloadBytes",100).put("initializationSeed",42);
-                if(route.equals("/models/evaluate")) return json.createObjectNode().put("accuracy",.6).put("loss",.7).put("macroF1",.6);
+                if(route.equals("/models/evaluate")) {
+                    assertEquals(deterministic?"proxy":"test",body.path("split").asText());
+                    return json.createObjectNode().put("accuracy",.6).put("loss",.7).put("macroF1",.6);
+                }
                 if(route.equals("/train")) {
                     if(interrupt&&body.path("roundId").asInt()==3&&failed.compareAndSet(false,true))
                         throw new IllegalStateException("Injected interruption after two committed rounds");
                     int id=body.path("clientId").asInt();
                     var result=(ObjectNode)body.deepCopy();
                     return result.put("status","TRAINING_COMPLETED").put("numSamples",20+id)
-                            .put("trainingLoss",.5+id*.1).put("actualTrainingMs",20+id*2)
+                            .put("trainingLoss",.5+id*.1).put("actualTrainingMs",(20+id*2)*timeScale)
                             .put("modelSchemaHash","schema").put("modelPayloadBytes",100).put("updatePath","update-"+id+".pt");
                 }
                 if(route.equals("/simulation/round")) {
+                    if(deterministic) for(var job:body.path("jobs"))
+                        assertEquals((20+job.path("clientId").asInt())*.0005*1000,job.path("simulatedTrainingMs").asDouble());
                     var result=json.createObjectNode().put("virtualRoundSeconds",.1);var results=result.putArray("results");
                     for(var job:body.path("jobs")) results.addObject().put("clientId",job.path("clientId").asInt())
                             .put("status","COMPLETED").put("completionSeconds",.1);

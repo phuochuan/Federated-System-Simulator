@@ -64,6 +64,90 @@ def test_virtual_parallel_deadline_oom_dropout():
     assert result == simulate_round(jobs,42,dropout=1)
 
 
+def test_fixed_duration_ignores_wall_clock_but_retains_trace_and_cpu_scaling():
+    job = dict(clientId=0, actualTrainingMs=1, simulatedTrainingMs=4000, cpu=2,
+               ramMb=1024, requiredRamMb=600, jitterMultiplier=1.1, dropoutEvent=False)
+    a = simulate_round([job], 45)
+    b = simulate_round([{**job, "actualTrainingMs": 999999}], 45)
+    assert a == b
+    assert a["virtualRoundSeconds"] == pytest.approx(2.2)
+    assert simulate_round([job], 45, deadline=2)["results"][0]["status"] == "TIMEOUT"
+
+
+def test_partition_seed_does_not_change_pools_or_scaler(tmp_path):
+    a = prepare(tmp_path / "a", dataset="synthetic", samples=1400, clients=10,
+                strategy="dirichlet_label_skew", partition_seed=1001)
+    b = prepare(tmp_path / "b", dataset="synthetic", samples=1400, clients=10,
+                strategy="dirichlet_label_skew", partition_seed=1002)
+    for name in ("features.npy", "labels.npy", "splits.npz"):
+        assert a["hashes"][name] == b["hashes"][name]
+    assert a["hashes"]["partitions.npz"] != b["hashes"]["partitions.npz"]
+    assert a["scaler"] == b["scaler"]
+
+
+def test_runtime_provenance_and_partition_prepare_reuse(client):
+    runtime = client.get("/runtime").json()
+    assert runtime["executionDevice"] == "cpu" and runtime["sourceFilesUnchanged"]
+    assert runtime["idempotentCheckpointOperations"]
+    assert runtime["packages"]["torch"] and "api.py" in runtime["sourceHashes"]
+    request = dict(output="new-partition", dataset="synthetic", clients=100, seed=42, partitionSeed=1001)
+    first = client.post("/datasets/prepare", json=request)
+    assert first.status_code == 200, first.text
+    repeated = client.post("/datasets/prepare", json=request)
+    assert first.json() == repeated.json()
+    assert client.post("/datasets/prepare", json={**request, "partitionSeed": 1002}).status_code == 400
+    assert client.post("/datasets/prepare", json={**request, "output": "../outside"}).status_code == 400
+
+
+def test_checkpoint_operations_replay_exact_durable_responses(client, monkeypatch):
+    context = dict(experimentId="retry", manifestPath="dataset", seed=42, operationId="round-operation")
+    initial = client.post("/models/initialize", json=context)
+    assert initial.status_code == 200, initial.text
+    initial_stat = api.path(initial.json()["checkpointPath"]).stat().st_mtime_ns
+    assert client.post("/models/initialize", json=context).json() == initial.json()
+    assert api.path(initial.json()["checkpointPath"]).stat().st_mtime_ns == initial_stat
+    request = dict(**context, roundId=1, clientId=0, baseModelVersion=0, globalModelPath=initial.json()["checkpointPath"])
+    trained = client.post("/train", json=request)
+    assert trained.status_code == 200, trained.text
+    target = api.path(trained.json()["updatePath"])
+    timestamp = target.stat().st_mtime_ns
+    api.datasets.clear()  # Receipts do not rely on an in-memory operation cache.
+    with monkeypatch.context() as patch:
+        def unexpected_model(*args, **kwargs):
+            raise AssertionError("A replay must not train again")
+        patch.setattr(api, "model", unexpected_model)
+        replay = client.post("/train", json=request)
+    assert replay.status_code == 200, replay.text
+    assert replay.json() == trained.json()  # Includes original actualTrainingMs and tensor hash.
+    assert target.stat().st_mtime_ns == timestamp
+    aggregate = dict(**context, roundId=1, baseModelVersion=0, updates=[trained.json()["updatePath"]], weights=[1.0])
+    combined = client.post("/models/aggregate", json=aggregate)
+    assert combined.status_code == 200, combined.text
+    with monkeypatch.context() as patch:
+        patch.setattr(api, "weighted_average", unexpected_model)
+        assert client.post("/models/aggregate", json=aggregate).json() == combined.json()
+    assert len(list(api.path("artifacts/models/retry").glob("*.pt"))) == 3
+    assert client.post("/train", json={**request, "seed": 43}).status_code == 409
+    assert client.post("/models/aggregate", json={**aggregate, "weights": [.5]}).status_code == 409
+
+
+def test_missing_or_corrupt_receipt_fails_without_overwriting_checkpoint(client):
+    from minifls.operations import receipt_path
+    context = dict(experimentId="receipt", manifestPath="dataset", seed=42)
+    initial = client.post("/models/initialize", json=context).json()
+    target = api.path(initial["checkpointPath"])
+    before = target.read_bytes()
+    receipt = receipt_path(target)
+    payload = json.loads(receipt.read_text())
+    payload["response"]["modelStateHash"] = "corrupt"
+    receipt.write_text(json.dumps(payload))
+    assert client.post("/models/initialize", json=context).status_code == 400
+    receipt.unlink()
+    failure = client.post("/models/initialize", json=context)
+    assert failure.status_code == 409 and "without a committed response" in failure.text
+    assert target.read_bytes() == before
+
+
 @pytest.mark.parametrize("architecture", list(ARCHITECTURES))
 def test_api_round_and_no_cross_client_state(client, architecture):
     context = dict(experimentId="test", manifestPath="dataset", seed=42)
@@ -79,6 +163,7 @@ def test_api_round_and_no_cross_client_state(client, architecture):
     state = load_checkpoint(api.path(first.json()["updatePath"]))["state"]
     repeated = load_checkpoint(api.path(again["updatePath"]))["state"]
     assert all(torch.equal(state[k],repeated[k]) for k in state)
+    assert first.json()["modelStateHash"] == again["modelStateHash"] == state_hash(state)
     aggregate = {**context,"roundId":1,"baseModelVersion":0,
                  "updates":[first.json()["updatePath"],other["updatePath"]],"weights":[.5,.5]}
     result = client.post("/models/aggregate",json=aggregate)
@@ -90,9 +175,11 @@ def test_api_round_and_no_cross_client_state(client, architecture):
     assert evaluation.status_code == 200
     assert evaluation.json()["architecture"] == architecture
     assert len(evaluation.json()["perClassRecall"]) == 7
-    assert client.post("/models/aggregate",json={**aggregate,"roundId":2}).status_code == 400
-    assert client.post("/models/aggregate",json={**aggregate,"updates":[first.json()["updatePath"]]*2}).status_code == 400
-    assert client.post("/train",json={**request,"baseModelVersion":1}).status_code == 400
+    assert evaluation.json()["modelStateHash"] == result.json()["modelStateHash"]
+    assert evaluation.json()["split"] == "test"
+    assert client.post("/models/aggregate",json={**aggregate,"roundId":2,"operationId":"bad-round"}).status_code == 400
+    assert client.post("/models/aggregate",json={**aggregate,"updates":[first.json()["updatePath"]]*2,"operationId":"bad-duplicates"}).status_code == 400
+    assert client.post("/train",json={**request,"baseModelVersion":1,"operationId":"bad-version"}).status_code == 400
 
 
 def test_worker_busy_and_path_boundary(client):

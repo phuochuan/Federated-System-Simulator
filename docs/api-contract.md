@@ -62,6 +62,8 @@ The prepared manifest must already exist. Start Java with `MINIFLS_METHOD=none` 
 
 Round JSON includes `selectionMethod`, `feasibleCandidateCount`, `selectorComputationMs`, `selectedClientIds`, `fuzzyTopsisScores`, `fairnessCredits`, `finalSelectionScores` and `currentFairnessLambda`. Fuzzy rounds additionally expose `selectorInput`, raw TFNs/observations, ideals/distances, `fairnessCreditsAfterRound` and `nextFairnessLambda`. Full score maps are empty for baselines. The `fairness` object distinguishes population, RAM-feasible and valid-opportunity coverage, selection/completion Gini and feasible-opportunity staleness. `cumulativeVirtualSecondsWithSelector` adds selector and separately measured `fairnessUpdateMs` to the existing virtual clock.
 
+New fuzzy rounds also include `topsisTopKClientIds`, `slotsChangedVsTopsis` (one count per replaced slot) and `slotsChangedVsTopsisRatio` (null if no selected slots). These compare the final selection to raw CC on the same pre-round history, not another run's trajectory. The [L0–L5 lambda ablation](lambda-ablation.md) aggregates these metrics and computes predeclared tail-window stability from round evaluation JSON. `lambda-ablation.json` is a batch protocol launched by `MINIFLS_METHOD=lambda_ablation`, not a new API selection/aggregation method.
+
 `GET /experiments/{id}` includes `snapshot.selectionHistory` and, for fuzzy methods, `snapshot.fuzzySelectionState` with method/version, credits, lambda and completed-round feedback. They commit atomically with round metrics. Resume restores this state; it does not reset credits or read future events. A missing or incompatible fuzzy snapshot fails explicitly. Legacy baseline snapshots remain readable; their new opportunity diagnostics identify the first observed round via `feasibleHistoryStartRound`.
 
 `/result` returns these fields for the configured final round; `/rounds` exposes the full trajectory. `/metrics.csv` remains a compact legacy export and does **not** include full fuzzy scores or the expanded conditional fairness metrics. Use round JSON or the matrix TXT report for these analyses. See [definitions and configuration parameters](fuzzy-mcdm-client-selection.md).
@@ -95,3 +97,38 @@ accepted updates and validates the response before tensor aggregation. Planned
 methods return 501; unknown method IDs return 400. See [package catalog](method-packages.md).
 
 `TRAINING_COMPLETED` means physical training finished, not virtual-round acceptance. The Java coordinator alone chooses accepted updates. Python aggregation checks experiment/round/base version, distinct clients, architecture, tensor keys/shapes/dtypes/finite values and normalized nonnegative weights. See OpenAPI for precise schemas. Workspace artifacts are local trusted experiment inputs; the API is not an internet-facing service.
+
+## Reproducibility protocol extensions
+
+Experiment configs may set `timing: {"mode":"deterministic","secondsPerSample":0.0005}`
+or `mode:"measured"` with a positive rate; omitted timing retains measured behavior.
+Deterministic duration is samples × localEpochs × secondsPerSample before CPU scaling
+and trace jitter. It drives simulation and subsequent timing estimates. Physical
+`actualTrainingMs` is always retained; participant `durationInputMs` records the
+simulation input. Server/selector overhead is still measured separately.
+
+`evaluationSplit` accepts `proxy` or `test` (default). It applies to initial and
+per-round server evaluation; FedLBW's update weighting continues to use proxy.
+Round records include `durationMode`, `evaluationSplit`, `modelStateHash`, and
+`simulatedTrainingRoundSeconds`. Worker train/aggregate/evaluate responses include
+tensor `modelStateHash`; evaluation also identifies its split. See
+[E0/E1 protocol](fairness-matched.md).
+
+The Java E0/E1 modes additionally use optional `provenance` (persisted in config
+and snapshot) and `finalEvaluationSplit`. With `evaluationSplit:"proxy"` and
+`finalEvaluationSplit:"test"`, `trajectoryEvaluation` stays on proxy and `evaluation`
+switches to test only in the final round. Both split labels and tensor hash are
+exported; omitted options retain baseline behavior. Research resume verifies the
+same executing Java/Python content and dataset checksums.
+
+`GET /runtime` supplies Python/package/device/thread/determinism/source metadata.
+`GET /datasets/manifest?manifestPath=...&verify=true` rechecks disk hashes.
+`POST /datasets/prepare` creates or validates an immutable partition with separate
+`seed` (split) and `partitionSeed`. `POST /reports/research/plots` consumes an
+exported `resultsPath` inside the workspace and writes PNG/SVG diagnostics.
+See the current [Java E0/E1 protocol](reproducibility-fairness-matched.md).
+
+Checkpoint-producing POSTs now expose safe retry through
+`GET /runtime` field `idempotentCheckpointOperations:true`. Identical initialize,
+train or aggregate requests replay a durable original response; a changed request
+under the same operation ID returns409. See [worker retry and fresh batch setup](worker-retry.md).

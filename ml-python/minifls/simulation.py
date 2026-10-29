@@ -21,7 +21,8 @@ def simulate_round(jobs, seed, deadline=None, enabled=True, dropout=0.0, jitter=
     def device(job):
         # Mỗi client có luồng ngẫu nhiên riêng, tránh phụ thuộc thứ tự chọn client.
         rng = random.Random(seed * 100003 + job["clientId"])
-        duration = job["actualTrainingMs"] / 1000
+        simulated_ms = job.get("simulatedTrainingMs")
+        duration = (job["actualTrainingMs"] if simulated_ms is None else simulated_ms) / 1000
         multiplier = job.get("jitterMultiplier")
         dropout_event = job.get("dropoutEvent")
         if enabled:

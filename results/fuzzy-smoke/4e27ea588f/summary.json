@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "protocol": "SYNTHETIC_SMOKE_ONLY",
+  "experiments": 10,
+  "roundsPerExperiment": 3,
+  "seeds": [
+    42,
+    43
+  ],
+  "pairedInitialWeights": "verified",
+  "sharedTraces": "verified",
+  "independentNumericalAndCreditReplay": "verified",
+  "liveProcessRestartResume": {
+    "status": "verified",
+    "restartAfterRound": 1,
+    "finalRound": 12
+  },
+  "report": "D:\\research\\federated-system\\artifacts\\comparisons\\20261025-232712-32bcd9d4\\F-fuzzy-client-selection.txt",
+  "evidence": "D:\\research\\federated-system\\artifacts\\fuzzy-smoke\\4e27ea588f"
+}
