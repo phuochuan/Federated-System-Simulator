@@ -11,7 +11,7 @@ public record ExperimentConfig(
         @Min(1) int selectedPerRound,
         @Min(1) @Max(100000) int rounds,
         @Min(0) @Max(1000000000) long seed,
-        @NotNull @Pattern(regexp="random|feasible_random|resource_aware|fuzzy_topsis|fuzzy_topsis_fair|adaptive_fuzzy_topsis_fair") String selection,
+        @NotNull @Pattern(regexp="random|feasible_random|resource_aware|crisp_topsis|fuzzy_topsis|fuzzy_topsis_fair|adaptive_fuzzy_topsis_fair") String selection,
         @NotNull @Pattern(regexp="fedavg|fedlbw") String aggregation,
         @Min(1) @Max(100) int localEpochs,
         @Min(1) @Max(65536) int batchSize,
@@ -45,7 +45,7 @@ public record ExperimentConfig(
         double[] values={learningRate, availability, dropout, jitter, exploration, requiredRamMb, priorSecondsPerSample, targetAccuracy};
         for(double v:values) if(!Double.isFinite(v)) throw new IllegalArgumentException("Config must be finite");
         if(deadlineSeconds!=null && !Double.isFinite(deadlineSeconds)) throw new IllegalArgumentException("Deadline must be finite");
-        if(FuzzySelectionConfig.isFuzzy(selection)&&fuzzySelection==null) throw new IllegalArgumentException("fuzzySelection config is required for "+selection);
+        if((FuzzySelectionConfig.isFuzzy(selection)||"crisp_topsis".equals(selection))&&fuzzySelection==null) throw new IllegalArgumentException("fuzzySelection config is required for "+selection);
         if(fuzzySelection!=null) fuzzySelection.check(selection);
         if(timing!=null) timing.check();
         if(evaluationSplit!=null && !evaluationSplit.equals("proxy") && !evaluationSplit.equals("test"))

@@ -8,6 +8,14 @@ public class FuzzySelectionConfig {
     public Map<String,Double> weights;
     public String uncertaintyMode="history_based";
     public double uncertaintyFallback=.10;
+    public ObservationUncertainty observationNoise;
+    public int calibrationMinHistory=5,calibrationWindow=32;
+    public double calibrationQuantile=.8;
+    public double calibratedWidth(java.util.List<Double> residuals) {
+        if(residuals.size()<calibrationMinHistory) return Math.min(uncertaintyMax,uncertaintyFallback);
+        var sorted=residuals.stream().sorted().toList();
+        return Math.min(uncertaintyMax,sorted.get(Math.min(sorted.size()-1,(int)Math.ceil(calibrationQuantile*sorted.size())-1)));
+    }
     public double uncertaintyScale=1;
     public double uncertaintyMax=.45;
     public double reliabilityAlpha=1,reliabilityBeta=1;
@@ -34,11 +42,15 @@ public class FuzzySelectionConfig {
             nonnegative(entry.getValue());total+=entry.getValue();
         }
         if(!Double.isFinite(total)||Math.abs(total-1)>1e-9) throw new IllegalArgumentException("Fuzzy weights must sum to one");
-        if(uncertaintyMode==null||!Set.of("history_based","fixed","crisp").contains(uncertaintyMode)) throw new IllegalArgumentException("Unknown uncertaintyMode");
+        if(uncertaintyMode==null||!Set.of("history_based","fixed","crisp","error_calibrated").contains(uncertaintyMode)) throw new IllegalArgumentException("Unknown uncertaintyMode");
         unit(uncertaintyFallback);unit(uncertaintyMax);positive(uncertaintyScale);positive(reliabilityAlpha);positive(reliabilityBeta);
         unit(learningUtilityPrior);positive(epsilon);
         positive(reliabilityAlpha+reliabilityBeta);
         if(uncertaintyFallback>=1 || uncertaintyMax>=1 || epsilon>=1) throw new IllegalArgumentException("Uncertainty and epsilon must be <1");
+        if(observationNoise!=null) observationNoise.check();
+        unit(calibrationQuantile);
+        if(calibrationQuantile<=0 || calibrationMinHistory<2 || calibrationWindow<calibrationMinHistory || calibrationWindow>256)
+            throw new IllegalArgumentException("Invalid calibration history/quantile");
         if(fairness==null) throw new IllegalArgumentException("fairness settings required");
         var f=fairness;
         if(f.mode==null||!Set.of("credit_score","credit_quota").contains(f.mode)) throw new IllegalArgumentException("Unknown fairness mode");

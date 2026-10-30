@@ -19,7 +19,12 @@ public class FerderatedsystemApplication {
 			if(!env.getProperty("minifls.launch.enabled",Boolean.class,true)) return;
 			// Explicit CLI modes bypass the user's manual IDE sequence below.
 			switch(env.getProperty("minifls.launch.method","none")) {
-				case "pareto_workflow" -> {matrix.runParetoWorkflow();return;}
+				case "fuzzy_uncertainty_workflow" -> {
+                    int code;
+                    try {code=new FuzzyResearchWorkflow(env).run();} catch(Exception failure) {failure.printStackTrace();code=20;}
+                    System.exit(code);return;
+                }
+                case "pareto_workflow" -> {matrix.runParetoWorkflow();return;}
 				case "heldout_pareto" -> {matrix.runHeldoutParetoEvaluation();return;}
 				case "pareto_preflight" -> {matrix.preflightHeldoutParetoEvaluation();return;}
 				case "reproducibility_audit" -> {matrix.runReproducibilityAudit();return;}

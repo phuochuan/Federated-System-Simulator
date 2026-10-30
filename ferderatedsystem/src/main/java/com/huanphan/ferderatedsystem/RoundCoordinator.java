@@ -200,7 +200,7 @@ public class RoundCoordinator {
         }
         long selectorStarted=System.nanoTime();
         log.info("selection.started experiment={} round={} method={}",c.experimentId(),round,c.selection());
-        var feasible=Policies.feasibleClients(eligible,c);
+        var feasible=Policies.feasibleClients(eligible,c,round);
         var feasibleIds=feasible.stream().map(p->p.clientId).toList();
         feasible.forEach(p->p.feasibleOpportunityCount++);
         log.info("selection.feasible_filtered experiment={} round={} available={} feasible={}",c.experimentId(),round,eligible.size(),feasible.size());
@@ -212,6 +212,15 @@ public class RoundCoordinator {
             selected=decision.selected();selectorMetrics.putAll(decision.metrics());
             log.info("fuzzy_topsis.ranked experiment={} round={} candidates={} selected={} lambda={}",c.experimentId(),round,feasible.size(),selected.size(),s.fuzzySelectionState.currentLambda);
             log.debug("fuzzy_topsis.details experiment={} round={} metrics={}",c.experimentId(),round,selectorMetrics);
+        } else if(c.selection().equals("crisp_topsis")) {
+            selectorMetrics.put("selectorInput",json.valueToTree(Map.of("eligibleClients",eligible,"history",s.selectionHistory)));
+            var extracted=new ClientCriteriaExtractor().extract(feasible,c,round,s.selectionHistory,null);
+            var scores=new CrispTopsisEngine().rank(extracted.matrix(),c.fuzzySelection().epsilon);
+            var ids=CrispTopsisEngine.order(scores).stream().limit(c.selectedPerRound()).toList();
+            selected=ids.stream().map(id->feasible.stream().filter(p->p.clientId==id).findFirst().orElseThrow()).toList();
+            selectorMetrics.put("criteriaObservations",extracted.observations());
+            selectorMetrics.put("fuzzyDecisionMatrix",extracted.matrix());
+            selectorMetrics.put("finalSelectionScores",scores);
         } else {
             Policies.ClientSelector selector=switch(c.selection()) {
                 case "random" -> new Policies.RandomSelector();
@@ -225,6 +234,17 @@ public class RoundCoordinator {
         log.info("selection.completed experiment={} round={} eligible={}/{} selected={} policy={}",
                 c.experimentId(),round,eligible.size(),s.clients.size(),selected.stream().map(p -> p.clientId).toList(),c.selection());
         if(selected.isEmpty()) log.warn("selection.empty experiment={} round={} eligible={} policy={}",c.experimentId(),round,eligible.size(),c.selection());
+        Map<Integer,Map<String,Object>> predictions=new TreeMap<>();
+        if(c.fuzzySelection()!=null) {
+            var observed=new ClientCriteriaExtractor().extract(eligible,c,round,s.selectionHistory,s.fuzzySelectionState).observations();
+            for(var p:eligible) {
+                var record=new LinkedHashMap<String,Object>();record.putAll(observed.get(p.clientId));
+                record.put("selectionCount",p.selectionCount);record.put("completionCount",p.completionCount);
+                record.put("previousLoss",p.recentTrainingLoss);record.put("cpu",p.cpu);record.put("ramMb",p.ramMb);
+                record.put("baseEstimatedSeconds",p.estimate(c));record.put("residualHistorySize",p.timeResiduals.size());
+                predictions.put(p.clientId,record);
+            }
+        }
         var decisions=new ArrayList<Map<String,Object>>();
         var updates=new HashMap<Integer,JsonNode>();
         var participants=new ArrayList<Map<String,Object>>();
@@ -277,6 +297,16 @@ public class RoundCoordinator {
             p.recentTrainingLoss=update.path("trainingLoss").asDouble();
             // Train xong trên laptop chưa đủ: update còn phải hoàn thành hợp lệ trong mô phỏng.
             boolean accept=p.lastStatus.equals("COMPLETED") && (c.deadlineSeconds()==null || !c.simulationEnabled() || result.path("completionSeconds").asDouble()<=c.deadlineSeconds());
+            if(c.fuzzySelection()!=null && predictions.containsKey(id)) {
+                var prior=predictions.get(id);var settings=c.fuzzySelection();
+                double estimate=((Number)prior.get("estimatedTime")).doubleValue();
+                double reliability=((Number)prior.get("reliability")).doubleValue();
+                double target=result.path("virtualTrainingSeconds").asDouble();
+                p.timeResiduals.add(Math.abs(target-estimate)/Math.max(settings.epsilon,estimate));
+                p.reliabilityResiduals.add(Math.abs((accept?1:0)-reliability));
+                while(p.timeResiduals.size()>settings.calibrationWindow) p.timeResiduals.remove(0);
+                while(p.reliabilityResiduals.size()>settings.calibrationWindow) p.reliabilityResiduals.remove(0);
+            }
             if(accept) {accepted.add(update);p.completionCount++;p.lastCompletedRound=round;}
             if(accept) log.info("update.accepted experiment={} round={} client={} status={} completionSeconds={}",
                     c.experimentId(),round,id,p.lastStatus,result.path("completionSeconds").asDouble());
@@ -359,7 +389,7 @@ public class RoundCoordinator {
         if(trace!=null) {metrics.put("scenarioTraceHash",trace.hash());metrics.put("scenarioTrace",trace.round(round));}
         metrics.put("selectedIds",selected.stream().map(p -> p.clientId).toList());metrics.put("selectionDecisions",decisions);
         metrics.put("acceptedIds",accepted.stream().map(u -> u.path("clientId").asInt()).toList());
-        metrics.put("participants",participants);metrics.put("weights",weights);metrics.put("proxyLosses",losses);
+        metrics.put("preRoundObservations",predictions);metrics.put("participants",participants);metrics.put("weights",weights);metrics.put("proxyLosses",losses);
         metrics.put("proxyEvaluationMs",proxyMs);metrics.put("aggregationMs",aggregationMs);
         metrics.put("proxyEvaluationWallMs",proxyWallMs);metrics.put("weightCalculationMs",weightMs);metrics.put("serverAggregationOverheadMs",serverOverheadMs);
         metrics.put("communicationCost","NOT_MODELED");

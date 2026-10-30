@@ -11,10 +11,19 @@ public final class Policies {
     }
     /** Same observable RAM/deadline predicate for feasible-random and resource-aware. */
     public static boolean isFeasible(ClientProfile client,ExperimentConfig c) {
-        return client.ramMb>=c.requiredRamMb() && (c.deadlineSeconds()==null || client.estimate(c)<=c.deadlineSeconds());
+        return isFeasible(client,c,0);
+    }
+    public static boolean isFeasible(ClientProfile client,ExperimentConfig c,int round) {
+        double estimate=client.estimate(c);
+        if(c.fuzzySelection()!=null && c.fuzzySelection().observationNoise!=null)
+            estimate=c.fuzzySelection().observationNoise.observe(estimate,c.seed(),round,client.clientId,"time");
+        return client.ramMb>=c.requiredRamMb() && (c.deadlineSeconds()==null || estimate<=c.deadlineSeconds());
     }
     public static List<ClientProfile> feasibleClients(List<ClientProfile> eligible,ExperimentConfig c) {
         return new ArrayList<>(eligible.stream().filter(p->isFeasible(p,c)).toList());
+    }
+    public static List<ClientProfile> feasibleClients(List<ClientProfile> eligible,ExperimentConfig c,int round) {
+        return new ArrayList<>(eligible.stream().filter(p->isFeasible(p,c,round)).toList());
     }
     public static class RandomSelector implements ClientSelector {
         public List<ClientProfile> select(List<ClientProfile> eligible, ExperimentConfig c, Random rng) {

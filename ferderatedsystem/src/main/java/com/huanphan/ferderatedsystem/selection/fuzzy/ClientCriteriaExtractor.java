@@ -18,6 +18,10 @@ public final class ClientCriteriaExtractor {
             double time=p.estimate(c);FuzzySelectionConfig.nonnegative(time);time=Math.max(settings.epsilon,time);
             double alpha=p.completionCount+settings.reliabilityAlpha,beta=p.selectionCount-p.completionCount+settings.reliabilityBeta;
             double reliability=alpha/(alpha+beta);
+            if(settings.observationNoise!=null) {
+                time=settings.observationNoise.observe(time,c.seed(),round,p.clientId,"time");
+                reliability=settings.observationNoise.observe(reliability,c.seed(),round,p.clientId,"reliability");
+            }
             double utility=settings.learningUtilityPrior;
             if(p.recentTrainingLoss!=null) {FuzzySelectionConfig.nonnegative(p.recentTrainingLoss);utility=1-1/(1+p.recentTrainingLoss);}
             double fairness=maxDeficit==0?0:deficit(p.clientId,c,history,state)/maxDeficit;
@@ -33,6 +37,13 @@ public final class ClientCriteriaExtractor {
                         case "reliability" -> Math.min(settings.uncertaintyMax,settings.uncertaintyScale*Math.sqrt(reliability*(1-reliability)/(alpha+beta+1)));
                         case "fairnessDeficit","selectionStaleness" -> 0;
                         default -> settings.uncertaintyFallback/Math.sqrt(p.selectionCount+1.0);
+                    };
+                }
+                if(settings.uncertaintyMode.equals("error_calibrated")) {
+                    u=switch(key) {
+                        case "estimatedTime" -> settings.calibratedWidth(p.timeResiduals);
+                        case "reliability" -> settings.calibratedWidth(p.reliabilityResiduals);
+                        default -> settings.uncertaintyFallback;
                     };
                 }
                 u=(key.equals("fairnessDeficit")||key.equals("selectionStaleness"))?0:Math.min(settings.uncertaintyMax,u);

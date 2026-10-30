@@ -16,6 +16,9 @@ public class ClientProfile {
     public int lastCompletedRound;
     public Double estimatedSeconds;
     public Double recentTrainingLoss;
+    // Bounded past-only residual windows persisted with committed snapshots.
+    public java.util.List<Double> timeResiduals=new java.util.ArrayList<>();
+    public java.util.List<Double> reliabilityResiduals=new java.util.ArrayList<>();
     public String lastStatus = "REGISTERED";
 
     public ClientProfile() {}

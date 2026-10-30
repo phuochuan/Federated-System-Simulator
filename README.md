@@ -6,6 +6,21 @@ The pipeline prepares data, selects clients in Java, trains each client from the
 
 The implementation follows the [Notion plan](https://app.notion.com/p/3fbb6ecc362380b29145ed0a5324deac). Smoke-test results do not establish that one algorithm outperforms another.
 
+## Fuzzy uncertainty research workflow — 31 October 2026
+
+The separate E0 → E1 → E2 → E4 → E3 workflow adds conventional Crisp TOPSIS,
+observation-only uncertainty, residual-calibrated fuzzy widths and resumable
+Windows watchdog launchers. Its default pilot contains 24 robustness runs plus
+six calibration runs; locked confirmation contains 90 or 135 runs. Existing
+completed F/L/E/Pareto evidence remains separate.
+
+See the [two-terminal workflow and configuration guide](docs/fuzzy-uncertainty-workflow.md)
+and [implementation validation](docs/validation/fuzzy-uncertainty-2026-10-31.md).
+Current checks: 85 Java and 32 Python tests, plus real synthetic process recovery,
+workflow and legacy integration checks. Production admission requires at least
+8 GiB free disk; current local capacity is below that guard. No full Covertype
+uncertainty matrix or superiority conclusion has been produced.
+
 ## Completed Covertype results — 29 October 2026
 
 The held-out Pareto evaluation is complete: **60/60 runs, 70 rounds per run

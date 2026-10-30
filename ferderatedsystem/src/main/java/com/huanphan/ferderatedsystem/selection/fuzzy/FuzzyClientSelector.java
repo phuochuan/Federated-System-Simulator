@@ -8,7 +8,7 @@ public final class FuzzyClientSelector {
     public Decision select(List<ClientProfile> eligible,ExperimentConfig c,int round,SelectionHistory history,FairnessCreditState state) {
         state.check(c.selection(),round-1,c.fuzzySelection());
         for(var p:eligible) {FuzzySelectionConfig.nonnegative(p.estimate(c));FuzzySelectionConfig.positive(p.ramMb);FuzzySelectionConfig.positive(p.cpu);}
-        var feasible=Policies.feasibleClients(eligible,c);
+        var feasible=Policies.feasibleClients(eligible,c,round);
         var extracted=new ClientCriteriaExtractor().extract(feasible,c,round,history,state);
         var ranked=new FuzzyTopsisEngine().rank(extracted.matrix(),c.fuzzySelection().epsilon);
         var scheduled=new CreditFairnessScheduler().select(ranked.scores(),state,c.fuzzySelection(),Math.min(c.selectedPerRound(),feasible.size()));

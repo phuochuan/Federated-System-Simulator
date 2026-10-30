@@ -27,6 +27,13 @@ public class PythonMLClient {
     private final Duration requestTimeout;
     private final Sleeper sleeper;
     private volatile boolean checkpointRetrySupported;
+    private volatile JsonNode expectedRuntime;
+    private final java.util.concurrent.atomic.AtomicLong retryCounter=new java.util.concurrent.atomic.AtomicLong();
+    private volatile String lastRetryReason="";
+    public Map<String,Object> retryStatus() {return Map.of("retryAttempts",retryCounter.get(),"lastRetryReason",lastRetryReason);}
+    @Value("${minifls.worker.recovery-budget-seconds:7200}") private long recoveryBudgetSeconds=7200;
+    @Value("${minifls.worker.retry-jitter:0}") private double retryJitter=0;
+    public void requireRuntime(JsonNode runtime) {expectedRuntime=runtime.deepCopy();}
     @FunctionalInterface interface Sleeper {void sleep(long millis) throws InterruptedException;}
     public PythonMLClient(ObjectMapper json,String baseUrl) {this(json,baseUrl,4,2000,30000,1800);}
     @Autowired
@@ -48,12 +55,15 @@ public class PythonMLClient {
     public JsonNode get(String route) {return request(route,null);}
     public JsonNode post(String route,Object payload) {return request(route,payload);}
     public Map<String,Object> retryPolicy() {
-        return Map.of("maxAttempts",maxAttempts,"retryDelayMs",retryDelayMs,"retryMaxDelayMs",maxRetryDelayMs,"requestTimeoutMs",requestTimeout.toMillis());
+        return Map.of("maxAttempts",maxAttempts,"retryDelayMs",retryDelayMs,"retryMaxDelayMs",maxRetryDelayMs,"requestTimeoutMs",requestTimeout.toMillis(),"recoveryBudgetSeconds",recoveryBudgetSeconds,"retryJitter",retryJitter);
     }
     private boolean checkpointRoute(String route) {return route.equals("/train")||route.equals("/models/initialize")||route.equals("/models/aggregate");}
     private void ensureCheckpointRetrySupport(boolean refresh) {
         if(refresh||!checkpointRetrySupported) {
-            if(!get("/runtime").path("idempotentCheckpointOperations").asBoolean())
+            var runtime=get("/runtime");
+            if(expectedRuntime!=null && !expectedRuntime.equals(runtime))
+                throw new IllegalStateException("Worker runtime changed during operation; refusing incompatible restart");
+            if(!runtime.path("idempotentCheckpointOperations").asBoolean())
                 throw new IllegalStateException("Worker lacks safe checkpoint retry support; restart the updated Python worker or set MINIFLS_WORKER_MAX_ATTEMPTS=1");
             checkpointRetrySupported=true;
         }
@@ -92,11 +102,11 @@ public class PythonMLClient {
         long started=System.nanoTime();
         String method=payload==null?"GET":"POST";
         boolean checkpoint=payload!=null&&checkpointRoute(route);
-        if(checkpoint&&maxAttempts>1) ensureCheckpointRetrySupport(false);
+        if(checkpoint&&maxAttempts>1) ensureCheckpointRetrySupport(expectedRuntime!=null);
         // Serialize once: transport retries keep exactly the same payload and operationId.
         final HttpRequest request;
         try {
-            var builder=HttpRequest.newBuilder(URI.create(baseUrl+route)).timeout(requestTimeout);
+            var builder=HttpRequest.newBuilder(URI.create(baseUrl+route)).timeout(Duration.ofMillis(Math.min(requestTimeout.toMillis(),Math.max(1,recoveryBudgetSeconds)*1000)));
             // Correlation headers only affect logs; experiment validation still uses payload/checkpoints.
             var metadata=payload instanceof Map<?,?> map ? map : Map.of();
             correlationHeader(builder,"X-MiniFLS-Experiment",metadata.get("experimentId"),MDC.get("experimentId"));
@@ -111,6 +121,8 @@ public class PythonMLClient {
         }
         long delay=retryDelayMs;
         for(int attempt=1;attempt<=maxAttempts;attempt++) {
+            if((System.nanoTime()-started)/1e9>=recoveryBudgetSeconds)
+                throw failure(method,route,attempt,"recovery budget exhausted",null);
             if(checkpoint&&attempt>1) ensureCheckpointRetrySupport(true);
             HttpResponse<String> response;
             try {
@@ -153,7 +165,10 @@ public class PythonMLClient {
     }
     private long nextDelay(long delay) {return Math.min(maxRetryDelayMs,delay*2);}
     private void pause(String method,String route,int attempt,long delay,String reason) {
-        log.warn("worker.retry method={} route={} worker={} attempt={}/{} nextAttempt={} delayMs={} reason={}",method,route,baseUrl,attempt,maxAttempts,attempt+1,delay,reason);
+        retryCounter.incrementAndGet();lastRetryReason=reason;
+        if(!Double.isFinite(retryJitter)||retryJitter<0||retryJitter>1) throw new IllegalStateException("Invalid retry jitter");
+        delay=Math.min(maxRetryDelayMs,Math.max(0,(long)(delay*(1+java.util.concurrent.ThreadLocalRandom.current().nextDouble(-1,1)*retryJitter))));
+        log.warn("worker.retry method={} route={} worker={} attempt={}/{} nextAttempt={} delayMs={} reason={} experiment={} round={} operation={}",method,route,baseUrl,attempt,maxAttempts,attempt+1,delay,reason,MDC.get("experimentId"),MDC.get("roundId"),MDC.get("operationId"));
         try {sleeper.sleep(delay);}
         catch(InterruptedException e) {Thread.currentThread().interrupt();throw failure(method,route,attempt,"retry wait interrupted",e);}
     }

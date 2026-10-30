@@ -154,7 +154,7 @@ def verify(lambda_ablation=False):
                 try:
                     get(worker_base,"/health")
                     break
-                except (URLError, TimeoutError):
+                except (URLError, TimeoutError, ConnectionError):
                     time.sleep(.25)
             else:
                 raise RuntimeError("Worker startup timeout")
@@ -173,7 +173,7 @@ def verify(lambda_ablation=False):
                         report = ROOT/"artifacts/comparisons"/batch/("L-fixed-lambda-ablation.txt" if lambda_ablation else "F-fuzzy-client-selection.txt")
                         if report.exists():
                             break
-                except (URLError, TimeoutError):
+                except (URLError, TimeoutError, ConnectionError):
                     pass
                 time.sleep(.25)
             else:
@@ -241,13 +241,14 @@ def verify(lambda_ablation=False):
             server.terminate(); server.wait(timeout=20)
             worker.terminate(); worker.wait(timeout=20)
             env["MINIFLS_METHOD"] = "none"
+            env["MINIFLS_LAUNCH_ENABLED"] = "false"
             worker = subprocess.Popen([sys.executable,"-m","uvicorn","minifls.api:app","--host","127.0.0.1","--port",str(worker_port)],
                                       cwd=ROOT, env=env, stdout=log, stderr=log, **flags)
             deadline = time.monotonic()+60
             while time.monotonic()<deadline:
                 try:
                     get(worker_base,"/health"); break
-                except (URLError, TimeoutError):
+                except (URLError, TimeoutError, ConnectionError):
                     time.sleep(.25)
             else:
                 raise RuntimeError("Worker restart timeout")
@@ -257,7 +258,7 @@ def verify(lambda_ablation=False):
             while time.monotonic()<deadline:
                 try:
                     recovered = get(base,"/experiments/fuzzy-resume-smoke"); break
-                except (URLError, TimeoutError):
+                except (URLError, TimeoutError, ConnectionError):
                     time.sleep(.25)
             else:
                 raise RuntimeError("Java restart timeout")

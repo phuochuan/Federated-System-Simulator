@@ -21,6 +21,7 @@ public class ExperimentRepository {
     }
     @PostConstruct void initialize() {
         db.execute("PRAGMA journal_mode=WAL");
+        db.execute("PRAGMA synchronous=FULL");
         db.execute("PRAGMA busy_timeout=5000");
         db.execute("CREATE TABLE IF NOT EXISTS experiments (id TEXT PRIMARY KEY, status TEXT NOT NULL, config TEXT NOT NULL, snapshot TEXT, error TEXT, created_at TEXT DEFAULT CURRENT_TIMESTAMP)");
         db.execute("CREATE TABLE IF NOT EXISTS rounds (experiment_id TEXT, round_id INTEGER, model_version INTEGER, outcome TEXT, metrics TEXT NOT NULL, PRIMARY KEY(experiment_id,round_id))");

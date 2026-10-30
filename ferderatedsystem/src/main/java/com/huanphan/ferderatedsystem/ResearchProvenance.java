@@ -69,6 +69,7 @@ final class ResearchProvenance {
     static void verify(JsonNode provenance,PythonMLClient worker,ObjectMapper json) throws Exception {
         if(!provenance.path("runtimeIdentity").equals(runtime(worker,json)))
             throw new IllegalStateException("Java/Python runtime changed; refusing run/resume with different provenance");
+        worker.requireRuntime(provenance.path("runtimeIdentity").path("worker"));
     }
     static ObjectNode capture(Path root,PythonMLClient worker,ObjectMapper json) throws Exception {
         var out=json.createObjectNode();out.set("runtimeIdentity",runtime(worker,json));

@@ -185,7 +185,7 @@ async def missing_file(request, exc):
 
 @app.get("/health")
 def health():
-    return dict(status="ok", maxActiveTraining=1, busy=lock.locked(), torchThreads=torch.get_num_threads())
+    return dict(status="ok", apiVersion="fuzzy-research-v1", maxActiveTraining=1, busy=lock.locked(), torchThreads=torch.get_num_threads())
 
 
 @app.get("/runtime")
@@ -193,7 +193,7 @@ def runtime():
     package_root = Path(__file__).parent
     sources = {p.relative_to(package_root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
                for p in sorted(package_root.rglob("*.py"))}
-    return dict(python=sys.version, platform=platform.platform(), executionDevice="cpu",
+    return dict(apiVersion="fuzzy-research-v1", python=sys.version, platform=platform.platform(), executionDevice="cpu",
                 idempotentCheckpointOperations=True,
                 torchThreads=torch.get_num_threads(), torchInteropThreads=torch.get_num_interop_threads(),
                 deterministicAlgorithms=torch.are_deterministic_algorithms_enabled(),

@@ -81,4 +81,19 @@ class PythonMLClientTests {
         assertThrows(IllegalArgumentException.class,()->client(mock(HttpClient.class),0,new ArrayList<>()));
         assertEquals(4,client(mock(HttpClient.class),4,new ArrayList<>()).retryPolicy().get("maxAttempts"));
     }
+    @Test void incompatibleWorkerRestartStopsBeforeReexecutingCheckpoint() throws Exception {
+        var http=mock(HttpClient.class);List<Long> waits=new ArrayList<>();
+        var original=json.readTree("{\"idempotentCheckpointOperations\":true,\"source\":\"original\"}");
+        var supported=response(200,original.toString());
+        var changed=response(200,"{\"idempotentCheckpointOperations\":true,\"source\":\"changed\"}");
+        when(http.send(any(),any(HttpResponse.BodyHandler.class)))
+                .thenReturn(supported)
+                .thenThrow(new IOException("reset"))
+                .thenReturn(changed);
+        var worker=client(http,4,waits);worker.requireRuntime(original);
+        var error=assertThrows(IllegalStateException.class,()->worker.post("/train",Map.of("operationId","same")));
+        assertTrue(error.getMessage().contains("runtime changed"));
+        var requests=ArgumentCaptor.forClass(HttpRequest.class);verify(http,times(3)).send(requests.capture(),any(HttpResponse.BodyHandler.class));
+        assertEquals(1,requests.getAllValues().stream().filter(r->r.method().equals("POST")).count());
+    }
 }
