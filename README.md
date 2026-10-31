@@ -18,8 +18,12 @@ See the [two-terminal workflow and configuration guide](docs/fuzzy-uncertainty-w
 and [implementation validation](docs/validation/fuzzy-uncertainty-2026-10-31.md).
 Current checks: 85 Java and 32 Python tests, plus real synthetic process recovery,
 workflow and legacy integration checks. Production admission requires at least
-8 GiB free disk; current local capacity is below that guard. No full Covertype
-uncertainty matrix or superiority conclusion has been produced.
+8 GiB free disk and estimates the additional storage needed for confirmation.
+The [Covertype pilot results](results/research/fuzzy-uncertainty-20261031-004757-b6b730/README.md)
+now contain 32 completed experiments and 2,104 rounds. C1/C4/C5 are locked for
+135 E3 confirmation runs. Confirmation has not started because the full-mode
+storage estimate requires about 19.9 GiB free; this machine currently has about
+13.4 GiB. No held-out superiority conclusion has been produced.
 
 ## Completed Covertype results — 29 October 2026
 

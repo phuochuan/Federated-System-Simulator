@@ -1,0 +1,1227 @@
+{
+  "version": 1,
+  "generator": "sha256-independent-channels-v1",
+  "scenario": {
+    "seed": 42,
+    "rounds": 2,
+    "totalClients": 100,
+    "resourceProfile": "heterogeneous",
+    "availability": 0.9,
+    "dropout": 0.05,
+    "jitter": 0.1,
+    "requiredRamMb": 600.0,
+    "deadlineSeconds": 10.0
+  },
+  "rounds": [
+    {
+      "roundId": 1,
+      "clients": [
+        {
+          "clientId": 0,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0284667025181737
+        },
+        {
+          "clientId": 1,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9167334855308653
+        },
+        {
+          "clientId": 2,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0643663228865665
+        },
+        {
+          "clientId": 3,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0866521995571368
+        },
+        {
+          "clientId": 4,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0566842176681042
+        },
+        {
+          "clientId": 5,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9184588101701294
+        },
+        {
+          "clientId": 6,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0800512916006049
+        },
+        {
+          "clientId": 7,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9286503134294645
+        },
+        {
+          "clientId": 8,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9068021608846397
+        },
+        {
+          "clientId": 9,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9723882473669012
+        },
+        {
+          "clientId": 10,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9631100758624624
+        },
+        {
+          "clientId": 11,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9772022318946643
+        },
+        {
+          "clientId": 12,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0288617316075888
+        },
+        {
+          "clientId": 13,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0210359367431887
+        },
+        {
+          "clientId": 14,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9699782394239007
+        },
+        {
+          "clientId": 15,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9123745199357076
+        },
+        {
+          "clientId": 16,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9446206730853421
+        },
+        {
+          "clientId": 17,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9694348239913516
+        },
+        {
+          "clientId": 18,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0523787984312183
+        },
+        {
+          "clientId": 19,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9406734053164435
+        },
+        {
+          "clientId": 20,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9089364480600506
+        },
+        {
+          "clientId": 21,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9747478901877528
+        },
+        {
+          "clientId": 22,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9771481244372908
+        },
+        {
+          "clientId": 23,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9720643007893527
+        },
+        {
+          "clientId": 24,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0620635944739167
+        },
+        {
+          "clientId": 25,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.097944079012864
+        },
+        {
+          "clientId": 26,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9434157775140961
+        },
+        {
+          "clientId": 27,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0421115613167775
+        },
+        {
+          "clientId": 28,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.058409267039416
+        },
+        {
+          "clientId": 29,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0626213605871075
+        },
+        {
+          "clientId": 30,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9432731645142894
+        },
+        {
+          "clientId": 31,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0436296409922698
+        },
+        {
+          "clientId": 32,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0392120369158995
+        },
+        {
+          "clientId": 33,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.926230515218376
+        },
+        {
+          "clientId": 34,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0721364610790438
+        },
+        {
+          "clientId": 35,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9816801814809255
+        },
+        {
+          "clientId": 36,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0668348475544955
+        },
+        {
+          "clientId": 37,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9496197326379958
+        },
+        {
+          "clientId": 38,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0665943081731437
+        },
+        {
+          "clientId": 39,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0497832330665977
+        },
+        {
+          "clientId": 40,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9936265556850583
+        },
+        {
+          "clientId": 41,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0756057200053368
+        },
+        {
+          "clientId": 42,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.936694649169715
+        },
+        {
+          "clientId": 43,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9417457474184401
+        },
+        {
+          "clientId": 44,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9328089335793645
+        },
+        {
+          "clientId": 45,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0656225375324082
+        },
+        {
+          "clientId": 46,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9342553210413997
+        },
+        {
+          "clientId": 47,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9165651804573335
+        },
+        {
+          "clientId": 48,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9907771351362102
+        },
+        {
+          "clientId": 49,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9100672096421727
+        },
+        {
+          "clientId": 50,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9766028805659289
+        },
+        {
+          "clientId": 51,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9420291958563245
+        },
+        {
+          "clientId": 52,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9885407068590173
+        },
+        {
+          "clientId": 53,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9241192568705591
+        },
+        {
+          "clientId": 54,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9733946532691593
+        },
+        {
+          "clientId": 55,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9751300006187655
+        },
+        {
+          "clientId": 56,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.036821609761113
+        },
+        {
+          "clientId": 57,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0470828671353556
+        },
+        {
+          "clientId": 58,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0359828959191923
+        },
+        {
+          "clientId": 59,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.073814729733947
+        },
+        {
+          "clientId": 60,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9052692048449923
+        },
+        {
+          "clientId": 61,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0344842233216667
+        },
+        {
+          "clientId": 62,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0725749137216973
+        },
+        {
+          "clientId": 63,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0401958165777863
+        },
+        {
+          "clientId": 64,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9045153510014919
+        },
+        {
+          "clientId": 65,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9923422974513675
+        },
+        {
+          "clientId": 66,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.085024960297477
+        },
+        {
+          "clientId": 67,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0600114992175964
+        },
+        {
+          "clientId": 68,
+          "available": true,
+          "dropoutEvent": true,
+          "jitterMultiplier": 1.0744106049904618
+        },
+        {
+          "clientId": 69,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9310761423197998
+        },
+        {
+          "clientId": 70,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9345266460601039
+        },
+        {
+          "clientId": 71,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0941583390498526
+        },
+        {
+          "clientId": 72,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9978657163585367
+        },
+        {
+          "clientId": 73,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.041991471663418
+        },
+        {
+          "clientId": 74,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0601720632195695
+        },
+        {
+          "clientId": 75,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9369117520799054
+        },
+        {
+          "clientId": 76,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9111881747758368
+        },
+        {
+          "clientId": 77,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.013750254114632
+        },
+        {
+          "clientId": 78,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9648144754699853
+        },
+        {
+          "clientId": 79,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.048445492037501
+        },
+        {
+          "clientId": 80,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9269262871822576
+        },
+        {
+          "clientId": 81,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9665525357213518
+        },
+        {
+          "clientId": 82,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0941761541515342
+        },
+        {
+          "clientId": 83,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9615965706958541
+        },
+        {
+          "clientId": 84,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0784637887181707
+        },
+        {
+          "clientId": 85,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9606010235020896
+        },
+        {
+          "clientId": 86,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0052649207677868
+        },
+        {
+          "clientId": 87,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0016043415188691
+        },
+        {
+          "clientId": 88,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0279560772285972
+        },
+        {
+          "clientId": 89,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9312873736299193
+        },
+        {
+          "clientId": 90,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0836675348678992
+        },
+        {
+          "clientId": 91,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0092680893729142
+        },
+        {
+          "clientId": 92,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9554728660565476
+        },
+        {
+          "clientId": 93,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9141114925557344
+        },
+        {
+          "clientId": 94,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0622390520162877
+        },
+        {
+          "clientId": 95,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9226873502228827
+        },
+        {
+          "clientId": 96,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9355385890323934
+        },
+        {
+          "clientId": 97,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0120352787855942
+        },
+        {
+          "clientId": 98,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9098450364943952
+        },
+        {
+          "clientId": 99,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.025980905890863
+        }
+      ]
+    },
+    {
+      "roundId": 2,
+      "clients": [
+        {
+          "clientId": 0,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.048111464179635
+        },
+        {
+          "clientId": 1,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9438331755238233
+        },
+        {
+          "clientId": 2,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.056476786996327
+        },
+        {
+          "clientId": 3,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.920135050324915
+        },
+        {
+          "clientId": 4,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9755416710832728
+        },
+        {
+          "clientId": 5,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0639237979578178
+        },
+        {
+          "clientId": 6,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0766552773848237
+        },
+        {
+          "clientId": 7,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9362656734496791
+        },
+        {
+          "clientId": 8,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9803285235834898
+        },
+        {
+          "clientId": 9,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0004601930559498
+        },
+        {
+          "clientId": 10,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0249761958638468
+        },
+        {
+          "clientId": 11,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9352090645755468
+        },
+        {
+          "clientId": 12,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9862320171866557
+        },
+        {
+          "clientId": 13,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.009267840464944
+        },
+        {
+          "clientId": 14,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0244614278383775
+        },
+        {
+          "clientId": 15,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9388928117223954
+        },
+        {
+          "clientId": 16,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9927425717724714
+        },
+        {
+          "clientId": 17,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9725328521678351
+        },
+        {
+          "clientId": 18,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0998252651553535
+        },
+        {
+          "clientId": 19,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0209849755977354
+        },
+        {
+          "clientId": 20,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0487997285604793
+        },
+        {
+          "clientId": 21,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9286758615422761
+        },
+        {
+          "clientId": 22,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9226779669643073
+        },
+        {
+          "clientId": 23,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9263363994295202
+        },
+        {
+          "clientId": 24,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9471430002613622
+        },
+        {
+          "clientId": 25,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9731285946375859
+        },
+        {
+          "clientId": 26,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9278728263025107
+        },
+        {
+          "clientId": 27,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0969662578861925
+        },
+        {
+          "clientId": 28,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0534462289616568
+        },
+        {
+          "clientId": 29,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0362388791272488
+        },
+        {
+          "clientId": 30,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0047021055349339
+        },
+        {
+          "clientId": 31,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9970154553838899
+        },
+        {
+          "clientId": 32,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0546930155836396
+        },
+        {
+          "clientId": 33,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.016463714104601
+        },
+        {
+          "clientId": 34,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0830771638988164
+        },
+        {
+          "clientId": 35,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.993941868038624
+        },
+        {
+          "clientId": 36,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.948466162851171
+        },
+        {
+          "clientId": 37,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9969803233228705
+        },
+        {
+          "clientId": 38,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.021100436763513
+        },
+        {
+          "clientId": 39,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9494839474531133
+        },
+        {
+          "clientId": 40,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0943566164295404
+        },
+        {
+          "clientId": 41,
+          "available": true,
+          "dropoutEvent": true,
+          "jitterMultiplier": 1.0864886854576676
+        },
+        {
+          "clientId": 42,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.003891005174699
+        },
+        {
+          "clientId": 43,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9795033202021719
+        },
+        {
+          "clientId": 44,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.971851560980569
+        },
+        {
+          "clientId": 45,
+          "available": true,
+          "dropoutEvent": true,
+          "jitterMultiplier": 1.0136037928621624
+        },
+        {
+          "clientId": 46,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9222605896056935
+        },
+        {
+          "clientId": 47,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.088556312828845
+        },
+        {
+          "clientId": 48,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9246708716342117
+        },
+        {
+          "clientId": 49,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9480862344972193
+        },
+        {
+          "clientId": 50,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9261660183760055
+        },
+        {
+          "clientId": 51,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9582318586887602
+        },
+        {
+          "clientId": 52,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9244540116677417
+        },
+        {
+          "clientId": 53,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0733204646940444
+        },
+        {
+          "clientId": 54,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0753074519325247
+        },
+        {
+          "clientId": 55,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0847665085768785
+        },
+        {
+          "clientId": 56,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9033412801009835
+        },
+        {
+          "clientId": 57,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0967488382655248
+        },
+        {
+          "clientId": 58,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0830540811901095
+        },
+        {
+          "clientId": 59,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.999951996464321
+        },
+        {
+          "clientId": 60,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0607819422296327
+        },
+        {
+          "clientId": 61,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9185730102875274
+        },
+        {
+          "clientId": 62,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.00837203611469
+        },
+        {
+          "clientId": 63,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9043452967317156
+        },
+        {
+          "clientId": 64,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9184636392628225
+        },
+        {
+          "clientId": 65,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0384076967850637
+        },
+        {
+          "clientId": 66,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0080360654653786
+        },
+        {
+          "clientId": 67,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.081152206661794
+        },
+        {
+          "clientId": 68,
+          "available": true,
+          "dropoutEvent": true,
+          "jitterMultiplier": 0.9412429518626548
+        },
+        {
+          "clientId": 69,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9589148640289937
+        },
+        {
+          "clientId": 70,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.024264900780106
+        },
+        {
+          "clientId": 71,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9080076005419688
+        },
+        {
+          "clientId": 72,
+          "available": true,
+          "dropoutEvent": true,
+          "jitterMultiplier": 1.0095428434272307
+        },
+        {
+          "clientId": 73,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9376843256781864
+        },
+        {
+          "clientId": 74,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0390954293425223
+        },
+        {
+          "clientId": 75,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0852639995579052
+        },
+        {
+          "clientId": 76,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.00697851225628
+        },
+        {
+          "clientId": 77,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0540802181403157
+        },
+        {
+          "clientId": 78,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9515180062541673
+        },
+        {
+          "clientId": 79,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.965379320513289
+        },
+        {
+          "clientId": 80,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0057193173513594
+        },
+        {
+          "clientId": 81,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0310387177756757
+        },
+        {
+          "clientId": 82,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0036830834943045
+        },
+        {
+          "clientId": 83,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9319615645185385
+        },
+        {
+          "clientId": 84,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0002340375853016
+        },
+        {
+          "clientId": 85,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9125597970591302
+        },
+        {
+          "clientId": 86,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.948051743319471
+        },
+        {
+          "clientId": 87,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.037206160894775
+        },
+        {
+          "clientId": 88,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9562482740540326
+        },
+        {
+          "clientId": 89,
+          "available": false,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9053864807614893
+        },
+        {
+          "clientId": 90,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0039764404937885
+        },
+        {
+          "clientId": 91,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9527829269228466
+        },
+        {
+          "clientId": 92,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.052279770862211
+        },
+        {
+          "clientId": 93,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0523332205930127
+        },
+        {
+          "clientId": 94,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9887112080179999
+        },
+        {
+          "clientId": 95,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9245975002654165
+        },
+        {
+          "clientId": 96,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0636993753884474
+        },
+        {
+          "clientId": 97,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0979724263809894
+        },
+        {
+          "clientId": 98,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 1.0911293480192712
+        },
+        {
+          "clientId": 99,
+          "available": true,
+          "dropoutEvent": false,
+          "jitterMultiplier": 0.9703022371861971
+        }
+      ]
+    }
+  ]
+}

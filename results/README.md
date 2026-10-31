@@ -1,5 +1,24 @@
 # Published experiment results
 
+## Fuzzy uncertainty pilot — 31 October 2026
+
+The Covertype pilot completed **32/32 experiments and 2,104 rounds**: two short
+audit runs, 24 E2 robustness runs and six E4 calibration runs. These use proxy
+evaluation. E3 held-out confirmation has **not started**; its full-mode attempt
+is blocked by disk capacity. The C1/C4/C5 validation policy lock is preserved.
+
+- [Pilot reports, data and publication details](research/fuzzy-uncertainty-20261031-004757-b6b730/README.md)
+- [Research summary](research/fuzzy-uncertainty-20261031-004757-b6b730/fuzzy-mcdm-research-summary.md)
+- [E2 results CSV](research/fuzzy-uncertainty-20261031-004757-b6b730/e2-robustness-results.csv)
+- [E4 calibration report](research/fuzzy-uncertainty-20261031-004757-b6b730/e4-calibration-results.md)
+- [Checksums and snapshot scope](research/fuzzy-uncertainty-20261031-004757-b6b730/publication-manifest.json)
+
+This new publication includes compressed observations and complete per-round
+JSONL evidence. It has its own manifest and does not replace the historical
+Pareto archives or their manifest below.
+
+## Completed Pareto evaluation — 29 October 2026
+
 The full held-out Covertype Pareto evaluation completed on **29 October 2026**:
 60/60 runs, 70 rounds each, 4,200 rounds in total. E0 completed 12/12 runs.
 

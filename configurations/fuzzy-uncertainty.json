@@ -1,5 +1,5 @@
 {
-  "mode": "pilot",
+  "mode": "full",
   "dataset": "covertype",
   "splitSeed": 42,
   "validationPartitionSeed": 2001,

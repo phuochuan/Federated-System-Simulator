@@ -1,0 +1,3866 @@
+{
+  "runs": {
+    "AUDIT0-C4-U0-s42-a0.5-p2001": {
+      "key": "AUDIT0-C4-U0-s42-a0.5-p2001",
+      "stage": "AUDIT0",
+      "policy": "C4",
+      "scenario": "U0",
+      "seed": 42,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-ad159e5dcf77beae4b0a",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 2,
+        "seed": 42,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "history_based",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U0",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s42-r2.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "AUDIT1-C4-U0-s42-a0.5-p2001": {
+      "key": "AUDIT1-C4-U0-s42-a0.5-p2001",
+      "stage": "AUDIT1",
+      "policy": "C4",
+      "scenario": "U0",
+      "seed": 42,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-85906b8146eaa6f2be8f",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 2,
+        "seed": 42,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "history_based",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U0",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s42-r2.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C1-U0-s42-a0.5-p2001": {
+      "key": "E2-C1-U0-s42-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C1",
+      "scenario": "U0",
+      "seed": 42,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-b8783c7cb111b885ded4",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 42,
+        "selection": "crisp_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "crisp",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U0",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s42-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C2-U0-s42-a0.5-p2001": {
+      "key": "E2-C2-U0-s42-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C2",
+      "scenario": "U0",
+      "seed": 42,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-1dfddd80a4de2f73b683",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 42,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "crisp",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U0",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s42-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C3-U0-s42-a0.5-p2001": {
+      "key": "E2-C3-U0-s42-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C3",
+      "scenario": "U0",
+      "seed": 42,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-f0b7305dcae57af577e8",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 42,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "fixed",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U0",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s42-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C4-U0-s42-a0.5-p2001": {
+      "key": "E2-C4-U0-s42-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C4",
+      "scenario": "U0",
+      "seed": 42,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-ef147961a351b93bf72b",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 42,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "history_based",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U0",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s42-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C1-U0-s43-a0.5-p2001": {
+      "key": "E2-C1-U0-s43-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C1",
+      "scenario": "U0",
+      "seed": 43,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-4c7dae3e105a0cc6891b",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 43,
+        "selection": "crisp_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "crisp",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U0",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s43-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C2-U0-s43-a0.5-p2001": {
+      "key": "E2-C2-U0-s43-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C2",
+      "scenario": "U0",
+      "seed": 43,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-689c0d7619bf073c5606",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 43,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "crisp",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U0",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s43-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C3-U0-s43-a0.5-p2001": {
+      "key": "E2-C3-U0-s43-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C3",
+      "scenario": "U0",
+      "seed": 43,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-1178352acf7f30773de8",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 43,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "fixed",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U0",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s43-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C4-U0-s43-a0.5-p2001": {
+      "key": "E2-C4-U0-s43-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C4",
+      "scenario": "U0",
+      "seed": 43,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-6c55955f1398d792cf45",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 43,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "history_based",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U0",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s43-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C1-U1-s42-a0.5-p2001": {
+      "key": "E2-C1-U1-s42-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C1",
+      "scenario": "U1",
+      "seed": 42,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-a3e8256a405cb38cc344",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 42,
+        "selection": "crisp_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "crisp",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U1",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s42-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C2-U1-s42-a0.5-p2001": {
+      "key": "E2-C2-U1-s42-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C2",
+      "scenario": "U1",
+      "seed": 42,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-a9bc8f740cc0c8ca4640",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 42,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "crisp",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U1",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s42-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C3-U1-s42-a0.5-p2001": {
+      "key": "E2-C3-U1-s42-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C3",
+      "scenario": "U1",
+      "seed": 42,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-42c9819bdc29c45caa5c",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 42,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "fixed",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U1",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s42-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C4-U1-s42-a0.5-p2001": {
+      "key": "E2-C4-U1-s42-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C4",
+      "scenario": "U1",
+      "seed": 42,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-c2f01f497111e09adfd2",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 42,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "history_based",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U1",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s42-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C1-U1-s43-a0.5-p2001": {
+      "key": "E2-C1-U1-s43-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C1",
+      "scenario": "U1",
+      "seed": 43,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-725bd56933d886f3c6dc",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 43,
+        "selection": "crisp_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "crisp",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U1",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s43-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C2-U1-s43-a0.5-p2001": {
+      "key": "E2-C2-U1-s43-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C2",
+      "scenario": "U1",
+      "seed": 43,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-3bc6108b861ebe1afe25",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 43,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "crisp",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U1",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s43-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C3-U1-s43-a0.5-p2001": {
+      "key": "E2-C3-U1-s43-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C3",
+      "scenario": "U1",
+      "seed": 43,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-6e99aae736ade9140902",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 43,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "fixed",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U1",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s43-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C4-U1-s43-a0.5-p2001": {
+      "key": "E2-C4-U1-s43-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C4",
+      "scenario": "U1",
+      "seed": 43,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-0f4773602bd785fc58c6",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 43,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "history_based",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U1",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s43-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C1-U2-s42-a0.5-p2001": {
+      "key": "E2-C1-U2-s42-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C1",
+      "scenario": "U2",
+      "seed": 42,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-876a4f4a85ee22f1ded1",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 42,
+        "selection": "crisp_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "crisp",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U2",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s42-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C2-U2-s42-a0.5-p2001": {
+      "key": "E2-C2-U2-s42-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C2",
+      "scenario": "U2",
+      "seed": 42,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-25435e1144ffa03c4c86",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 42,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "crisp",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U2",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s42-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C3-U2-s42-a0.5-p2001": {
+      "key": "E2-C3-U2-s42-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C3",
+      "scenario": "U2",
+      "seed": 42,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-c9b0d50dd152059906e2",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 42,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "fixed",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U2",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s42-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C4-U2-s42-a0.5-p2001": {
+      "key": "E2-C4-U2-s42-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C4",
+      "scenario": "U2",
+      "seed": 42,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-eebfc36b42c576c692b0",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 42,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "history_based",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U2",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s42-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C1-U2-s43-a0.5-p2001": {
+      "key": "E2-C1-U2-s43-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C1",
+      "scenario": "U2",
+      "seed": 43,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-07b5f1456916dc62200b",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 43,
+        "selection": "crisp_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "crisp",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U2",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s43-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C2-U2-s43-a0.5-p2001": {
+      "key": "E2-C2-U2-s43-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C2",
+      "scenario": "U2",
+      "seed": 43,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-22f2428dd0439dcbe547",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 43,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "crisp",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U2",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s43-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C3-U2-s43-a0.5-p2001": {
+      "key": "E2-C3-U2-s43-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C3",
+      "scenario": "U2",
+      "seed": 43,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-bd524077cba667da36d9",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 43,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "fixed",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U2",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s43-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E2-C4-U2-s43-a0.5-p2001": {
+      "key": "E2-C4-U2-s43-a0.5-p2001",
+      "stage": "E2",
+      "policy": "C4",
+      "scenario": "U2",
+      "seed": 43,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-8db54216d555d0b24983",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 43,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "history_based",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U2",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s43-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E4-C5-U0-s42-a0.5-p2001": {
+      "key": "E4-C5-U0-s42-a0.5-p2001",
+      "stage": "E4",
+      "policy": "C5",
+      "scenario": "U0",
+      "seed": 42,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-5e3937e7821442251d77",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 42,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "error_calibrated",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U0",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s42-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E4-C5-U0-s43-a0.5-p2001": {
+      "key": "E4-C5-U0-s43-a0.5-p2001",
+      "stage": "E4",
+      "policy": "C5",
+      "scenario": "U0",
+      "seed": 43,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-b5cf4812cc980e2e39fd",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 43,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "error_calibrated",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U0",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s43-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E4-C5-U1-s42-a0.5-p2001": {
+      "key": "E4-C5-U1-s42-a0.5-p2001",
+      "stage": "E4",
+      "policy": "C5",
+      "scenario": "U1",
+      "seed": 42,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-09fcbf52dcbd20d26104",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 42,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "error_calibrated",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U1",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s42-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E4-C5-U1-s43-a0.5-p2001": {
+      "key": "E4-C5-U1-s43-a0.5-p2001",
+      "stage": "E4",
+      "policy": "C5",
+      "scenario": "U1",
+      "seed": 43,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-e6a4fe3a4a7bced6a71d",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 43,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "error_calibrated",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U1",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s43-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E4-C5-U2-s42-a0.5-p2001": {
+      "key": "E4-C5-U2-s42-a0.5-p2001",
+      "stage": "E4",
+      "policy": "C5",
+      "scenario": "U2",
+      "seed": 42,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-b6577b39eb23ca12a128",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 42,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "error_calibrated",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U2",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s42-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    },
+    "E4-C5-U2-s43-a0.5-p2001": {
+      "key": "E4-C5-U2-s43-a0.5-p2001",
+      "stage": "E4",
+      "policy": "C5",
+      "scenario": "U2",
+      "seed": 43,
+      "alpha": 0.5,
+      "partition": 2001,
+      "config": {
+        "experimentId": "fu-c4e7b471-bd04110221e5bbf8c38d",
+        "manifestPath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001",
+        "totalClients": 100,
+        "selectedPerRound": 5,
+        "rounds": 70,
+        "seed": 43,
+        "selection": "fuzzy_topsis",
+        "aggregation": "fedavg",
+        "localEpochs": 1,
+        "batchSize": 32,
+        "learningRate": 0.01,
+        "simulationEnabled": true,
+        "resourceProfile": "heterogeneous",
+        "availability": 0.9,
+        "dropout": 0.05,
+        "jitter": 0.1,
+        "exploration": 0.0,
+        "deadlineSeconds": 10.0,
+        "requiredRamMb": 600.0,
+        "priorSecondsPerSample": 0.0005,
+        "targetAccuracy": 0.7,
+        "architecture": "mlp_54_256_128_7",
+        "evaluationSplit": "proxy",
+        "finalEvaluationSplit": "proxy",
+        "timing": {
+          "mode": "deterministic",
+          "secondsPerSample": 0.0005
+        },
+        "fuzzySelection": {
+          "weights": {
+            "estimatedTime": 0.4,
+            "reliability": 0.35,
+            "learningUtility": 0.25
+          },
+          "uncertaintyMode": "error_calibrated",
+          "uncertaintyFallback": 0.1,
+          "uncertaintyMax": 0.45,
+          "calibrationMinHistory": 5,
+          "calibrationWindow": 32,
+          "calibrationQuantile": 0.8,
+          "observationNoise": {
+            "scenario": "U2",
+            "timing": true,
+            "reliability": true
+          }
+        },
+        "provenance": {
+          "runtimeIdentity": {
+            "javaBuildHash": "9beacb71ea1ad7210bf46aa62c4d46db111d03d05bc45e8666d0e6e6e7f88b8b",
+            "javaVersion": "17.0.11",
+            "osArch": "amd64",
+            "worker": {
+              "apiVersion": "fuzzy-research-v1",
+              "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+              "platform": "Windows-10-10.0.19045-SP0",
+              "executionDevice": "cpu",
+              "idempotentCheckpointOperations": true,
+              "torchThreads": 1,
+              "torchInteropThreads": 4,
+              "deterministicAlgorithms": true,
+              "packages": {
+                "torch": "2.14.1+cpu",
+                "numpy": "2.5.4",
+                "scikit-learn": "1.9.1",
+                "simpy": "4.1.2",
+                "fastapi": "0.143.3",
+                "uvicorn": "0.54.0"
+              },
+              "sourceHashes": {
+                "__init__.py": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+                "api.py": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+                "benchmark.py": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+                "data.py": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+                "experiment.py": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+                "logging_config.py": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+                "methods/__init__.py": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+                "methods/fairfedcs/__init__.py": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+                "methods/fedavg/__init__.py": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+                "methods/fedavg/algorithm.py": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+                "methods/fedavgm/__init__.py": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+                "methods/fedlbw/__init__.py": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+                "methods/fedlbw/algorithm.py": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+                "methods/fednova/__init__.py": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+                "methods/fedprox/__init__.py": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+                "methods/longfed/__init__.py": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+                "methods/oort/__init__.py": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+                "methods/scaffold/__init__.py": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+                "model.py": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+                "operations.py": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+                "plot.py": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+                "research_plot.py": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+                "simulation.py": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+              },
+              "sourceFilesUnchanged": true
+            },
+            "workerTransport": {
+              "retryMaxDelayMs": 30000,
+              "retryJitter": 0.0,
+              "retryDelayMs": 2000,
+              "requestTimeoutMs": 1800000,
+              "maxAttempts": 8,
+              "recoveryBudgetSeconds": 900
+            }
+          },
+          "workflowProtocolHash": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+        },
+        "scenarioTracePath": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/traces/s43-r70.json"
+      },
+      "status": "COMPLETED",
+      "retries": 0
+    }
+  },
+  "stages": {
+    "E2": "COMPLETED",
+    "E4": "COMPLETED",
+    "POLICY_LOCK": "COMPLETED"
+  },
+  "startedAt": 1793382503.729641,
+  "progress": {
+    "workflowStatus": "BLOCKED",
+    "lastError": "Insufficient disk for budgeted confirmation: require about 19.9 GiB free; lower admission budget or add capacity",
+    "nextResumeAction": "inspect integrity error; do not reset evidence",
+    "workerStatus": "WAITING",
+    "currentExperimentId": "fu-c4e7b471-bd04110221e5bbf8c38d",
+    "currentRound": 70,
+    "rounds": 70,
+    "lastSuccessfulCheckpoint": "artifacts/models/fu-c4e7b471-bd04110221e5bbf8c38d/global_0070_2017af95-f30e-4b97-8478-c7fb25b2a801.pt",
+    "retryAttempts": 0,
+    "transportRetryStatus": {
+      "lastRetryReason": "",
+      "retryAttempts": 0
+    },
+    "expectedE2Runs": 24
+  }
+}
