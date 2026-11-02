@@ -8,6 +8,11 @@ The implementation follows the [Notion plan](https://app.notion.com/p/3fbb6ecc36
 
 ## Fuzzy uncertainty research workflow — 31 October 2026
 
+For the existing frozen E3 batch, the requested **manual Uvicorn + IntelliJ**
+launch is documented in [the IntelliJ resume guide](docs/intellij-frozen-e3.md).
+Select **Resume Frozen E3**; it retains the original scientific JAR/policy lock
+and avoids regenerating the completed pilot reports before resuming training.
+
 The separate E0 → E1 → E2 → E4 → E3 workflow adds conventional Crisp TOPSIS,
 observation-only uncertainty, residual-calibrated fuzzy widths and resumable
 Windows watchdog launchers. Its default pilot contains 24 robustness runs plus
