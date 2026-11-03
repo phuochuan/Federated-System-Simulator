@@ -1,0 +1,108 @@
+{
+  "status": "OBSERVED_SELECTION_CONDITIONAL",
+  "observed": 84495,
+  "availablePreRoundRecords": 1522540,
+  "selected": 84495,
+  "missingOutcomes": 1438045,
+  "errors": {
+    "effectiveDuration": {
+      "n": 84495,
+      "MAE": 0.0881128378801793,
+      "RMSE": 0.25753908808542886,
+      "bias": -0.02825324916621174,
+      "errorVariance": 0.06552813580342624,
+      "meanRelativeError": 0.384944915035157
+    },
+    "workerExecutionDescriptiveOnly": {
+      "n": 84495,
+      "MAE": 0.8219294076491825,
+      "RMSE": 3.2717047981621703,
+      "bias": -0.7685588636075253,
+      "errorVariance": 10.113369559487678,
+      "meanRelativeError": 6.052475058669612
+    },
+    "reliability": {
+      "n": 84495,
+      "MAE": 0.17729301635098454,
+      "RMSE": 0.2688330095099831,
+      "bias": 0.09126766105988879,
+      "errorVariance": 0.06394140104685193,
+      "meanRelativeError": 43012677.77981618
+    },
+    "predictionBeforeSimulationJitter": {
+      "n": 68150,
+      "MAE": 0.021306739022482132,
+      "RMSE": 0.1376814554469175,
+      "bias": -0.002286875547485744,
+      "errorVariance": 0.018950953374211845,
+      "meanRelativeError": 0.10110238979256478
+    },
+    "stochasticSimulationEffect": {
+      "n": 68150,
+      "MAE": 0.05399242692842029,
+      "RMSE": 0.06454631125771307,
+      "bias": 0.0009230311631201096,
+      "errorVariance": 0.004165374310449487,
+      "meanRelativeError": 0.04972446654396414
+    }
+  },
+  "BrierScore": 0.07227118700219468,
+  "intervalCoverage": 0.3346470205337594,
+  "intervalN": 84495,
+  "reliabilityCalibration": [
+    {
+      "bin": 2,
+      "n": 13,
+      "predicted": 0.25,
+      "actual": 1.0
+    },
+    {
+      "bin": 3,
+      "n": 169,
+      "predicted": 0.33476157108772553,
+      "actual": 0.9171597633136095
+    },
+    {
+      "bin": 4,
+      "n": 82,
+      "predicted": 0.45032639557651394,
+      "actual": 0.9878048780487805
+    },
+    {
+      "bin": 5,
+      "n": 5480,
+      "predicted": 0.5017514911383739,
+      "actual": 0.945985401459854
+    },
+    {
+      "bin": 6,
+      "n": 5135,
+      "predicted": 0.6614754739265358,
+      "actual": 0.9489776046738072
+    },
+    {
+      "bin": 7,
+      "n": 5410,
+      "predicted": 0.7509055809396149,
+      "actual": 0.9515711645101663
+    },
+    {
+      "bin": 8,
+      "n": 21525,
+      "predicted": 0.8555392016284197,
+      "actual": 0.9574912891986063
+    },
+    {
+      "bin": 9,
+      "n": 46681,
+      "predicted": 0.9389351614320831,
+      "actual": 0.9468306163107045
+    }
+  ],
+  "limitations": [
+    "Outcomes are observed only for executed clients; no population causal uncertainty claim.",
+    "Virtual duration forecasts and physical worker runtime have different targets.",
+    "Fuzzy TFNs are bounded decision representations; no nominal confidence coverage is claimed.",
+    "Legacy observations without immutable pre-round profiles remain missing."
+  ]
+}

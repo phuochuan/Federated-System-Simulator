@@ -7,19 +7,48 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import shutil
+import sqlite3
 import threading
 import time
 import traceback
+from contextlib import contextmanager
 
 import psutil
-from fuzzy_uncertainty_workflow import ROOT, Workflow, BudgetReached, atomic, digest, immutable, transient
+from fuzzy_uncertainty_workflow import ROOT, Workflow, BudgetReached, api, atomic, contains, digest, immutable, transient
 from research_watchdog import run_lock
 
 
 def file_hash(path):
     with path.open("rb") as stream:
         return hashlib.file_digest(stream, "sha256").hexdigest()
+
+
+def known_checkpoint_transport_budget_error(message, worker_url, max_attempts):
+    match = re.fullmatch(r"Worker request failed method=POST route=(/train|/models/initialize|/models/aggregate) worker=(\S+) attempts=(\d+)/(\d+) reason=recovery budget exhausted", message or "")
+    return bool(match and match[2] == worker_url and int(match[4]) == max_attempts and 1 <= int(match[3]) <= max_attempts)
+
+
+@contextmanager
+def prevent_idle_sleep(set_state=None):
+    """Scoped Windows execution state; no registry or power-plan changes."""
+    if set_state is None:
+        if os.name != "nt":
+            yield
+            return
+        import ctypes
+        set_state = ctypes.windll.kernel32.SetThreadExecutionState
+        set_state.argtypes = [ctypes.c_uint]
+        set_state.restype = ctypes.c_uint
+    continuous, system_required = 0x80000000, 0x00000001
+    if not set_state(continuous | system_required):
+        raise OSError("Windows refused the scoped idle-sleep inhibitor")
+    print("[IDE] Automatic idle sleep is inhibited while E3 is active; display sleep remains allowed.", flush=True)
+    try:
+        yield
+    finally:
+        set_state(continuous)
 
 
 def verify_frozen_files(folder):
@@ -69,6 +98,102 @@ class FrozenE3Controller(Workflow):
         if self.mode != "full":
             raise RuntimeError("Frozen E3 resume requires full mode")
         self.partition_cache = {}
+
+    def transport_budget_error(self, message):
+        return known_checkpoint_transport_budget_error(message, self.worker, self.runtime["workerTransport"]["maxAttempts"])
+
+    def wait_for_idle_worker(self):
+        deadline = time.monotonic()+self.config["readinessSeconds"]
+        self.ready()  # Retains exact source/package/runtime identity validation.
+        printed = False
+        while True:
+            health = api(self.worker, "/health")
+            if not isinstance(health.get("busy"), bool):
+                raise RuntimeError("Worker health lacks a valid busy indicator")
+            if not health["busy"]:
+                return
+            if not printed:
+                print("[E3-RECOVERY] Waiting for the previous worker operation to finish; not dispatching duplicate training.", flush=True)
+                printed = True
+            if time.monotonic() >= deadline:
+                raise RuntimeError("Worker remains busy after the bounded recovery wait")
+            time.sleep(2)
+
+    def verify_resume_checkpoint(self, run, row):
+        if not contains(row["config"], run["config"]):
+            raise RuntimeError("Failed-run config/provenance mismatch")
+        snapshot = row.get("snapshot") or {}
+        committed = snapshot.get("round", 0)
+        with sqlite3.connect((self.folder / "experiments.db").as_uri()+"?mode=ro", uri=True) as db:
+            count, first, last = db.execute("SELECT count(*),min(round_id),max(round_id) FROM rounds WHERE experiment_id=?", (run["config"]["experimentId"],)).fetchone()
+            if count != committed or (count and (first != 1 or last != committed)):
+                raise RuntimeError("Failed-run snapshot/committed-round integrity mismatch")
+            metric = db.execute("SELECT metrics FROM rounds WHERE experiment_id=? AND round_id=?", (run["config"]["experimentId"], committed)).fetchone()
+        if not snapshot:
+            return committed  # Failed initialization with no committed state.
+        if snapshot.get("executionProvenance") != run["config"]["provenance"]:
+            raise RuntimeError("Failed-run snapshot provenance mismatch")
+        checkpoint = (ROOT / snapshot["checkpointPath"]).resolve()
+        if not checkpoint.is_relative_to(ROOT) or not checkpoint.is_file():
+            raise RuntimeError("Missing/out-of-workspace committed recovery checkpoint")
+        receipt = json.loads(checkpoint.with_suffix(".response.json").read_text(encoding="utf-8"))
+        expected = json.loads(metric[0])["modelStateHash"] if metric else snapshot["initialModelStateHash"]
+        if receipt.get("responseHash") != digest(receipt["response"]) or receipt["response"].get("modelStateHash") != expected:
+            raise RuntimeError("Committed recovery checkpoint receipt integrity mismatch")
+        # This loads/verifies actual tensor contents; proxy metrics are not used for selection.
+        checked = api(self.worker, "/models/evaluate", dict(manifestPath=run["config"]["manifestPath"],
+                      checkpointPath=snapshot["checkpointPath"], split="proxy"))
+        if checked.get("modelStateHash") != expected:
+            raise RuntimeError("Committed recovery checkpoint tensor integrity mismatch")
+        return committed
+
+    def run(self, run):
+        admitted_before, rounds_before = self.admitted, self.admitted_rounds
+        reserved_runs = reserved_rounds = 0
+        while True:
+            try:
+                row = api(self.base, "/experiments/"+run["config"]["experimentId"])
+            except RuntimeError as error:
+                if not str(error).startswith("HTTP 404:"):
+                    raise
+                row = None
+            if row and row["status"] == "FAILED" and self.transport_budget_error(row.get("error")):
+                # Do not dispatch /resume if this invocation cannot admit the run.
+                # A retry of an already admitted run retains its original reservation.
+                run_budget = int(os.environ.get("MINIFLS_FUZZY_RUN_BUDGET", self.config.get("runBudget", 0)))
+                round_budget = int(os.environ.get("MINIFLS_FUZZY_ROUND_BUDGET", self.config.get("roundBudget", 0)))
+                remaining = run["config"]["rounds"]-(row.get("snapshot") or {}).get("round", 0)
+                if not reserved_runs and ((run_budget and admitted_before >= run_budget) or
+                                         (round_budget and rounds_before+remaining > round_budget)):
+                    raise BudgetReached()
+                if run["retries"] >= self.config["retryBudget"]:
+                    run["status"] = "FAILED"
+                    raise RuntimeError("Frozen E3 transport recovery attempt budget exhausted; retain evidence and inspect the host")
+                run["retries"] += 1
+                run["status"] = "RETRYABLE_FAILURE"
+                self.status(lastError=row["error"], retryAttempts=run["retries"], nextResumeAction="wait for idle worker and verify committed checkpoint")
+                self.wait_for_idle_worker()
+                committed = self.verify_resume_checkpoint(run, row)
+                print(f"[E3-RECOVERY] Verified checkpoint={committed}; resume round={committed+1} with a fresh attempt, recovery={run['retries']}/{self.config['retryBudget']}.", flush=True)
+                api(self.base, "/experiments/"+run["config"]["experimentId"]+"/resume", {})
+                run["status"] = "RUNNING"
+                self.status(lastError=None, workerStatus="READY", nextResumeAction="resume verified checkpoint")
+            try:
+                # The inherited admission code sees this experiment once, even
+                # after transport recovery. Preserve the maximum round reservation
+                # so a retry cannot free already-spent rounds for a different run.
+                self.admitted, self.admitted_rounds = admitted_before, rounds_before
+                return super().run(run)
+            except RuntimeError as error:
+                if not self.transport_budget_error(str(error)):
+                    raise
+                # The frozen coordinator has already marked this uncommitted attempt
+                # FAILED. Loop through bounded idle/checkpoint validation before resume.
+                continue
+            finally:
+                reserved_runs = max(reserved_runs, self.admitted-admitted_before)
+                reserved_rounds = max(reserved_rounds, self.admitted_rounds-rounds_before)
+                self.admitted, self.admitted_rounds = admitted_before+reserved_runs, rounds_before+reserved_rounds
 
     def partition(self, alpha, partition):
         key = (alpha, partition)
@@ -183,7 +308,7 @@ def main():
     workflow = FrozenE3Controller()
     try:
         watch_ide_owner()
-        with run_lock(workflow.folder / "workflow.lock"):
+        with run_lock(workflow.folder / "workflow.lock"), prevent_idle_sleep():
             workflow.execute()
         return 0
     except BudgetReached:

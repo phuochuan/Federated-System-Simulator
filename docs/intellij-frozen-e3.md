@@ -70,6 +70,22 @@ watchdog. If a retry budget is exhausted or Java stops, rerun the IntelliJ
 configuration to resume. A changed runtime, corrupt checkpoint or ambiguous
 receipt still fails closed.
 
+The controller recognizes only the exact frozen checkpoint-RPC transport-budget
+failure (`reason=recovery budget exhausted`) as eligible for bounded recovery.
+It waits until the old worker operation is idle, verifies runtime, contiguous
+SQLite commits, snapshot provenance, checkpoint receipt and actual tensor hash,
+then resumes through the original Java API with a fresh uncommitted-round attempt.
+This consumes the existing experiment retry budget; it does not increase Java's
+HTTP timeout or accept an integrity/scientific validation error. A retry of the
+same run keeps one run admission and its maximum reserved round budget.
+
+While this IntelliJ E3 controller is active, it requests Windows to inhibit
+automatic idle sleep using `ES_CONTINUOUS | ES_SYSTEM_REQUIRED`, and releases
+that request when the controller exits. It changes no power plan/registry and
+does not keep the display on. Manual Sleep, lid/power-button actions and loss of
+power can still interrupt work. See Microsoft's
+[SetThreadExecutionState documentation](https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setthreadexecutionstate).
+
 Stopping the IntelliJ launcher stops its API-server/controller children. An
 owner-process monitor also stops its own frozen API server if IntelliJ forcibly
 kills the launcher. It never targets the independently started Uvicorn process.

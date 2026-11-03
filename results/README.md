@@ -1,5 +1,17 @@
 # Published experiment results
 
+## Completed fuzzy MCDM full evaluation - 3 November 2026
+
+The full workflow completed **167/167 runs and 11,554 committed rounds**, including
+**135 E3 held-out runs of 70 rounds** under U0 with locked C1/C4/C5 policies.
+Reports, compressed per-round evidence and provenance are published separately
+from the historical pilot snapshot below.
+
+- [Completed full results and archive scope](research/fuzzy-uncertainty-20261031-004757-b6b730-full-20261103/README.md)
+- [Consolidated report](research/fuzzy-uncertainty-20261031-004757-b6b730-full-20261103/fuzzy-mcdm-research-summary.md)
+- [Held-out E3 results](research/fuzzy-uncertainty-20261031-004757-b6b730-full-20261103/e3-heldout-results.json)
+
+
 ## Fuzzy uncertainty pilot — 31 October 2026
 
 The Covertype pilot completed **32/32 experiments and 2,104 rounds**: two short

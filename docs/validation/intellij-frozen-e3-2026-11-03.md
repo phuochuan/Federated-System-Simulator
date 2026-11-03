@@ -43,3 +43,33 @@ rewritten to conceal the change.
 Production E3 was not launched by this validation. The user starts the worker
 and IntelliJ configuration. Existing watchdog sessions must be stopped first;
 locks and occupied ports fail closed if a coordinator is still running.
+
+## Connected Standby timeout recovery, later on 3 November
+
+Windows System events show entry to Connected Standby at 00:59:51 (event 506,
+Idle Timeout) and exit at 01:33:40 (event 507). The round-46 client-85 receipt
+appeared at 01:33:41 with `actualTrainingMs=2008240.217300001`; Java reported
+the 900-second transport recovery budget exhausted at 01:33:43. The database
+retains round 45, while all round-46 local artifacts remain uncommitted.
+
+The operational controller now holds a scoped idle-sleep inhibitor while active
+and handles that exact checkpoint-transport failure through bounded idle/runtime/
+checkpoint verification followed by the existing Java resume API. Original frozen
+scientific source/JAR, transport settings and policy lock remain unchanged.
+Production checkpoint 45 passed actual worker tensor verification read-only;
+no production resume/training request was sent during diagnosis.
+
+Fault-injection evidence: `artifacts/frozen-e3-ide-smoke/13347b7658`. The proxy
+held a successful training response beyond a private five-second test transport
+budget. The actual Java server marked the uncommitted attempt failed; the new
+controller recovered it, completed the run, respected the one-run admission
+budget, and finished remaining work on the next invocation. Checks include
+unchanged frozen identities, no duplicate round commits, preserved independently
+owned worker, hard-stop child cleanup and final report generation. The 25
+synthetic fixture rounds are not research evidence.
+
+Targeted unit tests also cover exact error classification, retry exhaustion,
+idle guard release on exceptions, verification before dispatch, corrupt checkpoint
+rejection and one admission/maximum round reservation across transport retries.
+The first injected run exposed an admission-accounting bug; it was fixed and the
+fault-injection smoke passed on rerun, without removing the failing assertion.

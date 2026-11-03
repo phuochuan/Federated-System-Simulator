@@ -1,0 +1,52 @@
+{
+  "accuracyVsRounds": {
+    "csv": "accuracy-vs-rounds.csv",
+    "x": "round",
+    "y": "accuracy"
+  },
+  "accuracyVsUncertainty": {
+    "csv": "e2-robustness-results.csv",
+    "x": "scenario",
+    "y": "accuracy"
+  },
+  "macroF1VsUncertainty": {
+    "csv": "e2-robustness-results.csv",
+    "x": "scenario",
+    "y": "macroF1"
+  },
+  "rankingRobustnessVsNoise": {
+    "csv": "ranking-robustness-vs-noise.csv",
+    "x": "scenario",
+    "y": "spearmanCommonCandidates"
+  },
+  "topKOverlapVsNoise": {
+    "csv": "ranking-robustness-vs-noise.csv",
+    "x": "scenario",
+    "y": "topKOverlap"
+  },
+  "predictionErrorDistribution": {
+    "csv": "e0-observations.csv",
+    "predicted": "estimatedSeconds",
+    "actual": "effectiveSeconds"
+  },
+  "fuzzyWidthVsError": {
+    "csv": "e4-calibration-diagnostics.csv",
+    "x": "width",
+    "y": "relativeError"
+  },
+  "accuracyVsVirtualTime": {
+    "csv": "accuracy-vs-rounds.csv",
+    "x": "virtualSeconds",
+    "y": "accuracy"
+  },
+  "opportunityAdjustedGini": {
+    "csv": "accuracy-vs-rounds.csv",
+    "x": "round",
+    "y": "opportunityAdjustedGini"
+  },
+  "perClassRecall": {
+    "csv": "per-class-recall.csv",
+    "x": "classId",
+    "y": "recall"
+  }
+}
