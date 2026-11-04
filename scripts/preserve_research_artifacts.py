@@ -188,6 +188,7 @@ class ZipBody:
         self.queue = queue.Queue(maxsize=16)
         self.cancel = threading.Event()
         self.pending = b''
+        self.ended = False
         self.failure, self.result = None, None
         self.expected = expected
         def produce():
@@ -206,15 +207,20 @@ class ZipBody:
         self.thread.start()
 
     def read(self, size=8192):
-        if not self.pending:
+        if size < 0:
+            size = 65536
+        # Combine tiny ZIP headers with compressed payload before SSL writes.
+        # Sending each header as its own TLS record is extremely slow on Windows.
+        while len(self.pending) < size and not self.ended:
             block = self.queue.get(timeout=120)
             if block is None:
                 if self.failure:
                     raise RuntimeError('Streaming ZIP source failed: ' + str(self.failure))
                 if (self.result['bytes'], self.result['sha256']) != (self.expected['bytes'], self.expected['sha256']):
                     raise RuntimeError('Streaming ZIP differs from package pass')
-                return b''
-            self.pending = block
+                self.ended = True
+            else:
+                self.pending += block
         data, self.pending = self.pending[:size], self.pending[size:]
         return data
 

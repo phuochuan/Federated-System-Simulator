@@ -24,7 +24,9 @@ def test_two_pass_zip_matches_and_restores(tmp_path, monkeypatch):
     expected = p.zip_stream(source, p.Sink())
     producer = p.ZipBody(source, expected)
     try:
-        data = b''.join(iter(lambda: producer.read(8192), b''))
+        chunks = list(iter(lambda: producer.read(8192), b''))
+        data = b''.join(chunks)
+        assert len(chunks[0]) == min(8192, expected['bytes'])
     finally:
         producer.close()
     assert len(data) == expected['bytes']
