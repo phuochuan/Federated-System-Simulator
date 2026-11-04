@@ -355,20 +355,59 @@ def restore(manifest, destination):
         print('[RESTORED] ' + part['name'], flush=True)
 
 
+def push_catalog(tag):
+    """Publish only the completed catalog, preserving unrelated working changes."""
+    path = f'results/model-archives/{tag}/manifest.json'
+    catalog = json.loads((ROOT / path).read_text())
+    if catalog['status'] != 'COMPLETED':
+        raise RuntimeError('Cannot push incomplete backup catalog')
+    branch = subprocess.check_output(['git', 'branch', '--show-current'], cwd=ROOT, text=True).strip()
+    if branch != 'main':
+        raise RuntimeError('Catalog auto-push requires main; no branches switched')
+    subprocess.run(['git', 'add', '--', path], cwd=ROOT, check=True)
+    changed = subprocess.run(['git', 'diff', '--cached', '--quiet', '--', path], cwd=ROOT).returncode
+    if changed == 1:
+        subprocess.run(['git', 'commit', '--only', '-m', 'Publish verified full model checkpoint archive catalog',
+                        '--', path], cwd=ROOT, check=True)
+    elif changed != 0:
+        raise RuntimeError('Cannot inspect staged catalog')
+    subprocess.run(['git', 'push', 'origin', 'main'], cwd=ROOT, check=True)
+    head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
+    remote = subprocess.check_output(['git', 'ls-remote', 'origin', 'refs/heads/main'], cwd=ROOT, text=True).split()[0]
+    if head != remote:
+        raise RuntimeError('Remote main changed during push; inspect catalog commit')
+    atomic(ROOT / 'artifacts/model-release-backup' / tag / 'git-publication.json',
+           dict(status='COMPLETED', commit=head, catalog=path, releaseUrl=catalog['releaseUrl']))
+    print('[GIT-PUBLISHED] ' + head, flush=True)
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--tag', default='models-backup-20261104')
     parser.add_argument('--part-mib', type=int, default=384)
     parser.add_argument('--restore', type=Path)
     parser.add_argument('--destination', type=Path, default=ROOT)
+    parser.add_argument('--push-catalog', action='store_true', help='After verified completion, commit/push only the catalog')
     args = parser.parse_args()
     if args.restore:
         restore(args.restore, args.destination)
     else:
         if not 16 <= args.part_mib <= 1024 or not args.tag.replace('-', '').isalnum():
             parser.error('Use a simple tag and part size 16..1024 MiB')
+        import ctypes
+        # Prevent automatic idle sleep while the backup is doing disk/network IO.
+        # Display sleep is still allowed; explicit user sleep/power loss is not handled.
+        if not ctypes.windll.kernel32.SetThreadExecutionState(0x80000001):
+            raise RuntimeError('Cannot inhibit automatic idle sleep for backup')
         try:
             backup(args.tag, args.part_mib)
+            if args.push_catalog:
+                push_catalog(args.tag)
         except Exception as error:
+            atomic(ROOT / 'artifacts/model-release-backup' / args.tag / 'blocker.json',
+                   dict(status='BLOCKED', error=str(error),
+                        at=datetime.datetime.now(datetime.timezone.utc).isoformat()))
             print('[BLOCKED] ' + str(error), file=sys.stderr, flush=True)
             raise
+        finally:
+            ctypes.windll.kernel32.SetThreadExecutionState(0x80000000)

@@ -14,7 +14,7 @@ only after all model files and remote assets have passed verification.
 Run or resume the same backup from repository root:
 
 ```powershell
-.\.venv\Scripts\python.exe -u scripts/archive_models_release.py --tag models-backup-20261104 --part-mib 384
+.\.venv\Scripts\python.exe -u scripts/archive_models_release.py --tag models-backup-20261104 --part-mib 384 --push-catalog
 ```
 
 The existing Git credential helper supplies authentication in memory. No token
@@ -36,6 +36,14 @@ The tool needs space for one bounded compressed part plus inventory and reserve.
 Databases, dataset arrays, coordinator JARs and other files outside
 `artifacts/models` are not part of this archive. A full training-resume package
 also needs those separate experiment/runtime artifacts.
+
+`--push-catalog` commits/pushes only the completed catalog on `main`, preserving
+unrelated working changes. It verifies the remote branch and saves
+`git-publication.json` beside local state. It never force-pushes or switches
+branches. If publication fails, resume the same command; already completed
+backup parts are verified and reused. Git credentials and network must remain
+available throughout the job. Keep the computer awake and do not start training
+until the model snapshot completes.
 
 Restore into a fresh directory with sufficient disk capacity:
 
