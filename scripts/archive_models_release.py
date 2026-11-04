@@ -7,6 +7,7 @@ Git objects. The Git-tracked catalog is written only after complete verification
 import argparse
 import datetime
 import hashlib
+import http.client
 import json
 import os
 from pathlib import Path
@@ -38,6 +39,27 @@ def atomic(path, value):
 def sha(path):
     with path.open('rb') as stream:
         return hashlib.file_digest(stream, 'sha256').hexdigest()
+
+
+class UploadBody:
+    """Bound total upload time as well as individual socket operations."""
+    def __init__(self, stream, size, name, total_seconds=900):
+        self.stream, self.size, self.name = stream, size, name
+        self.started = self.last_log = time.monotonic()
+        self.deadline = self.started + total_seconds
+        self.sent = 0
+
+    def read(self, size=-1):
+        now = time.monotonic()
+        if now >= self.deadline:
+            raise TimeoutError('Total upload deadline exceeded')
+        block = self.stream.read(size)
+        self.sent += len(block)
+        if now - self.last_log >= 30 or not block:
+            print(f'[TRANSFER] {self.name} suppliedMiB={self.sent/1024**2:.1f}/{self.size/1024**2:.1f} '
+                  f'elapsedSeconds={now-self.started:.0f}', flush=True)
+            self.last_log = now
+        return block
 
 
 class Github:
@@ -118,17 +140,19 @@ class Github:
             headers.update({'Content-Type': 'application/octet-stream', 'Content-Length': str(size)})
             try:
                 with path.open('rb') as stream:
-                    request = urllib.request.Request(url, data=stream, headers=headers, method='POST')
-                    with urllib.request.urlopen(request, timeout=900) as response:
+                    body = UploadBody(stream, size, path.name)
+                    request = urllib.request.Request(url, data=body, headers=headers, method='POST')
+                    with urllib.request.urlopen(request, timeout=60) as response:
                         asset = json.load(response)
                 self.verify(asset, expected, size)
                 return asset
             except urllib.error.HTTPError as error:
                 if error.code not in (429, 502, 503, 504, 422) or attempt == 5:
                     raise RuntimeError('Asset upload failed HTTP ' + str(error.code)) from None
-            except (TimeoutError, OSError):
+            except (TimeoutError, OSError, http.client.HTTPException):
                 if attempt == 5:
                     raise RuntimeError('Asset upload transport retry budget exhausted') from None
+                print(f'[RETRY] asset={path.name} attempt={attempt+1}/6 reason=transport-or-deadline', flush=True)
             time.sleep(min(60, 2 ** (attempt + 1)))
         raise RuntimeError('Asset upload retry budget exhausted')
 

@@ -1,4 +1,5 @@
 import importlib.util
+import io
 import json
 from pathlib import Path
 import zipfile
@@ -59,3 +60,14 @@ def test_remote_digest_and_path_guards(tmp_path, monkeypatch):
         github.verify(dict(size=12, state='uploaded', name='part', digest='sha256:bad'), 'abc', 12)
     with pytest.raises(RuntimeError, match='outside models'):
         backup.verify_member_name('artifacts/models/../../outside')
+
+
+def test_total_upload_deadline(monkeypatch):
+    clock = [0.0]
+    monkeypatch.setattr(backup.time, 'monotonic', lambda: clock[0])
+    body = backup.UploadBody(io.BytesIO(b'original'), 8, 'test.zip', total_seconds=10)
+    assert body.read(4) == b'orig'
+    clock[0] = 11
+    with pytest.raises(TimeoutError, match='Total upload deadline'):
+        body.read(4)
+    assert body.sent == 4
