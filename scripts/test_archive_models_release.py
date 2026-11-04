@@ -23,6 +23,7 @@ def test_round_trip_and_existing_evidence(tmp_path, monkeypatch):
     source, rows = fixture(tmp_path, monkeypatch)
     part = tmp_path / 'models-0001.zip'
     records = backup.build_part(rows, part)
+    assert backup.reuse_part(rows, part) == records
     with zipfile.ZipFile(part) as archive:
         assert json.loads(archive.read('archive-file-manifest.jsonl')) == records[0]
     manifest = tmp_path / 'manifest.json'
@@ -40,7 +41,11 @@ def test_round_trip_and_existing_evidence(tmp_path, monkeypatch):
 
 def test_source_mutation_fails_closed(tmp_path, monkeypatch):
     source, rows = fixture(tmp_path, monkeypatch)
+    part = tmp_path / 'original.zip'
+    backup.build_part(rows, part)
     source.write_bytes(b'changed')
+    with pytest.raises(RuntimeError, match='Source changed'):
+        backup.reuse_part(rows, part)
     with pytest.raises(RuntimeError, match='changed since inventory'):
         backup.build_part(rows, tmp_path / 'bad.zip')
     assert source.read_bytes() == b'changed'

@@ -102,9 +102,10 @@ class Github:
         for attempt in range(6):
             existing = next((a for a in self.assets(release) if a['name'] == path.name), None)
             if existing:
-                # GitHub can leave a zero-byte starter after a failed upload.
+                # GitHub can leave a starter after a failed upload. Its size may
+                # already report Content-Length, not actual committed bytes.
                 # Remove only that uncommitted upload placeholder in this release.
-                if existing['state'] == 'starter' and existing['size'] == 0:
+                if existing['state'] == 'starter':
                     request = urllib.request.Request(existing['url'], headers=self.headers, method='DELETE')
                     with urllib.request.urlopen(request, timeout=120):
                         pass
@@ -176,7 +177,9 @@ def build_part(rows, path):
             if (after.st_size, after.st_mtime_ns) != (size, mtime):
                 raise RuntimeError('Model mutated during backup: ' + name)
             records.append(dict(path=name, bytes=size, sha256=h.hexdigest()))
-        archive.writestr('archive-file-manifest.jsonl',
+        manifest_info = zipfile.ZipInfo('archive-file-manifest.jsonl', (1980, 1, 1, 0, 0, 0))
+        manifest_info.compress_type = zipfile.ZIP_DEFLATED
+        archive.writestr(manifest_info,
                          ''.join(json.dumps(r, separators=(',', ':')) + '\n' for r in records))
     # Compression round trip and per-file hashes, independently of source hashing.
     with zipfile.ZipFile(path) as archive:
@@ -186,6 +189,28 @@ def build_part(rows, path):
                     raise RuntimeError('Archive round-trip hash mismatch')
     with path.open('r+b') as stream:
         os.fsync(stream.fileno())
+    return records
+
+
+def reuse_part(rows, path):
+    """Recover an upload interrupted before the durable per-part receipt."""
+    expected = {name: (size, mtime) for name, size, mtime in rows}
+    with zipfile.ZipFile(path) as archive:
+        records = [json.loads(line) for line in archive.read('archive-file-manifest.jsonl').splitlines()]
+        names = [r['path'] for r in records]
+        if len(names) != len(set(names)) or set(names) != set(expected):
+            raise RuntimeError('Existing temporary archive has different source membership')
+        if set(archive.namelist()) != set(names) | {'archive-file-manifest.jsonl'}:
+            raise RuntimeError('Unexpected temporary archive member')
+        for record in records:
+            source = verify_member_name(record['path'])
+            stat = source.stat()
+            if (stat.st_size, stat.st_mtime_ns) != expected[record['path']]:
+                raise RuntimeError('Source changed while recovering archive')
+            with archive.open(record['path']) as stream:
+                actual = hashlib.file_digest(stream, 'sha256').hexdigest()
+            if actual != record['sha256'] or actual != sha(source) or record['bytes'] != stat.st_size:
+                raise RuntimeError('Temporary archive differs from original source')
     return records
 
 
@@ -242,7 +267,15 @@ def backup_locked(tag, part_mib):
             number = len(state['parts']) + 1
             path = work / f'models-{number:04d}.zip'
             print(f'[PACK] part={number} files={len(rows)} originalMiB={size/1024**2:.1f}', flush=True)
-            records = build_part(rows, path)
+            if path.exists():
+                try:
+                    records = reuse_part(rows, path)
+                except zipfile.BadZipFile:
+                    # A half-written, never-uploaded compression temporary is disposable.
+                    path.unlink()
+                    records = build_part(rows, path)
+            else:
+                records = build_part(rows, path)
             print(f'[UPLOAD] part={number} compressedMiB={path.stat().st_size/1024**2:.1f}', flush=True)
             asset = gh.upload(release, path)
             part = dict(number=number, name=path.name, bytes=path.stat().st_size,
