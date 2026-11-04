@@ -19,7 +19,7 @@ public class FerderatedsystemApplication {
 			if(!env.getProperty("minifls.launch.enabled",Boolean.class,true)) return;
 			// Explicit CLI modes bypass the user's manual IDE sequence below.
 			switch(env.getProperty("minifls.launch.method","none")) {
-				case "fuzzy_uncertainty_workflow" -> {
+				case "fuzzy_uncertainty_workflow", "controlled-fuzzy-ablation" -> {
                     int code;
                     try {code=new FuzzyResearchWorkflow(env).run();} catch(Exception failure) {failure.printStackTrace();code=20;}
                     System.exit(code);return;

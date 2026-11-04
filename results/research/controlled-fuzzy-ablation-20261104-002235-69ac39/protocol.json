@@ -1,0 +1,95 @@
+{
+  "protocolVersion": "controlled-fuzzy-width-full-v1",
+  "confirmationDesign": {
+    "alphas": [
+      0.1,
+      0.5,
+      1.0
+    ],
+    "partitionSeeds": [
+      6001,
+      6002,
+      6003
+    ],
+    "trainingSeeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ]
+  },
+  "reliabilityTarget": "accepted-given-selected-executed-v1",
+  "policies": [
+    "A0",
+    "A1",
+    "A2",
+    "A3",
+    "A4"
+  ],
+  "dataset": "covertype",
+  "splitSeed": 42,
+  "rounds": 70,
+  "totalClients": 100,
+  "selectedPerRound": 5,
+  "scenario": "U0",
+  "weights": {
+    "estimatedTime": 0.4,
+    "reliability": 0.35,
+    "learningUtility": 0.25
+  },
+  "widthSettings": {
+    "uncertaintyFallback": 0.1,
+    "uncertaintyMax": 0.45,
+    "calibrationMinHistory": 5,
+    "calibrationWindow": 32,
+    "calibrationQuantile": 0.8
+  },
+  "evidenceDatabases": [
+    "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/experiments.db"
+  ],
+  "replayStates": 100,
+  "widthSensitivity": [
+    0,
+    0.05,
+    0.1,
+    0.2,
+    0.3,
+    0.45
+  ],
+  "minimumFreeDiskGB": 8,
+  "runBudget": 0,
+  "roundBudget": 0,
+  "retryBudget": 3,
+  "readinessSeconds": 600,
+  "recoverySeconds": 900,
+  "requestTimeoutSeconds": 1800,
+  "restartLimit": 4,
+  "restartWindowSeconds": 3600,
+  "restartDelaySeconds": 15,
+  "torchThreads": 1,
+  "timingUncertainty": true,
+  "reliabilityUncertainty": true,
+  "studyStage": "full",
+  "alphas": [
+    0.1,
+    0.5,
+    1
+  ],
+  "partitionSeeds": [
+    6001,
+    6002,
+    6003
+  ],
+  "otherStagePartitions": [
+    5001,
+    5002
+  ],
+  "trainingSeeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ]
+}

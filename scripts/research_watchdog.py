@@ -53,17 +53,20 @@ def run_lock(path, wait=0):
 def source_identity():
     files = list((ROOT / "ferderatedsystem/src/main").rglob("*")) + list((ROOT / "ml-python/minifls").rglob("*.py"))
     files += [ROOT / "scripts" / name for name in ("research_watchdog.py", "fuzzy_uncertainty_workflow.py", "fuzzy_uncertainty_reports.py", "run_fl_research_java.ps1", "run_fl_research_worker.ps1")]
+    if os.environ.get("MINIFLS_STUDY") == "controlled-fuzzy-ablation":
+        files += [ROOT / "scripts" / name for name in ("controlled_fuzzy_ablation.py", "controlled_ablation_reports.py", "controlled_ablation_plots.py", "controlled_ablation_ide.py", "resume_frozen_e3.py", "run_controlled_fuzzy_java.ps1", "run_controlled_fuzzy_worker.ps1")]
     return {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files) if p.is_file() and "__pycache__" not in p.parts}
 
 
 def prepare():
-    config_path = ROOT / os.environ.get("MINIFLS_FUZZY_CONFIG", "configurations/fuzzy-uncertainty.json")
+    controlled = os.environ.get("MINIFLS_STUDY") == "controlled-fuzzy-ablation"
+    config_path = ROOT / os.environ.get("MINIFLS_FUZZY_CONFIG", "configurations/controlled-fuzzy-ablation-pilot.json" if controlled else "configurations/fuzzy-uncertainty.json")
     config = json.loads(config_path.read_text(encoding="utf-8"))
     mode = os.environ.get("MINIFLS_FUZZY_MODE", config.pop("mode", "pilot"))
     config.pop("mode", None)
-    if mode not in ("pilot", "full", "report-only"):
+    if mode not in (("pilot", "full", "report-only", "preflight") if controlled else ("pilot", "full", "report-only")):
         raise ValueError("Invalid workflow mode")
-    output = (ROOT / os.environ.get("MINIFLS_FUZZY_OUTPUT", "artifacts/research/fuzzy-uncertainty")).resolve()
+    output = (ROOT / os.environ.get("MINIFLS_FUZZY_OUTPUT", "artifacts/research/controlled-fuzzy-ablation/"+config["studyStage"] if controlled else "artifacts/research/fuzzy-uncertainty")).resolve()
     if not output.is_relative_to(ROOT):
         raise ValueError("Output root must stay in workspace")
     with run_lock(output / "bootstrap.lock", 120):
@@ -77,6 +80,15 @@ def prepare():
             batch.mkdir(parents=True)
             atomic(pointer, {"folder": str(batch)})
         immutable(batch / "protocol.json", config)
+        if controlled:
+            from controlled_fuzzy_ablation import validate_protocol, partition_inventory
+            validate_protocol(config)
+            inventory_path = batch / "partition-reservation.json"
+            if not inventory_path.exists():
+                inventory = partition_inventory(config, output)
+                if inventory["conflicts"]:
+                    raise RuntimeError("Previously used partition seeds: " + str(inventory["conflicts"]))
+                immutable(inventory_path, inventory)
         immutable(batch / "source-identity.json", source_identity())
     return batch, config, mode
 
@@ -110,7 +122,7 @@ def completed(batch, mode):
 
 
 def supervise(role, batch, config, mode):
-    if role == "worker" and mode == "report-only":
+    if role == "worker" and mode in ("report-only", "preflight"):
         return 0
     if completed(batch, mode) and mode != "report-only":
         print(f"Workflow already completed: {batch}", flush=True)
@@ -131,6 +143,8 @@ def supervise(role, batch, config, mode):
     env.setdefault("MINIFLS_WORKER_RETRY_MAX_DELAY_MS", "30000")
     env.setdefault("MINIFLS_SERVER_PORT", "8080")
     env.setdefault("MINIFLS_WORKER_URL", "http://127.0.0.1:8000")
+    if os.environ.get("MINIFLS_STUDY") == "controlled-fuzzy-ablation":
+        env["MINIFLS_METHOD"] = "controlled-fuzzy-ablation"
     if role == "java":
         jar = batch / "coordinator.jar"
         if not jar.exists():
@@ -144,7 +158,7 @@ def supervise(role, batch, config, mode):
             temporary.replace(jar)
         jarhash = hashlib.sha256(jar.read_bytes()).hexdigest()
         immutable(batch / "build-identity.json", dict(jarSHA256=jarhash))
-        command = ["java", "-Xms128m", "-Xmx512m", "-XX:ActiveProcessorCount=2", "-jar", str(jar)]
+        command = [env.get('MINIFLS_JAVA_EXECUTABLE','java'), "-Xms128m", "-Xmx512m", "-XX:ActiveProcessorCount=2", "-jar", str(jar)]
         port = int(env["MINIFLS_SERVER_PORT"])
     else:
         from urllib.parse import urlparse
@@ -169,7 +183,7 @@ def supervise(role, batch, config, mode):
         def pump():
             for line in process.stdout:
                 logger.info(line.rstrip())
-                if (role == "java" and (line.startswith("[E") or line.startswith("[AUDIT") or " ERROR " in line or " WARN " in line or line.startswith("Traceback"))) or (role == "worker" and ("ERROR" in line or "WARNING" in line)):
+                if (role == "java" and (line.startswith("[") or " ERROR " in line or " WARN " in line or line.startswith("Traceback"))) or (role == "worker" and ("ERROR" in line or "WARNING" in line)):
                     print(line, end="", flush=True)
         thread = threading.Thread(target=pump, daemon=True)
         thread.start()

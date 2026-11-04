@@ -1,0 +1,15 @@
+{
+  "previousBatch": "D:\\research\\federated-system\\artifacts\\research\\controlled-fuzzy-ablation\\full\\fuzzy-uncertainty-20261104-001556-81e087",
+  "verifiedExperimentCount": 0,
+  "verifiedCommittedRounds": 0,
+  "protocolHash": "f27ad81c6b696ea06e9f3e2cb9114e0683f2362fe5a6ef35bb697538da3fae55",
+  "previousSourceLedgerSHA256": "c50706d0e3cc0ba4eda782a1b9d3c255bcf93a6573e4c13ca56cab2f1018aaab",
+  "reason": "Measured storage estimate v2 only; preserve old failed preflight and source identity without modification",
+  "measurement": {
+    "checkpointSamples": 800,
+    "maxCheckpointBytes": 196669,
+    "maxReceiptBytes": 850,
+    "rounds": 11554,
+    "maxRoundJSONBytes": 159164
+  }
+}

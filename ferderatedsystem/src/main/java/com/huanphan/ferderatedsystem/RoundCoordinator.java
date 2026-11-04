@@ -219,6 +219,7 @@ public class RoundCoordinator {
             var ids=CrispTopsisEngine.order(scores).stream().limit(c.selectedPerRound()).toList();
             selected=ids.stream().map(id->feasible.stream().filter(p->p.clientId==id).findFirst().orElseThrow()).toList();
             selectorMetrics.put("criteriaObservations",extracted.observations());
+            selectorMetrics.put("criterionUncertaintyWidths",extracted.widths());
             selectorMetrics.put("fuzzyDecisionMatrix",extracted.matrix());
             selectorMetrics.put("finalSelectionScores",scores);
         } else {

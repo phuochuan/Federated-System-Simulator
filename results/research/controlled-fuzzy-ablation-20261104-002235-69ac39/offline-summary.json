@@ -1,0 +1,152 @@
+{
+  "status": "COMPLETED",
+  "states": 100,
+  "changedSelectionStates": {
+    "A2": 10,
+    "A3": 19,
+    "A4": 28
+  },
+  "changedSelectionFractions": {
+    "A2": 0.1,
+    "A3": 0.19,
+    "A4": 0.28
+  },
+  "widthDistributions": {
+    "A0/estimatedTime": {
+      "n": 5408,
+      "mean": 0.0,
+      "sampleSD": 0.0,
+      "minimum": 0.0,
+      "maximum": 0.0,
+      "median": 0.0,
+      "cappedFraction": 0.0
+    },
+    "A0/learningUtility": {
+      "n": 5408,
+      "mean": 0.0,
+      "sampleSD": 0.0,
+      "minimum": 0.0,
+      "maximum": 0.0,
+      "median": 0.0,
+      "cappedFraction": 0.0
+    },
+    "A0/reliability": {
+      "n": 5408,
+      "mean": 0.0,
+      "sampleSD": 0.0,
+      "minimum": 0.0,
+      "maximum": 0.0,
+      "median": 0.0,
+      "cappedFraction": 0.0
+    },
+    "A1/estimatedTime": {
+      "n": 5408,
+      "mean": 0.0,
+      "sampleSD": 0.0,
+      "minimum": 0.0,
+      "maximum": 0.0,
+      "median": 0.0,
+      "cappedFraction": 0.0
+    },
+    "A1/learningUtility": {
+      "n": 5408,
+      "mean": 0.0,
+      "sampleSD": 0.0,
+      "minimum": 0.0,
+      "maximum": 0.0,
+      "median": 0.0,
+      "cappedFraction": 0.0
+    },
+    "A1/reliability": {
+      "n": 5408,
+      "mean": 0.0,
+      "sampleSD": 0.0,
+      "minimum": 0.0,
+      "maximum": 0.0,
+      "median": 0.0,
+      "cappedFraction": 0.0
+    },
+    "A2/estimatedTime": {
+      "n": 5408,
+      "mean": 0.1,
+      "sampleSD": 0.0,
+      "minimum": 0.1,
+      "maximum": 0.1,
+      "median": 0.1,
+      "cappedFraction": 0.0
+    },
+    "A2/learningUtility": {
+      "n": 5408,
+      "mean": 0.1,
+      "sampleSD": 0.0,
+      "minimum": 0.1,
+      "maximum": 0.1,
+      "median": 0.1,
+      "cappedFraction": 0.0
+    },
+    "A2/reliability": {
+      "n": 5408,
+      "mean": 0.1,
+      "sampleSD": 0.0,
+      "minimum": 0.1,
+      "maximum": 0.1,
+      "median": 0.1,
+      "cappedFraction": 0.0
+    },
+    "A3/estimatedTime": {
+      "n": 5408,
+      "mean": 0.08983503719519198,
+      "sampleSD": 0.024498710920956276,
+      "minimum": 0.0125,
+      "maximum": 0.1,
+      "median": 0.1,
+      "cappedFraction": 0.0
+    },
+    "A3/learningUtility": {
+      "n": 5408,
+      "mean": 0.08983503719519198,
+      "sampleSD": 0.024498710920956276,
+      "minimum": 0.0125,
+      "maximum": 0.1,
+      "median": 0.1,
+      "cappedFraction": 0.0
+    },
+    "A3/reliability": {
+      "n": 5408,
+      "mean": 0.2610609699388022,
+      "sampleSD": 0.07022090948488549,
+      "minimum": 0.016946633158852125,
+      "maximum": 0.28867513459481287,
+      "median": 0.28867513459481287,
+      "cappedFraction": 0.0
+    },
+    "A4/estimatedTime": {
+      "n": 5408,
+      "mean": 0.10037478160386765,
+      "sampleSD": 0.024125045510810614,
+      "minimum": 0.03360898568496738,
+      "maximum": 0.45,
+      "median": 0.1,
+      "cappedFraction": 0.0003698224852071006
+    },
+    "A4/learningUtility": {
+      "n": 5408,
+      "mean": 0.1,
+      "sampleSD": 0.0,
+      "minimum": 0.1,
+      "maximum": 0.1,
+      "median": 0.1,
+      "cappedFraction": 0.0
+    },
+    "A4/reliability": {
+      "n": 5408,
+      "mean": 0.11233747806164152,
+      "sampleSD": 0.05147036026785936,
+      "minimum": 0.03125,
+      "maximum": 0.45,
+      "median": 0.1,
+      "cappedFraction": 0.007951183431952663
+    }
+  },
+  "interpretation": "Paired offline decision diagnostic; no counterfactual training or FL outcome claim"
+}

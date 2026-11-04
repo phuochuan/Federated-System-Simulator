@@ -1,0 +1,2824 @@
+{
+  "schemaVersion": 1,
+  "publishedAt": "2026-11-04T18:15:52.000943+07:00",
+  "sourceBatch": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39",
+  "publicationType": "COMPLETED_CONTROLLED_FUZZY_ABLATION_FULL",
+  "experiments": 227,
+  "committedRounds": 15754,
+  "researchRuns": 225,
+  "integrity": {
+    "passed": true,
+    "anomalies": [],
+    "completedResearchRuns": 225,
+    "expectedResearchRuns": 225,
+    "checks": [
+      "unique contiguous round commits",
+      "final-only held-out evaluation",
+      "proxy-only trajectories/pilot",
+      "paired initial tensor/partition/scenario hashes"
+    ]
+  },
+  "excluded": [
+    "SQLite/database files",
+    "model binaries",
+    "dataset arrays",
+    "coordinator JAR",
+    "process logs/locks"
+  ],
+  "files": [
+    {
+      "path": "batch-manifest.json",
+      "bytes": 1332932,
+      "sha256": "8c45406e73623810dea34995da26ba72b93769f1ba8d4ac38bf84cb6dfe68e9c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/batch-manifest.json",
+      "sourceSHA256": "8c45406e73623810dea34995da26ba72b93769f1ba8d4ac38bf84cb6dfe68e9c"
+    },
+    {
+      "path": "build-identity.json",
+      "bytes": 85,
+      "sha256": "7c9eb57a4aaac3f9a3a0ee6eac6f148b628ad92bd135aecd7385d833915144ba",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/build-identity.json",
+      "sourceSHA256": "7c9eb57a4aaac3f9a3a0ee6eac6f148b628ad92bd135aecd7385d833915144ba"
+    },
+    {
+      "path": "calibration-diagnostics.csv",
+      "bytes": 18309064,
+      "sha256": "73a994eb481b825892c37ab103c530e54017a9ce5b9c8e2e491edc188f0149bf",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/calibration-diagnostics.csv",
+      "sourceSHA256": "73a994eb481b825892c37ab103c530e54017a9ce5b9c8e2e491edc188f0149bf"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-0005f40ec200a5cf8d42.json",
+      "bytes": 371,
+      "sha256": "c6818aa310977c050bc6a328ea62c5d9cbcc03da03ac32adfc6fff539ea1ac08",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-0005f40ec200a5cf8d42.json",
+      "sourceSHA256": "c6818aa310977c050bc6a328ea62c5d9cbcc03da03ac32adfc6fff539ea1ac08"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-0055f29ec7cb617c730c.json",
+      "bytes": 371,
+      "sha256": "3101fedbf6c2e9237e652bcb7d94a0aa686321b3bd063ab4ea6534604faa6bee",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-0055f29ec7cb617c730c.json",
+      "sourceSHA256": "3101fedbf6c2e9237e652bcb7d94a0aa686321b3bd063ab4ea6534604faa6bee"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-00591f879477bc45230f.json",
+      "bytes": 371,
+      "sha256": "2250f6ac36922b89c8bb1f3e6bc2f575901602df2b58861ef48abb6a501e6961",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-00591f879477bc45230f.json",
+      "sourceSHA256": "2250f6ac36922b89c8bb1f3e6bc2f575901602df2b58861ef48abb6a501e6961"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-01e6e1a392d38ec2bdc8.json",
+      "bytes": 371,
+      "sha256": "9d9600104a5a8138d2813e8fbafdf6ba1fa801e9f50a87b620884c331dd4176d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-01e6e1a392d38ec2bdc8.json",
+      "sourceSHA256": "9d9600104a5a8138d2813e8fbafdf6ba1fa801e9f50a87b620884c331dd4176d"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-03b1a8e895eedf754689.json",
+      "bytes": 371,
+      "sha256": "c3575634d6678fea909cdacd3dd6763fb1e5388930bd49af08cf22e3b3db4be8",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-03b1a8e895eedf754689.json",
+      "sourceSHA256": "c3575634d6678fea909cdacd3dd6763fb1e5388930bd49af08cf22e3b3db4be8"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-056f28040d91c664bf6d.json",
+      "bytes": 371,
+      "sha256": "26310bc56aa645bd9377d5d83713522e3c63a5db560127a9147b953478aac109",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-056f28040d91c664bf6d.json",
+      "sourceSHA256": "26310bc56aa645bd9377d5d83713522e3c63a5db560127a9147b953478aac109"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-05e868b7a7831511b3a8.json",
+      "bytes": 371,
+      "sha256": "ba22a038921658e3c85ace610a63a789e787c2623f861f0bcbdccde33d97dd72",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-05e868b7a7831511b3a8.json",
+      "sourceSHA256": "ba22a038921658e3c85ace610a63a789e787c2623f861f0bcbdccde33d97dd72"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-0615341cbf31c27c58cc.json",
+      "bytes": 371,
+      "sha256": "7a838b443220cc0cc75f0ca21256757bbeed1e064beecf22c093834c725212ec",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-0615341cbf31c27c58cc.json",
+      "sourceSHA256": "7a838b443220cc0cc75f0ca21256757bbeed1e064beecf22c093834c725212ec"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-06640b69cfc0765f5259.json",
+      "bytes": 371,
+      "sha256": "e8e84fa74eb04a00c66526e9e7b5c8aa6d0275c41e6c483c1f199df8b955f7f8",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-06640b69cfc0765f5259.json",
+      "sourceSHA256": "e8e84fa74eb04a00c66526e9e7b5c8aa6d0275c41e6c483c1f199df8b955f7f8"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-0955dc1593bd9994f372.json",
+      "bytes": 371,
+      "sha256": "80b7fdaeb33ffb7988b2ff5b5903c218d59daf0c89752433ab0dcf7b2687eb1c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-0955dc1593bd9994f372.json",
+      "sourceSHA256": "80b7fdaeb33ffb7988b2ff5b5903c218d59daf0c89752433ab0dcf7b2687eb1c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-0a52efd84784a1053b18.json",
+      "bytes": 371,
+      "sha256": "c4c87ca44f25da1e1c90d99346e492a6cf9064548028f0cf718165949a5f5f85",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-0a52efd84784a1053b18.json",
+      "sourceSHA256": "c4c87ca44f25da1e1c90d99346e492a6cf9064548028f0cf718165949a5f5f85"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-0a5eea0216319392b6d5.json",
+      "bytes": 371,
+      "sha256": "031f217a761dd6fdaa5e3946f3662a9618879660d963ba41a9596ec0beb4b416",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-0a5eea0216319392b6d5.json",
+      "sourceSHA256": "031f217a761dd6fdaa5e3946f3662a9618879660d963ba41a9596ec0beb4b416"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-0aedded75b56245e7bd0.json",
+      "bytes": 371,
+      "sha256": "8338da9bd479f8ee6f696334f4cb4db291a470d828c926d4f6bf18a66b9f6a27",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-0aedded75b56245e7bd0.json",
+      "sourceSHA256": "8338da9bd479f8ee6f696334f4cb4db291a470d828c926d4f6bf18a66b9f6a27"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-0bf8f292955e87be3a86.json",
+      "bytes": 371,
+      "sha256": "6ea8860e981ca5d2f3ab06d15c0461e41a7524ab5e23ade6ecf256ee8e4e9b4b",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-0bf8f292955e87be3a86.json",
+      "sourceSHA256": "6ea8860e981ca5d2f3ab06d15c0461e41a7524ab5e23ade6ecf256ee8e4e9b4b"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-0d6faf03390c649815a6.json",
+      "bytes": 371,
+      "sha256": "0b670fe2eace2e4cd3338509e9fea055b97fcb9774fb07c49f93e97faa71dbfd",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-0d6faf03390c649815a6.json",
+      "sourceSHA256": "0b670fe2eace2e4cd3338509e9fea055b97fcb9774fb07c49f93e97faa71dbfd"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-0e0f57ebfc846ee97708.json",
+      "bytes": 371,
+      "sha256": "6a977d910a1218bd5fd2333bbbe7a92db3f1c10ff26265697100237d372ed512",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-0e0f57ebfc846ee97708.json",
+      "sourceSHA256": "6a977d910a1218bd5fd2333bbbe7a92db3f1c10ff26265697100237d372ed512"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-0fc12b6c3976d074b04c.json",
+      "bytes": 371,
+      "sha256": "92388e05f314e3f2ed5fac2505fb0cfc66597cd3f918dc82666319475a4e68be",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-0fc12b6c3976d074b04c.json",
+      "sourceSHA256": "92388e05f314e3f2ed5fac2505fb0cfc66597cd3f918dc82666319475a4e68be"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-1158def2d8d078e96725.json",
+      "bytes": 371,
+      "sha256": "f62a1dd57534cb91a6983aaca0a019580a3489786e261cd83b86365babcb5918",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-1158def2d8d078e96725.json",
+      "sourceSHA256": "f62a1dd57534cb91a6983aaca0a019580a3489786e261cd83b86365babcb5918"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-124f50bfabbc3008cfe0.json",
+      "bytes": 371,
+      "sha256": "aab1d217880f0c09e8e5ed3a0868c08c82e41c8767579a4d261bf32c1c06a3ba",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-124f50bfabbc3008cfe0.json",
+      "sourceSHA256": "aab1d217880f0c09e8e5ed3a0868c08c82e41c8767579a4d261bf32c1c06a3ba"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-14ab17f8c895cfb10308.json",
+      "bytes": 371,
+      "sha256": "4c2dc0c642b2c5eb5fcd036381e6a09425002a48cbf2b04944feb8bbb1dbe4e6",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-14ab17f8c895cfb10308.json",
+      "sourceSHA256": "4c2dc0c642b2c5eb5fcd036381e6a09425002a48cbf2b04944feb8bbb1dbe4e6"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-14d5a11da85f8ac4c722.json",
+      "bytes": 371,
+      "sha256": "05f9bd29b11c8047edd2a490784808e56f1a1a7d982aa8321430ac8848e86b44",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-14d5a11da85f8ac4c722.json",
+      "sourceSHA256": "05f9bd29b11c8047edd2a490784808e56f1a1a7d982aa8321430ac8848e86b44"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-1594549ccea33e1bb032.json",
+      "bytes": 371,
+      "sha256": "9aec0f63c6418414fd4f971ed9aa37fa76880a1371a0d0b2b7a3f4cd00ef2c6b",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-1594549ccea33e1bb032.json",
+      "sourceSHA256": "9aec0f63c6418414fd4f971ed9aa37fa76880a1371a0d0b2b7a3f4cd00ef2c6b"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-159d9bdc00d11c4f0f0f.json",
+      "bytes": 371,
+      "sha256": "c163daaae045264ac3b96d6fd1a505a66b38970f22a620043926d6a854f8071f",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-159d9bdc00d11c4f0f0f.json",
+      "sourceSHA256": "c163daaae045264ac3b96d6fd1a505a66b38970f22a620043926d6a854f8071f"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-16529955c3e081d90ad9.json",
+      "bytes": 371,
+      "sha256": "5b3da80259f0ce46da1cdcb7863c107c4db281ba92fb5645488f608c2b60f2e6",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-16529955c3e081d90ad9.json",
+      "sourceSHA256": "5b3da80259f0ce46da1cdcb7863c107c4db281ba92fb5645488f608c2b60f2e6"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-174bea9686307d63052c.json",
+      "bytes": 371,
+      "sha256": "25edba767096699d8309b98c6b079d766dbe921b30e482031d2220257d8cb11b",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-174bea9686307d63052c.json",
+      "sourceSHA256": "25edba767096699d8309b98c6b079d766dbe921b30e482031d2220257d8cb11b"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-180eb5f4d231ca81125f.json",
+      "bytes": 371,
+      "sha256": "93a6589791c60b26884b52754c0cf375a94979b287a55963be28c4f0e4e62e7d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-180eb5f4d231ca81125f.json",
+      "sourceSHA256": "93a6589791c60b26884b52754c0cf375a94979b287a55963be28c4f0e4e62e7d"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-1835a01b0bec59cc9e11.json",
+      "bytes": 371,
+      "sha256": "9531ff11517da76bc62cedef4d8e0dd27756fe6247d2e975007c77a878d2c217",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-1835a01b0bec59cc9e11.json",
+      "sourceSHA256": "9531ff11517da76bc62cedef4d8e0dd27756fe6247d2e975007c77a878d2c217"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-18ce42df6f7cef95da1f.json",
+      "bytes": 371,
+      "sha256": "a238ae646fb67461f377a6ea548b0a0545280777515bdd20cc78804cbdd64850",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-18ce42df6f7cef95da1f.json",
+      "sourceSHA256": "a238ae646fb67461f377a6ea548b0a0545280777515bdd20cc78804cbdd64850"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-19524ab11c3a3adc5105.json",
+      "bytes": 371,
+      "sha256": "fdb66c7072cc0f4d6c31271e9462a9a1e43db3b6323167aa15e3bd812345eb11",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-19524ab11c3a3adc5105.json",
+      "sourceSHA256": "fdb66c7072cc0f4d6c31271e9462a9a1e43db3b6323167aa15e3bd812345eb11"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-1ac9aa285ee4db16dce2.json",
+      "bytes": 371,
+      "sha256": "4520f0cf95564e346874a907ce459ea453e7281bfc4c15f4c73c646ec0073a1c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-1ac9aa285ee4db16dce2.json",
+      "sourceSHA256": "4520f0cf95564e346874a907ce459ea453e7281bfc4c15f4c73c646ec0073a1c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-1caff6e1dbe8e7873288.json",
+      "bytes": 371,
+      "sha256": "cc46d0f58de8cacbe7c37d419a740083775d6fadab43c6cd78471fe5dd645ea8",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-1caff6e1dbe8e7873288.json",
+      "sourceSHA256": "cc46d0f58de8cacbe7c37d419a740083775d6fadab43c6cd78471fe5dd645ea8"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-1dc3dfcce2944537c41b.json",
+      "bytes": 371,
+      "sha256": "8f839fb8af13eb21045e3dc8b836b10c47d9d0e80f036dade27667d3c959a06e",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-1dc3dfcce2944537c41b.json",
+      "sourceSHA256": "8f839fb8af13eb21045e3dc8b836b10c47d9d0e80f036dade27667d3c959a06e"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-1feb046aa4126e9f6b8e.json",
+      "bytes": 371,
+      "sha256": "336657fddccdd5560602c3c035032f8364dde3cd7df3b7adc3b61b3a56a4c78b",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-1feb046aa4126e9f6b8e.json",
+      "sourceSHA256": "336657fddccdd5560602c3c035032f8364dde3cd7df3b7adc3b61b3a56a4c78b"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-20dd4d9664881f5184a9.json",
+      "bytes": 371,
+      "sha256": "e06ad8c981e060a5078200a64fe5325c1719128dc4dc44f60d2d9ab5c8070477",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-20dd4d9664881f5184a9.json",
+      "sourceSHA256": "e06ad8c981e060a5078200a64fe5325c1719128dc4dc44f60d2d9ab5c8070477"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-221b589e09b90fe65fae.json",
+      "bytes": 371,
+      "sha256": "9317c3d6255bebee9fb15d0639940f0624f5932a5624e5f279673c57a991c56a",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-221b589e09b90fe65fae.json",
+      "sourceSHA256": "9317c3d6255bebee9fb15d0639940f0624f5932a5624e5f279673c57a991c56a"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-2296163fe384c37a4840.json",
+      "bytes": 371,
+      "sha256": "405d616822b1a2d0d0c34ae628cab2a772182d2b6fe0a4a37125a9aba239d87d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-2296163fe384c37a4840.json",
+      "sourceSHA256": "405d616822b1a2d0d0c34ae628cab2a772182d2b6fe0a4a37125a9aba239d87d"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-22fd4c16a865617f7bfc.json",
+      "bytes": 371,
+      "sha256": "0742c63a53519e2f76c8f8cf9e843cab3dc0fdf4483f799f3cc5ba5729c402ea",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-22fd4c16a865617f7bfc.json",
+      "sourceSHA256": "0742c63a53519e2f76c8f8cf9e843cab3dc0fdf4483f799f3cc5ba5729c402ea"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-24ed5c7dd3f3dd880ee6.json",
+      "bytes": 371,
+      "sha256": "c451ac5dafee805b5d88910b309975ce1dd3f2cef73f05bf31ecb633efe0adcd",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-24ed5c7dd3f3dd880ee6.json",
+      "sourceSHA256": "c451ac5dafee805b5d88910b309975ce1dd3f2cef73f05bf31ecb633efe0adcd"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-2553b180097d3c9de1d8.json",
+      "bytes": 371,
+      "sha256": "aebc02970656b32975f86cee1513fdc09f7a082db908226c698394b988a262bc",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-2553b180097d3c9de1d8.json",
+      "sourceSHA256": "aebc02970656b32975f86cee1513fdc09f7a082db908226c698394b988a262bc"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-25e85c6958bf16a493d0.json",
+      "bytes": 371,
+      "sha256": "805df5a465a787b2bbe9fbbe8747feac7b7cadc754e08be70963d8eb9591d3c4",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-25e85c6958bf16a493d0.json",
+      "sourceSHA256": "805df5a465a787b2bbe9fbbe8747feac7b7cadc754e08be70963d8eb9591d3c4"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-264bffb6ebf8a74ef184.json",
+      "bytes": 371,
+      "sha256": "74bc18343312d2d32d4224a4a2c8d5854e625c6acef3da4815cd42d2aa2b73e0",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-264bffb6ebf8a74ef184.json",
+      "sourceSHA256": "74bc18343312d2d32d4224a4a2c8d5854e625c6acef3da4815cd42d2aa2b73e0"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-2697ce643c47cd9ef671.json",
+      "bytes": 371,
+      "sha256": "eec66bf8c12667c0aefd216fcf60794c56517885fc6d55da7d62a88b1e5bd866",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-2697ce643c47cd9ef671.json",
+      "sourceSHA256": "eec66bf8c12667c0aefd216fcf60794c56517885fc6d55da7d62a88b1e5bd866"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-27ad3e9121c419d3eab7.json",
+      "bytes": 371,
+      "sha256": "9d7927f2ba31541c327dc4cefb86fa599f15cd339e0b91e7bb0341394c165fca",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-27ad3e9121c419d3eab7.json",
+      "sourceSHA256": "9d7927f2ba31541c327dc4cefb86fa599f15cd339e0b91e7bb0341394c165fca"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-2839fa2fd5a25e0ddacc.json",
+      "bytes": 371,
+      "sha256": "2d9a1f4775781f98a9e25082d729b5d17e7283dfd9e861193845f79a06428ade",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-2839fa2fd5a25e0ddacc.json",
+      "sourceSHA256": "2d9a1f4775781f98a9e25082d729b5d17e7283dfd9e861193845f79a06428ade"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-285329a773d2165334c2.json",
+      "bytes": 371,
+      "sha256": "1693f757202d0d56626bb9b78e5dd8ed85f6b621279f4c511528a9bc158b8e69",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-285329a773d2165334c2.json",
+      "sourceSHA256": "1693f757202d0d56626bb9b78e5dd8ed85f6b621279f4c511528a9bc158b8e69"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-28d9207c78acaf59767c.json",
+      "bytes": 371,
+      "sha256": "cb5ffaadf417e403c3b53b3593e0a002f2800e324da070dd5ace7b6fbb1edebc",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-28d9207c78acaf59767c.json",
+      "sourceSHA256": "cb5ffaadf417e403c3b53b3593e0a002f2800e324da070dd5ace7b6fbb1edebc"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-292dac453a907b707668.json",
+      "bytes": 371,
+      "sha256": "1c014bad3f9c49f9f88aece0a39c3a91c5dcb99f1500625c98d6a3eecf32e9bd",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-292dac453a907b707668.json",
+      "sourceSHA256": "1c014bad3f9c49f9f88aece0a39c3a91c5dcb99f1500625c98d6a3eecf32e9bd"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-29a33e989360dac5ab74.json",
+      "bytes": 371,
+      "sha256": "98932ed21e5f1f1f7a7befe2a4bbb0c9838e83f1713c68409e0538ae85ed5ef2",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-29a33e989360dac5ab74.json",
+      "sourceSHA256": "98932ed21e5f1f1f7a7befe2a4bbb0c9838e83f1713c68409e0538ae85ed5ef2"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-29c742c40c59fd6ae902.json",
+      "bytes": 371,
+      "sha256": "d33923597c14160ae57c015a096692c30f84e81cecc9b3016e8bc3abf37ab674",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-29c742c40c59fd6ae902.json",
+      "sourceSHA256": "d33923597c14160ae57c015a096692c30f84e81cecc9b3016e8bc3abf37ab674"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-2b80c26b0b0d9ca3ad3e.json",
+      "bytes": 371,
+      "sha256": "600fa85d4d141607cf3f16a313374383dd7eda89650bbc7337aa853e71b9ae76",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-2b80c26b0b0d9ca3ad3e.json",
+      "sourceSHA256": "600fa85d4d141607cf3f16a313374383dd7eda89650bbc7337aa853e71b9ae76"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-2cd084491815e1f25f5a.json",
+      "bytes": 371,
+      "sha256": "6092cea72a04ab0a9e24e8158551371d9e3d8258b9ec69d313f4826aa2a5b95a",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-2cd084491815e1f25f5a.json",
+      "sourceSHA256": "6092cea72a04ab0a9e24e8158551371d9e3d8258b9ec69d313f4826aa2a5b95a"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-2cddeff25d6f72982da1.json",
+      "bytes": 371,
+      "sha256": "a1c7907ba8c618cac78728aff22a89c43cccb265f18082ec8aad7200e4604457",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-2cddeff25d6f72982da1.json",
+      "sourceSHA256": "a1c7907ba8c618cac78728aff22a89c43cccb265f18082ec8aad7200e4604457"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-2d8992035c2071c38a5f.json",
+      "bytes": 371,
+      "sha256": "cf419aa5aaab4b7a3be19ce27a2f0357543d1f07dab1a98d4a539cecdcb1683f",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-2d8992035c2071c38a5f.json",
+      "sourceSHA256": "cf419aa5aaab4b7a3be19ce27a2f0357543d1f07dab1a98d4a539cecdcb1683f"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-2e5a30ba4a466ee4b1b7.json",
+      "bytes": 371,
+      "sha256": "5170088c40bbda87651cad585ea00aa22fc28092605d006034660f3f9adef971",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-2e5a30ba4a466ee4b1b7.json",
+      "sourceSHA256": "5170088c40bbda87651cad585ea00aa22fc28092605d006034660f3f9adef971"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-2e990aba21511fbf0ea0.json",
+      "bytes": 371,
+      "sha256": "d95388df5236a7495256b9d52e07754a271532d3de2750f0d1c9c4cfeacaaaba",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-2e990aba21511fbf0ea0.json",
+      "sourceSHA256": "d95388df5236a7495256b9d52e07754a271532d3de2750f0d1c9c4cfeacaaaba"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-2f46705eff51cbe86f7b.json",
+      "bytes": 371,
+      "sha256": "4e6d4a218f9ba257ab0a2dff10a4c3c8cca4817f6138e0851bc51276215f03d6",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-2f46705eff51cbe86f7b.json",
+      "sourceSHA256": "4e6d4a218f9ba257ab0a2dff10a4c3c8cca4817f6138e0851bc51276215f03d6"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-3081731e24857d854a01.json",
+      "bytes": 371,
+      "sha256": "695a19fa789a7975200e82fbdf9c6008b8a1e2f6d849da161c7c7bebe2f0c91c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-3081731e24857d854a01.json",
+      "sourceSHA256": "695a19fa789a7975200e82fbdf9c6008b8a1e2f6d849da161c7c7bebe2f0c91c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-30e1e9b59a15d05d0432.json",
+      "bytes": 371,
+      "sha256": "30a8a3870f37c2d40ceb72d92515fb45d67691c0f0812116e2c35a431b9697a6",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-30e1e9b59a15d05d0432.json",
+      "sourceSHA256": "30a8a3870f37c2d40ceb72d92515fb45d67691c0f0812116e2c35a431b9697a6"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-31d7e65a573553db0ea3.json",
+      "bytes": 371,
+      "sha256": "3442e24dd4013c73558a72f608b358278aae4ac4f0fef2b12ddd4ba964cf6629",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-31d7e65a573553db0ea3.json",
+      "sourceSHA256": "3442e24dd4013c73558a72f608b358278aae4ac4f0fef2b12ddd4ba964cf6629"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-320a7afd3e0d2d81347b.json",
+      "bytes": 371,
+      "sha256": "ac584b12165a0f123b17047e11914e978d7fd0b31f6fd73539e29e292fd39e3c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-320a7afd3e0d2d81347b.json",
+      "sourceSHA256": "ac584b12165a0f123b17047e11914e978d7fd0b31f6fd73539e29e292fd39e3c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-322546ef4f846acd7f36.json",
+      "bytes": 371,
+      "sha256": "785624834ffcc42da938f94b36a9adf67dceeb6b7e5409b6dac7d0dc8285ada6",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-322546ef4f846acd7f36.json",
+      "sourceSHA256": "785624834ffcc42da938f94b36a9adf67dceeb6b7e5409b6dac7d0dc8285ada6"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-34aeb5fe8bfe39551aad.json",
+      "bytes": 371,
+      "sha256": "f70f151b7d5a1cbb6dcd6c8c59eeddde83ba9c8b0b79e1f2aeb6eed67fbdac00",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-34aeb5fe8bfe39551aad.json",
+      "sourceSHA256": "f70f151b7d5a1cbb6dcd6c8c59eeddde83ba9c8b0b79e1f2aeb6eed67fbdac00"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-34d05c8948e130d934e0.json",
+      "bytes": 371,
+      "sha256": "01c3de49cde46e6b6c3bd2bcb6d377bb5f6f9278e7aac035fc6414ebdf4cdba8",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-34d05c8948e130d934e0.json",
+      "sourceSHA256": "01c3de49cde46e6b6c3bd2bcb6d377bb5f6f9278e7aac035fc6414ebdf4cdba8"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-35a0bbab7563a1b79e93.json",
+      "bytes": 371,
+      "sha256": "197785d6e79caaf9a05a887ffb2b0f1143b2c7120fba774f8a695d1a4951bed4",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-35a0bbab7563a1b79e93.json",
+      "sourceSHA256": "197785d6e79caaf9a05a887ffb2b0f1143b2c7120fba774f8a695d1a4951bed4"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-364e19031d0a4c812107.json",
+      "bytes": 371,
+      "sha256": "c505ae3ac02e4a19f9b49bea9eeb9712e663e244f6288b36a481b9453a48527b",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-364e19031d0a4c812107.json",
+      "sourceSHA256": "c505ae3ac02e4a19f9b49bea9eeb9712e663e244f6288b36a481b9453a48527b"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-3add8f70a85147f11a8e.json",
+      "bytes": 371,
+      "sha256": "01a13cf215868c3672ab3a5a23c9b4f51ce3f1428ab4abb9167b48462a04b6c2",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-3add8f70a85147f11a8e.json",
+      "sourceSHA256": "01a13cf215868c3672ab3a5a23c9b4f51ce3f1428ab4abb9167b48462a04b6c2"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-3bb5201e90f8415cf60a.json",
+      "bytes": 370,
+      "sha256": "64734965b53c5d02470b439f6b4eb8b8bcdd10724659785e09b3d79458b6ab7c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-3bb5201e90f8415cf60a.json",
+      "sourceSHA256": "64734965b53c5d02470b439f6b4eb8b8bcdd10724659785e09b3d79458b6ab7c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-3c76ed4a8accdf243557.json",
+      "bytes": 371,
+      "sha256": "080f98d5ae2737976382ffd46df7cdec66277e87fcb19c42fb70494c30a0a9ed",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-3c76ed4a8accdf243557.json",
+      "sourceSHA256": "080f98d5ae2737976382ffd46df7cdec66277e87fcb19c42fb70494c30a0a9ed"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-3e07b237a55e41289f83.json",
+      "bytes": 371,
+      "sha256": "59e654b44bdbe1e77fdca81eba27366100defe8216b63b8cc2090584af34229f",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-3e07b237a55e41289f83.json",
+      "sourceSHA256": "59e654b44bdbe1e77fdca81eba27366100defe8216b63b8cc2090584af34229f"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-3e384821c62c5ae58569.json",
+      "bytes": 371,
+      "sha256": "2216d8fea08e40d201ff9fab06f4f75d7956feae5778686ca98109010f5fad73",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-3e384821c62c5ae58569.json",
+      "sourceSHA256": "2216d8fea08e40d201ff9fab06f4f75d7956feae5778686ca98109010f5fad73"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-4032d5d24e7d7ec786fe.json",
+      "bytes": 371,
+      "sha256": "c1ed081afca635105df7511906537d2528622aa8bdde5ef27f25fac2791bb6e8",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-4032d5d24e7d7ec786fe.json",
+      "sourceSHA256": "c1ed081afca635105df7511906537d2528622aa8bdde5ef27f25fac2791bb6e8"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-40361492ad763b01e4fe.json",
+      "bytes": 371,
+      "sha256": "47e04884a85e12e4f1fbbd6c2c3545030b7303ebde130bd0c161359a246bd216",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-40361492ad763b01e4fe.json",
+      "sourceSHA256": "47e04884a85e12e4f1fbbd6c2c3545030b7303ebde130bd0c161359a246bd216"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-4149ffc9918b04eb38c9.json",
+      "bytes": 371,
+      "sha256": "2c4a2ea6ad06665101d34ad87eeb9b836a862f0873a4f53ecd2efd71300ddd3e",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-4149ffc9918b04eb38c9.json",
+      "sourceSHA256": "2c4a2ea6ad06665101d34ad87eeb9b836a862f0873a4f53ecd2efd71300ddd3e"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-428ed4a14f15d2663f5a.json",
+      "bytes": 371,
+      "sha256": "031a58298928f9427502585c8c1d53d08c5bda743f46ec2c89fa9e2008320d00",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-428ed4a14f15d2663f5a.json",
+      "sourceSHA256": "031a58298928f9427502585c8c1d53d08c5bda743f46ec2c89fa9e2008320d00"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-43024c8ff455c9645550.json",
+      "bytes": 371,
+      "sha256": "0a22b56d5a2bd87d3b7fd52b60f68d452b47f20e37104d1d34e8b12c4d25c1a4",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-43024c8ff455c9645550.json",
+      "sourceSHA256": "0a22b56d5a2bd87d3b7fd52b60f68d452b47f20e37104d1d34e8b12c4d25c1a4"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-43714c7a5109c614d4f8.json",
+      "bytes": 371,
+      "sha256": "6ce6d36895cda0d8febe18dd8d691ceb273f9f2085d401e9e8e1a1af23dc2b0b",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-43714c7a5109c614d4f8.json",
+      "sourceSHA256": "6ce6d36895cda0d8febe18dd8d691ceb273f9f2085d401e9e8e1a1af23dc2b0b"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-43d0db6ac5b7e7172492.json",
+      "bytes": 371,
+      "sha256": "63d5f51f1d712f7aa76c87618849c785e458a713c59e6e1fbc4793891771bc18",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-43d0db6ac5b7e7172492.json",
+      "sourceSHA256": "63d5f51f1d712f7aa76c87618849c785e458a713c59e6e1fbc4793891771bc18"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-44405fb5fb9f2ef8016d.json",
+      "bytes": 371,
+      "sha256": "1418f2cb2ec008ff33e011b755d677fece52b8774f9da4ec31e7d32c6d9d442d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-44405fb5fb9f2ef8016d.json",
+      "sourceSHA256": "1418f2cb2ec008ff33e011b755d677fece52b8774f9da4ec31e7d32c6d9d442d"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-44ae270f73f1ef9baba1.json",
+      "bytes": 371,
+      "sha256": "f0412182209d1195e28ca16dd18afd6971286b6a00c50d650b34d7aa285752d3",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-44ae270f73f1ef9baba1.json",
+      "sourceSHA256": "f0412182209d1195e28ca16dd18afd6971286b6a00c50d650b34d7aa285752d3"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-47b9b4745fc119f3db24.json",
+      "bytes": 371,
+      "sha256": "11478c9b5519f1b448b6d8ef3fcef29fa86e123efa8631f5391d1dc76814d228",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-47b9b4745fc119f3db24.json",
+      "sourceSHA256": "11478c9b5519f1b448b6d8ef3fcef29fa86e123efa8631f5391d1dc76814d228"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-4bab52166d9e848ae573.json",
+      "bytes": 371,
+      "sha256": "24cfad8660b722dca562365de462942b7407e36a1856be093f710e9055e9f3e6",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-4bab52166d9e848ae573.json",
+      "sourceSHA256": "24cfad8660b722dca562365de462942b7407e36a1856be093f710e9055e9f3e6"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-4c692162527597e8a2d6.json",
+      "bytes": 371,
+      "sha256": "4198fa6dda712694302469e76658ee5e45b9797427815b6714c3cada80667385",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-4c692162527597e8a2d6.json",
+      "sourceSHA256": "4198fa6dda712694302469e76658ee5e45b9797427815b6714c3cada80667385"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-4f30913eab1d112e28a5.json",
+      "bytes": 370,
+      "sha256": "b03be0b3b0c431274a3005607bd5aff0c6f52727b4cf1fd9df4e4fdf15be27f3",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-4f30913eab1d112e28a5.json",
+      "sourceSHA256": "b03be0b3b0c431274a3005607bd5aff0c6f52727b4cf1fd9df4e4fdf15be27f3"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-50282779d0a5de0c6a62.json",
+      "bytes": 371,
+      "sha256": "231d64ee74be67c5d0fef21744ae1eddf437d2c1ab4e9b13c8699cb7412b496c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-50282779d0a5de0c6a62.json",
+      "sourceSHA256": "231d64ee74be67c5d0fef21744ae1eddf437d2c1ab4e9b13c8699cb7412b496c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-52b4fb20833b56875697.json",
+      "bytes": 371,
+      "sha256": "50299a76b4f454330cc2164997472f7313220ab4cac928d7a0212d67436a6344",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-52b4fb20833b56875697.json",
+      "sourceSHA256": "50299a76b4f454330cc2164997472f7313220ab4cac928d7a0212d67436a6344"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-537ad8f28526b1219d6f.json",
+      "bytes": 371,
+      "sha256": "d6c1d544b0e62e29f212e0327a95d3bd32267ec7109ba4b360bae2ea530424e3",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-537ad8f28526b1219d6f.json",
+      "sourceSHA256": "d6c1d544b0e62e29f212e0327a95d3bd32267ec7109ba4b360bae2ea530424e3"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-53d5b4083a872885ffa5.json",
+      "bytes": 371,
+      "sha256": "282ddf6fa3dad136e64920c9e78aff37d0fbd6bb05e451b9cb82e7912a719f8d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-53d5b4083a872885ffa5.json",
+      "sourceSHA256": "282ddf6fa3dad136e64920c9e78aff37d0fbd6bb05e451b9cb82e7912a719f8d"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-562f52884964bbaca4b7.json",
+      "bytes": 371,
+      "sha256": "704fd864a67d70c7c9642c2b3d2b54769a6e2082575e99fd1820a98578e3ecd1",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-562f52884964bbaca4b7.json",
+      "sourceSHA256": "704fd864a67d70c7c9642c2b3d2b54769a6e2082575e99fd1820a98578e3ecd1"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-56934bba525920ceee7f.json",
+      "bytes": 371,
+      "sha256": "3cb5ffda124be23344f834c1f1c7373726ae355015c5c597c8975fc03a225f58",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-56934bba525920ceee7f.json",
+      "sourceSHA256": "3cb5ffda124be23344f834c1f1c7373726ae355015c5c597c8975fc03a225f58"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-5987a8182d2d81e5552d.json",
+      "bytes": 371,
+      "sha256": "b7817b50bed655f7e8438c28d8d5d28e5fb226faca9f1ccd10f8000c6230e591",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-5987a8182d2d81e5552d.json",
+      "sourceSHA256": "b7817b50bed655f7e8438c28d8d5d28e5fb226faca9f1ccd10f8000c6230e591"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-5a11a824b352fa1b7b76.json",
+      "bytes": 371,
+      "sha256": "8dfba044554a4516ae849c052798e296e73a2b43e6ca071bb5293fc5d7280c5d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-5a11a824b352fa1b7b76.json",
+      "sourceSHA256": "8dfba044554a4516ae849c052798e296e73a2b43e6ca071bb5293fc5d7280c5d"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-5c133e64c5bd4bf22bf2.json",
+      "bytes": 371,
+      "sha256": "5ae0013c968459ec6c652b94031a69927780cd08f29835f7819a8cb4f57ff09d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-5c133e64c5bd4bf22bf2.json",
+      "sourceSHA256": "5ae0013c968459ec6c652b94031a69927780cd08f29835f7819a8cb4f57ff09d"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-5c4346c14173825354cd.json",
+      "bytes": 371,
+      "sha256": "6084a60d512f008ff3475ed992be600639d70176b29e6ab01b0004102a9d6ade",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-5c4346c14173825354cd.json",
+      "sourceSHA256": "6084a60d512f008ff3475ed992be600639d70176b29e6ab01b0004102a9d6ade"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-60ae9c91c33e7ab9bad9.json",
+      "bytes": 371,
+      "sha256": "d57cd1c7498642d7150660dd459e4289ba2eec8b6b22d0660fb89b593edd415b",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-60ae9c91c33e7ab9bad9.json",
+      "sourceSHA256": "d57cd1c7498642d7150660dd459e4289ba2eec8b6b22d0660fb89b593edd415b"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-60b8847e4b68fb6221de.json",
+      "bytes": 371,
+      "sha256": "3e1af84a54909e9d095bcc7acbb688b1595891e55aa85fc8fee2d3c54329f539",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-60b8847e4b68fb6221de.json",
+      "sourceSHA256": "3e1af84a54909e9d095bcc7acbb688b1595891e55aa85fc8fee2d3c54329f539"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-631bde298c1b5ba52dea.json",
+      "bytes": 371,
+      "sha256": "9f7eb210a8a226afd631aea609d43fccd57c1b56a251d61ea7b5cb7d4c328df7",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-631bde298c1b5ba52dea.json",
+      "sourceSHA256": "9f7eb210a8a226afd631aea609d43fccd57c1b56a251d61ea7b5cb7d4c328df7"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-6411c111480cd22b7a3a.json",
+      "bytes": 371,
+      "sha256": "eb0e53269b401550c615ab22ff56bde55ba6c2a63f96f7fd7346fcd575c1f334",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-6411c111480cd22b7a3a.json",
+      "sourceSHA256": "eb0e53269b401550c615ab22ff56bde55ba6c2a63f96f7fd7346fcd575c1f334"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-666b071883f1183f0b31.json",
+      "bytes": 371,
+      "sha256": "ab38f018fc739d1d25fa41eace1208bb837770a3443af2fa9ac263b22a51d25f",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-666b071883f1183f0b31.json",
+      "sourceSHA256": "ab38f018fc739d1d25fa41eace1208bb837770a3443af2fa9ac263b22a51d25f"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-6a787528ae9d348db4cf.json",
+      "bytes": 371,
+      "sha256": "b3974e95c560a5602f1c1cc094c65f9375bb357ed7d2b0821d93c36084ee2628",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-6a787528ae9d348db4cf.json",
+      "sourceSHA256": "b3974e95c560a5602f1c1cc094c65f9375bb357ed7d2b0821d93c36084ee2628"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-6ac6a4f6f2a0ed762195.json",
+      "bytes": 371,
+      "sha256": "937608d660ece65b6d02a1b5517a4a9a2b46312c5d34cb8560d6a7fa07e0c35c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-6ac6a4f6f2a0ed762195.json",
+      "sourceSHA256": "937608d660ece65b6d02a1b5517a4a9a2b46312c5d34cb8560d6a7fa07e0c35c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-6d8338f645cfee2c6cc5.json",
+      "bytes": 371,
+      "sha256": "b3e3f28c1ca54e2728e119cbd6c816a61bc7188a3526f1b973c635a5779a5687",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-6d8338f645cfee2c6cc5.json",
+      "sourceSHA256": "b3e3f28c1ca54e2728e119cbd6c816a61bc7188a3526f1b973c635a5779a5687"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-6fb3c9069b9eef8b724e.json",
+      "bytes": 371,
+      "sha256": "c690c7da9c1002c3e61c257961d632f3401cc627f9c1d2de2d405f4f3297e24a",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-6fb3c9069b9eef8b724e.json",
+      "sourceSHA256": "c690c7da9c1002c3e61c257961d632f3401cc627f9c1d2de2d405f4f3297e24a"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-7223256562dced73f954.json",
+      "bytes": 371,
+      "sha256": "ce20e648c3d73c9ca685b56d26bbb4c351fd6811b7f1034f2be2227567da52b6",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-7223256562dced73f954.json",
+      "sourceSHA256": "ce20e648c3d73c9ca685b56d26bbb4c351fd6811b7f1034f2be2227567da52b6"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-729568a978d86297cf7f.json",
+      "bytes": 371,
+      "sha256": "f9a96e6fb48bd7293452e16d02d8a46ad936eda4aa65f80f0c82e373caab084c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-729568a978d86297cf7f.json",
+      "sourceSHA256": "f9a96e6fb48bd7293452e16d02d8a46ad936eda4aa65f80f0c82e373caab084c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-7473ef5900ddb08d45aa.json",
+      "bytes": 371,
+      "sha256": "3dcac7db5cec5d557f2b33846f00344df5a9d14a158997830e7bde430d36f5ff",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-7473ef5900ddb08d45aa.json",
+      "sourceSHA256": "3dcac7db5cec5d557f2b33846f00344df5a9d14a158997830e7bde430d36f5ff"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-74f190e7052ab6ca566c.json",
+      "bytes": 371,
+      "sha256": "2514f59c1a374777b0bd86733f25ae98a7a9f4a8850c68e4ab5233483f7bf500",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-74f190e7052ab6ca566c.json",
+      "sourceSHA256": "2514f59c1a374777b0bd86733f25ae98a7a9f4a8850c68e4ab5233483f7bf500"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-763e854e644e49f78c65.json",
+      "bytes": 371,
+      "sha256": "5dcbbdb32556c2cbaf4d6d545b2c2f3e189cec90a3488d22519830f208dac17c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-763e854e644e49f78c65.json",
+      "sourceSHA256": "5dcbbdb32556c2cbaf4d6d545b2c2f3e189cec90a3488d22519830f208dac17c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-7789eea04657e53f6b65.json",
+      "bytes": 371,
+      "sha256": "4ee28faa107509d2056af9b495e9f80902c5ab3cfa426c0732e0b5769f531d80",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-7789eea04657e53f6b65.json",
+      "sourceSHA256": "4ee28faa107509d2056af9b495e9f80902c5ab3cfa426c0732e0b5769f531d80"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-779fdb102a79878ac697.json",
+      "bytes": 371,
+      "sha256": "a3ad96c0c4ba6e49a5adf9d17aa112bd2b4b0741be5586b1035d4d3387fc674a",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-779fdb102a79878ac697.json",
+      "sourceSHA256": "a3ad96c0c4ba6e49a5adf9d17aa112bd2b4b0741be5586b1035d4d3387fc674a"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-78a9867b905554cd36d5.json",
+      "bytes": 371,
+      "sha256": "9c11418623ae926f3cd1762c5fd639500a64846af7e1c0bb130c1ea7fb88fa72",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-78a9867b905554cd36d5.json",
+      "sourceSHA256": "9c11418623ae926f3cd1762c5fd639500a64846af7e1c0bb130c1ea7fb88fa72"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-794e6379aa809bc9f30b.json",
+      "bytes": 371,
+      "sha256": "43053b359a6dd6db8131fe041461dc9d1054582c8377921ff38d67d6a9865518",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-794e6379aa809bc9f30b.json",
+      "sourceSHA256": "43053b359a6dd6db8131fe041461dc9d1054582c8377921ff38d67d6a9865518"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-79676a44a4cc3ab7cbaa.json",
+      "bytes": 371,
+      "sha256": "3dce8bdc569ae7c958213820f1002523d17127f28a8bb22c6efb27c23524f916",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-79676a44a4cc3ab7cbaa.json",
+      "sourceSHA256": "3dce8bdc569ae7c958213820f1002523d17127f28a8bb22c6efb27c23524f916"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-7a77cc27ac4dd6cfbde0.json",
+      "bytes": 371,
+      "sha256": "acfd3d7ee7b556568bcfba5f944fc92060cc418af29234863710a06bbb1885e3",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-7a77cc27ac4dd6cfbde0.json",
+      "sourceSHA256": "acfd3d7ee7b556568bcfba5f944fc92060cc418af29234863710a06bbb1885e3"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-7a7a5a688ff1b21bfc15.json",
+      "bytes": 371,
+      "sha256": "967505e7c0f066c6c10a3c6b79632d2bc13792a5a6a9d6233c5b60e69103d383",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-7a7a5a688ff1b21bfc15.json",
+      "sourceSHA256": "967505e7c0f066c6c10a3c6b79632d2bc13792a5a6a9d6233c5b60e69103d383"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-7a8251bcb2ffd31deb12.json",
+      "bytes": 371,
+      "sha256": "dc2c782212e2f89cfb02c667d8daf0758c6a690f6f7b8e610c48a128be4b4277",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-7a8251bcb2ffd31deb12.json",
+      "sourceSHA256": "dc2c782212e2f89cfb02c667d8daf0758c6a690f6f7b8e610c48a128be4b4277"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-7b796e093463e801344c.json",
+      "bytes": 371,
+      "sha256": "d175550e26193456b299341c80227846a2342e9776ccebb6227ac74bacd65384",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-7b796e093463e801344c.json",
+      "sourceSHA256": "d175550e26193456b299341c80227846a2342e9776ccebb6227ac74bacd65384"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-7ce6c8a0ad0a93c78b71.json",
+      "bytes": 371,
+      "sha256": "87ed854d3eca2af1695a8641ab0e5c2c57da2c8b22dc6da0c12703fa233a035f",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-7ce6c8a0ad0a93c78b71.json",
+      "sourceSHA256": "87ed854d3eca2af1695a8641ab0e5c2c57da2c8b22dc6da0c12703fa233a035f"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-7d038bf6fe7017bff21a.json",
+      "bytes": 371,
+      "sha256": "a38b175f7e5cd75684d479c1efa135e591179424816d1a33e4099e5e863342bf",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-7d038bf6fe7017bff21a.json",
+      "sourceSHA256": "a38b175f7e5cd75684d479c1efa135e591179424816d1a33e4099e5e863342bf"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-7ebe04acd665293b7b35.json",
+      "bytes": 371,
+      "sha256": "b1e516249475a22e54bc7e5b70379007651a2858d344bd1f11ef6deba3c1fae4",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-7ebe04acd665293b7b35.json",
+      "sourceSHA256": "b1e516249475a22e54bc7e5b70379007651a2858d344bd1f11ef6deba3c1fae4"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-808f0ed29b98dab051c8.json",
+      "bytes": 371,
+      "sha256": "3fec73cc48a1098a8d46643e7c1f02637015a26cfc0f2e66eff70f5dabf255bb",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-808f0ed29b98dab051c8.json",
+      "sourceSHA256": "3fec73cc48a1098a8d46643e7c1f02637015a26cfc0f2e66eff70f5dabf255bb"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-843d680e972327c8238c.json",
+      "bytes": 371,
+      "sha256": "ef149b5f411e50c315b1ecb4876a8f2dce62bf9d5f6b75237de37b079ae07c35",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-843d680e972327c8238c.json",
+      "sourceSHA256": "ef149b5f411e50c315b1ecb4876a8f2dce62bf9d5f6b75237de37b079ae07c35"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-850840cb4e965cfc7069.json",
+      "bytes": 371,
+      "sha256": "37f5c382b934d1dd0bce73090f7fb608199019d6057fa3e49689f12ffac6e046",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-850840cb4e965cfc7069.json",
+      "sourceSHA256": "37f5c382b934d1dd0bce73090f7fb608199019d6057fa3e49689f12ffac6e046"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-87203fc0f8abff42e194.json",
+      "bytes": 371,
+      "sha256": "e78165576025c0ad266609f6bb53d4359792fa820f28cb9772fe054e40ed35c0",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-87203fc0f8abff42e194.json",
+      "sourceSHA256": "e78165576025c0ad266609f6bb53d4359792fa820f28cb9772fe054e40ed35c0"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-8739d3d3ad97c5ad8bfb.json",
+      "bytes": 371,
+      "sha256": "050c3897345c0c3ad484cf48a8ef603bd5bc5679bf2eff03b33286bf7affc0cb",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-8739d3d3ad97c5ad8bfb.json",
+      "sourceSHA256": "050c3897345c0c3ad484cf48a8ef603bd5bc5679bf2eff03b33286bf7affc0cb"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-8a1e2cec94dd82433f25.json",
+      "bytes": 371,
+      "sha256": "47af84391349f8b4d768fbad204f57e59e6b1dd7d2b33e5ec1e324509efd6411",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-8a1e2cec94dd82433f25.json",
+      "sourceSHA256": "47af84391349f8b4d768fbad204f57e59e6b1dd7d2b33e5ec1e324509efd6411"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-8ba4851fa9e015868a42.json",
+      "bytes": 371,
+      "sha256": "9ba39f8193bf548abf662758e12871183f44a36b0be1b3cedfcdaf87c6f4c91f",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-8ba4851fa9e015868a42.json",
+      "sourceSHA256": "9ba39f8193bf548abf662758e12871183f44a36b0be1b3cedfcdaf87c6f4c91f"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-8d8f164c8fdd518151dd.json",
+      "bytes": 371,
+      "sha256": "3187ff06343fd42734713952e051c45a839c2ab1e4bfbd8e2f25fde6719acf93",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-8d8f164c8fdd518151dd.json",
+      "sourceSHA256": "3187ff06343fd42734713952e051c45a839c2ab1e4bfbd8e2f25fde6719acf93"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-902128f7d520da2e1da0.json",
+      "bytes": 371,
+      "sha256": "c52cec406bea7873811cff7f33abac6f1e63bad90e4dc90e2bd16b6b511460f2",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-902128f7d520da2e1da0.json",
+      "sourceSHA256": "c52cec406bea7873811cff7f33abac6f1e63bad90e4dc90e2bd16b6b511460f2"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-90482e7ea5983b162fa1.json",
+      "bytes": 371,
+      "sha256": "c08f258828411636b6c33b6e27f2f1209befbf03e9355be94d64469687c6f57d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-90482e7ea5983b162fa1.json",
+      "sourceSHA256": "c08f258828411636b6c33b6e27f2f1209befbf03e9355be94d64469687c6f57d"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-9058b5fbd0d19b1c4b18.json",
+      "bytes": 371,
+      "sha256": "55561d508996ac60e1b0ca7a161709206d10aa516e11c43f313a8c403b8fb96b",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-9058b5fbd0d19b1c4b18.json",
+      "sourceSHA256": "55561d508996ac60e1b0ca7a161709206d10aa516e11c43f313a8c403b8fb96b"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-914909d629464227b0b0.json",
+      "bytes": 371,
+      "sha256": "2a047144d32991e76a544becb26bb7aa800e516a3ab23ceb8f115d62ed365bff",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-914909d629464227b0b0.json",
+      "sourceSHA256": "2a047144d32991e76a544becb26bb7aa800e516a3ab23ceb8f115d62ed365bff"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-92e3549d66945417f6c8.json",
+      "bytes": 371,
+      "sha256": "5c51d9995795093199c8764c8ef38210bb898c145337290cfe92c022cd6fd0bf",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-92e3549d66945417f6c8.json",
+      "sourceSHA256": "5c51d9995795093199c8764c8ef38210bb898c145337290cfe92c022cd6fd0bf"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-93b6da744730a73ab569.json",
+      "bytes": 371,
+      "sha256": "7bbe1b3caaf0c734083fa92ed52251c9c184ef6027a132d19e77e1905d66624f",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-93b6da744730a73ab569.json",
+      "sourceSHA256": "7bbe1b3caaf0c734083fa92ed52251c9c184ef6027a132d19e77e1905d66624f"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-94eefde0d49dc6c07b69.json",
+      "bytes": 371,
+      "sha256": "01f160d4c9c6d8243fd1d7c4872b010b8c37184f662fc2c686fc7adf2642f928",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-94eefde0d49dc6c07b69.json",
+      "sourceSHA256": "01f160d4c9c6d8243fd1d7c4872b010b8c37184f662fc2c686fc7adf2642f928"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-950e3a9b43a71f51aa94.json",
+      "bytes": 371,
+      "sha256": "878418c3addf5c24a30b51ed1e680e9693989d3f96bc604481e6e36c0c224266",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-950e3a9b43a71f51aa94.json",
+      "sourceSHA256": "878418c3addf5c24a30b51ed1e680e9693989d3f96bc604481e6e36c0c224266"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-95f20fa08ce42b513412.json",
+      "bytes": 371,
+      "sha256": "ecea1bd7e8ebd903e5199184efafe357bea913350736872de4a4b4723dd92d6c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-95f20fa08ce42b513412.json",
+      "sourceSHA256": "ecea1bd7e8ebd903e5199184efafe357bea913350736872de4a4b4723dd92d6c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-963416d0ab938c17bb70.json",
+      "bytes": 371,
+      "sha256": "d0305102e2ddb90749da87d281f33cc29393fd3c9c57cb827d01645912d4bde6",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-963416d0ab938c17bb70.json",
+      "sourceSHA256": "d0305102e2ddb90749da87d281f33cc29393fd3c9c57cb827d01645912d4bde6"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-97ddfbe516ae3b00e5eb.json",
+      "bytes": 371,
+      "sha256": "8993b206e20e7da6dc3dca95faf524448db3347820459d13adac91d9ade0f90e",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-97ddfbe516ae3b00e5eb.json",
+      "sourceSHA256": "8993b206e20e7da6dc3dca95faf524448db3347820459d13adac91d9ade0f90e"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-9804e1bf9b5137dcf6e2.json",
+      "bytes": 371,
+      "sha256": "a231145af1cb1bb34a58d131186024ad055428fd2507d285d3ea91bdfca29301",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-9804e1bf9b5137dcf6e2.json",
+      "sourceSHA256": "a231145af1cb1bb34a58d131186024ad055428fd2507d285d3ea91bdfca29301"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-981619bf0eeddd1a2cca.json",
+      "bytes": 371,
+      "sha256": "3f1c77fd67afb6dabc24579988af1ce6803a0192bc959e3cc085373a271782cc",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-981619bf0eeddd1a2cca.json",
+      "sourceSHA256": "3f1c77fd67afb6dabc24579988af1ce6803a0192bc959e3cc085373a271782cc"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-985a427fb2f09ccbec24.json",
+      "bytes": 371,
+      "sha256": "2709878a1c283fca5f7199b102487bee3caf91947fc3613db7f44080bbd9813b",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-985a427fb2f09ccbec24.json",
+      "sourceSHA256": "2709878a1c283fca5f7199b102487bee3caf91947fc3613db7f44080bbd9813b"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-998792b0a4f72da54fc2.json",
+      "bytes": 371,
+      "sha256": "2f18df903896f05d38c95144d92b2a7d4c394789d9f73110e6d09269c965cdd9",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-998792b0a4f72da54fc2.json",
+      "sourceSHA256": "2f18df903896f05d38c95144d92b2a7d4c394789d9f73110e6d09269c965cdd9"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-9ae83283e71436c618d9.json",
+      "bytes": 371,
+      "sha256": "613761a4c40ae92fe9b1fa9dfa019003182fc8771797bbdf829a050773055518",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-9ae83283e71436c618d9.json",
+      "sourceSHA256": "613761a4c40ae92fe9b1fa9dfa019003182fc8771797bbdf829a050773055518"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-9c99cdc60056516bdc19.json",
+      "bytes": 371,
+      "sha256": "f8ef442d4ff7f5a7f7b0042b318495017c0471c75c3144b7794e3ea08454461f",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-9c99cdc60056516bdc19.json",
+      "sourceSHA256": "f8ef442d4ff7f5a7f7b0042b318495017c0471c75c3144b7794e3ea08454461f"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-9d7b5dd55c0961da33b7.json",
+      "bytes": 371,
+      "sha256": "76b07135c9cf063aa9753f1b7d90b5c339087ff12a63fc1fce3dc99703bc297c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-9d7b5dd55c0961da33b7.json",
+      "sourceSHA256": "76b07135c9cf063aa9753f1b7d90b5c339087ff12a63fc1fce3dc99703bc297c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-9d7cffe7252136c1effd.json",
+      "bytes": 371,
+      "sha256": "e89138750a9bcf36f01811e9c97d60298562ebbfb095ac4e74455f7c65dbc3db",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-9d7cffe7252136c1effd.json",
+      "sourceSHA256": "e89138750a9bcf36f01811e9c97d60298562ebbfb095ac4e74455f7c65dbc3db"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-9ff9988baee21a12787a.json",
+      "bytes": 371,
+      "sha256": "466c57e0445a4787625fe2a8d6789c38d61367fc5cbd52cacd33c63fb210f06a",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-9ff9988baee21a12787a.json",
+      "sourceSHA256": "466c57e0445a4787625fe2a8d6789c38d61367fc5cbd52cacd33c63fb210f06a"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-a284b58e917f8dd0cd6d.json",
+      "bytes": 371,
+      "sha256": "8ee96a02d435d243ccede69a73bf58aa851b49fad645588b3e1d80fb29efe368",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-a284b58e917f8dd0cd6d.json",
+      "sourceSHA256": "8ee96a02d435d243ccede69a73bf58aa851b49fad645588b3e1d80fb29efe368"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-a3c0347f5de0d02991b6.json",
+      "bytes": 371,
+      "sha256": "dcfcda0bfcf5e5acc08304f342e4f42a382b04622b289c945fcd78feea90d209",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-a3c0347f5de0d02991b6.json",
+      "sourceSHA256": "dcfcda0bfcf5e5acc08304f342e4f42a382b04622b289c945fcd78feea90d209"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-a3dfb5fded323ea02a13.json",
+      "bytes": 371,
+      "sha256": "a2bcf33dd1bedebe9d2db1e95bd8b6a4e62a318ddbc619160ed93c0b1e48cfb3",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-a3dfb5fded323ea02a13.json",
+      "sourceSHA256": "a2bcf33dd1bedebe9d2db1e95bd8b6a4e62a318ddbc619160ed93c0b1e48cfb3"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-a47cf2ed5f6876df13d4.json",
+      "bytes": 371,
+      "sha256": "540cbb8897b2c20289b8fe76c3be7aa44f871d42a16406a65336c01d4606400e",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-a47cf2ed5f6876df13d4.json",
+      "sourceSHA256": "540cbb8897b2c20289b8fe76c3be7aa44f871d42a16406a65336c01d4606400e"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-a49074855c61fc3b1eb8.json",
+      "bytes": 371,
+      "sha256": "8380d40706cc1f51fffd8bd5dc587559b9674472e02bec86a9d8674505fefa3a",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-a49074855c61fc3b1eb8.json",
+      "sourceSHA256": "8380d40706cc1f51fffd8bd5dc587559b9674472e02bec86a9d8674505fefa3a"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-a527d52c2c9ac55abfa7.json",
+      "bytes": 371,
+      "sha256": "51e7019b9ca741b818aa460bd1baaad6ce44aa600b1e110aaad0f81e60967a68",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-a527d52c2c9ac55abfa7.json",
+      "sourceSHA256": "51e7019b9ca741b818aa460bd1baaad6ce44aa600b1e110aaad0f81e60967a68"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-a55bf7fdc2e15cd79d98.json",
+      "bytes": 371,
+      "sha256": "78645aca105dccdfd0429dea13e8e94a301e0d8be6e5bc5b053a0114649b543c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-a55bf7fdc2e15cd79d98.json",
+      "sourceSHA256": "78645aca105dccdfd0429dea13e8e94a301e0d8be6e5bc5b053a0114649b543c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-a834d42c9c089369a797.json",
+      "bytes": 371,
+      "sha256": "7e83257a92809c5dbd5bf0f19f0b310d9592ef7ff3c6f292da1c31edde7f1e86",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-a834d42c9c089369a797.json",
+      "sourceSHA256": "7e83257a92809c5dbd5bf0f19f0b310d9592ef7ff3c6f292da1c31edde7f1e86"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-a8ef8897946c04aa4926.json",
+      "bytes": 371,
+      "sha256": "05acdebe43cd750205a308d769fb08f86a9d55ddca11c7cf3e4a0da842c4d6cf",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-a8ef8897946c04aa4926.json",
+      "sourceSHA256": "05acdebe43cd750205a308d769fb08f86a9d55ddca11c7cf3e4a0da842c4d6cf"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-a9c52527a914ef6f127c.json",
+      "bytes": 371,
+      "sha256": "dfd610f055d9bd6d69a3d62a020c7c6076c21fc1ea79b4c365b171659e542420",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-a9c52527a914ef6f127c.json",
+      "sourceSHA256": "dfd610f055d9bd6d69a3d62a020c7c6076c21fc1ea79b4c365b171659e542420"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-aae75577ba2a0c32aadd.json",
+      "bytes": 371,
+      "sha256": "99c10840df53b21fd282e6eca1a48099a8b1ac562de3c027b3aae7b266e96878",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-aae75577ba2a0c32aadd.json",
+      "sourceSHA256": "99c10840df53b21fd282e6eca1a48099a8b1ac562de3c027b3aae7b266e96878"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-ae77991e1fc0262cb8d2.json",
+      "bytes": 371,
+      "sha256": "60ff10836d03762c70cd0e983c4ce4eb088cd06de3c2e1a623874c526fc21635",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-ae77991e1fc0262cb8d2.json",
+      "sourceSHA256": "60ff10836d03762c70cd0e983c4ce4eb088cd06de3c2e1a623874c526fc21635"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-b05ebe3e7e05b34a99be.json",
+      "bytes": 371,
+      "sha256": "3774233c8fb2998de622be347cde1b55412d02d2566d92f21e78e988508db3eb",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-b05ebe3e7e05b34a99be.json",
+      "sourceSHA256": "3774233c8fb2998de622be347cde1b55412d02d2566d92f21e78e988508db3eb"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-b071a1572825d4f56a81.json",
+      "bytes": 371,
+      "sha256": "142e52ac8571b1fa311342295828950fbac882fad9b8929520714a700957ce10",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-b071a1572825d4f56a81.json",
+      "sourceSHA256": "142e52ac8571b1fa311342295828950fbac882fad9b8929520714a700957ce10"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-b37c03a226dcc469c094.json",
+      "bytes": 371,
+      "sha256": "27fb23b340e508e0333d38c0804e37d1a5b47d3024acf66fef54704e5c0d4106",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-b37c03a226dcc469c094.json",
+      "sourceSHA256": "27fb23b340e508e0333d38c0804e37d1a5b47d3024acf66fef54704e5c0d4106"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-b4575f271a759e53d1d0.json",
+      "bytes": 371,
+      "sha256": "eeba6221f9fa16034c5eaabefb79a9868970eab69a9622f347f678871f244289",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-b4575f271a759e53d1d0.json",
+      "sourceSHA256": "eeba6221f9fa16034c5eaabefb79a9868970eab69a9622f347f678871f244289"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-b66781c5628314370a42.json",
+      "bytes": 371,
+      "sha256": "f93e8d399a778c847795761d3d2bdd7949809781b81b52e381807a171734598c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-b66781c5628314370a42.json",
+      "sourceSHA256": "f93e8d399a778c847795761d3d2bdd7949809781b81b52e381807a171734598c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-b6daaf983f39eeece1dc.json",
+      "bytes": 371,
+      "sha256": "918e3a0ad57a7d98a2e5ad06142817d32b748d0615dca7e31719dd5effe0721d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-b6daaf983f39eeece1dc.json",
+      "sourceSHA256": "918e3a0ad57a7d98a2e5ad06142817d32b748d0615dca7e31719dd5effe0721d"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-b735dc2929a0c82e6ce5.json",
+      "bytes": 371,
+      "sha256": "1192a9f4f4499792e2fa7e458e2a3c0fbc6880d999f04d646e00c624335eb6bf",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-b735dc2929a0c82e6ce5.json",
+      "sourceSHA256": "1192a9f4f4499792e2fa7e458e2a3c0fbc6880d999f04d646e00c624335eb6bf"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-b75fa1257ab8d86fe82c.json",
+      "bytes": 371,
+      "sha256": "4157cdd0ae46a0676a414f930dd53826a372b00069e8f5abf1c5fde97f698dbb",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-b75fa1257ab8d86fe82c.json",
+      "sourceSHA256": "4157cdd0ae46a0676a414f930dd53826a372b00069e8f5abf1c5fde97f698dbb"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-b7aeefa385c08146b592.json",
+      "bytes": 371,
+      "sha256": "827930bfad73372d0b06c3090f800d9a86ffd5a99f9476bb4203f82c84373a49",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-b7aeefa385c08146b592.json",
+      "sourceSHA256": "827930bfad73372d0b06c3090f800d9a86ffd5a99f9476bb4203f82c84373a49"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-b7f859e1bbad9e4f842f.json",
+      "bytes": 371,
+      "sha256": "ba84bff6dd19138ae719639b41835d9708a64fc522285fc4398f497dbfdcdcf5",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-b7f859e1bbad9e4f842f.json",
+      "sourceSHA256": "ba84bff6dd19138ae719639b41835d9708a64fc522285fc4398f497dbfdcdcf5"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-ba50818ea9ff77c7de97.json",
+      "bytes": 371,
+      "sha256": "657ab6975015e3bc8d55150a58a4a8cd6622639e2f2556921ae64acb72f90aa2",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-ba50818ea9ff77c7de97.json",
+      "sourceSHA256": "657ab6975015e3bc8d55150a58a4a8cd6622639e2f2556921ae64acb72f90aa2"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-bace479fef2b283709ce.json",
+      "bytes": 371,
+      "sha256": "4dd97ad0265e24ed05d754855a40f2ed749d510b85a30fe18cfa174474cc5c3b",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-bace479fef2b283709ce.json",
+      "sourceSHA256": "4dd97ad0265e24ed05d754855a40f2ed749d510b85a30fe18cfa174474cc5c3b"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-bbb1a3f7f49ebf59f530.json",
+      "bytes": 371,
+      "sha256": "52f098de5caa236d974a169dd53e98c1ab62abb13f2651295b1163212511cbf5",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-bbb1a3f7f49ebf59f530.json",
+      "sourceSHA256": "52f098de5caa236d974a169dd53e98c1ab62abb13f2651295b1163212511cbf5"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-bc81e412365127467e5a.json",
+      "bytes": 371,
+      "sha256": "2ab47141dcd7d6d83b91a0001b7821214a146ccac6304afe17ff6825dd253896",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-bc81e412365127467e5a.json",
+      "sourceSHA256": "2ab47141dcd7d6d83b91a0001b7821214a146ccac6304afe17ff6825dd253896"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-be8b238b1e880413abc2.json",
+      "bytes": 371,
+      "sha256": "288e441f3d12d7a713775ed72762873cde6f07c946ff0b83d56eaea098720b35",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-be8b238b1e880413abc2.json",
+      "sourceSHA256": "288e441f3d12d7a713775ed72762873cde6f07c946ff0b83d56eaea098720b35"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-bf9d0f1a0e3245f97657.json",
+      "bytes": 371,
+      "sha256": "91483b65db2c75bc7d653edfa20ea10a2cb1c469e6e097b70efef26179a9bdbc",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-bf9d0f1a0e3245f97657.json",
+      "sourceSHA256": "91483b65db2c75bc7d653edfa20ea10a2cb1c469e6e097b70efef26179a9bdbc"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-c0b8c4aada17fad0276e.json",
+      "bytes": 371,
+      "sha256": "e95e73df617efb212c0ac88603c78f2b49d3c0382a1ae3ea0615db9951303a04",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-c0b8c4aada17fad0276e.json",
+      "sourceSHA256": "e95e73df617efb212c0ac88603c78f2b49d3c0382a1ae3ea0615db9951303a04"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-c2b194e9da2f9fd62f07.json",
+      "bytes": 371,
+      "sha256": "4c90bfe15534c68ceea563cfba39316c4ac3e621adffc5b174cbd7b119143b6e",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-c2b194e9da2f9fd62f07.json",
+      "sourceSHA256": "4c90bfe15534c68ceea563cfba39316c4ac3e621adffc5b174cbd7b119143b6e"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-c36029105db422406edd.json",
+      "bytes": 371,
+      "sha256": "a2d33b2dd96ef78499e97e8b9ff5dfcf0608f9ba28249a2f71cef6a8a8d06a07",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-c36029105db422406edd.json",
+      "sourceSHA256": "a2d33b2dd96ef78499e97e8b9ff5dfcf0608f9ba28249a2f71cef6a8a8d06a07"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-c42b612d2a109f365660.json",
+      "bytes": 371,
+      "sha256": "13d918b603d1de44b1374c912ad7601220a72d463d19eccdd421b51e4471f3bf",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-c42b612d2a109f365660.json",
+      "sourceSHA256": "13d918b603d1de44b1374c912ad7601220a72d463d19eccdd421b51e4471f3bf"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-c42f399633c049d4c762.json",
+      "bytes": 371,
+      "sha256": "51ae484015263f7674767d52cd0ea639b0b4160040112bdfd0bae069611e6481",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-c42f399633c049d4c762.json",
+      "sourceSHA256": "51ae484015263f7674767d52cd0ea639b0b4160040112bdfd0bae069611e6481"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-c78ab70dbc257934e790.json",
+      "bytes": 371,
+      "sha256": "6a5c85b16762b6676d244ab6363cd504cdd1d35af59d2b5675be8e96a65c464d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-c78ab70dbc257934e790.json",
+      "sourceSHA256": "6a5c85b16762b6676d244ab6363cd504cdd1d35af59d2b5675be8e96a65c464d"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-c7b62072d87dd622c678.json",
+      "bytes": 371,
+      "sha256": "f56d8791f59bcde51e644212ebd866e7b5cc705ffea37a2cb3e9929844019a05",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-c7b62072d87dd622c678.json",
+      "sourceSHA256": "f56d8791f59bcde51e644212ebd866e7b5cc705ffea37a2cb3e9929844019a05"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-c8a5dd9f239b4cc52f72.json",
+      "bytes": 371,
+      "sha256": "186cb05cbee465b8563563f5da2fc57fe8357af793fbd7e36cabbeef2f9a9330",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-c8a5dd9f239b4cc52f72.json",
+      "sourceSHA256": "186cb05cbee465b8563563f5da2fc57fe8357af793fbd7e36cabbeef2f9a9330"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-c8bdf2d7a841e9da1dec.json",
+      "bytes": 371,
+      "sha256": "2f34be136e9016fcd39cf037ff9994139e32670170541022f1afc77b7800f4d2",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-c8bdf2d7a841e9da1dec.json",
+      "sourceSHA256": "2f34be136e9016fcd39cf037ff9994139e32670170541022f1afc77b7800f4d2"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-cb407c47ae568ca83aaf.json",
+      "bytes": 371,
+      "sha256": "711129d574b24270fa580b33f141c39ed46b1978f4b6ff359cf863ec1223f661",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-cb407c47ae568ca83aaf.json",
+      "sourceSHA256": "711129d574b24270fa580b33f141c39ed46b1978f4b6ff359cf863ec1223f661"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-cb834d5bf39ca5197c53.json",
+      "bytes": 371,
+      "sha256": "b58be22417ca128b75cb3d4d6321f51b7ef4d36041702eab7596d2af113e4cf2",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-cb834d5bf39ca5197c53.json",
+      "sourceSHA256": "b58be22417ca128b75cb3d4d6321f51b7ef4d36041702eab7596d2af113e4cf2"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-cce5e9ed1d080ab46bbb.json",
+      "bytes": 371,
+      "sha256": "60db4f20a3b15d4570dbb92f572bc46eb67bfd5e0ec9653765607b475364e109",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-cce5e9ed1d080ab46bbb.json",
+      "sourceSHA256": "60db4f20a3b15d4570dbb92f572bc46eb67bfd5e0ec9653765607b475364e109"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-ceda56b7bbff0c14e6b4.json",
+      "bytes": 371,
+      "sha256": "2b38e1b7ec6c2204bd1ba8852b868f27290c0b121a4f94cefa767f886ad4628d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-ceda56b7bbff0c14e6b4.json",
+      "sourceSHA256": "2b38e1b7ec6c2204bd1ba8852b868f27290c0b121a4f94cefa767f886ad4628d"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-d04e3e3b6d2bd9c90022.json",
+      "bytes": 371,
+      "sha256": "8fc9006df96c12d0673fc8fb043877be75edd35ebaddb17be88556ab4c742a34",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-d04e3e3b6d2bd9c90022.json",
+      "sourceSHA256": "8fc9006df96c12d0673fc8fb043877be75edd35ebaddb17be88556ab4c742a34"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-d2310b924c0d7aab2729.json",
+      "bytes": 371,
+      "sha256": "30191956ecc8f10cb24d59a153356e959a8da72dc651831c0b73f78916243c69",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-d2310b924c0d7aab2729.json",
+      "sourceSHA256": "30191956ecc8f10cb24d59a153356e959a8da72dc651831c0b73f78916243c69"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-d44166b082850c6a4c85.json",
+      "bytes": 371,
+      "sha256": "4bb4fddbdfe644bcd6622cb1a6c057de7dad0b8535c94ced80d7ec1ab813666c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-d44166b082850c6a4c85.json",
+      "sourceSHA256": "4bb4fddbdfe644bcd6622cb1a6c057de7dad0b8535c94ced80d7ec1ab813666c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-d71091b11fb5620b26e5.json",
+      "bytes": 371,
+      "sha256": "741025682408a8197acfe744fdb58c11b1bb91b7f87c0fcd77c121951d1fc08b",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-d71091b11fb5620b26e5.json",
+      "sourceSHA256": "741025682408a8197acfe744fdb58c11b1bb91b7f87c0fcd77c121951d1fc08b"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-d7b3ba27a9b36fc7ee89.json",
+      "bytes": 371,
+      "sha256": "65e8fd441f7a95f2425fb22205932b7d7538931698558840a47c8f1bb1cdbec1",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-d7b3ba27a9b36fc7ee89.json",
+      "sourceSHA256": "65e8fd441f7a95f2425fb22205932b7d7538931698558840a47c8f1bb1cdbec1"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-d9f159dca742e8436e90.json",
+      "bytes": 371,
+      "sha256": "677fb5eb7a0c3d93967412a0e1ca2e26b228acec460fba6a6fdbeb2af99d9e1c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-d9f159dca742e8436e90.json",
+      "sourceSHA256": "677fb5eb7a0c3d93967412a0e1ca2e26b228acec460fba6a6fdbeb2af99d9e1c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-dd511b8b391ffcebe7c1.json",
+      "bytes": 371,
+      "sha256": "c0a7ada26eac02ac3c1cb1edc382bc7ec5f24aa74ede5b709d4fc7e7db4defb5",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-dd511b8b391ffcebe7c1.json",
+      "sourceSHA256": "c0a7ada26eac02ac3c1cb1edc382bc7ec5f24aa74ede5b709d4fc7e7db4defb5"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-dee3166f2603f1dda414.json",
+      "bytes": 371,
+      "sha256": "7cff6316ee03d5fdddba6b22893034f81467911efc439aebd3e3513449afe4fc",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-dee3166f2603f1dda414.json",
+      "sourceSHA256": "7cff6316ee03d5fdddba6b22893034f81467911efc439aebd3e3513449afe4fc"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-df7b6db83de5fba71ef8.json",
+      "bytes": 371,
+      "sha256": "49c11ace57df564ee1c06f9528f85e7d43aadeddc674910b4115a160ab8a5725",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-df7b6db83de5fba71ef8.json",
+      "sourceSHA256": "49c11ace57df564ee1c06f9528f85e7d43aadeddc674910b4115a160ab8a5725"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-e2cdfbf8f8caa36d2aac.json",
+      "bytes": 371,
+      "sha256": "5639d10e8bbb649090d38ea2cbdb0ee5ef3d49e883d7cf7b53142a493e0b29c3",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-e2cdfbf8f8caa36d2aac.json",
+      "sourceSHA256": "5639d10e8bbb649090d38ea2cbdb0ee5ef3d49e883d7cf7b53142a493e0b29c3"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-e41ce106c2104424d175.json",
+      "bytes": 371,
+      "sha256": "67dfdedb759742131c50701c21746e6b405e40554b3a810c5d52cbf77fd4f04d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-e41ce106c2104424d175.json",
+      "sourceSHA256": "67dfdedb759742131c50701c21746e6b405e40554b3a810c5d52cbf77fd4f04d"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-e476c6437935c7a53520.json",
+      "bytes": 371,
+      "sha256": "ec9d2ad00e6b5af25d91f67405ba6288b6881352e58b339ddb48258a6281be9c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-e476c6437935c7a53520.json",
+      "sourceSHA256": "ec9d2ad00e6b5af25d91f67405ba6288b6881352e58b339ddb48258a6281be9c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-e573682de6571d7a507c.json",
+      "bytes": 371,
+      "sha256": "8cd1a8f7387ce40d670c2a5272aab6275100a990999e1f0d151a4f63c1844ae2",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-e573682de6571d7a507c.json",
+      "sourceSHA256": "8cd1a8f7387ce40d670c2a5272aab6275100a990999e1f0d151a4f63c1844ae2"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-e814354bb246da698096.json",
+      "bytes": 371,
+      "sha256": "030d09d204ea686b27dd63a928bf56409a4d6fd45cda52755bf83f99d3f80b01",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-e814354bb246da698096.json",
+      "sourceSHA256": "030d09d204ea686b27dd63a928bf56409a4d6fd45cda52755bf83f99d3f80b01"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-ebd850705e9a6d6de4ad.json",
+      "bytes": 371,
+      "sha256": "b1f7a46a2697021576ff4740fd37544d73ac049137e8af8e0c9bf752d11c6e7d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-ebd850705e9a6d6de4ad.json",
+      "sourceSHA256": "b1f7a46a2697021576ff4740fd37544d73ac049137e8af8e0c9bf752d11c6e7d"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-ecee53738809b7d9be6b.json",
+      "bytes": 371,
+      "sha256": "f492b5fb35a801730b724e9d574f4735b10ed77f4cce3d02493d034c63015fcd",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-ecee53738809b7d9be6b.json",
+      "sourceSHA256": "f492b5fb35a801730b724e9d574f4735b10ed77f4cce3d02493d034c63015fcd"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-ed7e593dda83c50538fe.json",
+      "bytes": 371,
+      "sha256": "8c54984f503c15387ece8a78b466af11b12d794970865bb81a3630f76e1d44dc",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-ed7e593dda83c50538fe.json",
+      "sourceSHA256": "8c54984f503c15387ece8a78b466af11b12d794970865bb81a3630f76e1d44dc"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-ee1b526eaca6e808273b.json",
+      "bytes": 371,
+      "sha256": "e5c98ce416004f552af66f73c2a1ef4408fa052832a5349ab26ed4a6bdef0ae4",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-ee1b526eaca6e808273b.json",
+      "sourceSHA256": "e5c98ce416004f552af66f73c2a1ef4408fa052832a5349ab26ed4a6bdef0ae4"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-eec3db5db76d7dc97ca6.json",
+      "bytes": 371,
+      "sha256": "5b1965a158c47e802ff25bd7ab8955e857337c190b771eff64991bc8e388e968",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-eec3db5db76d7dc97ca6.json",
+      "sourceSHA256": "5b1965a158c47e802ff25bd7ab8955e857337c190b771eff64991bc8e388e968"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-f09b2597a67e864a5cbc.json",
+      "bytes": 371,
+      "sha256": "65a99fd7657746cd114485b7bfef76ae47e3e045c27dec12ba99535dd1cd9c27",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-f09b2597a67e864a5cbc.json",
+      "sourceSHA256": "65a99fd7657746cd114485b7bfef76ae47e3e045c27dec12ba99535dd1cd9c27"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-f0f53d0aaaff18883ce8.json",
+      "bytes": 371,
+      "sha256": "166483b3257835c6207bf12bf649025143471ff6f05a8fd7a5f8dd2ed1fc9680",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-f0f53d0aaaff18883ce8.json",
+      "sourceSHA256": "166483b3257835c6207bf12bf649025143471ff6f05a8fd7a5f8dd2ed1fc9680"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-f1324d809985b78d18b5.json",
+      "bytes": 371,
+      "sha256": "f213418cd5a6d209dcbbc690584a29324b1aae02ccda1ed78b89068331dda626",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-f1324d809985b78d18b5.json",
+      "sourceSHA256": "f213418cd5a6d209dcbbc690584a29324b1aae02ccda1ed78b89068331dda626"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-f161a79a8a81ade253af.json",
+      "bytes": 371,
+      "sha256": "7a0e8763c9aa7ad17227c88bcc1197eae9375dac76c2eab6860439ea2f4be215",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-f161a79a8a81ade253af.json",
+      "sourceSHA256": "7a0e8763c9aa7ad17227c88bcc1197eae9375dac76c2eab6860439ea2f4be215"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-f2ae11bac46fb17a135b.json",
+      "bytes": 371,
+      "sha256": "25031e68f8ec34bf6455ab4dd5ad1cc02c7f4f388a06fdb87fafb09ba2a0efbc",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-f2ae11bac46fb17a135b.json",
+      "sourceSHA256": "25031e68f8ec34bf6455ab4dd5ad1cc02c7f4f388a06fdb87fafb09ba2a0efbc"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-f407387b4baacad373bb.json",
+      "bytes": 371,
+      "sha256": "fba7962e95dfdf24e85199301d7bf9978b18b5207e945e65515f04049f8aac4c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-f407387b4baacad373bb.json",
+      "sourceSHA256": "fba7962e95dfdf24e85199301d7bf9978b18b5207e945e65515f04049f8aac4c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-f492ad8e0bbca032acb3.json",
+      "bytes": 371,
+      "sha256": "b5b494d0252f650e5c4111d1b4f227ef11c410daf305edfc97386e8a5654b89e",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-f492ad8e0bbca032acb3.json",
+      "sourceSHA256": "b5b494d0252f650e5c4111d1b4f227ef11c410daf305edfc97386e8a5654b89e"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-f596e79f18969f144bdd.json",
+      "bytes": 371,
+      "sha256": "d7f8f08cfced2689052018ee6cacc2865834dd820e2bc74f79b788883ab01d73",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-f596e79f18969f144bdd.json",
+      "sourceSHA256": "d7f8f08cfced2689052018ee6cacc2865834dd820e2bc74f79b788883ab01d73"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-f5a64a8ecf058a46d6d3.json",
+      "bytes": 371,
+      "sha256": "5f31605c2793c1996b647efe868e1ae26bc85fb6858be099f033dbde9577ad49",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-f5a64a8ecf058a46d6d3.json",
+      "sourceSHA256": "5f31605c2793c1996b647efe868e1ae26bc85fb6858be099f033dbde9577ad49"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-f5bd9b44b73cd6c06ad5.json",
+      "bytes": 371,
+      "sha256": "4424ce785334ab8420ad0329b0b8e1a2ac703706772aff284be699f09a4c50f5",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-f5bd9b44b73cd6c06ad5.json",
+      "sourceSHA256": "4424ce785334ab8420ad0329b0b8e1a2ac703706772aff284be699f09a4c50f5"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-f5fea8b5985688c169a7.json",
+      "bytes": 371,
+      "sha256": "c4223fcd534f6bfb786a31b00549cbc32affb4f083deda5d8c516141cfd9f6b0",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-f5fea8b5985688c169a7.json",
+      "sourceSHA256": "c4223fcd534f6bfb786a31b00549cbc32affb4f083deda5d8c516141cfd9f6b0"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-f652f519e9da75fc1b87.json",
+      "bytes": 371,
+      "sha256": "a2fbac5e5a9b97f249c7cbde0506fe9dad941f167332e205d8ec7dd71d8fe28c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-f652f519e9da75fc1b87.json",
+      "sourceSHA256": "a2fbac5e5a9b97f249c7cbde0506fe9dad941f167332e205d8ec7dd71d8fe28c"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-f8367f1a8db8098d5f71.json",
+      "bytes": 371,
+      "sha256": "798810ac5e4b1ea5026ab786ec5ebb7ef6e3b9ee57aa3a5349ae9ae1ef6862a1",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-f8367f1a8db8098d5f71.json",
+      "sourceSHA256": "798810ac5e4b1ea5026ab786ec5ebb7ef6e3b9ee57aa3a5349ae9ae1ef6862a1"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-f88fa0ffff0cf41c9aee.json",
+      "bytes": 371,
+      "sha256": "33a852fa8b614ad428d9a593b61d011b9290109adf9d5fcd6371f123051ddee4",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-f88fa0ffff0cf41c9aee.json",
+      "sourceSHA256": "33a852fa8b614ad428d9a593b61d011b9290109adf9d5fcd6371f123051ddee4"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-f91173b6e60468fb6fe6.json",
+      "bytes": 371,
+      "sha256": "b66b22e2b7e1bf2c7374305debc0579f22b6e08154f679178dc91445c2b54807",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-f91173b6e60468fb6fe6.json",
+      "sourceSHA256": "b66b22e2b7e1bf2c7374305debc0579f22b6e08154f679178dc91445c2b54807"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-f98f4e8c1856c1f2eeb7.json",
+      "bytes": 371,
+      "sha256": "cf807dbdd5a2b64d6a03b3ea3513f67b62bd8fef543d85ec3b001f32528416b0",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-f98f4e8c1856c1f2eeb7.json",
+      "sourceSHA256": "cf807dbdd5a2b64d6a03b3ea3513f67b62bd8fef543d85ec3b001f32528416b0"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-f9d884e96c73efd8c4eb.json",
+      "bytes": 371,
+      "sha256": "f77317a696e6abe3081175d1a395f3901b4b30f3c9632c8d91058d81064e7a6b",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-f9d884e96c73efd8c4eb.json",
+      "sourceSHA256": "f77317a696e6abe3081175d1a395f3901b4b30f3c9632c8d91058d81064e7a6b"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-fa95e3f1578dd98bed08.json",
+      "bytes": 371,
+      "sha256": "0ac9c531690889a07651f73cacaf3dfe4a6311c78ffb85b3b096edd25a33e697",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-fa95e3f1578dd98bed08.json",
+      "sourceSHA256": "0ac9c531690889a07651f73cacaf3dfe4a6311c78ffb85b3b096edd25a33e697"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-fcd14e38c659663b36bc.json",
+      "bytes": 371,
+      "sha256": "031e506818658111b043197ab9dc2239c15382112050863c46929062dbdc1f5a",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-fcd14e38c659663b36bc.json",
+      "sourceSHA256": "031e506818658111b043197ab9dc2239c15382112050863c46929062dbdc1f5a"
+    },
+    {
+      "path": "completed-artifact-identities/ca-41a22589-fe589e8f1a3ee9b9ee84.json",
+      "bytes": 371,
+      "sha256": "80e21ae1e76bafd223e1010a80e2f30c9a71cf982f66fe3e3ad3283d8548c61d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completed-artifact-identities/ca-41a22589-fe589e8f1a3ee9b9ee84.json",
+      "sourceSHA256": "80e21ae1e76bafd223e1010a80e2f30c9a71cf982f66fe3e3ad3283d8548c61d"
+    },
+    {
+      "path": "completion.json",
+      "bytes": 75,
+      "sha256": "faa86597e0930422cda613fc8fd67a36c3285582744e30323e96f7baa2f05d9c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/completion.json",
+      "sourceSHA256": "faa86597e0930422cda613fc8fd67a36c3285582744e30323e96f7baa2f05d9c"
+    },
+    {
+      "path": "controlled-ablation-results.json",
+      "bytes": 2078690,
+      "sha256": "f708bcf53e0bd79a9444caf60d6277b26ebf42f069d70c9a5b0b6680327e2a90",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/controlled-ablation-results.json",
+      "sourceSHA256": "f708bcf53e0bd79a9444caf60d6277b26ebf42f069d70c9a5b0b6680327e2a90"
+    },
+    {
+      "path": "controlled-fuzzy-ablation-report.md",
+      "bytes": 4038,
+      "sha256": "d1fa9a2853fbce6a0efd06117f718b1870d4f8fb5554a10d2671c7705ae7d0c1",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/controlled-fuzzy-ablation-report.md",
+      "sourceSHA256": "d1fa9a2853fbce6a0efd06117f718b1870d4f8fb5554a10d2671c7705ae7d0c1"
+    },
+    {
+      "path": "dataset-identities/a0.1-p6001.json",
+      "bytes": 19026,
+      "sha256": "ceaf790169a0139b8e9f34eb80a711cda89918b7402591093da5759b392d46fc",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/dataset-identities/a0.1-p6001.json",
+      "sourceSHA256": "ceaf790169a0139b8e9f34eb80a711cda89918b7402591093da5759b392d46fc"
+    },
+    {
+      "path": "dataset-identities/a0.1-p6002.json",
+      "bytes": 19023,
+      "sha256": "16d79c36004ebdff3eb2eca34b002fb672c590a645e261104034e97cdb4b4541",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/dataset-identities/a0.1-p6002.json",
+      "sourceSHA256": "16d79c36004ebdff3eb2eca34b002fb672c590a645e261104034e97cdb4b4541"
+    },
+    {
+      "path": "dataset-identities/a0.1-p6003.json",
+      "bytes": 19037,
+      "sha256": "17f9782e1e8c0feeba02e97ad6aac78ff0277269046e0d704361aa30dc265735",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/dataset-identities/a0.1-p6003.json",
+      "sourceSHA256": "17f9782e1e8c0feeba02e97ad6aac78ff0277269046e0d704361aa30dc265735"
+    },
+    {
+      "path": "dataset-identities/a0.5-p6001.json",
+      "bytes": 19326,
+      "sha256": "5684a27adc6695aeb96f831f7779795279c850112bc8624d0ff9c47c1555c502",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/dataset-identities/a0.5-p6001.json",
+      "sourceSHA256": "5684a27adc6695aeb96f831f7779795279c850112bc8624d0ff9c47c1555c502"
+    },
+    {
+      "path": "dataset-identities/a0.5-p6002.json",
+      "bytes": 19349,
+      "sha256": "3c5fa8ccf0cff57e9bd4790e3b5d8942f5df588d0e8afb72c53f65cade6cb3df",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/dataset-identities/a0.5-p6002.json",
+      "sourceSHA256": "3c5fa8ccf0cff57e9bd4790e3b5d8942f5df588d0e8afb72c53f65cade6cb3df"
+    },
+    {
+      "path": "dataset-identities/a0.5-p6003.json",
+      "bytes": 19345,
+      "sha256": "737a6988d7a17e56160dbb5d85e01b3336032c83f6f9ff33ebb334c2ccf06448",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/dataset-identities/a0.5-p6003.json",
+      "sourceSHA256": "737a6988d7a17e56160dbb5d85e01b3336032c83f6f9ff33ebb334c2ccf06448"
+    },
+    {
+      "path": "dataset-identities/a1-p6001.json",
+      "bytes": 19491,
+      "sha256": "34e80d35652ec4e90367ffb8496a148349d6a0ad2293747d7d580f4371906a5a",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/dataset-identities/a1-p6001.json",
+      "sourceSHA256": "34e80d35652ec4e90367ffb8496a148349d6a0ad2293747d7d580f4371906a5a"
+    },
+    {
+      "path": "dataset-identities/a1-p6002.json",
+      "bytes": 19474,
+      "sha256": "f184b0b9da8bb7090fdfe0a6727271d787187bf224b140b78614075a0e9be2c6",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/dataset-identities/a1-p6002.json",
+      "sourceSHA256": "f184b0b9da8bb7090fdfe0a6727271d787187bf224b140b78614075a0e9be2c6"
+    },
+    {
+      "path": "dataset-identities/a1-p6003.json",
+      "bytes": 19468,
+      "sha256": "488012c0343eb2a9039e1205ee994e86ad4946b0f765a5c686065536f3cc6fde",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/dataset-identities/a1-p6003.json",
+      "sourceSHA256": "488012c0343eb2a9039e1205ee994e86ad4946b0f765a5c686065536f3cc6fde"
+    },
+    {
+      "path": "figures/accuracy-alpha.png",
+      "bytes": 116368,
+      "sha256": "17c117c47e06e5be4c68086ce1a14b1fd2db10422684e036d675cb615bdd96e0",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/accuracy-alpha.png",
+      "sourceSHA256": "17c117c47e06e5be4c68086ce1a14b1fd2db10422684e036d675cb615bdd96e0"
+    },
+    {
+      "path": "figures/accuracy-alpha.svg",
+      "bytes": 40816,
+      "sha256": "8b51fcfb58e2bd860cd3e50d060718eb0adc8b3a03f4d6e2c0e2a5971c66c44d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/accuracy-alpha.svg",
+      "sourceSHA256": "8b51fcfb58e2bd860cd3e50d060718eb0adc8b3a03f4d6e2c0e2a5971c66c44d"
+    },
+    {
+      "path": "figures/accuracy-rounds.png",
+      "bytes": 116732,
+      "sha256": "07386643673b3f3c175a999e25b286845f81fa586c95a05c64aab4e0a36badb6",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/accuracy-rounds.png",
+      "sourceSHA256": "07386643673b3f3c175a999e25b286845f81fa586c95a05c64aab4e0a36badb6"
+    },
+    {
+      "path": "figures/accuracy-rounds.svg",
+      "bytes": 39292,
+      "sha256": "3e029fed08c0ea527d2f24a6ef07f448c9122f7a066961e348dc910aeddba2ed",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/accuracy-rounds.svg",
+      "sourceSHA256": "3e029fed08c0ea527d2f24a6ef07f448c9122f7a066961e348dc910aeddba2ed"
+    },
+    {
+      "path": "figures/fairness-accuracy.png",
+      "bytes": 107854,
+      "sha256": "35152c0abc44a5e58f2e2c1e3591465dddcc94b601987cabbd57edf612cbdf73",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/fairness-accuracy.png",
+      "sourceSHA256": "35152c0abc44a5e58f2e2c1e3591465dddcc94b601987cabbd57edf612cbdf73"
+    },
+    {
+      "path": "figures/fairness-accuracy.svg",
+      "bytes": 70396,
+      "sha256": "b8b2480ec5d771a671a724f29d166910ce938d60f55bb77f4cc245d9f41243ca",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/fairness-accuracy.svg",
+      "sourceSHA256": "b8b2480ec5d771a671a724f29d166910ce938d60f55bb77f4cc245d9f41243ca"
+    },
+    {
+      "path": "figures/macro-f1-rounds.png",
+      "bytes": 106037,
+      "sha256": "150ccd24302ffb47fff1973cc4edeaf3061883f506fca27deaa3eeaa8231721d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/macro-f1-rounds.png",
+      "sourceSHA256": "150ccd24302ffb47fff1973cc4edeaf3061883f506fca27deaa3eeaa8231721d"
+    },
+    {
+      "path": "figures/macro-f1-rounds.svg",
+      "bytes": 40619,
+      "sha256": "fdd0fcf6109bd9ba557cb172b6915305af718aaad964e159cb04ccedf8c33e8e",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/macro-f1-rounds.svg",
+      "sourceSHA256": "fdd0fcf6109bd9ba557cb172b6915305af718aaad964e159cb04ccedf8c33e8e"
+    },
+    {
+      "path": "figures/paired-accuracy.png",
+      "bytes": 89314,
+      "sha256": "c6c572563b021405d297525fb2b5bbe566cc54c5a5ed36066b88d043fce6cd6c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/paired-accuracy.png",
+      "sourceSHA256": "c6c572563b021405d297525fb2b5bbe566cc54c5a5ed36066b88d043fce6cd6c"
+    },
+    {
+      "path": "figures/paired-accuracy.svg",
+      "bytes": 77506,
+      "sha256": "77ef542ca1c36fb4b61e69a235987e35d0c11c1d9905fc8a92a877b9657dafb3",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/paired-accuracy.svg",
+      "sourceSHA256": "77ef542ca1c36fb4b61e69a235987e35d0c11c1d9905fc8a92a877b9657dafb3"
+    },
+    {
+      "path": "figures/partition-effects.png",
+      "bytes": 128298,
+      "sha256": "909c3dc9f1570682ec74e0bfcedd0d1ad2b8529e6a34896d4240b364df691f5c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/partition-effects.png",
+      "sourceSHA256": "909c3dc9f1570682ec74e0bfcedd0d1ad2b8529e6a34896d4240b364df691f5c"
+    },
+    {
+      "path": "figures/partition-effects.svg",
+      "bytes": 45233,
+      "sha256": "142f8e697c5ba3a99865669edc6a4b6e7f161a8c5fbcf207779ab1afa406b4cb",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/partition-effects.svg",
+      "sourceSHA256": "142f8e697c5ba3a99865669edc6a4b6e7f161a8c5fbcf207779ab1afa406b4cb"
+    },
+    {
+      "path": "figures/selection-gini-rounds.png",
+      "bytes": 105203,
+      "sha256": "24c57065c423b5f60c426c589836f9d13c7219db9a054140e7dcb4794ead0290",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/selection-gini-rounds.png",
+      "sourceSHA256": "24c57065c423b5f60c426c589836f9d13c7219db9a054140e7dcb4794ead0290"
+    },
+    {
+      "path": "figures/selection-gini-rounds.svg",
+      "bytes": 45730,
+      "sha256": "6581c537a6a62f015c425df05531962b0ad444ed32c7208114635a5f7e47e097",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/selection-gini-rounds.svg",
+      "sourceSHA256": "6581c537a6a62f015c425df05531962b0ad444ed32c7208114635a5f7e47e097"
+    },
+    {
+      "path": "figures/uncertainty-error-diagnostics.png",
+      "bytes": 83757,
+      "sha256": "87f6411f4d9b4868ef64a2c4d5f38a9595598f3977395124339e4ee25990f33f",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/uncertainty-error-diagnostics.png",
+      "sourceSHA256": "87f6411f4d9b4868ef64a2c4d5f38a9595598f3977395124339e4ee25990f33f"
+    },
+    {
+      "path": "figures/uncertainty-error-diagnostics.svg",
+      "bytes": 43758,
+      "sha256": "8c18e9e92201982974ca54e20fcf42cc3fd5556eb6741530046c66746afc5851",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/uncertainty-error-diagnostics.svg",
+      "sourceSHA256": "8c18e9e92201982974ca54e20fcf42cc3fd5556eb6741530046c66746afc5851"
+    },
+    {
+      "path": "figures/width-ranking-change.png",
+      "bytes": 62375,
+      "sha256": "a40a8345f18c0bbb0578131b3418dae8b051d86c9d7af4dab4c12490b9d97576",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/width-ranking-change.png",
+      "sourceSHA256": "a40a8345f18c0bbb0578131b3418dae8b051d86c9d7af4dab4c12490b9d97576"
+    },
+    {
+      "path": "figures/width-ranking-change.svg",
+      "bytes": 32179,
+      "sha256": "82b5075613099f4c5888ed1ce2a8b2315d30454c46b6216d6638cfb20adffe96",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/width-ranking-change.svg",
+      "sourceSHA256": "82b5075613099f4c5888ed1ce2a8b2315d30454c46b6216d6638cfb20adffe96"
+    },
+    {
+      "path": "figures/width-selection-stability.png",
+      "bytes": 65299,
+      "sha256": "4dec6fbf691e539447708e8ea6c9404d9f5f49cd10f97fa98945e1a0a5e89333",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/width-selection-stability.png",
+      "sourceSHA256": "4dec6fbf691e539447708e8ea6c9404d9f5f49cd10f97fa98945e1a0a5e89333"
+    },
+    {
+      "path": "figures/width-selection-stability.svg",
+      "bytes": 34159,
+      "sha256": "b048e28f1686e049d061cf5b199c6bb8653ffb5cd02115b71c2ed42efa4b507f",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/figures/width-selection-stability.svg",
+      "sourceSHA256": "b048e28f1686e049d061cf5b199c6bb8653ffb5cd02115b71c2ed42efa4b507f"
+    },
+    {
+      "path": "full-policy-lock.json",
+      "bytes": 4837,
+      "sha256": "7cea5f17df446005426c15e357f73cd283ad4d94761f21ca36e13c13195208e2",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/full-policy-lock.json",
+      "sourceSHA256": "7cea5f17df446005426c15e357f73cd283ad4d94761f21ca36e13c13195208e2"
+    },
+    {
+      "path": "initial-model-identities/seed-42.json",
+      "bytes": 149,
+      "sha256": "733329296bacc1b1d5aaad817b7ffb86f6191ce38366ddba1944a67660705c29",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/initial-model-identities/seed-42.json",
+      "sourceSHA256": "733329296bacc1b1d5aaad817b7ffb86f6191ce38366ddba1944a67660705c29"
+    },
+    {
+      "path": "initial-model-identities/seed-43.json",
+      "bytes": 149,
+      "sha256": "1b850a07c43eb3d2b37c9e2e6a7dbb587845a1a3a9f0a101e4ea8d95b3556955",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/initial-model-identities/seed-43.json",
+      "sourceSHA256": "1b850a07c43eb3d2b37c9e2e6a7dbb587845a1a3a9f0a101e4ea8d95b3556955"
+    },
+    {
+      "path": "initial-model-identities/seed-44.json",
+      "bytes": 149,
+      "sha256": "f95e17bbe94e79fe1c5b7435103c9f3b3b8f95ce7f682f0b77776ca6b1c974f8",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/initial-model-identities/seed-44.json",
+      "sourceSHA256": "f95e17bbe94e79fe1c5b7435103c9f3b3b8f95ce7f682f0b77776ca6b1c974f8"
+    },
+    {
+      "path": "initial-model-identities/seed-45.json",
+      "bytes": 149,
+      "sha256": "640d5a6d43ccc28c9377b076e199050098377c300ec7694b8c461e63fa8ebf29",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/initial-model-identities/seed-45.json",
+      "sourceSHA256": "640d5a6d43ccc28c9377b076e199050098377c300ec7694b8c461e63fa8ebf29"
+    },
+    {
+      "path": "initial-model-identities/seed-46.json",
+      "bytes": 149,
+      "sha256": "0cb8a908fe309bd1a67259df2bab2efd7a4b1b7c7adb07f169d484a69722b434",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/initial-model-identities/seed-46.json",
+      "sourceSHA256": "0cb8a908fe309bd1a67259df2bab2efd7a4b1b7c7adb07f169d484a69722b434"
+    },
+    {
+      "path": "integrity-report.json",
+      "bytes": 289,
+      "sha256": "9729a5e5d9351dac2779c2d1c726f4d905a9f28ac442a2109b97eb909c8f2922",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/integrity-report.json",
+      "sourceSHA256": "9729a5e5d9351dac2779c2d1c726f4d905a9f28ac442a2109b97eb909c8f2922"
+    },
+    {
+      "path": "offline-comparisons.csv",
+      "bytes": 148811,
+      "sha256": "05b07779af9c191dba1b4a04f35fd672f0a4727de50dc272688f711b6291606d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/offline-comparisons.csv",
+      "sourceSHA256": "05b07779af9c191dba1b4a04f35fd672f0a4727de50dc272688f711b6291606d"
+    },
+    {
+      "path": "offline-inputs.jsonl",
+      "bytes": 4949676,
+      "sha256": "58822e62c68590fec90aac878a6a380b3d33ea094833ed92d137ed20bfc6907c",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/offline-inputs.jsonl",
+      "sourceSHA256": "58822e62c68590fec90aac878a6a380b3d33ea094833ed92d137ed20bfc6907c"
+    },
+    {
+      "path": "offline-replay-identity.json",
+      "bytes": 3892,
+      "sha256": "5f9bec7215ff7b1fed607db9c8de23f687e782033edaa478c4071b91653900b4",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/offline-replay-identity.json",
+      "sourceSHA256": "5f9bec7215ff7b1fed607db9c8de23f687e782033edaa478c4071b91653900b4"
+    },
+    {
+      "path": "offline-summary.json",
+      "bytes": 3389,
+      "sha256": "d53223a490e2529ba5e1fdbf81a8c24539bdcfbaae00cde0fe86401d26f7e6fd",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/offline-summary.json",
+      "sourceSHA256": "d53223a490e2529ba5e1fdbf81a8c24539bdcfbaae00cde0fe86401d26f7e6fd"
+    },
+    {
+      "path": "offline-widths.csv",
+      "bytes": 12191903,
+      "sha256": "9c006f35f3913b341e37605e7ce1f927f0106b132ae2c7e8d26a21f9863a7611",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/offline-widths.csv",
+      "sourceSHA256": "9c006f35f3913b341e37605e7ce1f927f0106b132ae2c7e8d26a21f9863a7611"
+    },
+    {
+      "path": "paired-differences.csv",
+      "bytes": 165622,
+      "sha256": "8a358155f0390c3fea041c2043e8ad496477661a644fc25eec5b91b93fad6e45",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/paired-differences.csv",
+      "sourceSHA256": "8a358155f0390c3fea041c2043e8ad496477661a644fc25eec5b91b93fad6e45"
+    },
+    {
+      "path": "partition-reservation.json",
+      "bytes": 44264,
+      "sha256": "0f36d42b9e0338442ac00fc065dc6de0e884ef820df94e73a735e85453e0cbb7",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/partition-reservation.json",
+      "sourceSHA256": "0f36d42b9e0338442ac00fc065dc6de0e884ef820df94e73a735e85453e0cbb7"
+    },
+    {
+      "path": "partitions/a0.1-p6001/manifest.json",
+      "bytes": 20374,
+      "sha256": "8bafbed7bfebff67447da32808d0abfc9caa5a143ee02a90c0cbb7b7d00983d2",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/partitions/a0.1-p6001/manifest.json",
+      "sourceSHA256": "8bafbed7bfebff67447da32808d0abfc9caa5a143ee02a90c0cbb7b7d00983d2"
+    },
+    {
+      "path": "partitions/a0.1-p6002/manifest.json",
+      "bytes": 20371,
+      "sha256": "3adceb000d93512e3da9ca086d7027427e60025900968662d7a4a5239871a32e",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/partitions/a0.1-p6002/manifest.json",
+      "sourceSHA256": "3adceb000d93512e3da9ca086d7027427e60025900968662d7a4a5239871a32e"
+    },
+    {
+      "path": "partitions/a0.1-p6003/manifest.json",
+      "bytes": 20385,
+      "sha256": "af99a18a535fc14876eaeda5cbb46ca311eb81c6170a710e3a195b1c284a5d00",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/partitions/a0.1-p6003/manifest.json",
+      "sourceSHA256": "af99a18a535fc14876eaeda5cbb46ca311eb81c6170a710e3a195b1c284a5d00"
+    },
+    {
+      "path": "partitions/a0.5-p6001/manifest.json",
+      "bytes": 20674,
+      "sha256": "2f2df67eb9c064575415e3ede97bfe092da76312b2adf4b8f8a583b75cb9fae6",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/partitions/a0.5-p6001/manifest.json",
+      "sourceSHA256": "2f2df67eb9c064575415e3ede97bfe092da76312b2adf4b8f8a583b75cb9fae6"
+    },
+    {
+      "path": "partitions/a0.5-p6002/manifest.json",
+      "bytes": 20697,
+      "sha256": "3e4bc1152d200384413e362f7dc2d2847e0863d03adb77b419a1fb2defd8643e",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/partitions/a0.5-p6002/manifest.json",
+      "sourceSHA256": "3e4bc1152d200384413e362f7dc2d2847e0863d03adb77b419a1fb2defd8643e"
+    },
+    {
+      "path": "partitions/a0.5-p6003/manifest.json",
+      "bytes": 20693,
+      "sha256": "53f530ed4b2b74ec1632ac6cced988e4fc599f02b2d46acab884b223a034e1cd",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/partitions/a0.5-p6003/manifest.json",
+      "sourceSHA256": "53f530ed4b2b74ec1632ac6cced988e4fc599f02b2d46acab884b223a034e1cd"
+    },
+    {
+      "path": "partitions/a1-p6001/manifest.json",
+      "bytes": 20839,
+      "sha256": "306ade0961a188e12e31538db1ece9c28c880c0cb91c962c7ab7eeb2efee3974",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/partitions/a1-p6001/manifest.json",
+      "sourceSHA256": "306ade0961a188e12e31538db1ece9c28c880c0cb91c962c7ab7eeb2efee3974"
+    },
+    {
+      "path": "partitions/a1-p6002/manifest.json",
+      "bytes": 20822,
+      "sha256": "ce975b13101cf9c8d98643e28f48f25d42412d8ed50c43306692e8bf16bad663",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/partitions/a1-p6002/manifest.json",
+      "sourceSHA256": "ce975b13101cf9c8d98643e28f48f25d42412d8ed50c43306692e8bf16bad663"
+    },
+    {
+      "path": "partitions/a1-p6003/manifest.json",
+      "bytes": 20816,
+      "sha256": "be7d20e2362cda42ed01ebcd908527689fe1118d8d790834f179b977cc2edbcb",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/partitions/a1-p6003/manifest.json",
+      "sourceSHA256": "be7d20e2362cda42ed01ebcd908527689fe1118d8d790834f179b977cc2edbcb"
+    },
+    {
+      "path": "per-class-recall.csv",
+      "bytes": 129471,
+      "sha256": "9a11212baeb553334c1e9cde9dbb3ced7a4d5170faad59354bfb66f6afb11929",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/per-class-recall.csv",
+      "sourceSHA256": "9a11212baeb553334c1e9cde9dbb3ced7a4d5170faad59354bfb66f6afb11929"
+    },
+    {
+      "path": "preflight.json",
+      "bytes": 48321,
+      "sha256": "eb5a4beafcc1eb3a075c94698dec1c3f5b5c8a7a846a4128c855dd25c5f640cc",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/preflight.json",
+      "sourceSHA256": "eb5a4beafcc1eb3a075c94698dec1c3f5b5c8a7a846a4128c855dd25c5f640cc"
+    },
+    {
+      "path": "previous-active-batch.json",
+      "bytes": 144,
+      "sha256": "4b16c941cd68dd18e42300f77a165aa215d76614a829441ddbdd2c843f815d57",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/previous-active-batch.json",
+      "sourceSHA256": "4b16c941cd68dd18e42300f77a165aa215d76614a829441ddbdd2c843f815d57"
+    },
+    {
+      "path": "protocol.json",
+      "bytes": 1635,
+      "sha256": "06f173da857280f5954197cf1fb67fb1d4545b86cea8adc7481ae4093d09858a",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/protocol.json",
+      "sourceSHA256": "06f173da857280f5954197cf1fb67fb1d4545b86cea8adc7481ae4093d09858a"
+    },
+    {
+      "path": "reproducibility-audit.json",
+      "bytes": 4057,
+      "sha256": "3ad868d3e46f8e5d6470400038389c418add748dbb633f3ab4d612e5a03a9602",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/reproducibility-audit.json",
+      "sourceSHA256": "3ad868d3e46f8e5d6470400038389c418add748dbb633f3ab4d612e5a03a9602"
+    },
+    {
+      "path": "run-results.csv",
+      "bytes": 68953,
+      "sha256": "0e7c2424b1850886c97d18b4dda27436cbcf515e36ed29fd7c79f29c6b8021f6",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/run-results.csv",
+      "sourceSHA256": "0e7c2424b1850886c97d18b4dda27436cbcf515e36ed29fd7c79f29c6b8021f6"
+    },
+    {
+      "path": "runtime-identity.json",
+      "bytes": 3178,
+      "sha256": "b4988f3bba116c563d4a49cb9394e4d26315964c323d2e48e8f538b325f5c148",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/runtime-identity.json",
+      "sourceSHA256": "b4988f3bba116c563d4a49cb9394e4d26315964c323d2e48e8f538b325f5c148"
+    },
+    {
+      "path": "source-identity.json",
+      "bytes": 10564,
+      "sha256": "8f47e187f125dbf6dc8e0858cea03289af52970ce4974d3084590b1efe6a64e0",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/source-identity.json",
+      "sourceSHA256": "8f47e187f125dbf6dc8e0858cea03289af52970ce4974d3084590b1efe6a64e0"
+    },
+    {
+      "path": "status.json",
+      "bytes": 4113,
+      "sha256": "12f61c65ef9bd5c20f031d823133c9d3362b7b44bab4de09db7e724b8bb6aeb4",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/status.json",
+      "sourceSHA256": "12f61c65ef9bd5c20f031d823133c9d3362b7b44bab4de09db7e724b8bb6aeb4"
+    },
+    {
+      "path": "supersedes-unstarted-batch.json",
+      "bytes": 691,
+      "sha256": "3a95c2fac8ae61b6f36e707ba144ed40f8e21c43007bc3287626e5744a394e5d",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/supersedes-unstarted-batch.json",
+      "sourceSHA256": "3a95c2fac8ae61b6f36e707ba144ed40f8e21c43007bc3287626e5744a394e5d"
+    },
+    {
+      "path": "traces/s42-r2.json",
+      "bytes": 32005,
+      "sha256": "1a2b5855bc9e89a904f08ceac530b8596193ba3a7278f6c99d0a95c8e6cf867e",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/traces/s42-r2.json",
+      "sourceSHA256": "1a2b5855bc9e89a904f08ceac530b8596193ba3a7278f6c99d0a95c8e6cf867e"
+    },
+    {
+      "path": "traces/s42-r70.json",
+      "bytes": 1108866,
+      "sha256": "62d88b68c5161eca19904e0e0a7e20d4b79ee7181b5ba063c0ad62e3ed59b522",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/traces/s42-r70.json",
+      "sourceSHA256": "62d88b68c5161eca19904e0e0a7e20d4b79ee7181b5ba063c0ad62e3ed59b522"
+    },
+    {
+      "path": "traces/s43-r70.json",
+      "bytes": 1108836,
+      "sha256": "74c0abacdcc5ee7f4857b13659c173cb95a6206f1501b2b396850492db3ada89",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/traces/s43-r70.json",
+      "sourceSHA256": "74c0abacdcc5ee7f4857b13659c173cb95a6206f1501b2b396850492db3ada89"
+    },
+    {
+      "path": "traces/s44-r70.json",
+      "bytes": 1108807,
+      "sha256": "678502e84f6faa7dde9193c859cb9c986977a63b2712bfcb3ebdcb38654e6651",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/traces/s44-r70.json",
+      "sourceSHA256": "678502e84f6faa7dde9193c859cb9c986977a63b2712bfcb3ebdcb38654e6651"
+    },
+    {
+      "path": "traces/s45-r70.json",
+      "bytes": 1108860,
+      "sha256": "dfa1cbcd37acd88a63d4359cc0ea3b9b4cb855a682669e761b507fd0fb32808a",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/traces/s45-r70.json",
+      "sourceSHA256": "dfa1cbcd37acd88a63d4359cc0ea3b9b4cb855a682669e761b507fd0fb32808a"
+    },
+    {
+      "path": "traces/s46-r70.json",
+      "bytes": 1108919,
+      "sha256": "8d069651f02808660470edb84b49a9e040f07b2c1a2d02632cd6c4a91ac1abcb",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/traces/s46-r70.json",
+      "sourceSHA256": "8d069651f02808660470edb84b49a9e040f07b2c1a2d02632cd6c4a91ac1abcb"
+    },
+    {
+      "path": "trajectories.csv",
+      "bytes": 3003386,
+      "sha256": "e11410dc77d16b7fee067e1274e4b615e522f960bc1d5ed4fb5d409e0f5903b8",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/trajectories.csv",
+      "sourceSHA256": "e11410dc77d16b7fee067e1274e4b615e522f960bc1d5ed4fb5d409e0f5903b8"
+    },
+    {
+      "path": "width-sensitivity.csv",
+      "bytes": 70541,
+      "sha256": "dd3abf00429b5cceb3b13ff2ea9ed56555c1b21cf341b55b7a399d9494c57c50",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/width-sensitivity.csv",
+      "sourceSHA256": "dd3abf00429b5cceb3b13ff2ea9ed56555c1b21cf341b55b7a399d9494c57c50"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ClientProfile.java",
+      "bytes": 1803,
+      "sha256": "88f2b76b70ecdd3f1d3a6d11c6fc2174334eb3457407ccc8f4373e3c13953e49",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ClientProfile.java",
+      "sourceSHA256": "88f2b76b70ecdd3f1d3a6d11c6fc2174334eb3457407ccc8f4373e3c13953e49"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ComparisonReport.java",
+      "bytes": 19631,
+      "sha256": "33f867669f998c58739430fe1cdebbcfe0e56ce4f57ca941a5ae561be30e5740",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ComparisonReport.java",
+      "sourceSHA256": "33f867669f998c58739430fe1cdebbcfe0e56ce4f57ca941a5ae561be30e5740"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ControlledAblationController.java",
+      "bytes": 2645,
+      "sha256": "9f9dc980a85b562e83af64079cb450fd04627f8c4e11eb9eab6677b9534b6188",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ControlledAblationController.java",
+      "sourceSHA256": "9f9dc980a85b562e83af64079cb450fd04627f8c4e11eb9eab6677b9534b6188"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ControlledAblationIdeLauncher.java",
+      "bytes": 5112,
+      "sha256": "fd39a0064181dec1eecfc3c8a203f3eacf9d7312a6ee33acf113aaa3cd1be022",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ControlledAblationIdeLauncher.java",
+      "sourceSHA256": "fd39a0064181dec1eecfc3c8a203f3eacf9d7312a6ee33acf113aaa3cd1be022"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ControlledExperiments.java",
+      "bytes": 30186,
+      "sha256": "b3a5644c3ba1fa36044357cffd9aaffce96786467a05930d00fc21230c7e6676",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ControlledExperiments.java",
+      "sourceSHA256": "b3a5644c3ba1fa36044357cffd9aaffce96786467a05930d00fc21230c7e6676"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ExperimentConfig.java",
+      "bytes": 3792,
+      "sha256": "11b4c92ef2210976afe30a1279139d6b2679aec523a8a3550394412a8a223091",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ExperimentConfig.java",
+      "sourceSHA256": "11b4c92ef2210976afe30a1279139d6b2679aec523a8a3550394412a8a223091"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ExperimentController.java",
+      "bytes": 4161,
+      "sha256": "7e7e97aa3b79c3d8a997d294ab7f3fdd4b11f3f5c547a237ee48cd2282462b23",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ExperimentController.java",
+      "sourceSHA256": "7e7e97aa3b79c3d8a997d294ab7f3fdd4b11f3f5c547a237ee48cd2282462b23"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ExperimentRepository.java",
+      "bytes": 4899,
+      "sha256": "9e1ee44d8f13d5d0cb3bab1306867b2b5786f3c62fb3e3050d315deea3288eba",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ExperimentRepository.java",
+      "sourceSHA256": "9e1ee44d8f13d5d0cb3bab1306867b2b5786f3c62fb3e3050d315deea3288eba"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/FactorialReport.java",
+      "bytes": 3155,
+      "sha256": "14034f99ac493db28a947fa0553cfc0ad765583468df0e5841e25d52cb76c55e",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/FactorialReport.java",
+      "sourceSHA256": "14034f99ac493db28a947fa0553cfc0ad765583468df0e5841e25d52cb76c55e"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/FairnessMatchedReport.java",
+      "bytes": 24422,
+      "sha256": "dd1ef46afb0fa15903047fd40f7c32e42eda2135a9b9e0718045465d64745096",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/FairnessMatchedReport.java",
+      "sourceSHA256": "dd1ef46afb0fa15903047fd40f7c32e42eda2135a9b9e0718045465d64745096"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/FerderatedsystemApplication.java",
+      "bytes": 3447,
+      "sha256": "60f21fbf4e4a8dd45a11d50b629cd2369c89ed36ac05796b02af44cf0ef49e05",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/FerderatedsystemApplication.java",
+      "sourceSHA256": "60f21fbf4e4a8dd45a11d50b629cd2369c89ed36ac05796b02af44cf0ef49e05"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/FrozenE3IdeLauncher.java",
+      "bytes": 9937,
+      "sha256": "3ae4e2d23a8910f073107d38d096a294c54c3225011a1d45417299acd35ec951",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/FrozenE3IdeLauncher.java",
+      "sourceSHA256": "3ae4e2d23a8910f073107d38d096a294c54c3225011a1d45417299acd35ec951"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/FuzzyResearchController.java",
+      "bytes": 2811,
+      "sha256": "7ed3fc9c38cd365def5ba1399fb33821ab7b2570eb1004796e80185df4c79499",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/FuzzyResearchController.java",
+      "sourceSHA256": "7ed3fc9c38cd365def5ba1399fb33821ab7b2570eb1004796e80185df4c79499"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/FuzzyResearchWorkflow.java",
+      "bytes": 993,
+      "sha256": "f45e81e383a6fc6c26890fc39b898ba03c08ca5565f557671e62cf84b6db1254",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/FuzzyResearchWorkflow.java",
+      "sourceSHA256": "f45e81e383a6fc6c26890fc39b898ba03c08ca5565f557671e62cf84b6db1254"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/IndexedRoundEvidence.java",
+      "bytes": 2121,
+      "sha256": "90833c69875ebc2dec433aa4773fce9489c30c7a612837e1ff773acbf1796a5c",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/IndexedRoundEvidence.java",
+      "sourceSHA256": "90833c69875ebc2dec433aa4773fce9489c30c7a612837e1ff773acbf1796a5c"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/LambdaAblationReport.java",
+      "bytes": 11020,
+      "sha256": "e57fefb57303304b3622ad846adf1ed6b13676a48b6e0c7f231e5f438b51f4a6",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/LambdaAblationReport.java",
+      "sourceSHA256": "e57fefb57303304b3622ad846adf1ed6b13676a48b6e0c7f231e5f438b51f4a6"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/PaperExperiments.java",
+      "bytes": 5834,
+      "sha256": "edc0f3c6b3fd61db83ab9f5d1a5af41f186c7481c6e55a045ce665c3b2a87f1f",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/PaperExperiments.java",
+      "sourceSHA256": "edc0f3c6b3fd61db83ab9f5d1a5af41f186c7481c6e55a045ce665c3b2a87f1f"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ParetoProtocol.java",
+      "bytes": 11082,
+      "sha256": "cb9d7efb06efbe006ee9a1f020c2fd7b81b719f7c7047f6128507930b7537d29",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ParetoProtocol.java",
+      "sourceSHA256": "cb9d7efb06efbe006ee9a1f020c2fd7b81b719f7c7047f6128507930b7537d29"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ParetoTradeoffReport.java",
+      "bytes": 19023,
+      "sha256": "a6857732186b7c7c7db95d7692b4a86e6f789afdb70a3271c5fcb7444ef5af44",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ParetoTradeoffReport.java",
+      "sourceSHA256": "a6857732186b7c7c7db95d7692b4a86e6f789afdb70a3271c5fcb7444ef5af44"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/Policies.java",
+      "bytes": 3580,
+      "sha256": "8798f58d27d277119189a1f42219eb971349b8330a97af9fb824f627a6a11890",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/Policies.java",
+      "sourceSHA256": "8798f58d27d277119189a1f42219eb971349b8330a97af9fb824f627a6a11890"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/PythonMLClient.java",
+      "bytes": 12418,
+      "sha256": "42716b34e0db8f683642fa96673f72cd0e4d8d761dcc31893bb28877cc18e250",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/PythonMLClient.java",
+      "sourceSHA256": "42716b34e0db8f683642fa96673f72cd0e4d8d761dcc31893bb28877cc18e250"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ReproducibilityAuditReport.java",
+      "bytes": 17558,
+      "sha256": "1526071a25e3a68db7c4512a81fc7c2055b8abfa64fd34718a765d25a9d9b343",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ReproducibilityAuditReport.java",
+      "sourceSHA256": "1526071a25e3a68db7c4512a81fc7c2055b8abfa64fd34718a765d25a9d9b343"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ResearchExperiments.java",
+      "bytes": 22726,
+      "sha256": "e7b8c50cfaf8bba2ea07225d4ffef7d079a52edfc3ecc90dba90b98894785086",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ResearchExperiments.java",
+      "sourceSHA256": "e7b8c50cfaf8bba2ea07225d4ffef7d079a52edfc3ecc90dba90b98894785086"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ResearchProvenance.java",
+      "bytes": 7419,
+      "sha256": "6668ebda38cb8e04c4aaad8fb19780544b9499547a0273e3a3bf504ecfff7fe3",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ResearchProvenance.java",
+      "sourceSHA256": "6668ebda38cb8e04c4aaad8fb19780544b9499547a0273e3a3bf504ecfff7fe3"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/RoundCoordinator.java",
+      "bytes": 36465,
+      "sha256": "e1f1198d7d7e3a7b72f37fc8abc41e474d2f236181a2c1bdceb8d69852e6e568",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/RoundCoordinator.java",
+      "sourceSHA256": "e1f1198d7d7e3a7b72f37fc8abc41e474d2f236181a2c1bdceb8d69852e6e568"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ScenarioTrace.java",
+      "bytes": 3295,
+      "sha256": "5d5b7f53d3e314edcae439ed438d3c7a602c5dfe69526896e3f08439dbdc8835",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/ScenarioTrace.java",
+      "sourceSHA256": "5d5b7f53d3e314edcae439ed438d3c7a602c5dfe69526896e3f08439dbdc8835"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/ClientCriteriaExtractor.java",
+      "bytes": 5248,
+      "sha256": "e319b25098361d8135de671756f379cae13995be10dc743b59e55a12d38db93a",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/ClientCriteriaExtractor.java",
+      "sourceSHA256": "e319b25098361d8135de671756f379cae13995be10dc743b59e55a12d38db93a"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/CreditFairnessScheduler.java",
+      "bytes": 3291,
+      "sha256": "3fb8b237b73346bd4481d3abc9e8b106316a0fef1b837b3d16a00a91d0ee26cc",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/CreditFairnessScheduler.java",
+      "sourceSHA256": "3fb8b237b73346bd4481d3abc9e8b106316a0fef1b837b3d16a00a91d0ee26cc"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/CrispTopsisEngine.java",
+      "bytes": 2006,
+      "sha256": "bfa301a27ba84d1334c530c516cd0cb8d48d8b0325187b30e754f42a182249ca",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/CrispTopsisEngine.java",
+      "sourceSHA256": "bfa301a27ba84d1334c530c516cd0cb8d48d8b0325187b30e754f42a182249ca"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/CriterionNormalizer.java",
+      "bytes": 974,
+      "sha256": "5da913d59953c64be8b0f4caaa6480d4f4708061fc20454e5ee9ab402e3eb86c",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/CriterionNormalizer.java",
+      "sourceSHA256": "5da913d59953c64be8b0f4caaa6480d4f4708061fc20454e5ee9ab402e3eb86c"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/FairnessCreditState.java",
+      "bytes": 1701,
+      "sha256": "69bb30b327139e04324f4f25f8908e2f80d35e432fd3f4fbce5b755aeedd9a32",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/FairnessCreditState.java",
+      "sourceSHA256": "69bb30b327139e04324f4f25f8908e2f80d35e432fd3f4fbce5b755aeedd9a32"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/FairnessScheduler.java",
+      "bytes": 667,
+      "sha256": "6c1699a013ede938a8c3ae76ecaad1fd38947f253deff948fdd06ae2d5fa6834",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/FairnessScheduler.java",
+      "sourceSHA256": "6c1699a013ede938a8c3ae76ecaad1fd38947f253deff948fdd06ae2d5fa6834"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/FuzzyClientSelector.java",
+      "bytes": 2688,
+      "sha256": "5a6356baebc1502990ef3385daeb3742234caa1b501b9cb6317945e6bde9f122",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/FuzzyClientSelector.java",
+      "sourceSHA256": "5a6356baebc1502990ef3385daeb3742234caa1b501b9cb6317945e6bde9f122"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/FuzzyDecisionMatrix.java",
+      "bytes": 1140,
+      "sha256": "032c9528226a9ca9ac01c2d304392d9541c7292d00e16d2ced2e14852ecfc1b2",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/FuzzyDecisionMatrix.java",
+      "sourceSHA256": "032c9528226a9ca9ac01c2d304392d9541c7292d00e16d2ced2e14852ecfc1b2"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/FuzzySelectionConfig.java",
+      "bytes": 5314,
+      "sha256": "dc3d04b88f60c820c5c3b7991b5cb94d5a5d66bf8f3e95ff602bd52e1df65bf7",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/FuzzySelectionConfig.java",
+      "sourceSHA256": "dc3d04b88f60c820c5c3b7991b5cb94d5a5d66bf8f3e95ff602bd52e1df65bf7"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/FuzzyTopsisEngine.java",
+      "bytes": 3067,
+      "sha256": "9dea14fe8f79edda2e0d451c3f5e4f2856cc0df07004c48a59e85854b6434c25",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/FuzzyTopsisEngine.java",
+      "sourceSHA256": "9dea14fe8f79edda2e0d451c3f5e4f2856cc0df07004c48a59e85854b6434c25"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/ObservationUncertainty.java",
+      "bytes": 1666,
+      "sha256": "41a1e824a3ddb3f46eea805b8bb80790a2364ef2ae95331d424b6dfd85047cce",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/ObservationUncertainty.java",
+      "sourceSHA256": "41a1e824a3ddb3f46eea805b8bb80790a2364ef2ae95331d424b6dfd85047cce"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/SelectionHistory.java",
+      "bytes": 2734,
+      "sha256": "c09db36e6b7894ef4731e2f0ed96cb96ada7ea1dfa8644b5e34253038483ddd5",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/SelectionHistory.java",
+      "sourceSHA256": "c09db36e6b7894ef4731e2f0ed96cb96ada7ea1dfa8644b5e34253038483ddd5"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/TriangularFuzzyNumber.java",
+      "bytes": 1058,
+      "sha256": "31226efcfc5b2547f8f50053c1698e9d03df5319a6ef1fa8b25105198b4493ef",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/selection/fuzzy/TriangularFuzzyNumber.java",
+      "sourceSHA256": "31226efcfc5b2547f8f50053c1698e9d03df5319a6ef1fa8b25105198b4493ef"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/SimulationTimingConfig.java",
+      "bytes": 862,
+      "sha256": "b3b919d3c6c9604ac1037c135032bab26889d4bee50b54c5c9ba26d510d3aea1",
+      "sourcePath": "ferderatedsystem/src/main/java/com/huanphan/ferderatedsystem/SimulationTimingConfig.java",
+      "sourceSHA256": "b3b919d3c6c9604ac1037c135032bab26889d4bee50b54c5c9ba26d510d3aea1"
+    },
+    {
+      "path": "source-snapshot/ferderatedsystem/src/main/resources/application.properties",
+      "bytes": 2495,
+      "sha256": "fe6a3a626bcedce57cdf9026714bc8f324e40c5ad46748835f313bf2428ce5ad",
+      "sourcePath": "ferderatedsystem/src/main/resources/application.properties",
+      "sourceSHA256": "fe6a3a626bcedce57cdf9026714bc8f324e40c5ad46748835f313bf2428ce5ad"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/__init__.py",
+      "bytes": 159,
+      "sha256": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe",
+      "sourcePath": "ml-python/minifls/__init__.py",
+      "sourceSHA256": "7d322a4d6bfe7329fcc87a924757295e924534766a54367dae9e5c8569fa46fe"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/api.py",
+      "bytes": 21449,
+      "sha256": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568",
+      "sourcePath": "ml-python/minifls/api.py",
+      "sourceSHA256": "883206f593569377269b8a55b3c68f9443764a68438a36e4f3adeaff6c016568"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/benchmark.py",
+      "bytes": 2938,
+      "sha256": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba",
+      "sourcePath": "ml-python/minifls/benchmark.py",
+      "sourceSHA256": "6c57637ab74544307ac8eecf4a83be6568b7337eef3d5d50b7b369477952a7ba"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/data.py",
+      "bytes": 8284,
+      "sha256": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95",
+      "sourcePath": "ml-python/minifls/data.py",
+      "sourceSHA256": "66942456dbf5b80f3edab79c1ef85a73f662d4052448ff6da825e2c9f04aca95"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/experiment.py",
+      "bytes": 2434,
+      "sha256": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d",
+      "sourcePath": "ml-python/minifls/experiment.py",
+      "sourceSHA256": "9f98846257bc9f5a10274ad317a6af1ab0af0ae4afea1f9dbc0cd3b69eac1e2d"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/logging_config.py",
+      "bytes": 3162,
+      "sha256": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493",
+      "sourcePath": "ml-python/minifls/logging_config.py",
+      "sourceSHA256": "3e976ed8bc56a35bc59a19fda415a8ca4fa02e8e67bd073c03ff24df7dff1493"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/methods/__init__.py",
+      "bytes": 890,
+      "sha256": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812",
+      "sourcePath": "ml-python/minifls/methods/__init__.py",
+      "sourceSHA256": "ef3bcf4a210fce4bc5e1324935d9b3da1bff99733d4462a90307985c39bb8812"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/methods/fairfedcs/__init__.py",
+      "bytes": 150,
+      "sha256": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93",
+      "sourcePath": "ml-python/minifls/methods/fairfedcs/__init__.py",
+      "sourceSHA256": "d4e5387af54981d3fa047a1daf781d75128f4e64e931750b670f14682c09cd93"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/methods/fedavg/__init__.py",
+      "bytes": 210,
+      "sha256": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1",
+      "sourcePath": "ml-python/minifls/methods/fedavg/__init__.py",
+      "sourceSHA256": "31fe24d605fbec4fdd9b13a44669d3bc974128a94fdb51d9a7f72642f903f3b1"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/methods/fedavg/algorithm.py",
+      "bytes": 311,
+      "sha256": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99",
+      "sourcePath": "ml-python/minifls/methods/fedavg/algorithm.py",
+      "sourceSHA256": "1984905fae9127baa0d5e1040c5dd1ce7817211646798d2ff2c8781d43e10b99"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/methods/fedavgm/__init__.py",
+      "bytes": 103,
+      "sha256": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827",
+      "sourcePath": "ml-python/minifls/methods/fedavgm/__init__.py",
+      "sourceSHA256": "373080f2c6edbbbc0d49d5c4de18a3718cf6ae9dae56dd71745b209dc178a827"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/methods/fedlbw/__init__.py",
+      "bytes": 199,
+      "sha256": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679",
+      "sourcePath": "ml-python/minifls/methods/fedlbw/__init__.py",
+      "sourceSHA256": "ffc5403024a7f509a6dc5b3062324986e7b9a1f1b810e6fedd0e42d2c33e1679"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/methods/fedlbw/algorithm.py",
+      "bytes": 632,
+      "sha256": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3",
+      "sourcePath": "ml-python/minifls/methods/fedlbw/algorithm.py",
+      "sourceSHA256": "6ab3363e0c276cd0466580a48597f9f1ab1ff5f03a768875bcfcc244e172b9d3"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/methods/fednova/__init__.py",
+      "bytes": 105,
+      "sha256": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e",
+      "sourcePath": "ml-python/minifls/methods/fednova/__init__.py",
+      "sourceSHA256": "627734f3fd298d5073684c1b7f4aed0b04ae00c5dfef2f58adeb25f8c0dbfb9e"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/methods/fedprox/__init__.py",
+      "bytes": 219,
+      "sha256": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699",
+      "sourcePath": "ml-python/minifls/methods/fedprox/__init__.py",
+      "sourceSHA256": "935bfcf3361d1d151665c40927b1063478e03830eb14adab18637c1ea71be699"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/methods/longfed/__init__.py",
+      "bytes": 153,
+      "sha256": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b",
+      "sourcePath": "ml-python/minifls/methods/longfed/__init__.py",
+      "sourceSHA256": "8021b9ed7b0b51541cf64c0fa94c2ba15af6f1ff788da4c8ccc2d01427f9b85b"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/methods/oort/__init__.py",
+      "bytes": 168,
+      "sha256": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef",
+      "sourcePath": "ml-python/minifls/methods/oort/__init__.py",
+      "sourceSHA256": "613805df27cf84c8f0aa92f3f6aee318d0e581215d098beb3387905dd79aaaef"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/methods/scaffold/__init__.py",
+      "bytes": 96,
+      "sha256": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca",
+      "sourcePath": "ml-python/minifls/methods/scaffold/__init__.py",
+      "sourceSHA256": "47a7cb86a238713447a4a92283df6fd4b5f9f4cc8475ae9e1883c2a3e983b5ca"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/model.py",
+      "bytes": 4256,
+      "sha256": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe",
+      "sourcePath": "ml-python/minifls/model.py",
+      "sourceSHA256": "d1c669d0f5fbdc22f3c40aec73907a50161e50429b8e59c59c43bbb94313a4fe"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/operations.py",
+      "bytes": 2546,
+      "sha256": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374",
+      "sourcePath": "ml-python/minifls/operations.py",
+      "sourceSHA256": "68302f2505e1de2e4859cb88c06bbeea3487860ad2e85560aa5c49b85bf9c374"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/plot.py",
+      "bytes": 1190,
+      "sha256": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff",
+      "sourcePath": "ml-python/minifls/plot.py",
+      "sourceSHA256": "e7c1ce3a7c405b72f5ae7f66134ccb7512a4f9670020eaa81c6ec6340d6a0cff"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/research_plot.py",
+      "bytes": 7315,
+      "sha256": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf",
+      "sourcePath": "ml-python/minifls/research_plot.py",
+      "sourceSHA256": "a46cebb1a10f57dbb875e5395223e37c0d47138c9adaeac085980176692627cf"
+    },
+    {
+      "path": "source-snapshot/ml-python/minifls/simulation.py",
+      "bytes": 3232,
+      "sha256": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82",
+      "sourcePath": "ml-python/minifls/simulation.py",
+      "sourceSHA256": "707632b1acc6042df146c79b6fdee75b57b1e421abc73a34d936efd239a10c82"
+    },
+    {
+      "path": "source-snapshot/scripts/controlled_ablation_ide.py",
+      "bytes": 1128,
+      "sha256": "cb0dd3508129340f505186593dcd9a4cb29b0373ce51db44f3bf7749dcf9f97f",
+      "sourcePath": "scripts/controlled_ablation_ide.py",
+      "sourceSHA256": "cb0dd3508129340f505186593dcd9a4cb29b0373ce51db44f3bf7749dcf9f97f"
+    },
+    {
+      "path": "source-snapshot/scripts/controlled_ablation_plots.py",
+      "bytes": 5786,
+      "sha256": "101531a721916c49b428dc9cb3f90d1fe61a64d5ea2b8549851f70bc1e44e97c",
+      "sourcePath": "scripts/controlled_ablation_plots.py",
+      "sourceSHA256": "101531a721916c49b428dc9cb3f90d1fe61a64d5ea2b8549851f70bc1e44e97c"
+    },
+    {
+      "path": "source-snapshot/scripts/controlled_ablation_reports.py",
+      "bytes": 26709,
+      "sha256": "7f47bd7e7894a6149a8b407de27687d27b1627ee723228e21232237b2f73b605",
+      "sourcePath": "scripts/controlled_ablation_reports.py",
+      "sourceSHA256": "7f47bd7e7894a6149a8b407de27687d27b1627ee723228e21232237b2f73b605"
+    },
+    {
+      "path": "source-snapshot/scripts/controlled_fuzzy_ablation.py",
+      "bytes": 21062,
+      "sha256": "e0cfc5f1caf8d9388c499963bb8d83a1ca64c310535e45bdcdbeaddfaaeefbe4",
+      "sourcePath": "scripts/controlled_fuzzy_ablation.py",
+      "sourceSHA256": "e0cfc5f1caf8d9388c499963bb8d83a1ca64c310535e45bdcdbeaddfaaeefbe4"
+    },
+    {
+      "path": "source-snapshot/scripts/fuzzy_uncertainty_reports.py",
+      "bytes": 30905,
+      "sha256": "56b1ccdad370808c7d7e06a4463ab548d46fb3d4fe6f45508c566ae6b88f8c64",
+      "sourcePath": "scripts/fuzzy_uncertainty_reports.py",
+      "sourceSHA256": "56b1ccdad370808c7d7e06a4463ab548d46fb3d4fe6f45508c566ae6b88f8c64"
+    },
+    {
+      "path": "source-snapshot/scripts/fuzzy_uncertainty_workflow.py",
+      "bytes": 24445,
+      "sha256": "e662f7e097e337c7bb622b8a2adce04401fcdbdbc44a3f1641c8cbb08d20c004",
+      "sourcePath": "scripts/fuzzy_uncertainty_workflow.py",
+      "sourceSHA256": "e662f7e097e337c7bb622b8a2adce04401fcdbdbc44a3f1641c8cbb08d20c004"
+    },
+    {
+      "path": "source-snapshot/scripts/research_watchdog.py",
+      "bytes": 13360,
+      "sha256": "51a8c3dee9e34a93392bbd534e51eec03512195ebc04bc8b4b925aba12627b62",
+      "sourcePath": "scripts/research_watchdog.py",
+      "sourceSHA256": "51a8c3dee9e34a93392bbd534e51eec03512195ebc04bc8b4b925aba12627b62"
+    },
+    {
+      "path": "source-snapshot/scripts/resume_frozen_e3.py",
+      "bytes": 18367,
+      "sha256": "ca5eed6fe0bde733407c9e3ff1b9015b33fef21b004fca460e04a7e02ca7ae15",
+      "sourcePath": "scripts/resume_frozen_e3.py",
+      "sourceSHA256": "ca5eed6fe0bde733407c9e3ff1b9015b33fef21b004fca460e04a7e02ca7ae15"
+    },
+    {
+      "path": "source-snapshot/scripts/run_controlled_fuzzy_java.ps1",
+      "bytes": 1323,
+      "sha256": "9b92f0a33737c4eb1af87f54beceaeeb0e5bd967fd422940b71a8310d93b9c84",
+      "sourcePath": "scripts/run_controlled_fuzzy_java.ps1",
+      "sourceSHA256": "9b92f0a33737c4eb1af87f54beceaeeb0e5bd967fd422940b71a8310d93b9c84"
+    },
+    {
+      "path": "source-snapshot/scripts/run_controlled_fuzzy_worker.ps1",
+      "bytes": 754,
+      "sha256": "2489070bc33647e5e0e2ccf348a33cc81b0a861712d87bcbfe32c26357e86a4f",
+      "sourcePath": "scripts/run_controlled_fuzzy_worker.ps1",
+      "sourceSHA256": "2489070bc33647e5e0e2ccf348a33cc81b0a861712d87bcbfe32c26357e86a4f"
+    },
+    {
+      "path": "source-snapshot/scripts/run_fl_research_java.ps1",
+      "bytes": 477,
+      "sha256": "c4485cb3aac9b358b93eb7e890bd64ba34f2345d0175dd2a2a99edbe300b174a",
+      "sourcePath": "scripts/run_fl_research_java.ps1",
+      "sourceSHA256": "c4485cb3aac9b358b93eb7e890bd64ba34f2345d0175dd2a2a99edbe300b174a"
+    },
+    {
+      "path": "source-snapshot/scripts/run_fl_research_worker.ps1",
+      "bytes": 378,
+      "sha256": "253a806ef768a7989e02d26e084d96927d384e81bcac7263a786f8be1c62c24e",
+      "sourcePath": "scripts/run_fl_research_worker.ps1",
+      "sourceSHA256": "253a806ef768a7989e02d26e084d96927d384e81bcac7263a786f8be1c62c24e"
+    },
+    {
+      "path": "experiments.jsonl.gz",
+      "bytes": 2600793,
+      "sha256": "ee0fb13ab30821693ceb19f66567aea6411be2154cdb20071d5b8b1a3fa138b3",
+      "records": 227,
+      "compression": "gzip",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/experiments.db"
+    },
+    {
+      "path": "rounds-part-001.jsonl.gz",
+      "bytes": 19592058,
+      "sha256": "87289bbcb0f3e03739a1ebd0c9e5bcad6b80bee6b12a610d7a92c99794e4509c",
+      "records": 1000,
+      "compression": "gzip",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/experiments.db"
+    },
+    {
+      "path": "rounds-part-002.jsonl.gz",
+      "bytes": 18627474,
+      "sha256": "e5f660dd8170246be537067cada8cc753422904d806c7fe6b0e4a74925fe398c",
+      "records": 1000,
+      "compression": "gzip",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/experiments.db"
+    },
+    {
+      "path": "rounds-part-003.jsonl.gz",
+      "bytes": 16978440,
+      "sha256": "a0f55ab0a113fd55afa811a17a9bc067e8ab4ce24e9b00cb4d4bbbbc89cb928c",
+      "records": 1000,
+      "compression": "gzip",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/experiments.db"
+    },
+    {
+      "path": "rounds-part-004.jsonl.gz",
+      "bytes": 18535602,
+      "sha256": "7cd42446054c5d17bdfe2555979fa72c95957f42487302a3442a050ff8f1ea20",
+      "records": 1000,
+      "compression": "gzip",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/experiments.db"
+    },
+    {
+      "path": "rounds-part-005.jsonl.gz",
+      "bytes": 18335294,
+      "sha256": "8eb0fe46333a774537a7a5185d13e7520b0753d07ea983382f829071a5f832dc",
+      "records": 1000,
+      "compression": "gzip",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/experiments.db"
+    },
+    {
+      "path": "rounds-part-006.jsonl.gz",
+      "bytes": 18678390,
+      "sha256": "21bae404c77841f0966bc6a836e8ef6ebdcf5c9bc5f40a6eedcb7d54ee153020",
+      "records": 1000,
+      "compression": "gzip",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/experiments.db"
+    },
+    {
+      "path": "rounds-part-007.jsonl.gz",
+      "bytes": 18893383,
+      "sha256": "c4128ecdc93ce3cd43d20415d4a0f91a4f645746c4236df3dd84dcd9c26b5d7b",
+      "records": 1000,
+      "compression": "gzip",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/experiments.db"
+    },
+    {
+      "path": "rounds-part-008.jsonl.gz",
+      "bytes": 17009851,
+      "sha256": "edaf0e57d73866d904f01a3483053caa7cad6bc78759ff0bdda39ee937dd5547",
+      "records": 1000,
+      "compression": "gzip",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/experiments.db"
+    },
+    {
+      "path": "rounds-part-009.jsonl.gz",
+      "bytes": 19092714,
+      "sha256": "1e930a30b37065ef5d7a2c057938b76836477b6257ba1a5110c560d193b80b2e",
+      "records": 1000,
+      "compression": "gzip",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/experiments.db"
+    },
+    {
+      "path": "rounds-part-010.jsonl.gz",
+      "bytes": 18366099,
+      "sha256": "00d80159b813a30d404055a0c948255aafbce4eb06a039c4395e2db57b8470a9",
+      "records": 1000,
+      "compression": "gzip",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/experiments.db"
+    },
+    {
+      "path": "rounds-part-011.jsonl.gz",
+      "bytes": 18265286,
+      "sha256": "c13da6aea41c8769edff51006c42c6c37380c45898c49609ee6927726cdff6fc",
+      "records": 1000,
+      "compression": "gzip",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/experiments.db"
+    },
+    {
+      "path": "rounds-part-012.jsonl.gz",
+      "bytes": 18046490,
+      "sha256": "a7b4201817b7b2a5905e3dbd43d88a582529a3ea493ddfc743f1278503f00e81",
+      "records": 1000,
+      "compression": "gzip",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/experiments.db"
+    },
+    {
+      "path": "rounds-part-013.jsonl.gz",
+      "bytes": 17876378,
+      "sha256": "be387efd25041bab18eb0d3a95312eba9e7030440814ba5bfe4ca9b712359a37",
+      "records": 1000,
+      "compression": "gzip",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/experiments.db"
+    },
+    {
+      "path": "rounds-part-014.jsonl.gz",
+      "bytes": 18068254,
+      "sha256": "c41a47e2e5a9638f2879927d0ef83883ecee93bd56d390c5d4952d5bbf689088",
+      "records": 1000,
+      "compression": "gzip",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/experiments.db"
+    },
+    {
+      "path": "rounds-part-015.jsonl.gz",
+      "bytes": 18618470,
+      "sha256": "362abfffdcfe0fe415d7882ebf84eddc8ef04d3ead0c03f4ceabeae54a6acd13",
+      "records": 1000,
+      "compression": "gzip",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/experiments.db"
+    },
+    {
+      "path": "rounds-part-016.jsonl.gz",
+      "bytes": 14617619,
+      "sha256": "9f30703136e2d47d924e82f9e6d487aa353c35309dc53b7393c6874cdd5b3246",
+      "records": 754,
+      "compression": "gzip",
+      "sourcePath": "artifacts/research/controlled-fuzzy-ablation/full/fuzzy-uncertainty-20261104-002235-69ac39/experiments.db"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2325,
+      "sha256": "46c5fce8fb7a121e5d545d54f2edee6d043ad5ebb460c314dda26bab7efef7dd"
+    }
+  ]
+}

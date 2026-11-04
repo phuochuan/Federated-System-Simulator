@@ -20,6 +20,7 @@ public final class FuzzyClientSelector {
         metrics.put("fairnessMode",FuzzySelectionConfig.usesCredit(c.selection())?c.fuzzySelection().fairness.mode:"none");
         metrics.put("criteriaObservations",extracted.observations());metrics.put("fuzzyDecisionMatrix",extracted.matrix());metrics.put("fuzzyTopsisDetails",ranked);
         metrics.put("selectorVersion",state.version);
+        metrics.put("criterionUncertaintyWidths",extracted.widths());
         var topsisTopK=ranked.scores().keySet().stream().sorted(Comparator.<Integer>comparingDouble(ranked.scores()::get).reversed()
                 .thenComparingInt(Integer::intValue)).limit(scheduled.selected().size()).toList();
         var original=new HashSet<>(topsisTopK);

@@ -12,7 +12,9 @@ public class FuzzyResearchWorkflow {
     public int run() throws Exception {
         Path root=Path.of(env.getProperty("minifls.launch.workspace","")).toAbsolutePath();
         String python=root.resolve(".venv/Scripts/python.exe").toString();
-        var process=new ProcessBuilder(python,"-u",root.resolve("scripts/fuzzy_uncertainty_workflow.py").toString())
+        String script="controlled-fuzzy-ablation".equals(env.getProperty("minifls.launch.method"))
+            ?"controlled_fuzzy_ablation.py":"fuzzy_uncertainty_workflow.py";
+        var process=new ProcessBuilder(python,"-u",root.resolve("scripts/"+script).toString())
                 .directory(root.toFile()).inheritIO().start();
         return process.waitFor();
     }

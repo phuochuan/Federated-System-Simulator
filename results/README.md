@@ -1,5 +1,21 @@
 # Published experiment results
 
+## Completed controlled fuzzy uncertainty ablation - 4 November 2026
+
+The full predeclared A0-A4 study completed **225 research runs x70 rounds**, plus
+two2-round audits: **227 completed runs /15,754 committed rounds**. Integrity
+verification passes with no anomalies. This full study skipped the separate
+Covertype pilot at user request; all five policies and parameters were fixed.
+
+- [Publication scope and checksums](research/controlled-fuzzy-ablation-20261104-002235-69ac39/README.md)
+- [Research report](research/controlled-fuzzy-ablation-20261104-002235-69ac39/controlled-fuzzy-ablation-report.md)
+- [Partition-aware paired results](research/controlled-fuzzy-ablation-20261104-002235-69ac39/controlled-ablation-results.json)
+- [Run results CSV](research/controlled-fuzzy-ablation-20261104-002235-69ac39/run-results.csv)
+- [Figures](research/controlled-fuzzy-ablation-20261104-002235-69ac39/figures/accuracy-rounds.png)
+
+Compressed round evidence and the executing source-byte snapshot are included.
+Earlier F/L/Pareto/fuzzy publications below remain historical snapshots.
+
 ## Completed fuzzy MCDM full evaluation - 3 November 2026
 
 The full workflow completed **167/167 runs and 11,554 committed rounds**, including

@@ -1,0 +1,1400 @@
+{
+  "protocolVersion": "controlled-fuzzy-width-full-v1",
+  "studyStage": "full",
+  "runs": 225,
+  "storageEstimateVersion": "measured-mlp47879-v2",
+  "storageBounds": {
+    "checkpointAndReceiptBytes": 300000,
+    "roundSQLiteEvidenceBytes": 220000,
+    "datasetAssignmentBytes": 167772160,
+    "otherAndAuditBytes": 276515456,
+    "protectedFreeReserveGiB": 8
+  },
+  "rounds": 15750,
+  "auditRuns": 2,
+  "auditRounds": 4,
+  "maximumAdmittedResearchRuns": 225,
+  "freeDiskGiB": 40.373348236083984,
+  "fullEstimatedDiskGiB": 39.29380279779434,
+  "admissionEstimatedDiskGiB": 39.29380279779434,
+  "memoryPlan": "Sequential; Java heap512MiB; one Uvicorn; torchThreads1; disk cursors",
+  "memoryPlanningMiB": {
+    "coordinatorRSSRange": [
+      300,
+      900
+    ],
+    "workerRSSRange": [
+      400,
+      2000
+    ],
+    "limitation": "Planning ranges, not measured bounds; mmap page residency, report plots, dataset preparation and OS/IDE add memory. Close unnecessary IDE/browser processes on 8GB machines."
+  },
+  "sampledRoundSecondsMedian": 1.4079562,
+  "physicalTimingSampleCount": 100,
+  "approximateTrainingHours": 6.159808375,
+  "runtimeLimitation": "Recent 100 physical round times; load/standby/partition/IO can change elapsed time substantially",
+  "partitionReservation": {
+    "proposed": [
+      6001,
+      6002,
+      6003
+    ],
+    "previouslyRecorded": [
+      44,
+      45,
+      1001,
+      1002,
+      2001,
+      2002,
+      2003,
+      3001,
+      3002,
+      3003,
+      915001,
+      2313120,
+      2313121,
+      3644244,
+      3644245,
+      10760508,
+      10760509,
+      11569264,
+      11569265,
+      15910103,
+      21162466,
+      21162467
+    ],
+    "conflicts": [],
+    "evidence": [
+      {
+        "path": "artifacts/worker-retry-smoke/e5d3d2c884/partition/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "98bb9288b59aa15095a5f79ff30a57091c9183321e9331eb38aefa49ea0784fd"
+      },
+      {
+        "path": "artifacts/worker-retry-smoke/ce5a727be4/partition/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "98bb9288b59aa15095a5f79ff30a57091c9183321e9331eb38aefa49ea0784fd"
+      },
+      {
+        "path": "artifacts/worker-retry-smoke/796a3ea7d9/partition/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "98bb9288b59aa15095a5f79ff30a57091c9183321e9331eb38aefa49ea0784fd"
+      },
+      {
+        "path": "artifacts/worker-retry-smoke/06ad211036/partition/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "98bb9288b59aa15095a5f79ff30a57091c9183321e9331eb38aefa49ea0784fd"
+      },
+      {
+        "path": "artifacts/research-smoke/82b61750a0/partition/manifest.json",
+        "seeds": [
+          45
+        ],
+        "sha256": "6a311c46df823420298c1e86db9a2b8150ac40365835f57993834f99057120a6"
+      },
+      {
+        "path": "artifacts/research-smoke/82b61750a0/partitions/p1001/manifest.json",
+        "seeds": [
+          1001
+        ],
+        "sha256": "31df3b4071df0e8c24f1e216731e615a07fae4974a05d00f1e61c1f0a9e573a4"
+      },
+      {
+        "path": "artifacts/research-smoke/82b61750a0/partitions/p1002/manifest.json",
+        "seeds": [
+          1002
+        ],
+        "sha256": "4bd2b1b66642299e6d5d3579a8b8c9429d74bc2565da9d1271948cee68bcbf8b"
+      },
+      {
+        "path": "artifacts/research-smoke/82b61750a0/partitions/p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/research-smoke/82b61750a0/partitions/p2002/manifest.json",
+        "seeds": [
+          2002
+        ],
+        "sha256": "4f4e88bb0461e31725ebe49c403b40a67cfbcbfc01b65cad2ac3c14be78fa7b0"
+      },
+      {
+        "path": "artifacts/research-smoke/82b61750a0/partitions/p2003/manifest.json",
+        "seeds": [
+          2003
+        ],
+        "sha256": "8a972773bdf248e9608411b21f8cd9d6d76953cfdc34b20b90fe15aad071b91e"
+      },
+      {
+        "path": "artifacts/research-smoke/47009650bb/partition/manifest.json",
+        "seeds": [
+          45
+        ],
+        "sha256": "6a311c46df823420298c1e86db9a2b8150ac40365835f57993834f99057120a6"
+      },
+      {
+        "path": "artifacts/research-smoke/47009650bb/partitions/p1001/manifest.json",
+        "seeds": [
+          1001
+        ],
+        "sha256": "31df3b4071df0e8c24f1e216731e615a07fae4974a05d00f1e61c1f0a9e573a4"
+      },
+      {
+        "path": "artifacts/research-smoke/47009650bb/partitions/p1002/manifest.json",
+        "seeds": [
+          1002
+        ],
+        "sha256": "4bd2b1b66642299e6d5d3579a8b8c9429d74bc2565da9d1271948cee68bcbf8b"
+      },
+      {
+        "path": "artifacts/research-smoke/47009650bb/partitions/p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/research-smoke/47009650bb/partitions/p2002/manifest.json",
+        "seeds": [
+          2002
+        ],
+        "sha256": "4f4e88bb0461e31725ebe49c403b40a67cfbcbfc01b65cad2ac3c14be78fa7b0"
+      },
+      {
+        "path": "artifacts/research-smoke/47009650bb/partitions/p2003/manifest.json",
+        "seeds": [
+          2003
+        ],
+        "sha256": "8a972773bdf248e9608411b21f8cd9d6d76953cfdc34b20b90fe15aad071b91e"
+      },
+      {
+        "path": "artifacts/research-smoke/2d08276451/partition/manifest.json",
+        "seeds": [
+          45
+        ],
+        "sha256": "6a311c46df823420298c1e86db9a2b8150ac40365835f57993834f99057120a6"
+      },
+      {
+        "path": "artifacts/research-smoke/2d08276451/partitions/p1001/manifest.json",
+        "seeds": [
+          1001
+        ],
+        "sha256": "31df3b4071df0e8c24f1e216731e615a07fae4974a05d00f1e61c1f0a9e573a4"
+      },
+      {
+        "path": "artifacts/research-smoke/2d08276451/partitions/p1002/manifest.json",
+        "seeds": [
+          1002
+        ],
+        "sha256": "4bd2b1b66642299e6d5d3579a8b8c9429d74bc2565da9d1271948cee68bcbf8b"
+      },
+      {
+        "path": "artifacts/research-smoke/2d08276451/partitions/p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/research-smoke/2d08276451/partitions/p2002/manifest.json",
+        "seeds": [
+          2002
+        ],
+        "sha256": "4f4e88bb0461e31725ebe49c403b40a67cfbcbfc01b65cad2ac3c14be78fa7b0"
+      },
+      {
+        "path": "artifacts/research-smoke/2d08276451/partitions/p2003/manifest.json",
+        "seeds": [
+          2003
+        ],
+        "sha256": "8a972773bdf248e9608411b21f8cd9d6d76953cfdc34b20b90fe15aad071b91e"
+      },
+      {
+        "path": "artifacts/research-smoke/20c2129171/partition/manifest.json",
+        "seeds": [
+          45
+        ],
+        "sha256": "6a311c46df823420298c1e86db9a2b8150ac40365835f57993834f99057120a6"
+      },
+      {
+        "path": "artifacts/research-smoke/20c2129171/partitions/p1001/manifest.json",
+        "seeds": [
+          1001
+        ],
+        "sha256": "31df3b4071df0e8c24f1e216731e615a07fae4974a05d00f1e61c1f0a9e573a4"
+      },
+      {
+        "path": "artifacts/research-smoke/20c2129171/partitions/p1002/manifest.json",
+        "seeds": [
+          1002
+        ],
+        "sha256": "4bd2b1b66642299e6d5d3579a8b8c9429d74bc2565da9d1271948cee68bcbf8b"
+      },
+      {
+        "path": "artifacts/research-smoke/20c2129171/partitions/p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/research-smoke/20c2129171/partitions/p2002/manifest.json",
+        "seeds": [
+          2002
+        ],
+        "sha256": "4f4e88bb0461e31725ebe49c403b40a67cfbcbfc01b65cad2ac3c14be78fa7b0"
+      },
+      {
+        "path": "artifacts/research-smoke/20c2129171/partitions/p2003/manifest.json",
+        "seeds": [
+          2003
+        ],
+        "sha256": "8a972773bdf248e9608411b21f8cd9d6d76953cfdc34b20b90fe15aad071b91e"
+      },
+      {
+        "path": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/confirmation-protocol.json",
+        "seeds": [
+          2001,
+          3001,
+          3002,
+          3003
+        ],
+        "sha256": "cd0c57cf89ff2989d3cd8cba3a1950360c50ab060c89229885cc8a202c56407b"
+      },
+      {
+        "path": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/protocol.json",
+        "seeds": [
+          2001,
+          3001,
+          3002,
+          3003
+        ],
+        "sha256": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+      },
+      {
+        "path": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.1-p3001/manifest.json",
+        "seeds": [
+          3001
+        ],
+        "sha256": "41b96fd47be4e9cf0ff05668662558c86ee8184e5ddebfcb509c8908d751a385"
+      },
+      {
+        "path": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.1-p3002/manifest.json",
+        "seeds": [
+          3002
+        ],
+        "sha256": "d95a944b9ca6939792df7d0f022e2a5f5eb67f21cb56279c408e0ce36439732a"
+      },
+      {
+        "path": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.1-p3003/manifest.json",
+        "seeds": [
+          3003
+        ],
+        "sha256": "4977ddd4b2d96d377010156af454cce93470ee32cc4d5b2f9beaab969c925c58"
+      },
+      {
+        "path": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "129fc2553dc9f55830e92273d7bfc359f5d7099ac9e24d82ce59033bd70df8e9"
+      },
+      {
+        "path": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p3001/manifest.json",
+        "seeds": [
+          3001
+        ],
+        "sha256": "894f0b5553802851bce4b2a6725aeb08d1b3a70de5f8f77dec14396a40cb5831"
+      },
+      {
+        "path": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p3002/manifest.json",
+        "seeds": [
+          3002
+        ],
+        "sha256": "f2038bce493adcaa9ebf3aecb91fd181b538c1bebdbe260c3be960244d13a25b"
+      },
+      {
+        "path": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a0.5-p3003/manifest.json",
+        "seeds": [
+          3003
+        ],
+        "sha256": "0b5bcf528da1f5fedfc07b275574ea03c250b0a55c82324c26bcd29185c099a4"
+      },
+      {
+        "path": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a1.0-p3001/manifest.json",
+        "seeds": [
+          3001
+        ],
+        "sha256": "f1b8abe8a98a5bd56d1240b1dfe1c4d8899c8090fc692ee3d5eb2a3214e50225"
+      },
+      {
+        "path": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a1.0-p3002/manifest.json",
+        "seeds": [
+          3002
+        ],
+        "sha256": "215bea616257ede8e75271aad173c4000be464ace11772b9ed6bf33073d81342"
+      },
+      {
+        "path": "artifacts/research/fuzzy-uncertainty/fuzzy-uncertainty-20261031-004757-b6b730/partitions/a1.0-p3003/manifest.json",
+        "seeds": [
+          3003
+        ],
+        "sha256": "f86df2e7f44080963fe96bbc7d99f4aa36a7dc5cded670415acfa125887f832c"
+      },
+      {
+        "path": "artifacts/partitions/covertype-dirichlet-p1001-split42/manifest.json",
+        "seeds": [
+          1001
+        ],
+        "sha256": "a44101d2357c5d49d1362443c75256765e4a4bde7b1f6a11d5104353dec0f614"
+      },
+      {
+        "path": "artifacts/partitions/covertype-dirichlet-p1002-split42/manifest.json",
+        "seeds": [
+          1002
+        ],
+        "sha256": "5cd23e2d6b0f06b1b8ca5a46906d8cd9939fd07118d78ed8e50046fd5815eb5e"
+      },
+      {
+        "path": "artifacts/partitions/covertype-dirichlet-p2001-split42/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "129fc2553dc9f55830e92273d7bfc359f5d7099ac9e24d82ce59033bd70df8e9"
+      },
+      {
+        "path": "artifacts/partitions/covertype-dirichlet-p2002-split42/manifest.json",
+        "seeds": [
+          2002
+        ],
+        "sha256": "67472444efecd8fa6a8a51378563ef0296d580d8372711c6998d7d8e9a74509e"
+      },
+      {
+        "path": "artifacts/partitions/covertype-dirichlet-p2003-split42/manifest.json",
+        "seeds": [
+          2003
+        ],
+        "sha256": "74ca5b6767b64c7ca99a270626b910e4474637509183c38fe7bdc6aa2813832b"
+      },
+      {
+        "path": "artifacts/partitions/fm-smoke-20261027-185217-p45/manifest.json",
+        "seeds": [
+          45
+        ],
+        "sha256": "6a311c46df823420298c1e86db9a2b8150ac40365835f57993834f99057120a6"
+      },
+      {
+        "path": "artifacts/pareto-smoke/d59b131c10/partition/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "6119354a167e67b2df4f1e0ec4966bc4b30617af77b66dbfcc5f854ccdd263ec"
+      },
+      {
+        "path": "artifacts/pareto-smoke/d59b131c10/partitions/p1001/manifest.json",
+        "seeds": [
+          1001
+        ],
+        "sha256": "31df3b4071df0e8c24f1e216731e615a07fae4974a05d00f1e61c1f0a9e573a4"
+      },
+      {
+        "path": "artifacts/pareto-smoke/d59b131c10/partitions/p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/pareto-smoke/d59b131c10/partitions/p2002/manifest.json",
+        "seeds": [
+          2002
+        ],
+        "sha256": "4f4e88bb0461e31725ebe49c403b40a67cfbcbfc01b65cad2ac3c14be78fa7b0"
+      },
+      {
+        "path": "artifacts/pareto-smoke/9649f45a4e/partition/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "6119354a167e67b2df4f1e0ec4966bc4b30617af77b66dbfcc5f854ccdd263ec"
+      },
+      {
+        "path": "artifacts/pareto-smoke/9649f45a4e/partitions/p1001/manifest.json",
+        "seeds": [
+          1001
+        ],
+        "sha256": "31df3b4071df0e8c24f1e216731e615a07fae4974a05d00f1e61c1f0a9e573a4"
+      },
+      {
+        "path": "artifacts/pareto-smoke/9649f45a4e/partitions/p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/pareto-smoke/9649f45a4e/partitions/p2002/manifest.json",
+        "seeds": [
+          2002
+        ],
+        "sha256": "4f4e88bb0461e31725ebe49c403b40a67cfbcbfc01b65cad2ac3c14be78fa7b0"
+      },
+      {
+        "path": "artifacts/lambda-smoke/7e45ae07c2/iid/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "98bb9288b59aa15095a5f79ff30a57091c9183321e9331eb38aefa49ea0784fd"
+      },
+      {
+        "path": "artifacts/lambda-smoke/7e45ae07c2/non-iid/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "6119354a167e67b2df4f1e0ec4966bc4b30617af77b66dbfcc5f854ccdd263ec"
+      },
+      {
+        "path": "artifacts/lambda-smoke/028e5b5482/iid/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "98bb9288b59aa15095a5f79ff30a57091c9183321e9331eb38aefa49ea0784fd"
+      },
+      {
+        "path": "artifacts/lambda-smoke/028e5b5482/non-iid/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "6119354a167e67b2df4f1e0ec4966bc4b30617af77b66dbfcc5f854ccdd263ec"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/fbd12ca975/research/fuzzy-uncertainty-20261031-002724-6f9ce6/confirmation-protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "9d29a171f36e42ee9cbb98ac9f2412c1cbde3e75a74e9e0dc0f1e124d1f849f2"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/fbd12ca975/research/fuzzy-uncertainty-20261031-002724-6f9ce6/protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "3d9d15097d74c13ae05ee964e0671ec80aad19d27e7a23a8b987372773f01ffa"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/fbd12ca975/research/fuzzy-uncertainty-20261031-002724-6f9ce6/partitions/a0.5-p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/fbd12ca975/research/fuzzy-uncertainty-20261031-002724-6f9ce6/partitions/a0.5-p3001/manifest.json",
+        "seeds": [
+          3001
+        ],
+        "sha256": "0ef3b530cbfd0c26e2e9ad7545bc04c7a5df3064fc53dd43dc561ea957ac5639"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/f6cb4b697b/research/fuzzy-uncertainty-20261031-001514-6e558d/confirmation-protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "d302c7d2ce7a12670b49238b011b5c6f96032e66281894d61446bd8edf2ef4c4"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/f6cb4b697b/research/fuzzy-uncertainty-20261031-001514-6e558d/protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "3d9d15097d74c13ae05ee964e0671ec80aad19d27e7a23a8b987372773f01ffa"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/f6cb4b697b/research/fuzzy-uncertainty-20261031-001514-6e558d/partitions/a0.5-p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/f6cb4b697b/research/fuzzy-uncertainty-20261031-001514-6e558d/partitions/a0.5-p3001/manifest.json",
+        "seeds": [
+          3001
+        ],
+        "sha256": "0ef3b530cbfd0c26e2e9ad7545bc04c7a5df3064fc53dd43dc561ea957ac5639"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/ced633e78f/research/fuzzy-uncertainty-20261103-234211-be6475/confirmation-protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "35332ef6e52c3ace74c0973f569052fc39afd5982528b6c5face370efd176c59"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/ced633e78f/research/fuzzy-uncertainty-20261103-234211-be6475/protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "3d9d15097d74c13ae05ee964e0671ec80aad19d27e7a23a8b987372773f01ffa"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/ced633e78f/research/fuzzy-uncertainty-20261103-234211-be6475/partitions/a0.5-p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/ced633e78f/research/fuzzy-uncertainty-20261103-234211-be6475/partitions/a0.5-p3001/manifest.json",
+        "seeds": [
+          3001
+        ],
+        "sha256": "0ef3b530cbfd0c26e2e9ad7545bc04c7a5df3064fc53dd43dc561ea957ac5639"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/87cb4176b1/research/fuzzy-uncertainty-20261031-003134-fe8384/confirmation-protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "9d29a171f36e42ee9cbb98ac9f2412c1cbde3e75a74e9e0dc0f1e124d1f849f2"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/87cb4176b1/research/fuzzy-uncertainty-20261031-003134-fe8384/protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "3d9d15097d74c13ae05ee964e0671ec80aad19d27e7a23a8b987372773f01ffa"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/87cb4176b1/research/fuzzy-uncertainty-20261031-003134-fe8384/partitions/a0.5-p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/87cb4176b1/research/fuzzy-uncertainty-20261031-003134-fe8384/partitions/a0.5-p3001/manifest.json",
+        "seeds": [
+          3001
+        ],
+        "sha256": "0ef3b530cbfd0c26e2e9ad7545bc04c7a5df3064fc53dd43dc561ea957ac5639"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/81217fb5f2/research/fuzzy-uncertainty-20261031-000847-01e255/protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "3d9d15097d74c13ae05ee964e0671ec80aad19d27e7a23a8b987372773f01ffa"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/81217fb5f2/research/fuzzy-uncertainty-20261031-000847-01e255/partitions/a0.5-p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/78bed3eb72/research/fuzzy-uncertainty-20261031-001110-0d289f/protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "3d9d15097d74c13ae05ee964e0671ec80aad19d27e7a23a8b987372773f01ffa"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/78bed3eb72/research/fuzzy-uncertainty-20261031-001110-0d289f/partitions/a0.5-p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/443a522456/research/fuzzy-uncertainty-20261031-003908-c19625/confirmation-protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "9d29a171f36e42ee9cbb98ac9f2412c1cbde3e75a74e9e0dc0f1e124d1f849f2"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/443a522456/research/fuzzy-uncertainty-20261031-003908-c19625/protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "3d9d15097d74c13ae05ee964e0671ec80aad19d27e7a23a8b987372773f01ffa"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/443a522456/research/fuzzy-uncertainty-20261031-003908-c19625/partitions/a0.5-p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/443a522456/research/fuzzy-uncertainty-20261031-003908-c19625/partitions/a0.5-p3001/manifest.json",
+        "seeds": [
+          3001
+        ],
+        "sha256": "0ef3b530cbfd0c26e2e9ad7545bc04c7a5df3064fc53dd43dc561ea957ac5639"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/2fbf1b9817/research/fuzzy-uncertainty-20261031-002123-6d578b/confirmation-protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "9d29a171f36e42ee9cbb98ac9f2412c1cbde3e75a74e9e0dc0f1e124d1f849f2"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/2fbf1b9817/research/fuzzy-uncertainty-20261031-002123-6d578b/protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "3d9d15097d74c13ae05ee964e0671ec80aad19d27e7a23a8b987372773f01ffa"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/2fbf1b9817/research/fuzzy-uncertainty-20261031-002123-6d578b/partitions/a0.5-p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/fuzzy-uncertainty-smoke/2fbf1b9817/research/fuzzy-uncertainty-20261031-002123-6d578b/partitions/a0.5-p3001/manifest.json",
+        "seeds": [
+          3001
+        ],
+        "sha256": "0ef3b530cbfd0c26e2e9ad7545bc04c7a5df3064fc53dd43dc561ea957ac5639"
+      },
+      {
+        "path": "artifacts/fuzzy-smoke/b8b28367a2/iid/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "98bb9288b59aa15095a5f79ff30a57091c9183321e9331eb38aefa49ea0784fd"
+      },
+      {
+        "path": "artifacts/fuzzy-smoke/b8b28367a2/non-iid/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "6119354a167e67b2df4f1e0ec4966bc4b30617af77b66dbfcc5f854ccdd263ec"
+      },
+      {
+        "path": "artifacts/fuzzy-smoke/2023d6cf7b/iid/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "98bb9288b59aa15095a5f79ff30a57091c9183321e9331eb38aefa49ea0784fd"
+      },
+      {
+        "path": "artifacts/fuzzy-smoke/2023d6cf7b/non-iid/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "6119354a167e67b2df4f1e0ec4966bc4b30617af77b66dbfcc5f854ccdd263ec"
+      },
+      {
+        "path": "artifacts/fuzzy-smoke/02ef039478/iid/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "98bb9288b59aa15095a5f79ff30a57091c9183321e9331eb38aefa49ea0784fd"
+      },
+      {
+        "path": "artifacts/fuzzy-smoke/02ef039478/non-iid/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "6119354a167e67b2df4f1e0ec4966bc4b30617af77b66dbfcc5f854ccdd263ec"
+      },
+      {
+        "path": "artifacts/fuzzy-recovery-smoke/97c59d30d9/partition/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "98bb9288b59aa15095a5f79ff30a57091c9183321e9331eb38aefa49ea0784fd"
+      },
+      {
+        "path": "artifacts/fuzzy-recovery-smoke/61c404adc7/partition/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "98bb9288b59aa15095a5f79ff30a57091c9183321e9331eb38aefa49ea0784fd"
+      },
+      {
+        "path": "artifacts/fuzzy-recovery-smoke/00734a8f63/partition/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "98bb9288b59aa15095a5f79ff30a57091c9183321e9331eb38aefa49ea0784fd"
+      },
+      {
+        "path": "artifacts/frozen-e3-ide-smoke/13347b7658/confirmation-protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "858dbfa4442be6136cf857705fc3c8999ab863363ac00c3a68d72b3afadb9ddd"
+      },
+      {
+        "path": "artifacts/frozen-e3-ide-smoke/13347b7658/protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "201912fc2b2a958fb2e30a3fc973f06ad3c1d98ddda7fc0dfffe9e90e307ec84"
+      },
+      {
+        "path": "artifacts/frozen-e3-ide-smoke/97e283fa8c/confirmation-protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "858dbfa4442be6136cf857705fc3c8999ab863363ac00c3a68d72b3afadb9ddd"
+      },
+      {
+        "path": "artifacts/frozen-e3-ide-smoke/97e283fa8c/protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "201912fc2b2a958fb2e30a3fc973f06ad3c1d98ddda7fc0dfffe9e90e307ec84"
+      },
+      {
+        "path": "artifacts/frozen-e3-ide-smoke/ccf6e59e68/confirmation-protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "16ad5395ca56b6a5fe164907527bff1dcd899f79c429079a77e90a9f321d48ee"
+      },
+      {
+        "path": "artifacts/frozen-e3-ide-smoke/ccf6e59e68/protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "201912fc2b2a958fb2e30a3fc973f06ad3c1d98ddda7fc0dfffe9e90e307ec84"
+      },
+      {
+        "path": "artifacts/frozen-e3-ide-smoke/fc305490c6/confirmation-protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "16ad5395ca56b6a5fe164907527bff1dcd899f79c429079a77e90a9f321d48ee"
+      },
+      {
+        "path": "artifacts/frozen-e3-ide-smoke/fc305490c6/protocol.json",
+        "seeds": [
+          2001,
+          3001
+        ],
+        "sha256": "201912fc2b2a958fb2e30a3fc973f06ad3c1d98ddda7fc0dfffe9e90e307ec84"
+      },
+      {
+        "path": "artifacts/frozen-e3-ide-smoke/fc305490c6/partitions/a0.5-p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/frozen-e3-ide-smoke/fc305490c6/partitions/a0.5-p3001/manifest.json",
+        "seeds": [
+          3001
+        ],
+        "sha256": "0ef3b530cbfd0c26e2e9ad7545bc04c7a5df3064fc53dd43dc561ea957ac5639"
+      },
+      {
+        "path": "artifacts/frozen-e3-ide-smoke/ccf6e59e68/partitions/a0.5-p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/frozen-e3-ide-smoke/ccf6e59e68/partitions/a0.5-p3001/manifest.json",
+        "seeds": [
+          3001
+        ],
+        "sha256": "0ef3b530cbfd0c26e2e9ad7545bc04c7a5df3064fc53dd43dc561ea957ac5639"
+      },
+      {
+        "path": "artifacts/frozen-e3-ide-smoke/97e283fa8c/partitions/a0.5-p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/frozen-e3-ide-smoke/97e283fa8c/partitions/a0.5-p3001/manifest.json",
+        "seeds": [
+          3001
+        ],
+        "sha256": "0ef3b530cbfd0c26e2e9ad7545bc04c7a5df3064fc53dd43dc561ea957ac5639"
+      },
+      {
+        "path": "artifacts/frozen-e3-ide-smoke/13347b7658/partitions/a0.5-p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "artifacts/frozen-e3-ide-smoke/13347b7658/partitions/a0.5-p3001/manifest.json",
+        "seeds": [
+          3001
+        ],
+        "sha256": "0ef3b530cbfd0c26e2e9ad7545bc04c7a5df3064fc53dd43dc561ea957ac5639"
+      },
+      {
+        "path": "artifacts/fairness-matched/20261027-185536/freeze/protocol.json",
+        "seeds": [
+          1001,
+          1002,
+          2001,
+          2002,
+          2003
+        ],
+        "sha256": "069c771791b005b07b2e6889812ff352ad1a16f3ad158e3ebc58ce192e7cf3d0"
+      },
+      {
+        "path": "artifacts/fairness-matched/20261027-185217/freeze/protocol.json",
+        "seeds": [
+          1001,
+          1002,
+          2001,
+          2002,
+          2003
+        ],
+        "sha256": "ddb931eb7adad3da0b8dde63caf5c0e2b20a1df1d33b46795ac24febabf1171d"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/a8ee213620/pilot/fuzzy-uncertainty-20261103-232151-055f32/protocol.json",
+        "seeds": [
+          915001
+        ],
+        "sha256": "f32103dbb6ef34185c2cc6f57b0f6bdefb8395a2c36900b5ca9fefdbfe32b1f9"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/99d3d1bb4f/pilot/fuzzy-uncertainty-20261103-233238-b5c589/protocol.json",
+        "seeds": [
+          21162466
+        ],
+        "sha256": "071d0d27db1b269b9679c66e944515b76139dfa2d2af045a609304d2148a1ce0"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/99d3d1bb4f/pilot/fuzzy-uncertainty-20261103-233238-b5c589/partitions/a0.5-p21162466/manifest.json",
+        "seeds": [
+          21162466
+        ],
+        "sha256": "a0b062d9830b4ab4f23f75f4caf79ef823426e4e9e1b8076e79cea6d10650fd4"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/99d3d1bb4f/confirmation/fuzzy-uncertainty-20261103-233450-abb301/protocol.json",
+        "seeds": [
+          21162467
+        ],
+        "sha256": "6f926db53d0c7bab3ad23d5b1190999c00a98a44e13d4192801d98e0cd3a1b7e"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/99d3d1bb4f/confirmation/fuzzy-uncertainty-20261103-233450-abb301/partitions/a0.5-p21162467/manifest.json",
+        "seeds": [
+          21162467
+        ],
+        "sha256": "f4b5fdc519529998271cee2296d382c1ef3da0eba653d007519760a1acb8deab"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/50a3189703/pilot/fuzzy-uncertainty-20261103-232326-6a29a7/protocol.json",
+        "seeds": [
+          11569264
+        ],
+        "sha256": "a2c9e5228b0a2da5fecd88c5a20aa324bbec184ee4ca6b4919794db13959e9d9"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/50a3189703/pilot/fuzzy-uncertainty-20261103-232326-6a29a7/partitions/a0.5-p11569264/manifest.json",
+        "seeds": [
+          11569264
+        ],
+        "sha256": "9ea06199780491fc02846a1cb95f6ffbdefefa848dd155130c594bce3b92c08b"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/50a3189703/confirmation/fuzzy-uncertainty-20261103-232517-b0ad84/protocol.json",
+        "seeds": [
+          11569265
+        ],
+        "sha256": "1ca78f4f34873fd9c83e9f3add5decec0edaddb66bf29e05801b864eb9c689d7"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/4a777e8a13/pilot/fuzzy-uncertainty-20261103-234457-7e0323/protocol.json",
+        "seeds": [
+          10760508
+        ],
+        "sha256": "fbc13a48fe3271c184daf68b3f1a41c94bafff07f6d7689ffa8bdd6439bc27a4"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/4a777e8a13/pilot/fuzzy-uncertainty-20261103-234457-7e0323/partitions/a0.5-p10760508/manifest.json",
+        "seeds": [
+          10760508
+        ],
+        "sha256": "d2c41ebbed64da18d31e1f5c56c6c17ca91ee482bbaf3c02e22e8f8578c4cee1"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/4a777e8a13/confirmation/fuzzy-uncertainty-20261103-234708-74f4a2/protocol.json",
+        "seeds": [
+          10760509
+        ],
+        "sha256": "bc084a4d3cda61ef01e0544d93b0286c41d7a833b157dc7432af061fcbc668b2"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/4a777e8a13/confirmation/fuzzy-uncertainty-20261103-234708-74f4a2/partitions/a0.5-p10760509/manifest.json",
+        "seeds": [
+          10760509
+        ],
+        "sha256": "283085e233a813f9c3b66d0351fd925cb23ebf6cdd73a8e74cc12fc5ef6ced4f"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/142c8a3f17/pilot/fuzzy-uncertainty-20261103-234937-f584d5/protocol.json",
+        "seeds": [
+          3644244
+        ],
+        "sha256": "3e4699a5bc2d18bd8bab6e5841b54e913c35eaf93f731e0454ca01adf8acb3cd"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/142c8a3f17/pilot/fuzzy-uncertainty-20261103-234937-f584d5/partitions/a0.5-p3644244/manifest.json",
+        "seeds": [
+          3644244
+        ],
+        "sha256": "5868ba5d9c9af9f2059ffac1973831f8bfeb01ef0720a2411cbe1520a39dc33c"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/142c8a3f17/confirmation/fuzzy-uncertainty-20261103-235141-3d9a8d/protocol.json",
+        "seeds": [
+          3644245
+        ],
+        "sha256": "06f63b6a6e7ed92f36fa5d6d4cc9775f9b58780f18661ae84414fb822b181d2a"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/142c8a3f17/confirmation/fuzzy-uncertainty-20261103-235141-3d9a8d/partitions/a0.5-p3644245/manifest.json",
+        "seeds": [
+          3644245
+        ],
+        "sha256": "953582a9e91d56cbd30d8a7585ccbf2cd0ac0687b520dae273c32683a495c79f"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/0a04b00e9f/pilot/fuzzy-uncertainty-20261103-233802-4d7205/protocol.json",
+        "seeds": [
+          2313120
+        ],
+        "sha256": "955b3e00a51cb97ce09bc8b1f1105c37ce1bbeda2aebad16864547b65decd54c"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/0a04b00e9f/pilot/fuzzy-uncertainty-20261103-233802-4d7205/partitions/a0.5-p2313120/manifest.json",
+        "seeds": [
+          2313120
+        ],
+        "sha256": "8da4be2e01437adbc60c24ea74cbd6800c4b7cace8d3fa394cf54947392fd0e3"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/0a04b00e9f/confirmation/fuzzy-uncertainty-20261103-234015-7b445a/protocol.json",
+        "seeds": [
+          2313121
+        ],
+        "sha256": "67858d99669b9278c47bfe341bbc988fbca8e550cc467063185883e9871ab26a"
+      },
+      {
+        "path": "artifacts/controlled-ablation-smoke/0a04b00e9f/confirmation/fuzzy-uncertainty-20261103-234015-7b445a/partitions/a0.5-p2313121/manifest.json",
+        "seeds": [
+          2313121
+        ],
+        "sha256": "cc1ce579e2fcd9a78554b7c9782131947c2d79ed1f09456eb871f8124d3c51ad"
+      },
+      {
+        "path": "artifacts/controlled-ablation-ide-smoke/d44057eeb1/research/fuzzy-uncertainty-20261104-000713-3e0e4e/protocol.json",
+        "seeds": [
+          15910103
+        ],
+        "sha256": "17fe2cb9caeb80ad74ecca6f776048d72b5784ddc0e7d5abd290c3d3fef1da5d"
+      },
+      {
+        "path": "artifacts/controlled-ablation-ide-smoke/d44057eeb1/research/fuzzy-uncertainty-20261104-000713-3e0e4e/partitions/a0.5-p15910103/manifest.json",
+        "seeds": [
+          15910103
+        ],
+        "sha256": "f69664be37d913dd8b3a89f1fd598e830e54744ab18fbdc6b6888203fb73cb79"
+      },
+      {
+        "path": "results/worker-retry-smoke/ce5a727be4/partition/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "98bb9288b59aa15095a5f79ff30a57091c9183321e9331eb38aefa49ea0784fd"
+      },
+      {
+        "path": "results/worker-retry-smoke/796a3ea7d9/partition/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "98bb9288b59aa15095a5f79ff30a57091c9183321e9331eb38aefa49ea0784fd"
+      },
+      {
+        "path": "results/research-smoke/82b61750a0/partition/manifest.json",
+        "seeds": [
+          45
+        ],
+        "sha256": "6a311c46df823420298c1e86db9a2b8150ac40365835f57993834f99057120a6"
+      },
+      {
+        "path": "results/research-smoke/82b61750a0/partitions/p1001/manifest.json",
+        "seeds": [
+          1001
+        ],
+        "sha256": "31df3b4071df0e8c24f1e216731e615a07fae4974a05d00f1e61c1f0a9e573a4"
+      },
+      {
+        "path": "results/research-smoke/82b61750a0/partitions/p1002/manifest.json",
+        "seeds": [
+          1002
+        ],
+        "sha256": "4bd2b1b66642299e6d5d3579a8b8c9429d74bc2565da9d1271948cee68bcbf8b"
+      },
+      {
+        "path": "results/research-smoke/82b61750a0/partitions/p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "results/research-smoke/82b61750a0/partitions/p2002/manifest.json",
+        "seeds": [
+          2002
+        ],
+        "sha256": "4f4e88bb0461e31725ebe49c403b40a67cfbcbfc01b65cad2ac3c14be78fa7b0"
+      },
+      {
+        "path": "results/research-smoke/82b61750a0/partitions/p2003/manifest.json",
+        "seeds": [
+          2003
+        ],
+        "sha256": "8a972773bdf248e9608411b21f8cd9d6d76953cfdc34b20b90fe15aad071b91e"
+      },
+      {
+        "path": "results/research-smoke/2d08276451/partition/manifest.json",
+        "seeds": [
+          45
+        ],
+        "sha256": "6a311c46df823420298c1e86db9a2b8150ac40365835f57993834f99057120a6"
+      },
+      {
+        "path": "results/research-smoke/2d08276451/partitions/p1001/manifest.json",
+        "seeds": [
+          1001
+        ],
+        "sha256": "31df3b4071df0e8c24f1e216731e615a07fae4974a05d00f1e61c1f0a9e573a4"
+      },
+      {
+        "path": "results/research-smoke/2d08276451/partitions/p1002/manifest.json",
+        "seeds": [
+          1002
+        ],
+        "sha256": "4bd2b1b66642299e6d5d3579a8b8c9429d74bc2565da9d1271948cee68bcbf8b"
+      },
+      {
+        "path": "results/research-smoke/2d08276451/partitions/p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "results/research-smoke/2d08276451/partitions/p2002/manifest.json",
+        "seeds": [
+          2002
+        ],
+        "sha256": "4f4e88bb0461e31725ebe49c403b40a67cfbcbfc01b65cad2ac3c14be78fa7b0"
+      },
+      {
+        "path": "results/research-smoke/2d08276451/partitions/p2003/manifest.json",
+        "seeds": [
+          2003
+        ],
+        "sha256": "8a972773bdf248e9608411b21f8cd9d6d76953cfdc34b20b90fe15aad071b91e"
+      },
+      {
+        "path": "results/research-smoke/20c2129171/partition/manifest.json",
+        "seeds": [
+          45
+        ],
+        "sha256": "6a311c46df823420298c1e86db9a2b8150ac40365835f57993834f99057120a6"
+      },
+      {
+        "path": "results/research-smoke/20c2129171/partitions/p1001/manifest.json",
+        "seeds": [
+          1001
+        ],
+        "sha256": "31df3b4071df0e8c24f1e216731e615a07fae4974a05d00f1e61c1f0a9e573a4"
+      },
+      {
+        "path": "results/research-smoke/20c2129171/partitions/p1002/manifest.json",
+        "seeds": [
+          1002
+        ],
+        "sha256": "4bd2b1b66642299e6d5d3579a8b8c9429d74bc2565da9d1271948cee68bcbf8b"
+      },
+      {
+        "path": "results/research-smoke/20c2129171/partitions/p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "results/research-smoke/20c2129171/partitions/p2002/manifest.json",
+        "seeds": [
+          2002
+        ],
+        "sha256": "4f4e88bb0461e31725ebe49c403b40a67cfbcbfc01b65cad2ac3c14be78fa7b0"
+      },
+      {
+        "path": "results/research-smoke/20c2129171/partitions/p2003/manifest.json",
+        "seeds": [
+          2003
+        ],
+        "sha256": "8a972773bdf248e9608411b21f8cd9d6d76953cfdc34b20b90fe15aad071b91e"
+      },
+      {
+        "path": "results/research/fuzzy-uncertainty-20261031-004757-b6b730/protocol.json",
+        "seeds": [
+          2001,
+          3001,
+          3002,
+          3003
+        ],
+        "sha256": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+      },
+      {
+        "path": "results/research/fuzzy-uncertainty-20261031-004757-b6b730-full-20261103/confirmation-protocol.json",
+        "seeds": [
+          2001,
+          3001,
+          3002,
+          3003
+        ],
+        "sha256": "cd0c57cf89ff2989d3cd8cba3a1950360c50ab060c89229885cc8a202c56407b"
+      },
+      {
+        "path": "results/research/fuzzy-uncertainty-20261031-004757-b6b730-full-20261103/protocol.json",
+        "seeds": [
+          2001,
+          3001,
+          3002,
+          3003
+        ],
+        "sha256": "e30782b8f01cbfe83215f8ee9a2527842c9b89728dcfc845dccad80768c2e399"
+      },
+      {
+        "path": "results/research/fuzzy-uncertainty-20261031-004757-b6b730-full-20261103/partitions/a0.1-p3001/manifest.json",
+        "seeds": [
+          3001
+        ],
+        "sha256": "41b96fd47be4e9cf0ff05668662558c86ee8184e5ddebfcb509c8908d751a385"
+      },
+      {
+        "path": "results/research/fuzzy-uncertainty-20261031-004757-b6b730-full-20261103/partitions/a0.1-p3002/manifest.json",
+        "seeds": [
+          3002
+        ],
+        "sha256": "d95a944b9ca6939792df7d0f022e2a5f5eb67f21cb56279c408e0ce36439732a"
+      },
+      {
+        "path": "results/research/fuzzy-uncertainty-20261031-004757-b6b730-full-20261103/partitions/a0.1-p3003/manifest.json",
+        "seeds": [
+          3003
+        ],
+        "sha256": "4977ddd4b2d96d377010156af454cce93470ee32cc4d5b2f9beaab969c925c58"
+      },
+      {
+        "path": "results/research/fuzzy-uncertainty-20261031-004757-b6b730-full-20261103/partitions/a0.5-p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "129fc2553dc9f55830e92273d7bfc359f5d7099ac9e24d82ce59033bd70df8e9"
+      },
+      {
+        "path": "results/research/fuzzy-uncertainty-20261031-004757-b6b730-full-20261103/partitions/a0.5-p3001/manifest.json",
+        "seeds": [
+          3001
+        ],
+        "sha256": "894f0b5553802851bce4b2a6725aeb08d1b3a70de5f8f77dec14396a40cb5831"
+      },
+      {
+        "path": "results/research/fuzzy-uncertainty-20261031-004757-b6b730-full-20261103/partitions/a0.5-p3002/manifest.json",
+        "seeds": [
+          3002
+        ],
+        "sha256": "f2038bce493adcaa9ebf3aecb91fd181b538c1bebdbe260c3be960244d13a25b"
+      },
+      {
+        "path": "results/research/fuzzy-uncertainty-20261031-004757-b6b730-full-20261103/partitions/a0.5-p3003/manifest.json",
+        "seeds": [
+          3003
+        ],
+        "sha256": "0b5bcf528da1f5fedfc07b275574ea03c250b0a55c82324c26bcd29185c099a4"
+      },
+      {
+        "path": "results/research/fuzzy-uncertainty-20261031-004757-b6b730-full-20261103/partitions/a1.0-p3001/manifest.json",
+        "seeds": [
+          3001
+        ],
+        "sha256": "f1b8abe8a98a5bd56d1240b1dfe1c4d8899c8090fc692ee3d5eb2a3214e50225"
+      },
+      {
+        "path": "results/research/fuzzy-uncertainty-20261031-004757-b6b730-full-20261103/partitions/a1.0-p3002/manifest.json",
+        "seeds": [
+          3002
+        ],
+        "sha256": "215bea616257ede8e75271aad173c4000be464ace11772b9ed6bf33073d81342"
+      },
+      {
+        "path": "results/research/fuzzy-uncertainty-20261031-004757-b6b730-full-20261103/partitions/a1.0-p3003/manifest.json",
+        "seeds": [
+          3003
+        ],
+        "sha256": "f86df2e7f44080963fe96bbc7d99f4aa36a7dc5cded670415acfa125887f832c"
+      },
+      {
+        "path": "results/pareto-smoke/d59b131c10/partition/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "6119354a167e67b2df4f1e0ec4966bc4b30617af77b66dbfcc5f854ccdd263ec"
+      },
+      {
+        "path": "results/pareto-smoke/d59b131c10/partitions/p1001/manifest.json",
+        "seeds": [
+          1001
+        ],
+        "sha256": "31df3b4071df0e8c24f1e216731e615a07fae4974a05d00f1e61c1f0a9e573a4"
+      },
+      {
+        "path": "results/pareto-smoke/d59b131c10/partitions/p2001/manifest.json",
+        "seeds": [
+          2001
+        ],
+        "sha256": "d806eb5a3016d5f69225da9b85928863c640b1ca8c11657bc9ea8a8eb2ad1e44"
+      },
+      {
+        "path": "results/pareto-smoke/d59b131c10/partitions/p2002/manifest.json",
+        "seeds": [
+          2002
+        ],
+        "sha256": "4f4e88bb0461e31725ebe49c403b40a67cfbcbfc01b65cad2ac3c14be78fa7b0"
+      },
+      {
+        "path": "results/lambda-smoke/028e5b5482/iid/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "98bb9288b59aa15095a5f79ff30a57091c9183321e9331eb38aefa49ea0784fd"
+      },
+      {
+        "path": "results/lambda-smoke/028e5b5482/non-iid/manifest.json",
+        "seeds": [
+          44
+        ],
+        "sha256": "6119354a167e67b2df4f1e0ec4966bc4b30617af77b66dbfcc5f854ccdd263ec"
+      },
+      {
+        "path": "results/fairness-matched/20261027-185536/freeze/protocol.json",
+        "seeds": [
+          1001,
+          1002,
+          2001,
+          2002,
+          2003
+        ],
+        "sha256": "069c771791b005b07b2e6889812ff352ad1a16f3ad158e3ebc58ce192e7cf3d0"
+      },
+      {
+        "path": "results/fairness-matched/20261027-185217/freeze/protocol.json",
+        "seeds": [
+          1001,
+          1002,
+          2001,
+          2002,
+          2003
+        ],
+        "sha256": "ddb931eb7adad3da0b8dde63caf5c0e2b20a1df1d33b46795ac24febabf1171d"
+      },
+      {
+        "path": "configurations/fairness-matched-lambda.json",
+        "seeds": [
+          1001,
+          1002,
+          2001,
+          2002,
+          2003
+        ],
+        "sha256": "529ad9841a4578bb96d105513d8dab1cbc65a8703b57cb58420cd0d3b7a4821f"
+      },
+      {
+        "path": "configurations/fairness-matched.json",
+        "seeds": [
+          1001,
+          1002,
+          2001,
+          2002,
+          2003
+        ],
+        "sha256": "069c771791b005b07b2e6889812ff352ad1a16f3ad158e3ebc58ce192e7cf3d0"
+      },
+      {
+        "path": "configurations/fuzzy-uncertainty.json",
+        "seeds": [
+          2001,
+          3001,
+          3002,
+          3003
+        ],
+        "sha256": "32ead333d0a9a0e7be9240b4697316c177ff49d9d951ce824a663700572f7a64"
+      },
+      {
+        "path": "configurations/pareto-tradeoff.json",
+        "seeds": [
+          1001,
+          1002,
+          2001,
+          2002,
+          2003
+        ],
+        "sha256": "843b4115b75ad885e664e0b4836471178f0bbc53142f87008ef698216dd11605"
+      }
+    ],
+    "limitation": "Repository-visible assignments only; fixed underlying test examples have been inspected previously"
+  },
+  "confirmationAutomaticallyAccepted": false
+}

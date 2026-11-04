@@ -1,0 +1,5 @@
+{
+  "seed": 45,
+  "architecture": "mlp_54_256_128_7",
+  "initialModelStateHash": "781ff16f06d981d5f547a9843d15a89490c1bbc28c173472c95857d6e90a798f"
+}

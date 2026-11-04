@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "anomalies": [],
+  "completedResearchRuns": 225,
+  "expectedResearchRuns": 225,
+  "checks": [
+    "unique contiguous round commits",
+    "final-only held-out evaluation",
+    "proxy-only trajectories/pilot",
+    "paired initial tensor/partition/scenario hashes"
+  ]
+}

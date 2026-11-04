@@ -8,6 +8,24 @@ The implementation follows the [Notion plan](https://app.notion.com/p/3fbb6ecc36
 
 ## Fuzzy uncertainty research workflow — 31 October 2026
 
+The full historical workflow has completed: **167 runs / 11,554 rounds**, including
+135 held-out E3 runs. See the [completed publication](results/research/fuzzy-uncertainty-20261031-004757-b6b730-full-20261103/README.md).
+
+The new [controlled fuzzy uncertainty ablation](docs/controlled-fuzzy-ablation.md)
+uses A1 zero-width Fuzzy TOPSIS as its causal control for A2/A3/A4. Its separate
+pilot design is 40 runs; the predefined full matrix is 225 runs. Read the
+[technical audit](docs/controlled-fuzzy-ablation-audit.md) and run preflight first.
+The user-requested full Covertype ablation completed on4 November2026:
+**225 research runs x70 rounds**, plus two2-round audits, totaling
+**227 completed runs /15,754 committed rounds**. See the
+[completed controlled ablation results](results/research/controlled-fuzzy-ablation-20261104-002235-69ac39/README.md).
+The publication includes reports, figures, compressed round evidence and provenance.
+
+For the requested manual worker and IntelliJ full225-run launch, select
+**Controlled Fuzzy Ablation Full**; see the [full IDE launch guide](docs/intellij-controlled-ablation-full.md).
+It skips the separate Covertype pilot and preserves an explicit predeclared full
+protocol. Resource/provenance guards still apply.
+
 For the existing frozen E3 batch, the requested **manual Uvicorn + IntelliJ**
 launch is documented in [the IntelliJ resume guide](docs/intellij-frozen-e3.md).
 Select **Resume Frozen E3**; it retains the original scientific JAR/policy lock
@@ -26,9 +44,9 @@ workflow and legacy integration checks. Production admission requires at least
 8 GiB free disk and estimates the additional storage needed for confirmation.
 The [Covertype pilot results](results/research/fuzzy-uncertainty-20261031-004757-b6b730/README.md)
 now contain 32 completed experiments and 2,104 rounds. C1/C4/C5 are locked for
-135 E3 confirmation runs. Confirmation has not started because the full-mode
-storage estimate requires about 19.9 GiB free; this machine currently has about
-13.4 GiB. No held-out superiority conclusion has been produced.
+135 E3 confirmation runs. That historical pilot snapshot preserves the earlier
+disk-blocked state; the separate full publication above contains the subsequent
+completed confirmation. Completion alone does not establish superiority.
 
 ## Completed Covertype results — 29 October 2026
 

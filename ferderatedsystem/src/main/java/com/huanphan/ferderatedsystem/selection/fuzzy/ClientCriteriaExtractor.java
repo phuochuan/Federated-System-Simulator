@@ -6,13 +6,15 @@ import java.util.*;
 
 public final class ClientCriteriaExtractor {
     private static final List<String> ORDER=List.of("estimatedTime","reliability","learningUtility","fairnessDeficit","selectionStaleness");
-    public record Extracted(FuzzyDecisionMatrix matrix,Map<Integer,Map<String,Double>> observations) {}
+    public record Extracted(FuzzyDecisionMatrix matrix,Map<Integer,Map<String,Double>> observations,
+                            Map<Integer,Map<String,Double>> widths) {}
     public Extracted extract(List<ClientProfile> feasible,ExperimentConfig c,int round,SelectionHistory history,FairnessCreditState state) {
         var settings=c.fuzzySelection();settings.check(c.selection());
         var criteria=ORDER.stream().filter(key->settings.weights.getOrDefault(key,0.)>0)
                 .map(key->new FuzzyDecisionMatrix.Criterion(key,key.equals("estimatedTime")?FuzzyDecisionMatrix.Type.COST:FuzzyDecisionMatrix.Type.BENEFIT,settings.weights.get(key))).toList();
         Map<Integer,List<TriangularFuzzyNumber>> rows=new TreeMap<>();Map<Integer,Map<String,Double>> observations=new TreeMap<>();
         double maxDeficit=feasible.stream().mapToDouble(p->deficit(p.clientId,c,history,state)).max().orElse(0);
+        Map<Integer,Map<String,Double>> widths=new TreeMap<>();
         for(var p:feasible) {
             if(p.selectionCount<0 || p.completionCount<0 || p.completionCount>p.selectionCount) throw new IllegalArgumentException("Invalid client history: "+p.clientId);
             double time=p.estimate(c);FuzzySelectionConfig.nonnegative(time);time=Math.max(settings.epsilon,time);
@@ -29,6 +31,7 @@ public final class ClientCriteriaExtractor {
             Map<String,Double> crisp=new LinkedHashMap<>();crisp.put("estimatedTime",time);crisp.put("reliability",reliability);
             crisp.put("learningUtility",utility);crisp.put("fairnessDeficit",fairness);crisp.put("selectionStaleness",stale);
             List<TriangularFuzzyNumber> row=new ArrayList<>();
+            Map<String,Double> clientWidths=new LinkedHashMap<>();
             for(var criterion:criteria) {
                 String key=criterion.name();double x=crisp.get(key),u=settings.uncertaintyFallback;
                 if(settings.uncertaintyMode.equals("crisp")) u=0;
@@ -47,13 +50,15 @@ public final class ClientCriteriaExtractor {
                     };
                 }
                 u=(key.equals("fairnessDeficit")||key.equals("selectionStaleness"))?0:Math.min(settings.uncertaintyMax,u);
+                clientWidths.put(key,u);
                 row.add(key.equals("estimatedTime")?new TriangularFuzzyNumber(Math.max(settings.epsilon,x*(1-u)),Math.max(settings.epsilon,x),Math.max(settings.epsilon,x*(1+u)))
                         :new TriangularFuzzyNumber(Math.max(0,x-u),x,Math.min(1,x+u)));
             }
             if(rows.put(p.clientId,row)!=null) throw new IllegalArgumentException("Duplicate client ID");
             observations.put(p.clientId,Collections.unmodifiableMap(crisp));
+            widths.put(p.clientId,Collections.unmodifiableMap(clientWidths));
         }
-        return new Extracted(new FuzzyDecisionMatrix(criteria,rows),Collections.unmodifiableMap(observations));
+        return new Extracted(new FuzzyDecisionMatrix(criteria,rows),Collections.unmodifiableMap(observations),Collections.unmodifiableMap(widths));
     }
     private double deficit(int id,ExperimentConfig c,SelectionHistory history,FairnessCreditState state) {
         var prior=history.prior(id);
