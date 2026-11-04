@@ -524,7 +524,7 @@ def save_manifests(state):
                                 archivePartIndex=index, files=files, originalBytes=original, createdAt=created,
                                 verificationStatus='PASS' if valid else 'PENDING', remoteVerification=verification,
                                 assetId=p.get('assetId'), downloadUrl=f'https://github.com/phuochuan/Federated-System-Simulator/releases/download/{TAG}/{name}'))
-    manifest = {k: v for k, v in state.items() if k not in ('parts', 'status')}
+    manifest = {k: v for k, v in state.items() if k not in ('parts', 'status', 'currentPart')}
     manifest['status'] = 'ARCHIVES_VERIFIED' if all(r['verificationStatus'] == 'PASS' for r in records) else 'INCOMPLETE'
     manifest.update(archives=records, verificationMethod='FULL_REMOTE_DOWNLOAD_SHA256',
                     sourceSnapshot=json.loads((WORK / 'source-snapshot-receipt.json').read_text()) if (WORK / 'source-snapshot-receipt.json').exists() else None,
@@ -564,7 +564,11 @@ def run(mode):
     freeze_sources()
     state = state_read()
     if not release['draft'] and state.get('status') != 'COMPLETED':
-        raise RuntimeError('Refuse changing an already published incomplete release')
+        proof = WORK / 'preservation-final-verification.json'
+        sealed = WORK / 'preservation-manifest.json'
+        saved = json.loads(proof.read_text()) if proof.exists() else {}
+        if saved.get('status') != 'PASS' or not sealed.exists() or sha(sealed) != saved.get('manifestSha256') or saved.get('expectedParts') != state['expectedParts'] or saved.get('sourceGitHead') != state['sourceGitHead']:
+            raise RuntimeError('Published release has no matching sealed completion proof; fail closed')
     state['status'] = 'VERIFYING' if mode == 'verify' else 'RUNNING'
     atomic(WORK / 'state.json', state)
     save_manifests(state)
@@ -639,7 +643,7 @@ def run(mode):
     state.setdefault('completedAt', now())
     atomic(WORK / 'state.json', state)
     manifest = save_manifests(state)
-    final = dict(status='PASS', sourceGitHead=state['sourceGitHead'], release=release['html_url'], batch=TAG,
+    final = dict(status='PASS', sourceGitHead=state['sourceGitHead'], release=f'https://github.com/phuochuan/Federated-System-Simulator/releases/tag/{TAG}', batch=TAG,
                  expectedParts=len(expected), uploadedParts=len(expected), verifiedParts=len(expected), failedParts=0,
                  totalBytes=sum(r['byteSize'] for r in manifest['archives']), verifiedAt=state['completedAt'],
                  manifestSha256=sha(WORK / 'preservation-manifest.json'), method='FULL_REMOTE_DOWNLOAD_SHA256')
@@ -659,6 +663,8 @@ def run(mode):
     tool_copy = WORK / 'preservation-tool-source.py'
     if not tool_copy.exists():
         shutil.copy2(Path(__file__), tool_copy)
+    if sha(tool_copy) != sha(Path(__file__)):
+        raise RuntimeError('Retained preservation tool source differs; do not overwrite it')
     # Metadata is itself uploaded and retrieved before publication. Retain all local metadata.
     metadata_names = ('preservation-manifest.json', 'preservation-sha256.json', 'preservation-sha256.txt',
                       'preservation-final-verification.json', 'preservation-upload-history.json', 'preservation-tool-source.py')
@@ -670,6 +676,9 @@ def run(mode):
         gh.call(API + '/releases/' + str(release['id']), 'PATCH', dict(draft=False,
                 name='Research Preservation — 2026-11-04', target_commitish=state['sourceGitHead'],
                 body=f'PRESERVATION COMPLETE — VERIFIED. {len(expected)} ZIP parts, full remote download SHA-256. Original models source {state["originalModelCommit"]}; expanded preservation source {state["sourceGitHead"]}. See preservation-manifest.json. No local evidence deleted.'))
+    published = gh.call(API + '/releases/' + str(release['id']))
+    if published['draft'] or published['tag_name'] != TAG or published['id'] != release['id']:
+        raise RuntimeError('Release publication has not been confirmed')
     OUTPUT.mkdir(parents=True, exist_ok=True)
     for name in metadata_names:
         destination = OUTPUT / name
@@ -679,7 +688,18 @@ def run(mode):
             shutil.copy2(WORK / name, destination)
     state['status'] = 'COMPLETED'
     atomic(WORK / 'state.json', state)
-    atomic(WORK / 'preservation-status.json', dict(final, status='PRESERVATION COMPLETE — VERIFIED'))
+    completion = dict(final, status='PRESERVATION COMPLETE — VERIFIED', releaseId=release['id'], releasePublished=True,
+                      storage='GitHub Release assets; model binaries are not stored in Git objects',
+                      manifestPath='preservation-manifest.json',
+                      archives=[{k: r[k] for k in ('filename', 'byteSize', 'sha256')} for r in manifest['archives']],
+                      exclusions=manifest['exclusions'],
+                      remainingLocalOnly='Excluded secrets/caches and regenerable preservation working indexes')
+    atomic(WORK / 'preservation-status.json', completion)
+    completion_path = OUTPUT / 'preservation-status.json'
+    if completion_path.exists() and json.loads(completion_path.read_text()) != completion:
+        raise RuntimeError('Existing completion publication differs; preserve it')
+    if not completion_path.exists():
+        atomic(completion_path, completion)
     event('COMPLETED', **final)
 
 
