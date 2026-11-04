@@ -1,0 +1,326 @@
+{
+  "original": {
+    "source": "results/research/fairness-matched/validation/fairness-matched-results.json",
+    "complete": false,
+    "error": "java.lang.IllegalStateException: Experiment research-80e687cf9e00d2b736bba0e7c74a9065710b8ce5 ended with FAILED: Worker unavailable",
+    "runs": 17,
+    "partitions": [
+      1001
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "fairnessMatching": {},
+    "policyMeans": {
+      "M1": {
+        "n": 2,
+        "configuredLambda": 0.6,
+        "means": {
+          "accuracy": 0.7107844824618774,
+          "macroF1": 0.4350691845727435,
+          "feasibleSelectionCoverage": 1.0,
+          "feasibleOpportunityAdjustedGini": 0.5373594005688864,
+          "maxFeasibleSelectionStaleness": 49.5,
+          "maxAccuracyDropPp": 19.439950431998902
+        }
+      },
+      "M2": {
+        "n": 2,
+        "configuredLambda": 0.625,
+        "means": {
+          "accuracy": 0.7148807269973495,
+          "macroF1": 0.4026606627395098,
+          "feasibleSelectionCoverage": 1.0,
+          "feasibleOpportunityAdjustedGini": 0.5480082016319384,
+          "maxFeasibleSelectionStaleness": 53.0,
+          "maxAccuracyDropPp": 16.07001480155589
+        }
+      },
+      "M3": {
+        "n": 2,
+        "configuredLambda": 0.65,
+        "means": {
+          "accuracy": 0.7200784826684107,
+          "macroF1": 0.4563235510884954,
+          "feasibleSelectionCoverage": 1.0,
+          "feasibleOpportunityAdjustedGini": 0.5175592031375524,
+          "maxFeasibleSelectionStaleness": 52.5,
+          "maxAccuracyDropPp": 15.804963684554746
+        }
+      },
+      "M4": {
+        "n": 2,
+        "configuredLambda": 0.675,
+        "means": {
+          "accuracy": 0.7029017933978177,
+          "macroF1": 0.3983463746547031,
+          "feasibleSelectionCoverage": 1.0,
+          "feasibleOpportunityAdjustedGini": 0.4651748089435378,
+          "maxFeasibleSelectionStaleness": 46.5,
+          "maxAccuracyDropPp": 16.78083370624075
+        }
+      },
+      "M5": {
+        "n": 3,
+        "configuredLambda": 0.7,
+        "means": {
+          "accuracy": 0.7205030234185857,
+          "macroF1": 0.439129283290738,
+          "feasibleSelectionCoverage": 1.0,
+          "feasibleOpportunityAdjustedGini": 0.4837667022543635,
+          "maxFeasibleSelectionStaleness": 50.0,
+          "maxAccuracyDropPp": 16.75559074271683
+        }
+      },
+      "M6": {
+        "n": 3,
+        "configuredLambda": 0.725,
+        "means": {
+          "accuracy": 0.7051851341892993,
+          "macroF1": 0.43023291703459354,
+          "feasibleSelectionCoverage": 1.0,
+          "feasibleOpportunityAdjustedGini": 0.4736718551739838,
+          "maxFeasibleSelectionStaleness": 50.333333333333336,
+          "maxAccuracyDropPp": 16.236962583043614
+        }
+      },
+      "M7": {
+        "n": 3,
+        "configuredLambda": 0.3,
+        "means": {
+          "accuracy": 0.6931488302181221,
+          "macroF1": 0.41372872073112377,
+          "feasibleSelectionCoverage": 1.0,
+          "feasibleOpportunityAdjustedGini": 0.5676295429981002,
+          "maxFeasibleSelectionStaleness": 47.0,
+          "maxAccuracyDropPp": 20.10257822450174
+        }
+      }
+    }
+  },
+  "retry": {
+    "source": "results/research/retry-20261028-183037/e1/validation/fairness-matched-results.json",
+    "complete": true,
+    "error": null,
+    "runs": 42,
+    "partitions": [
+      1001,
+      1002
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "fairnessMatching": {
+      "learningMetricsUsed": false,
+      "candidates": [
+        {
+          "policy": "M1",
+          "lambda": 0.6,
+          "gaps": {
+            "feasibleSelectionCoverage": 0.0,
+            "feasibleCompletionCoverage": 0.033333333333333326,
+            "feasibleOpportunityAdjustedGini": 0.04030934967538776,
+            "feasibleCompletionOpportunityAdjustedGini": 0.03600210983533042,
+            "maxFeasibleSelectionStaleness": 4.833333333333333,
+            "meanFeasibleSelectionStaleness": 2.991666666666667
+          },
+          "sameObservedFeasiblePopulation": true,
+          "withinAllTolerances": false,
+          "coverageGap": 0.033333333333333326
+        },
+        {
+          "policy": "M2",
+          "lambda": 0.625,
+          "gaps": {
+            "feasibleSelectionCoverage": 0.0,
+            "feasibleCompletionCoverage": 0.033333333333333326,
+            "feasibleOpportunityAdjustedGini": 0.04014841559903981,
+            "feasibleCompletionOpportunityAdjustedGini": 0.03941029105401663,
+            "maxFeasibleSelectionStaleness": 4.666666666666667,
+            "meanFeasibleSelectionStaleness": 2.288888888888889
+          },
+          "sameObservedFeasiblePopulation": true,
+          "withinAllTolerances": false,
+          "coverageGap": 0.033333333333333326
+        },
+        {
+          "policy": "M3",
+          "lambda": 0.65,
+          "gaps": {
+            "feasibleSelectionCoverage": 0.0,
+            "feasibleCompletionCoverage": 0.033333333333333326,
+            "feasibleOpportunityAdjustedGini": 0.04141286635871746,
+            "feasibleCompletionOpportunityAdjustedGini": 0.042695213749367945,
+            "maxFeasibleSelectionStaleness": 5.5,
+            "meanFeasibleSelectionStaleness": 1.8999999999999995
+          },
+          "sameObservedFeasiblePopulation": true,
+          "withinAllTolerances": false,
+          "coverageGap": 0.033333333333333326
+        },
+        {
+          "policy": "M4",
+          "lambda": 0.675,
+          "gaps": {
+            "feasibleSelectionCoverage": 0.0,
+            "feasibleCompletionCoverage": 0.01666666666666672,
+            "feasibleOpportunityAdjustedGini": 0.08730254117847729,
+            "feasibleCompletionOpportunityAdjustedGini": 0.08750403205619657,
+            "maxFeasibleSelectionStaleness": 5.5,
+            "meanFeasibleSelectionStaleness": 4.433333333333334
+          },
+          "sameObservedFeasiblePopulation": true,
+          "withinAllTolerances": false,
+          "coverageGap": 0.01666666666666672
+        },
+        {
+          "policy": "M5",
+          "lambda": 0.7,
+          "gaps": {
+            "feasibleSelectionCoverage": 0.0,
+            "feasibleCompletionCoverage": 0.04999999999999993,
+            "feasibleOpportunityAdjustedGini": 0.0712365149340101,
+            "feasibleCompletionOpportunityAdjustedGini": 0.07375229408277069,
+            "maxFeasibleSelectionStaleness": 5.666666666666667,
+            "meanFeasibleSelectionStaleness": 3.7916666666666665
+          },
+          "sameObservedFeasiblePopulation": true,
+          "withinAllTolerances": false,
+          "coverageGap": 0.04999999999999993
+        },
+        {
+          "policy": "M6",
+          "lambda": 0.725,
+          "gaps": {
+            "feasibleSelectionCoverage": 0.0,
+            "feasibleCompletionCoverage": 0.033333333333333326,
+            "feasibleOpportunityAdjustedGini": 0.11378045039405055,
+            "feasibleCompletionOpportunityAdjustedGini": 0.11992477308893701,
+            "maxFeasibleSelectionStaleness": 5.166666666666667,
+            "meanFeasibleSelectionStaleness": 5.727777777777778
+          },
+          "sameObservedFeasiblePopulation": true,
+          "withinAllTolerances": false,
+          "coverageGap": 0.033333333333333326
+        }
+      ],
+      "nearestCandidate": {
+        "policy": "M4",
+        "lambda": 0.675,
+        "gaps": {
+          "feasibleSelectionCoverage": 0.0,
+          "feasibleCompletionCoverage": 0.01666666666666672,
+          "feasibleOpportunityAdjustedGini": 0.08730254117847729,
+          "feasibleCompletionOpportunityAdjustedGini": 0.08750403205619657,
+          "maxFeasibleSelectionStaleness": 5.5,
+          "meanFeasibleSelectionStaleness": 4.433333333333334
+        },
+        "sameObservedFeasiblePopulation": true,
+        "withinAllTolerances": false,
+        "coverageGap": 0.01666666666666672
+      },
+      "status": "NO_MATCH",
+      "selectedPolicy": null,
+      "selectedLambda": null,
+      "tolerances": {
+        "selectionCoverageAbs": 0.02,
+        "completionCoverageAbs": 0.02,
+        "selectionGiniMeanAbs": 0.025,
+        "completionGiniMeanAbs": 0.05,
+        "maxStalenessMeanAbs": 5.0,
+        "meanStalenessMeanAbs": 2.0
+      },
+      "definition": "Coverage uses maximum absolute paired gap; selection/completion Gini and staleness use mean absolute paired gaps. Coverage and all other tolerances must pass; among qualified policies minimize selection-Gini gap, tie smaller lambda. Completion Gini here is feasible completion/opportunity Gini. This is an operational match, not statistical equivalence."
+    },
+    "policyMeans": {
+      "M1": {
+        "n": 6,
+        "configuredLambda": 0.6,
+        "means": {
+          "accuracy": 0.7138480603077346,
+          "macroF1": 0.42418817388231483,
+          "feasibleSelectionCoverage": 1.0,
+          "feasibleOpportunityAdjustedGini": 0.5729611645211076,
+          "maxFeasibleSelectionStaleness": 50.166666666666664,
+          "maxAccuracyDropPp": 17.633357428889422
+        }
+      },
+      "M2": {
+        "n": 6,
+        "configuredLambda": 0.625,
+        "means": {
+          "accuracy": 0.6768499076337017,
+          "macroF1": 0.40076210560492564,
+          "feasibleSelectionCoverage": 1.0,
+          "feasibleOpportunityAdjustedGini": 0.5448842908909639,
+          "maxFeasibleSelectionStaleness": 50.666666666666664,
+          "maxAccuracyDropPp": 17.053916675272223
+        }
+      },
+      "M3": {
+        "n": 6,
+        "configuredLambda": 0.65,
+        "means": {
+          "accuracy": 0.7204284419354469,
+          "macroF1": 0.4363847476571014,
+          "feasibleSelectionCoverage": 1.0,
+          "feasibleOpportunityAdjustedGini": 0.5289627546370973,
+          "maxFeasibleSelectionStaleness": 51.5,
+          "maxAccuracyDropPp": 15.162989225844203
+        }
+      },
+      "M4": {
+        "n": 6,
+        "configuredLambda": 0.675,
+        "means": {
+          "accuracy": 0.7125687010200452,
+          "macroF1": 0.4326823004105692,
+          "feasibleSelectionCoverage": 1.0,
+          "feasibleOpportunityAdjustedGini": 0.4830730798173375,
+          "maxFeasibleSelectionStaleness": 49.833333333333336,
+          "maxAccuracyDropPp": 19.77384599497435
+        }
+      },
+      "M5": {
+        "n": 6,
+        "configuredLambda": 0.7,
+        "means": {
+          "accuracy": 0.7003947081569194,
+          "macroF1": 0.41221583193915373,
+          "feasibleSelectionCoverage": 1.0,
+          "feasibleOpportunityAdjustedGini": 0.49913910606180467,
+          "maxFeasibleSelectionStaleness": 51.666666666666664,
+          "maxAccuracyDropPp": 15.449267380354092
+        }
+      },
+      "M6": {
+        "n": 6,
+        "configuredLambda": 0.725,
+        "means": {
+          "accuracy": 0.7007561414982846,
+          "macroF1": 0.41337795057109344,
+          "feasibleSelectionCoverage": 1.0,
+          "feasibleOpportunityAdjustedGini": 0.45659517060176424,
+          "maxFeasibleSelectionStaleness": 47.166666666666664,
+          "maxAccuracyDropPp": 16.641997406859204
+        }
+      },
+      "M7": {
+        "n": 6,
+        "configuredLambda": 0.3,
+        "means": {
+          "accuracy": 0.7025862563537687,
+          "macroF1": 0.4197465947733585,
+          "feasibleSelectionCoverage": 1.0,
+          "feasibleOpportunityAdjustedGini": 0.5703756209958147,
+          "maxFeasibleSelectionStaleness": 46.0,
+          "maxAccuracyDropPp": 16.983924821864996
+        }
+      }
+    }
+  }
+}

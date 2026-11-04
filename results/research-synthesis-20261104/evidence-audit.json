@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "rounds": {
+    "passed": true,
+    "anomalies": [],
+    "streamedCommittedRounds": 27308,
+    "studies": [
+      {
+        "study": "controlled-width-ablation",
+        "experimentRows": 227,
+        "committedRounds": 15754,
+        "auditRounds": 4,
+        "finalTestEvaluations": 225
+      },
+      {
+        "study": "fuzzy-workflow",
+        "experimentRows": 167,
+        "committedRounds": 11554,
+        "auditRounds": 4,
+        "finalTestEvaluations": 135
+      }
+    ]
+  },
+  "publishedFiles": {
+    "files": 2592,
+    "bytes": 1899712395,
+    "filesWithPublicationHash": 2140,
+    "mismatches": [],
+    "interpretation": "Byte-level inventory; binaries are not interpreted as statistical observations"
+  },
+  "pairing": {
+    "passed": true,
+    "anomalies": [],
+    "checkedResearchRuns": 390,
+    "pairedConditionGroups": 94
+  },
+  "pareto": {
+    "passed": true,
+    "anomalies": [],
+    "researchRuns": 60,
+    "researchRounds": 4200
+  }
+}

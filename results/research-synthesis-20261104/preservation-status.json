@@ -1,0 +1,34 @@
+{
+  "status": "SUMMARY_PRESERVATION_NOT_FULL_MODEL_BACKUP",
+  "userDecision": "Stop model upload; publish compact data/results analysis; user performs any subsequent deletion",
+  "sourceDeletionPerformed": false,
+  "trainingStarted": false,
+  "modelBackup": {
+    "status": "STOPPED_BY_USER",
+    "stoppedAt": "2026-11-04T15:56:25.109553+00:00",
+    "originalFiles": 513327,
+    "originalBytes": 56375341671,
+    "verifiedParts": 6,
+    "verifiedFiles": 24484,
+    "verifiedCompressedBytes": 2205894664,
+    "releaseId": 434068945,
+    "releaseDraft": true,
+    "completeBackupManifestExists": false
+  },
+  "preservedInGitBeforeThisSynthesis": [
+    "results/archive-manifest.json",
+    "results/research/controlled-fuzzy-ablation-20261104-002235-69ac39/publication-manifest.json",
+    "results/research/fuzzy-uncertainty-20261031-004757-b6b730-full-20261103/publication-manifest.json"
+  ],
+  "notPreservedBySummary": [
+    "All original model tensor/receipt bytes",
+    "Complete recent SQLite databases suitable for training resume",
+    "All dataset arrays and runtime binaries",
+    "Uncommitted final robustness workflow source changes"
+  ],
+  "afterDeletingLocalModels": [
+    "Recorded metrics and plots can be reanalyzed from Git",
+    "Checkpoint re-evaluation, new unrecorded model metrics and old-run resume are not guaranteed"
+  ],
+  "interpretation": "This summary does not authorize or perform deletion. Partial release assets must not be mistaken for a complete model archive."
+}
